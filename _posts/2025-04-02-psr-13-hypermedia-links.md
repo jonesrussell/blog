@@ -147,19 +147,19 @@ use Psr\Link\EvolvableLinkInterface;
  * Concrete implementation of the EvolvableLinkInterface.
  * Provides immutable link objects with all required functionality.
  */
-class Link implements EvolvableLinkInterface
+class HypermediaLink implements EvolvableLinkInterface
 {
     /** @var string The URI of the link */
-    private $href;
+    private string $href;
 
     /** @var array Map of relationship names */
-    private $rels = [];
+    private array $rels = [];
 
     /** @var array Map of attribute name => value pairs */
-    private $attributes = [];
+    private array $attributes = [];
 
     /** @var bool Whether the link contains template variables */
-    private $templated = false;
+    private bool $templated = false;
 
     /**
      * Create a new link instance.
@@ -196,7 +196,7 @@ class Link implements EvolvableLinkInterface
      */
     public function getRels(): array
     {
-        return $this->rels;
+        return array_keys($this->rels);
     }
 
     /**
@@ -210,14 +210,14 @@ class Link implements EvolvableLinkInterface
 
     /**
      * Create a new instance with the specified href.
-     * @param string $href
+     * @param string|\Stringable $href
      * @return static
      */
-    public function withHref($href): EvolvableLinkInterface
+    public function withHref(string|\Stringable $href): static
     {
         $new = clone $this;
-        $new->href = $href;
-        $new->templated = strpos($href, '{') !== false;
+        $new->href = (string)$href;
+        $new->templated = strpos($new->href, '{') !== false;
         return $new;
     }
 
@@ -226,7 +226,7 @@ class Link implements EvolvableLinkInterface
      * @param string $rel
      * @return static
      */
-    public function withRel($rel): EvolvableLinkInterface
+    public function withRel(string $rel): static
     {
         $new = clone $this;
         $new->rels[$rel] = true;
@@ -238,7 +238,7 @@ class Link implements EvolvableLinkInterface
      * @param string $rel
      * @return static
      */
-    public function withoutRel($rel): EvolvableLinkInterface
+    public function withoutRel(string $rel): static
     {
         $new = clone $this;
         unset($new->rels[$rel]);
@@ -251,7 +251,7 @@ class Link implements EvolvableLinkInterface
      * @param mixed $value
      * @return static
      */
-    public function withAttribute($attribute, $value): EvolvableLinkInterface
+    public function withAttribute(string $attribute, mixed $value): static
     {
         $new = clone $this;
         $new->attributes[$attribute] = $value;
@@ -263,7 +263,7 @@ class Link implements EvolvableLinkInterface
      * @param string $attribute
      * @return static
      */
-    public function withoutAttribute($attribute): EvolvableLinkInterface
+    public function withoutAttribute(string $attribute): static
     {
         $new = clone $this;
         unset($new->attributes[$attribute]);
@@ -284,17 +284,17 @@ use Psr\Link\LinkInterface;
  * Concrete implementation of the LinkProviderInterface.
  * Manages collections of links and provides filtering capabilities.
  */
-class LinkProvider implements LinkProviderInterface
+class HypermediaLinkProvider implements LinkProviderInterface
 {
     /** @var LinkInterface[] Collection of links */
-    private $links = [];
+    private array $links = [];
 
     /**
      * Add a link to the collection.
      * @param LinkInterface $link The link to add
      * @return $this For method chaining
      */
-    public function addLink(LinkInterface $link)
+    public function addLink(LinkInterface $link): self
     {
         $this->links[] = $link;
         return $this;
@@ -318,7 +318,7 @@ class LinkProvider implements LinkProviderInterface
     {
         return array_values(array_filter(
             $this->links,
-            fn(LinkInterface $link) => in_array($rel, array_keys($link->getRels()))
+            fn(LinkInterface $link) => in_array($rel, $link->getRels())
         ));
     }
 }
@@ -334,17 +334,17 @@ Let's see how to use these implementations in real-world scenarios. We'll start 
 <?php
 
 // Create a simple link to a user profile
-$link = new Link('/users/123')
+$link = new HypermediaLink('/users/123')
     ->withRel('self')  // Indicates this is the canonical URL for the resource
     ->withAttribute('title', 'User Profile');  // Human-readable description
 
 // Create a templated link for user resources
-$link = new Link('/users/{id}')
+$link = new HypermediaLink('/users/{id}')
     ->withRel('user')  // Indicates this is a user resource
     ->withAttribute('templated', true);  // Explicitly mark as templated
 
 // Create a link collection and add links to it
-$provider = new LinkProvider();
+$provider = new HypermediaLinkProvider();
 $provider->addLink($link);
 ```
 
@@ -367,17 +367,17 @@ class UserController
     public function show($id): array
     {
         $user = $this->repository->find($id);
-        $links = new LinkProvider();
+        $links = new HypermediaLinkProvider();
         
         // Add self-referential link
         $links->addLink(
-            (new Link("/users/$id"))
+            (new HypermediaLink("/users/$id"))
                 ->withRel('self')
         );
         
         // Add link to related posts
         $links->addLink(
-            (new Link("/users/$id/posts"))
+            (new HypermediaLink("/users/$id/posts"))
                 ->withRel('posts')
         );
         
@@ -504,11 +504,11 @@ class ApiController
     public function show(int $id): JsonResponse
     {
         // Create link collection
-        $links = new LinkProvider();
+        $links = new HypermediaLinkProvider();
         
         // Add self-referential link
         $links->addLink(
-            (new Link("/api/users/$id"))
+            (new HypermediaLink("/api/users/$id"))
                 ->withRel('self')
         );
 
@@ -541,10 +541,10 @@ $link->withRel('self')     // Canonical URL
 
 ```php
 // Bad - Hardcoded IDs in URLs
-$link = new Link("/users/123/posts");  // Not reusable
+$link = new HypermediaLink("/users/123/posts");  // Not reusable
 
 // Good - Templated links
-$link = (new Link("/users/{id}/posts"))
+$link = (new HypermediaLink("/users/{id}/posts"))
     ->withTemplated(true);  // Reusable for any user ID
 ```
 
@@ -578,19 +578,19 @@ class LinkBuilder
     /**
      * Create a link to a resource.
      * @param string $path Resource path
-     * @return Link
+     * @return HypermediaLink
      */
-    public function resource(string $path): Link
+    public function resource(string $path): HypermediaLink
     {
-        return new Link($this->baseUrl . '/' . ltrim($path, '/'));
+        return new HypermediaLink($this->baseUrl . '/' . ltrim($path, '/'));
     }
 
     /**
      * Create a templated link for a collection.
      * @param string $path Collection path
-     * @return Link
+     * @return HypermediaLink
      */
-    public function collection(string $path): Link
+    public function collection(string $path): HypermediaLink
     {
         return $this->resource($path . '{?page,limit,sort}')
             ->withAttribute('templated', true);
@@ -671,18 +671,18 @@ class OrderState
      */
     public function getLinks(Order $order): LinkProviderInterface
     {
-        $links = new LinkProvider();
+        $links = new HypermediaLinkProvider();
         
         // Always include self-referential link
         $links->addLink(
-            (new Link("/orders/{$order->id}"))
+            (new HypermediaLink("/orders/{$order->id}"))
                 ->withRel('self')
         );
 
         // Add payment link for pending orders
         if ($order->status === 'pending') {
             $links->addLink(
-                (new Link("/orders/{$order->id}/pay"))
+                (new HypermediaLink("/orders/{$order->id}/pay"))
                     ->withRel('payment')
             );
         }
@@ -690,7 +690,7 @@ class OrderState
         // Add shipment link for paid orders
         if ($order->status === 'paid') {
             $links->addLink(
-                (new Link("/orders/{$order->id}/ship"))
+                (new HypermediaLink("/orders/{$order->id}/ship"))
                     ->withRel('shipment')
             );
         }
@@ -717,18 +717,18 @@ class ApiDiscovery
      */
     public function getRootLinks(): LinkProviderInterface
     {
-        $links = new LinkProvider();
+        $links = new HypermediaLinkProvider();
         
         // Add users collection link with pagination
         $links->addLink(
-            (new Link('/users{?page,limit}'))
+            (new HypermediaLink('/users{?page,limit}'))
                 ->withRel('users')
                 ->withAttribute('templated', true)
         );
         
         // Add products collection link with filtering
         $links->addLink(
-            (new Link('/products{?category,sort}'))
+            (new HypermediaLink('/products{?category,sort}'))
                 ->withRel('products')
                 ->withAttribute('templated', true)
         );
