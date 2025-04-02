@@ -12,6 +12,8 @@ Ahnii! Today we'll explore PSR-13, which defines interfaces for creating and man
 
 ## Core Interfaces (5 minutes)
 
+PSR-13 defines three main interfaces that work together to create a flexible hypermedia linking system. These interfaces provide the foundation for building discoverable APIs and implementing HATEOAS principles. Let's explore each one:
+
 ### 1. LinkInterface
 
 ```php
@@ -131,6 +133,8 @@ interface LinkProviderInterface
 ```
 
 ## Basic Implementation (10 minutes)
+
+Now that we understand the interfaces, let's look at how to implement them. We'll create concrete classes that implement these interfaces, making it easy to work with hypermedia links in your applications. The implementation follows immutable object patterns, meaning each modification creates a new instance rather than changing the existing one.
 
 ### 1. Link Implementation
 
@@ -322,6 +326,8 @@ class LinkProvider implements LinkProviderInterface
 
 ## Usage Examples (15 minutes)
 
+Let's see how to use these implementations in real-world scenarios. We'll start with simple examples and then move on to more complex use cases in REST APIs. These examples will show you how to create links, add relationships, and work with collections of links.
+
 ### 1. Basic Link Creation
 
 ```php
@@ -404,6 +410,8 @@ class UserController
 ```
 
 ## Framework Integration (15 minutes)
+
+Many popular PHP frameworks have built-in support for PSR-13 or can be easily extended to work with it. Let's look at how to integrate hypermedia links with Laravel and Symfony, two of the most popular PHP frameworks. This will show you how to combine PSR-13 with framework-specific features.
 
 ### 1. Laravel Example
 
@@ -515,6 +523,8 @@ class ApiController
 
 ## Best Practices (10 minutes)
 
+When working with hypermedia links, following certain best practices can make your APIs more maintainable and easier to use. These guidelines help ensure consistency across your application and make it easier for other developers to understand and work with your code.
+
 ### 1. Link Relations
 
 ```php
@@ -539,6 +549,8 @@ $link = (new Link("/users/{id}/posts"))
 ```
 
 ## Common Patterns (10 minutes)
+
+As you work with hypermedia links, you'll find yourself repeating certain patterns. Let's look at some common patterns that can help you write cleaner, more maintainable code. These patterns include helper classes and design patterns that make working with links easier.
 
 ### 1. Link Builder
 
@@ -638,6 +650,8 @@ class ResourceWithLinks
 ```
 
 ## HATEOAS Implementation (15 minutes)
+
+HATEOAS (Hypermedia as the Engine of Application State) is a constraint of REST that makes your APIs self-documenting and discoverable. Let's see how to implement HATEOAS principles using PSR-13, making your APIs more user-friendly and easier to navigate.
 
 ### 1. Resource State Machine
 
