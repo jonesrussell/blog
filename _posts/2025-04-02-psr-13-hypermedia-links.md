@@ -1,16 +1,16 @@
 ---
 layout: post
 title: "PSR-13: Hypermedia Links in PHP"
-date: 2024-03-23 12:00:00 -0600
+date: 2025-04-02
 categories: php standards
 series: php-fig-standards
-tags: [php, php-fig, psr-13, hypermedia, rest]
+tags: [php, psr-13, hypermedia, rest]
 summary: "Discover PSR-13's hypermedia link interfaces, understand HATEOAS principles, and implement discoverable APIs in PHP applications."
 ---
 
-PSR-13 defines interfaces for creating and managing hypermedia links in PHP applications. This standard is particularly useful for building REST APIs that follow HATEOAS (Hypermedia as the Engine of Application State) principles, enabling self-documenting and discoverable APIs.
+Ahnii! Today we'll explore PSR-13, which defines interfaces for creating and managing hypermedia links in PHP applications. This standard is particularly useful for building REST APIs that follow HATEOAS (Hypermedia as the Engine of Application State) principles, enabling self-documenting and discoverable APIs.
 
-## Core Interfaces
+## Core Interfaces (5 minutes)
 
 ### 1. LinkInterface
 
@@ -59,7 +59,7 @@ interface LinkProviderInterface
 }
 ```
 
-## Basic Implementation
+## Basic Implementation (10 minutes)
 
 ### 1. Link Implementation
 
@@ -172,7 +172,7 @@ class LinkProvider implements LinkProviderInterface
 }
 ```
 
-## Usage Examples
+## Usage Examples (15 minutes)
 
 ### 1. Basic Link Creation
 
@@ -240,7 +240,7 @@ class UserController
 }
 ```
 
-## Framework Integration
+## Framework Integration (15 minutes)
 
 ### 1. Laravel Example
 
@@ -319,7 +319,7 @@ class ApiController
 }
 ```
 
-## Best Practices
+## Best Practices (10 minutes)
 
 1. **Link Relations**
 
@@ -344,7 +344,7 @@ $link = (new Link("/users/{id}/posts"))
     ->withTemplated(true);
 ```
 
-## Common Patterns
+## Common Patterns (10 minutes)
 
 ### 1. Link Builder
 
@@ -404,7 +404,7 @@ class ResourceWithLinks
 }
 ```
 
-## HATEOAS Implementation
+## HATEOAS Implementation (15 minutes)
 
 ### 1. Resource State Machine
 
@@ -469,11 +469,11 @@ class ApiDiscovery
 }
 ```
 
-## Next Steps
+## Next Steps (5 minutes)
 
 This concludes our series on PHP-FIG standards. Each PSR we've covered contributes to better PHP code organization, interoperability, and maintainability. Check out our [example repository](https://github.com/yourusername/php-fig-guide/tree/psr-13) for the implementation of these standards.
 
-## Resources
+## Resources (5 minutes)
 
 - [Official PSR-13 Specification](https://www.php-fig.org/psr/psr-13/)
 - [IANA Link Relations](https://www.iana.org/assignments/link-relations/link-relations.xhtml)
