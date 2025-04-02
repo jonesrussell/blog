@@ -11,6 +11,3 @@ Gemfile.lock
 *.bak
 .*.swp
 .vscode/*.tmp
-
-# Ignore the code directory
-code/
