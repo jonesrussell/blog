@@ -1,0 +1,49 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+# Blog Post Structure Guide
+
+## Key Files
+- Blog posts are stored in [_posts/](mdc:_posts/) for published content
+- Drafts are stored in [_drafts/](mdc:_drafts/) for work in progress
+- Writing style guidelines are in [WRITING_STYLE.md](mdc:WRITING_STYLE.md)
+- Pending tasks and improvements in [TODO.md](mdc:TODO.md)
+
+## Post Requirements
+- Start with "Ahnii!"
+- End with "Baamaapii 👋"
+- Maximum 4 tags in frontmatter
+- Follow markdown linting rules
+- Include proper frontmatter:
+  ```yaml
+  ---
+  layout: post
+  title: "Title: Subtitle"
+  date: YYYY-MM-DD
+  categories: [cat1, cat2]
+  tags: [tag1, tag2, tag3, tag4]
+  description: "Compelling description"
+  ---
+  ```
+
+## Writing Style
+- Avoid unnecessary adjectives (comprehensive, complete, full, robust)
+- Remove filler words (very, really, basically, actually)
+- Use active voice
+- Get to the point quickly
+- Keep code examples focused and well-commented
+
+## Templates
+- Standard posts: [_templates/post-template.md](mdc:_templates/post-template.md)
+- Tutorials: [_templates/tutorials/step-by-step.md](mdc:_templates/tutorials/step-by-step.md)
+- Concept explanations: [_templates/concepts/explanation.md](mdc:_templates/concepts/explanation.md)
+- Reviews: [_templates/reviews/review.md](mdc:_templates/reviews/review.md)
+
+## Code Examples
+- Always specify language in code blocks
+- Include meaningful comments
+- Use real-world examples
+- Follow language-specific best practices
+- Consider accessibility in examples

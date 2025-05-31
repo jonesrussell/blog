@@ -1,0 +1,45 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+# Code Examples Guide
+
+## Code Block Formatting
+- Always specify language after opening backticks
+- Use meaningful variable names
+- Include helpful comments
+- Keep examples focused and concise
+- Follow language-specific best practices
+
+## Example Structure
+```go
+// Example: Basic CORS implementation
+func enableCORS(w *http.ResponseWriter) {
+    (*w).Header().Set("Access-Control-Allow-Origin", "*")
+}
+```
+
+## Language Support
+- Go: `go`
+- PHP: `php`
+- JavaScript: `javascript` or `js`
+- HTML: `html`
+- CSS: `css`
+- Shell: `bash` or `shell`
+- YAML: `yaml`
+- JSON: `json`
+
+## Best Practices
+- Show complete, working examples
+- Include error handling
+- Document edge cases
+- Use real-world scenarios
+- Consider security implications
+- Add explanatory comments
+- Keep code DRY (Don't Repeat Yourself)
+
+## Related Files
+- [.markdownlint.json](mdc:.markdownlint.json) for code block rules
+- [WRITING_STYLE.md](mdc:WRITING_STYLE.md) for example guidelines
+- [_config.yml](mdc:_config.yml) for syntax highlighting

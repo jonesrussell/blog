@@ -1,0 +1,47 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+# Post Management Workflow
+
+## File Locations
+- Drafts: [_drafts/](mdc:_drafts/)
+- Published posts: [_posts/](mdc:_posts/)
+- Templates: [_templates/](mdc:_templates/)
+
+## Naming Conventions
+- Draft files: `title.md`
+- Published posts: `YYYY-MM-DD-title.md`
+- Use lowercase with hyphens
+- Keep titles concise and descriptive
+
+## Post Structure
+- Frontmatter at top:
+  ```yaml
+  ---
+  layout: post
+  title: "Title: Subtitle"
+  date: YYYY-MM-DD
+  categories: [cat1, cat2]
+  tags: [tag1, tag2, tag3, tag4]
+  description: "Compelling description"
+  ---
+  ```
+- Start with "Ahnii!"
+- End with "Baamaapii 👋"
+- Include code examples with language specification
+- Use proper markdown formatting
+
+## Publishing Process
+1. Create draft in `_drafts/`
+2. Test locally with `bundle exec jekyll serve`
+3. Validate with `vale` and `markdownlint`
+4. Move to `_posts/` with correct date format
+5. Commit and push changes
+
+## Related Files
+- [WRITING_STYLE.md](mdc:WRITING_STYLE.md) for style guidelines
+- [.markdownlint.json](mdc:.markdownlint.json) for linting rules
+- [.vale.ini](mdc:.vale.ini) for content validation
+- [_config.yml](mdc:_config.yml) for site configuration

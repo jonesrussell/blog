@@ -1,0 +1,59 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+# Project Setup Guide
+
+## Development Environment
+- Uses VS Code Dev Container for consistent development
+- Configuration in [.devcontainer/](mdc:.devcontainer/)
+- Includes:
+  - Ruby (Jekyll)
+  - PHP 8.2+ with Xdebug
+  - Composer
+  - Git and GitHub CLI
+  - VS Code extensions
+
+## Key Configuration Files
+- [Gemfile](mdc:Gemfile) for Ruby dependencies
+- [_config.yml](mdc:_config.yml) for Jekyll configuration
+- [Taskfile.yml](mdc:Taskfile.yml) for common tasks
+- [.markdownlint.json](mdc:.markdownlint.json) for markdown rules
+- [.vale.ini](mdc:.vale.ini) for content validation
+- [.yamllint](mdc:.yamllint) for YAML validation
+
+## Common Tasks
+- Start development server: `bundle exec jekyll serve`
+- Run tests: `composer test` (in PHP-FIG guide)
+- Check styles: `composer check-style` (in PHP-FIG guide)
+- Build site: `bundle exec jekyll build`
+- Validate content: `vale .`
+- Lint markdown: `markdownlint .`
+- Check YAML: `yamllint .`
+
+## Project Structure
+- Blog posts: [_posts/](mdc:_posts/)
+- Drafts: [_drafts/](mdc:_drafts/)
+- PHP-FIG guide: [code/php-fig-guide/](mdc:code/php-fig-guide/)
+- Assets: [assets/](mdc:assets/)
+- Styles: [styles/](mdc:styles/)
+- Layouts: [_layouts/](mdc:_layouts/)
+- Includes: [_includes/](mdc:_includes/)
+- Templates: [_templates/](mdc:_templates/)
+
+## Development Workflow
+1. Create/update content in `_drafts/`
+2. Test locally with `bundle exec jekyll serve`
+3. Validate with `vale` and `markdownlint`
+4. Move to `_posts/` when ready
+5. Commit and push changes
+6. CI/CD will build and deploy
+
+## Quality Checks
+- Content validation with Vale
+- Markdown linting
+- YAML validation
+- PHP coding standards
+- Unit tests
+- Static analysis

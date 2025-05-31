@@ -1,0 +1,54 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+# Content Validation Guide
+
+## Validation Tools
+- Vale: Content style and grammar
+- Markdownlint: Markdown formatting
+- YAMLLint: YAML frontmatter
+- PHP_CodeSniffer: PHP code standards
+- PHPStan: PHP static analysis
+
+## Validation Commands
+```bash
+# Content validation
+vale .
+
+# Markdown linting
+markdownlint .
+
+# YAML validation
+yamllint .
+
+# PHP standards
+composer check-style
+composer analyze
+```
+
+## Common Issues
+- Missing frontmatter
+- Incorrect date format
+- Too many tags (>4)
+- Missing language in code blocks
+- Inconsistent heading levels
+- Broken links
+- Missing alt text for images
+
+## Quality Checklist
+- [ ] Frontmatter complete and valid
+- [ ] Content follows style guide
+- [ ] Code examples properly formatted
+- [ ] Links working and valid
+- [ ] Images have alt text
+- [ ] No broken references
+- [ ] Proper heading hierarchy
+- [ ] Consistent formatting
+
+## Related Files
+- [.vale.ini](mdc:.vale.ini) for content rules
+- [.markdownlint.json](mdc:.markdownlint.json) for markdown rules
+- [.yamllint](mdc:.yamllint) for YAML rules
+- [.php-cs-fixer.php](mdc:code/php-fig-guide/.php-cs-fixer.php) for PHP rules

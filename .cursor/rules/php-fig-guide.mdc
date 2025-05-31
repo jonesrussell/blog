@@ -1,0 +1,42 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+# PHP-FIG Guide Structure
+
+## Key Directories
+- PHP-FIG implementation is in [code/php-fig-guide/](mdc:code/php-fig-guide/)
+- Each PSR has its own directory under [src/](mdc:code/php-fig-guide/src/)
+- Tests are in [tests/](mdc:code/php-fig-guide/tests/)
+- Documentation in [docs/](mdc:code/php-fig-guide/docs/)
+
+## Development Requirements
+- Follow PSR coding standards strictly
+- Use composer for dependency management
+- Add PHPUnit tests for new code
+- Keep implementations focused and well-documented
+- Maintain backward compatibility
+- Document breaking changes
+
+## Testing and Standards
+- Run tests: `composer test`
+- Check coding standards: `composer check-style`
+- Fix coding standards: `composer fix-style`
+- Run static analysis: `composer analyze`
+- Generate documentation: `composer docs`
+
+## Implementation Guidelines
+- Each PSR should be self-contained
+- Use interfaces for contracts
+- Implement proper type declarations
+- Follow SOLID principles
+- Include usage examples
+- Document edge cases
+
+## Related Files
+- [composer.json](mdc:code/php-fig-guide/composer.json) for dependencies
+- [phpunit.xml](mdc:code/php-fig-guide/phpunit.xml) for test configuration
+- [.php-cs-fixer.php](mdc:code/php-fig-guide/.php-cs-fixer.php) for coding standards
+- [phpstan.neon](mdc:code/php-fig-guide/phpstan.neon) for static analysis
+- [README.md](mdc:code/php-fig-guide/README.md) for project overview
