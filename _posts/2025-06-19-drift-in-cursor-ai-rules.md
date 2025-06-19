@@ -7,8 +7,6 @@ tags: [Cursor, AI, Rules, Productivity, Development]
 summary: "Learn how to prevent drift in Cursor AI rules to maintain accurate and relevant AI-assisted development workflows."
 ---
 
-# Drift in Cursor AI Rules
-
 Ahnii! As codebases evolve, Cursor AI rules quietly fall behind. Rules that once provided helpful suggestions now generate irrelevant completions. Patterns that worked for your initial architecture become counterproductive as your project grows. This is drift—and it's undermining your AI-assisted development workflow.
 
 ## Problem
