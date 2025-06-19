@@ -34,7 +34,7 @@ minima:
     - platform: youtube
       user_url: "https://www.youtube.com/@fullstackdev42"
       title: "YouTube"
-    - platform: website
+    - platform: link
       user_url: "https://jonesrussell.github.io/me"
       title: "Website"
 
