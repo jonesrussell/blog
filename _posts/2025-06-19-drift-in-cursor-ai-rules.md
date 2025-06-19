@@ -22,6 +22,7 @@ The cost compounds over time: ignoring unhelpful completions, fighting against o
 Your project moved from JavaScript to TypeScript, but your Cursor rules still generate untyped code.
 
 **Outdated `/cursor/.rules`:**
+
 ```markdown
 # Component Guidelines
 - Use functional components with useState hooks
@@ -34,6 +35,7 @@ const Button = ({ onClick, children }) => {
 ```
 
 **Updated rules:**
+
 ```markdown
 # Component Guidelines  
 - Use TypeScript functional components
