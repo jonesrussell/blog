@@ -8,15 +8,8 @@ url: "https://jonesrussell.github.io"
 
 # Author information
 author:
-  name: "Russell Jones"
-  email: jonesrussell42@gmail.com
-
-# Social usernames (used by social.html template)
-github_username: jonesrussell
-x_username: jonesrussell42
-linkedin_username: jonesrussell42
-youtube_username: "@fullstackdev42"
-personal_website: https://jonesrussell.github.io/me
+  name: "Russell"
+  email: russell@web.net
 
 # Theme settings
 remote_theme: JakeSteam/minimaJake@1.0.14
@@ -29,13 +22,21 @@ minima:
     - platform: x
       user_url: "https://x.com/jonesrussell42"
       title: "X"
-    - { platform: linkedin,      user_url: "https://www.linkedin.com/in/jonesrussell42" }
-    - { platform: stackoverflow, user_url: "https://stackoverflow.com/users/437654/russell" }
-    - { platform: email,        user_url: "mailto:jonesrussell42@gmail.com", user_title: "jonesrussell42@gmail.com" }
-    - { platform: code,         user_url: "https://github.com/jonesrussell/blog", user_title: "JakeSteam/blog-programming" }
-    - { platform: rss,          user_url: "/feed.xml", user_title: "RSS Feed" }
-    - { platform: devto,        user_url: "https://dev.to/jonesrussell" }
-    - { platform: youtube,      user_url: "https://www.youtube.com/@fullstackdev42" }
+    - platform: linkedin
+      user_url: "https://www.linkedin.com/in/jonesrussell42"
+      title: "LinkedIn"
+    - platform: stackoverflow
+      user_url: "https://stackoverflow.com/users/437654/russell"
+      title: "Stack Overflow"
+    - platform: devto
+      user_url: "https://dev.to/jonesrussell"
+      title: "DEV.to"
+    - platform: youtube
+      user_url: "https://www.youtube.com/@fullstackdev42"
+      title: "YouTube"
+    - platform: website
+      user_url: "https://jonesrussell.github.io/me"
+      title: "Website"
 
 # Plugin settings
 plugins:
