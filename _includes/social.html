@@ -5,7 +5,7 @@
         <svg class="svg-icon">
           <use xlink:href="{{ '/assets/minima-social-icons.svg#' | append: social.platform | relative_url }}"></use>
         </svg>
-        <span class="username">{{ social.user_title | default: social.platform | capitalize }}</span>
+        <span class="username">{{ social.title | default: social.platform | capitalize }}</span>
       </a>
     </li>
   {%- endfor -%}
