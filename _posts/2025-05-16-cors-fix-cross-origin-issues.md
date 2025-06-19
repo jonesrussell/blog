@@ -7,6 +7,8 @@ tags: [CORS, API, Security, Web]
 summary: "Learn what CORS is, why it's essential for web security, and how to implement it properly in your applications."
 ---
 
+> **Update - June 16, 2025:** This post has been updated to better explain CORS as a security feature rather than a problem to be "fixed." The content is now language-agnostic and emphasizes why CORS is essential for web security.
+
 Ahnii!
 
 CORS (Cross-Origin Resource Sharing) is a crucial web security mechanism that controls how web pages from one domain can access resources from another domain. Rather than being a problem to solve, CORS is actually a security feature that protects users while enabling legitimate cross-origin communication.
@@ -15,7 +17,7 @@ CORS (Cross-Origin Resource Sharing) is a crucial web security mechanism that co
 
 ### Why CORS Exists
 
-Browsers enforce the same-origin policy by default, which prevents scripts from one origin from accessing resources on another origin. This security measure protects users from malicious websites that might try to access sensitive data from other sites you're logged into.
+Browsers enforce the [same-origin policy](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy) by default, which prevents scripts from one origin from accessing resources on another origin. This security measure protects users from malicious websites that might try to access sensitive data from other sites you're logged into.
 
 Without CORS, a malicious website could potentially:
 
@@ -23,7 +25,7 @@ Without CORS, a malicious website could potentially:
 - Access your banking information from another tab
 - Make unauthorized requests on your behalf
 
-CORS provides a controlled way for servers to explicitly permit cross-origin requests while maintaining security.
+CORS provides a controlled way for servers to explicitly permit cross-origin requests while maintaining security. Learn more about [CORS on MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CORS).
 
 ### Understanding Origins
 
@@ -92,7 +94,7 @@ res.header('Access-Control-Allow-Credentials', 'true');
 
 ### Handling Preflight Requests
 
-For complex requests (those with custom headers, or using methods other than GET/POST), browsers send a preflight OPTIONS request first. Your server needs to handle these:
+For complex requests (those with custom headers, or using methods other than GET/POST), browsers send a [preflight OPTIONS request](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CORS#preflighted_requests) first. Your server needs to handle these:
 
 ```javascript
 // Handle preflight requests
@@ -142,6 +144,13 @@ CORS is not a barrier to overcome but a security feature that enables safe cross
 5. **Monitor**: Keep track of CORS errors in production to catch configuration issues
 
 Remember, CORS headers are set on the server side, not the client. The server decides which cross-origin requests to allow, giving you full control over your API's security posture.
+
+**Additional Resources:**
+
+- [Same-origin policy - MDN](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy)
+- [Cross-Origin Resource Sharing (CORS) - MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CORS)
+- [Access-Control-Allow-Origin header - MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Access-Control-Allow-Origin)
+- [CORS errors - MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CORS/Errors)
 
 Got questions about CORS implementation? Drop a comment below!
 
