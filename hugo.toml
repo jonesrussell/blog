@@ -2,7 +2,8 @@ baseURL = 'https://jonesrussell.github.io/blog/'
 languageCode = 'en-us'
 title = 'Web Developer Blog'
 theme = 'PaperMod'
-paginate = 10
+[pagination]
+  pagerSize = 10
 
 [params]
   env = 'production'
