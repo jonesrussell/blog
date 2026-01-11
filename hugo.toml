@@ -1,3 +1,118 @@
-baseURL = 'https://example.org/'
+baseURL = 'https://jonesrussell.github.io/blog/'
 languageCode = 'en-us'
-title = 'My New Hugo Site'
+title = 'Web Developer Blog'
+theme = 'PaperMod'
+paginate = 10
+
+[params]
+  env = 'production'
+  description = 'A resource for web developers, I use modern technologies, best practices, and personal experiences. Explore guides on Laravel, Golang, Docker, and more.'
+  author = 'Russell'
+  defaultTheme = 'auto'
+  disableThemeToggle = false
+  ShowReadingTime = true
+  ShowShareButtons = true
+  ShowPostNavLinks = true
+  ShowBreadCrumbs = true
+  ShowCodeCopyButtons = true
+  ShowWordCount = false
+  ShowRssButtonInSectionTermList = true
+  UseHugoToc = true
+  disableSpecial1stPost = false
+  disableScrollToTop = false
+  hidemeta = false
+  hideSummary = false
+  showtoc = true
+  tocopen = false
+
+  [params.homeInfoParams]
+    Title = 'Web Developer Blog'
+    Content = 'A resource for web developers exploring modern technologies, best practices, and practical solutions.'
+
+  [[params.socialIcons]]
+    name = 'github'
+    url = 'https://github.com/jonesrussell'
+  [[params.socialIcons]]
+    name = 'x'
+    url = 'https://x.com/jonesrussell42'
+  [[params.socialIcons]]
+    name = 'linkedin'
+    url = 'https://www.linkedin.com/in/jonesrussell42'
+  [[params.socialIcons]]
+    name = 'stackoverflow'
+    url = 'https://stackoverflow.com/users/437654/russell'
+  [[params.socialIcons]]
+    name = 'dev'
+    url = 'https://dev.to/jonesrussell'
+  [[params.socialIcons]]
+    name = 'youtube'
+    url = 'https://www.youtube.com/@fullstackdev42'
+  [[params.socialIcons]]
+    name = 'rss'
+    url = '/blog/index.xml'
+
+  [params.assets]
+    favicon = '/favicon.ico'
+    favicon16x16 = '/favicon.ico'
+    favicon32x32 = '/favicon.ico'
+    apple_touch_icon = '/favicon.ico'
+
+  [params.fuseOpts]
+    isCaseSensitive = false
+    shouldSort = true
+    location = 0
+    distance = 1000
+    threshold = 0.4
+    minMatchCharLength = 0
+    keys = ['title', 'permalink', 'summary', 'content']
+
+[menu]
+  [[menu.main]]
+    identifier = 'posts'
+    name = 'Posts'
+    url = '/posts/'
+    weight = 1
+  [[menu.main]]
+    identifier = 'search'
+    name = 'Search'
+    url = '/search/'
+    weight = 2
+  [[menu.main]]
+    identifier = 'tags'
+    name = 'Tags'
+    url = '/tags/'
+    weight = 3
+  [[menu.main]]
+    identifier = 'categories'
+    name = 'Categories'
+    url = '/categories/'
+    weight = 4
+  [[menu.main]]
+    identifier = 'about'
+    name = 'About'
+    url = '/about/'
+    weight = 5
+
+[taxonomies]
+  category = 'categories'
+  tag = 'tags'
+  series = 'series'
+
+[permalinks]
+  [permalinks.page]
+    posts = '/:slug/'
+  [permalinks.section]
+    posts = '/:slug/'
+
+[outputs]
+  home = ['HTML', 'RSS', 'JSON']
+
+[markup]
+  [markup.highlight]
+    style = 'monokai'
+    lineNos = false
+    codeFences = true
+    guessSyntax = true
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
