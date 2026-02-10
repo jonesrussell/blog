@@ -50,7 +50,7 @@ theme = 'PaperMod'
     url = 'https://www.youtube.com/@fullstackdev42'
   [[params.socialIcons]]
     name = 'rss'
-    url = '/blog/index.xml'
+    url = '/blog/feed.xml'
 
   [params.assets]
     favicon = '/favicon.ico'
@@ -106,6 +106,10 @@ theme = 'PaperMod'
     posts = '/:slug/'
   [permalinks.section]
     posts = '/:slug/'
+
+[outputFormats]
+  [outputFormats.RSS]
+    baseName = "feed"
 
 [outputs]
   home = ['HTML', 'RSS', 'JSON']

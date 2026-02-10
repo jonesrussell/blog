@@ -43,6 +43,6 @@ This isn't just another tech blog. It's where I share:
 
 Stay updated with my latest posts and projects:
 
-[Subscribe via RSS](/index.xml)
+[Subscribe via RSS](/feed.xml)
 
 Baamaapii 👋
