@@ -18,6 +18,7 @@ theme = 'PaperMod'
   ShowCodeCopyButtons = true
   ShowWordCount = false
   ShowRssButtonInSectionTermList = true
+  ShowFullTextinRSS = true
   UseHugoToc = true
   disableSpecial1stPost = false
   disableScrollToTop = false
