@@ -1,0 +1,533 @@
+/* ==========================================================================
+   Digital Warmth — Custom PaperMod Theme
+   Dark-first design with amber/gold and teal accents
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Custom Properties
+   -------------------------------------------------------------------------- */
+:root {
+  --accent-1: #e2a93b;
+  --accent-2: #2dd4bf;
+  --accent-glow: rgba(226, 169, 59, 0.15);
+  --font-heading: 'Bricolage Grotesque', sans-serif;
+  --font-body: 'Instrument Sans', sans-serif;
+  --font-code: 'JetBrains Mono', monospace;
+  --main-width: 780px;
+  --radius: 8px;
+}
+
+/* Dark mode (default) */
+.dark {
+  --theme: #0a0a0f;
+  --entry: #111118;
+  --primary: rgba(255, 255, 255, 0.84);
+  --secondary: rgba(255, 255, 255, 0.56);
+  --tertiary: rgba(255, 255, 255, 0.16);
+  --content: rgba(255, 255, 255, 0.74);
+  --border: rgba(255, 255, 255, 0.1);
+  --code-bg: #15151e;
+  --accent-1: #e2a93b;
+  --accent-2: #2dd4bf;
+  --accent-glow: rgba(226, 169, 59, 0.15);
+}
+
+/* Light mode */
+:root:not(.dark) {
+  --theme: #faf8f5;
+  --entry: #ffffff;
+  --primary: rgba(10, 10, 15, 0.88);
+  --secondary: rgba(10, 10, 15, 0.56);
+  --tertiary: rgba(10, 10, 15, 0.08);
+  --content: rgba(10, 10, 15, 0.78);
+  --border: rgba(10, 10, 15, 0.1);
+  --code-bg: #f0ede8;
+  --accent-1: #c4892e;
+  --accent-2: #0d9488;
+  --accent-glow: rgba(196, 137, 46, 0.12);
+}
+
+/* --------------------------------------------------------------------------
+   Typography
+   -------------------------------------------------------------------------- */
+body {
+  font-family: var(--font-body);
+  letter-spacing: -0.01em;
+}
+
+h1, h2, h3, h4, h5, h6,
+.post-title,
+.entry-title {
+  font-family: var(--font-heading);
+  letter-spacing: -0.025em;
+  font-weight: 700;
+}
+
+code, pre, .highlight code {
+  font-family: var(--font-code);
+  font-size: 0.875em;
+}
+
+.logo a, .menu a {
+  font-family: var(--font-heading);
+}
+
+/* --------------------------------------------------------------------------
+   Layout — widen main content
+   -------------------------------------------------------------------------- */
+.main {
+  max-width: var(--main-width);
+}
+
+/* --------------------------------------------------------------------------
+   Aurora Gradient Bar
+   -------------------------------------------------------------------------- */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    var(--accent-1),
+    var(--accent-2),
+    #a78bfa,
+    var(--accent-1)
+  );
+  background-size: 200% 100%;
+  animation: aurora 8s linear infinite;
+  z-index: 9999;
+}
+
+@keyframes aurora {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+
+/* --------------------------------------------------------------------------
+   Header Glassmorphism
+   -------------------------------------------------------------------------- */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: transparent;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid transparent;
+  margin-top: 3px; /* offset for aurora bar */
+}
+
+.header.scrolled {
+  background: color-mix(in srgb, var(--theme) 85%, transparent);
+  box-shadow: 0 1px 12px rgba(0, 0, 0, 0.12);
+  border-bottom-color: var(--border);
+}
+
+.nav {
+  max-width: var(--main-width);
+}
+
+/* Nav link hover effect */
+#menu a {
+  position: relative;
+  transition: color 0.2s ease;
+}
+
+#menu a:hover,
+#menu a:focus,
+#menu .active {
+  color: var(--accent-1) !important;
+}
+
+/* Site logo/title */
+.logo a {
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+
+/* --------------------------------------------------------------------------
+   Post Entry Cards
+   -------------------------------------------------------------------------- */
+.post-entry {
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent-1);
+  border-radius: var(--radius);
+  background: var(--entry);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  margin-bottom: 1rem;
+  opacity: 0;
+  animation: fadeSlideIn 0.5s ease forwards;
+}
+
+.post-entry:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px var(--accent-glow);
+  border-left-color: var(--accent-2);
+}
+
+/* Staggered fade-in for first 6 entries */
+.post-entry:nth-child(1) { animation-delay: 0s; }
+.post-entry:nth-child(2) { animation-delay: 0.06s; }
+.post-entry:nth-child(3) { animation-delay: 0.12s; }
+.post-entry:nth-child(4) { animation-delay: 0.18s; }
+.post-entry:nth-child(5) { animation-delay: 0.24s; }
+.post-entry:nth-child(6) { animation-delay: 0.30s; }
+
+/* Entries beyond 6 start paused (JS resumes on scroll) */
+.post-entry:nth-child(n+7) {
+  animation-play-state: paused;
+}
+
+.post-entry.in-view {
+  animation-play-state: running;
+}
+
+@keyframes fadeSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.entry-header h2 {
+  font-weight: 700;
+  transition: color 0.2s ease;
+}
+
+.post-entry:hover .entry-header h2 {
+  color: var(--accent-1);
+}
+
+/* --------------------------------------------------------------------------
+   Tag Pills
+   -------------------------------------------------------------------------- */
+.post-tags a,
+.terms-tags a {
+  display: inline-block;
+  padding: 0.2em 0.7em;
+  border-radius: 9999px;
+  border: 1px solid var(--border);
+  font-size: 0.8rem;
+  font-family: var(--font-body);
+  font-weight: 500;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  text-decoration: none;
+}
+
+.post-tags a:hover,
+.terms-tags a:hover {
+  background: var(--accent-1);
+  color: #0a0a0f;
+  border-color: var(--accent-1);
+}
+
+/* --------------------------------------------------------------------------
+   Code Blocks
+   -------------------------------------------------------------------------- */
+code:not(pre code) {
+  background: var(--code-bg);
+  padding: 0.15em 0.4em;
+  border-radius: 4px;
+  font-size: 0.85em;
+  border: 1px solid var(--border);
+}
+
+.highlight {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin: 1.5em 0;
+}
+
+.highlight pre {
+  border-radius: 0;
+  margin: 0;
+}
+
+/* Copy button refinement */
+.copy-code {
+  border: 1px solid var(--border) !important;
+  border-radius: 4px !important;
+  background: var(--entry) !important;
+  transition: border-color 0.2s ease, color 0.2s ease !important;
+}
+
+.copy-code:hover {
+  border-color: var(--accent-1) !important;
+  color: var(--accent-1) !important;
+}
+
+/* --------------------------------------------------------------------------
+   Link Underlines — animated expanding underline
+   -------------------------------------------------------------------------- */
+.post-content a {
+  text-decoration: none;
+  color: var(--accent-1);
+  background-image: linear-gradient(var(--accent-1), var(--accent-1));
+  background-size: 0% 1px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 0.3s ease;
+}
+
+.post-content a:hover,
+.post-content a:focus {
+  background-size: 100% 1px;
+}
+
+/* --------------------------------------------------------------------------
+   Home Info — Gradient Text
+   -------------------------------------------------------------------------- */
+.first-entry .entry-header h1,
+.home-info .entry-hint-about {
+  font-family: var(--font-heading);
+}
+
+.home-info .entry-hint-about {
+  background: linear-gradient(135deg, var(--primary), var(--accent-1));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 800;
+}
+
+/* --------------------------------------------------------------------------
+   Noise Texture Overlay
+   -------------------------------------------------------------------------- */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  pointer-events: none;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+}
+
+/* --------------------------------------------------------------------------
+   Custom Scrollbar
+   -------------------------------------------------------------------------- */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--theme);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--tertiary);
+  border-radius: 4px;
+  transition: background 0.2s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-1);
+}
+
+/* Firefox */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: var(--tertiary) var(--theme);
+}
+
+/* --------------------------------------------------------------------------
+   Text Selection
+   -------------------------------------------------------------------------- */
+::selection {
+  background: var(--accent-1);
+  color: #0a0a0f;
+}
+
+::-moz-selection {
+  background: var(--accent-1);
+  color: #0a0a0f;
+}
+
+/* --------------------------------------------------------------------------
+   Table of Contents
+   -------------------------------------------------------------------------- */
+.toc {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1em;
+  background: var(--entry);
+}
+
+.toc a {
+  transition: color 0.2s ease;
+}
+
+.toc a:hover {
+  color: var(--accent-1);
+}
+
+/* --------------------------------------------------------------------------
+   Blockquotes
+   -------------------------------------------------------------------------- */
+blockquote {
+  border-left: 3px solid var(--accent-1);
+  padding-left: 1em;
+  color: var(--secondary);
+  font-style: italic;
+}
+
+/* --------------------------------------------------------------------------
+   Search
+   -------------------------------------------------------------------------- */
+#searchbox input {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--entry);
+  font-family: var(--font-body);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+#searchbox input:focus {
+  border-color: var(--accent-1);
+  box-shadow: 0 0 0 3px var(--accent-glow);
+  outline: none;
+}
+
+/* --------------------------------------------------------------------------
+   Breadcrumbs
+   -------------------------------------------------------------------------- */
+.breadcrumbs a {
+  transition: color 0.2s ease;
+}
+
+.breadcrumbs a:hover {
+  color: var(--accent-1);
+}
+
+/* --------------------------------------------------------------------------
+   Pagination
+   -------------------------------------------------------------------------- */
+.pagination a {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.pagination a:hover {
+  background: var(--accent-1);
+  color: #0a0a0f;
+  border-color: var(--accent-1);
+}
+
+/* --------------------------------------------------------------------------
+   Footer
+   -------------------------------------------------------------------------- */
+.footer {
+  border-top: 1px solid var(--border);
+}
+
+.footer a {
+  transition: color 0.2s ease;
+}
+
+.footer a:hover {
+  color: var(--accent-1);
+}
+
+/* --------------------------------------------------------------------------
+   Horizontal Rules
+   -------------------------------------------------------------------------- */
+hr {
+  border: none;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent-1), var(--accent-2), transparent);
+  margin: 2em 0;
+}
+
+/* --------------------------------------------------------------------------
+   Social Icons
+   -------------------------------------------------------------------------- */
+.social-icons a {
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.social-icons a:hover {
+  color: var(--accent-1);
+  transform: translateY(-2px);
+}
+
+/* --------------------------------------------------------------------------
+   Scroll to Top Button
+   -------------------------------------------------------------------------- */
+.top-link {
+  border: 1px solid var(--border) !important;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease !important;
+}
+
+.top-link:hover {
+  background: var(--accent-1) !important;
+  color: #0a0a0f !important;
+  border-color: var(--accent-1) !important;
+}
+
+/* --------------------------------------------------------------------------
+   Post Navigation
+   -------------------------------------------------------------------------- */
+.paginav a {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  transition: border-color 0.2s ease;
+}
+
+.paginav a:hover {
+  border-color: var(--accent-1);
+}
+
+/* --------------------------------------------------------------------------
+   Reduced Motion
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  body::before {
+    animation: none;
+    background-size: 100% 100%;
+  }
+
+  .post-entry {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Responsive — Mobile Adjustments
+   -------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+  h1 { font-size: 1.75rem; }
+  h2 { font-size: 1.4rem; }
+
+  .post-entry:nth-child(n+4) {
+    animation-delay: 0s;
+  }
+
+  body::after {
+    display: none; /* skip noise texture on mobile for performance */
+  }
+}
+
+@media (max-width: 480px) {
+  h1 { font-size: 1.5rem; }
+  h2 { font-size: 1.25rem; }
+}

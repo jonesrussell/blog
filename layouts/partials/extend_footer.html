@@ -1,0 +1,29 @@
+<script>
+(function () {
+  // Header scroll detection — toggle .scrolled class
+  var header = document.querySelector('.header');
+  if (header) {
+    window.addEventListener('scroll', function () {
+      header.classList.toggle('scrolled', window.scrollY > 10);
+    }, { passive: true });
+  }
+
+  // Intersection Observer for staggered post entry animation
+  var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (prefersReducedMotion) return;
+
+  var entries = document.querySelectorAll('.post-entry:nth-child(n+7)');
+  if (!entries.length) return;
+
+  var observer = new IntersectionObserver(function (items) {
+    items.forEach(function (item) {
+      if (item.isIntersecting) {
+        item.target.classList.add('in-view');
+        observer.unobserve(item.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  entries.forEach(function (entry) { observer.observe(entry); });
+})();
+</script>

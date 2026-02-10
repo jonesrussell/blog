@@ -57,6 +57,8 @@ theme = 'PaperMod'
     favicon16x16 = '/favicon.ico'
     favicon32x32 = '/favicon.ico'
     apple_touch_icon = '/favicon.ico'
+    theme_color = '#0a0a0f'
+    msapplication_TileColor = '#0a0a0f'
 
   [params.fuseOpts]
     isCaseSensitive = false
