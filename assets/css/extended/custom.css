@@ -140,7 +140,7 @@ body::before {
 #menu a:hover,
 #menu a:focus,
 #menu .active {
-  color: var(--accent-1) !important;
+  color: var(--accent-1);
 }
 
 /* Site logo/title */
@@ -254,15 +254,15 @@ code:not(pre code) {
 
 /* Copy button refinement */
 .copy-code {
-  border: 1px solid var(--border) !important;
-  border-radius: 4px !important;
-  background: var(--entry) !important;
-  transition: border-color 0.2s ease, color 0.2s ease !important;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: var(--entry);
+  transition: border-color 0.2s ease, color 0.2s ease;
 }
 
 .copy-code:hover {
-  border-color: var(--accent-1) !important;
-  color: var(--accent-1) !important;
+  border-color: var(--accent-1);
+  color: var(--accent-1);
 }
 
 /* --------------------------------------------------------------------------
@@ -286,17 +286,8 @@ code:not(pre code) {
 /* --------------------------------------------------------------------------
    Home Info — Gradient Text
    -------------------------------------------------------------------------- */
-.first-entry .entry-header h1,
-.home-info .entry-hint-about {
+.first-entry .entry-header h1 {
   font-family: var(--font-heading);
-}
-
-.home-info .entry-hint-about {
-  background: linear-gradient(135deg, var(--primary), var(--accent-1));
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-weight: 800;
 }
 
 /* --------------------------------------------------------------------------
@@ -411,8 +402,13 @@ blockquote {
 /* --------------------------------------------------------------------------
    List layout — avoid large whitespace below posts
    -------------------------------------------------------------------------- */
-body.list .main {
-  min-height: 0;
+/* Target main when it contains list content (post entries or pagination) */
+.main:has(.post-entry),
+.main:has(.page-footer) {
+  min-height: 0 !important;
+}
+html body.list .main {
+  min-height: 0 !important;
 }
 
 /* --------------------------------------------------------------------------
@@ -471,14 +467,14 @@ hr {
    Scroll to Top Button
    -------------------------------------------------------------------------- */
 .top-link {
-  border: 1px solid var(--border) !important;
-  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease !important;
+  border: 1px solid var(--border);
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
 }
 
 .top-link:hover {
-  background: var(--accent-1) !important;
-  color: #0a0a0f !important;
-  border-color: var(--accent-1) !important;
+  background: var(--accent-1);
+  color: #0a0a0f;
+  border-color: var(--accent-1);
 }
 
 /* --------------------------------------------------------------------------
