@@ -8,7 +8,23 @@ summary: "Deep dive into PSR-7's HTTP message interfaces, understanding HTTP mes
 slug: "psr-7-http-message-interfaces"
 ---
 
-PSR-7 defines common interfaces for representing HTTP messages in PHP. These interfaces enable framework-agnostic HTTP message handling, making it easier to create interoperable HTTP clients, servers, and middleware.
+Ahnii!
+
+> **Prerequisites:** PHP OOP, Composer. **Recommended:** Read [PSR-4](/psr-4-autoloading-standard/) first. **Pairs with:** PSR-15 (middleware) and PSR-17 (factories).
+
+Ever wondered how frameworks like Laravel and Slim handle HTTP requests behind the scenes? PSR-7 defines common interfaces for representing HTTP messages in PHP. These interfaces enable framework-agnostic HTTP message handling, making it easier to create interoperable HTTP clients, servers, and middleware.
+
+## What Problem Does PSR-7 Solve? (3 minutes)
+
+Imagine every restaurant in town used different-shaped plates. Chefs couldn't share recipes because "put it on the plate" meant something different everywhere. PSR-7 gives PHP a standard "plate" for HTTP messages — every framework and library agrees on what a request and response look like.
+
+Before PSR-7, switching from Guzzle to Buzz or from Laravel to Slim meant learning entirely new objects for the same HTTP concepts. PSR-7 lets you write code that works with any compliant library.
+
+### Why Immutability?
+
+PSR-7 messages are **immutable** — you can't change them after creation. Instead, methods like `withHeader()` return a *new* object with the change applied. Think of it like editing a Google Doc with "suggestion mode" on: the original stays intact, and each change creates a new version.
+
+This matters because HTTP messages often pass through multiple middleware layers. If one middleware could modify the request object directly, another middleware downstream might get unexpected data. Immutability prevents these bugs.
 
 ## Core Interfaces
 
@@ -138,6 +154,50 @@ while (!$body->eof()) {
     echo $body->read(8192);
 }
 ```
+
+## Framework Integration
+
+### Laravel
+
+Laravel uses PSR-7 under the hood via Symfony's HttpFoundation. You can access PSR-7 objects directly:
+
+```php
+<?php
+
+use Psr\Http\Message\ServerRequestInterface;
+
+// In a controller — Laravel auto-injects the PSR-7 request
+public function store(ServerRequestInterface $request)
+{
+    $body = $request->getParsedBody();
+    // $body contains the form data
+}
+```
+
+### Slim Framework
+
+Slim is built entirely on PSR-7:
+
+```php
+<?php
+
+$app->get('/posts/{id}', function ($request, $response, $args) {
+    $data = ['id' => $args['id'], 'title' => 'My Post'];
+    $response->getBody()->write(json_encode($data));
+    return $response->withHeader('Content-Type', 'application/json');
+});
+```
+
+## Try It Yourself
+
+```bash
+git clone https://github.com/jonesrussell/php-fig-guide.git
+cd php-fig-guide
+composer install
+composer test -- --filter=PSR7
+```
+
+See `src/Http/` for the PSR-7 implementation in the blog API.
 
 ## Next Steps
 

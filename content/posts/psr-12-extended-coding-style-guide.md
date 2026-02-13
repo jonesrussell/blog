@@ -8,7 +8,17 @@ summary: "PSR-12 extends PSR-1 and PSR-2 to provide a comprehensive coding style
 slug: "psr-12-extended-coding-style-guide"
 ---
 
-PSR-12 extends PSR-1 and PSR-2 (now deprecated) to provide a comprehensive coding style guide for modern PHP. This standard ensures consistency across PHP code by defining specific formatting rules.
+Ahnii!
+
+> **Prerequisites:** Read [PSR-1](/psr-1-basic-coding-standard/) first — PSR-12 extends it.
+
+Remember PSR-1's "house rules" for PHP code? PSR-12 is like the detailed home manual. It extends PSR-1 and replaces the deprecated PSR-2 to provide a comprehensive coding style guide for modern PHP.
+
+## Why PSR-12 Matters (2 minutes)
+
+You might think coding style is superficial. But imagine reading a book where every chapter uses different indentation, different quote marks, and different paragraph spacing. It's exhausting. PSR-12 eliminates these distractions so you can focus on what the code *does* rather than how it looks.
+
+PSR-12 replaces PSR-2 (now deprecated) and works alongside PSR-1. If PSR-1 covers the "what" (naming, file structure), PSR-12 covers the "how" (formatting, spacing, braces).
 
 ## Key Style Rules
 
@@ -152,7 +162,25 @@ class Foo
 
 ## Next Steps
 
-In our next post, we'll explore PSR-13, which defines standards for HTTP message interfaces in PHP. Check out our [example repository](https://github.com/yourusername/php-fig-guide/tree/psr-12) for the implementation of these standards.
+In our next post, we'll explore PSR-13, which defines standards for HTTP message interfaces in PHP. Check out our [example repository](https://github.com/jonesrussell/php-fig-guide/tree/psr-12) for the implementation of these standards.
+
+## Try It Yourself
+
+Clone the companion repository — the entire project follows PSR-12:
+
+```bash
+git clone https://github.com/jonesrussell/php-fig-guide.git
+cd php-fig-guide
+composer install
+
+# Check if code follows PSR-12
+composer check-style
+
+# Auto-fix style violations
+composer fix-style
+```
+
+See `phpcs.xml` for the PSR-12 configuration used across the project.
 
 ## Resources
 

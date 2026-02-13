@@ -22,38 +22,72 @@ PSRs solve several critical challenges in PHP development:
 - Interoperability: Common interfaces allow different packages to work together seamlessly
 - Best Practices: Established patterns improve code quality and maintainability
 
-## Series Overview
+## Recommended Reading Path
 
-This series will cover all accepted PSRs in detail. Here's what we've published so far:
+New to PSRs? Follow this order — it builds knowledge progressively:
 
-1. [PSR-1: Basic Coding Standard](/psr-1-basic-coding-standard/) - Published Jan 6, 2025
-2. [PSR-3: Logger Interface](/psr-3-logger-interface/) - Published Jan 7, 2025
-3. [PSR-4: Autoloading Standard](/psr-4-autoloading-standard/) - Published Jan 8, 2025
-4. [PSR-6: Caching Interface](/psr-6-caching-interface/) - Published Jan 10, 2025
-5. [PSR-7: HTTP Message Interface](/psr-7-http-message-interfaces/) - Published Jan 24, 2025
-6. [PSR-11: Container Interface](/psr-11-container-interface/) - Published Feb 3, 2025
-7. PSR-12: Extended Coding Style - Coming Jan 26, 2025
-8. PSR-13: Hypermedia Links - Coming Jan 27, 2025
-9. PSR-14: Event Dispatcher - Coming Jan 28, 2025
-10. PSR-15: HTTP Handlers - Coming Jan 29, 2025
-11. PSR-16: Simple Cache - Coming Jan 30, 2025
+### Foundation (Start Here)
 
-Stay tuned! We'll update this post with links as each new article is published.
+1. [PSR-1: Basic Coding Standard](/psr-1-basic-coding-standard/) — The "house rules" for PHP code
+2. [PSR-12: Extended Coding Style](/psr-12-extended-coding-style-guide/) — Detailed formatting rules (extends PSR-1)
+3. [PSR-4: Autoloading Standard](/psr-4-autoloading-standard/) — How PHP finds your classes automatically
+
+### Core Infrastructure
+
+4. [PSR-3: Logger Interface](/psr-3-logger-interface/) — Standardized logging across your application
+5. [PSR-11: Container Interface](/psr-11-container-interface/) — Dependency injection made interoperable
+6. [PSR-14: Event Dispatcher](/psr-14-event-dispatcher/) — Decoupled communication between components
+
+### HTTP Stack (Read in Sequence)
+
+7. [PSR-7: HTTP Message Interfaces](/psr-7-http-message-interfaces/) — The standard "shape" of HTTP requests and responses
+8. [PSR-17: HTTP Factories](/psr-17-http-factories/) — Creating PSR-7 objects without coupling to implementations
+9. [PSR-15: HTTP Handlers and Middleware](/psr-15-http-handlers/) — Processing HTTP requests through a middleware pipeline
+10. [PSR-18: HTTP Client](/psr-18-http-client/) — Sending HTTP requests the standard way
+
+### Data and Caching
+
+11. [PSR-6: Caching Interface](/psr-6-caching-interface/) — Full-featured cache pools and items
+12. [PSR-16: Simple Cache](/psr-16-simple-cache/) — Lightweight key-value caching
+
+### Specialized
+
+13. [PSR-13: Hypermedia Links](/psr-13-hypermedia-links/) — Self-documenting REST APIs with HATEOAS
+14. [PSR-20: Clock Interface](/psr-20-clock/) — Testable time handling
+
+## Quick Reference (by PSR Number)
+
+| PSR | Topic | Post |
+|-----|-------|------|
+| 1 | Basic Coding Standard | [Read](/psr-1-basic-coding-standard/) |
+| 3 | Logger Interface | [Read](/psr-3-logger-interface/) |
+| 4 | Autoloading Standard | [Read](/psr-4-autoloading-standard/) |
+| 6 | Caching Interface | [Read](/psr-6-caching-interface/) |
+| 7 | HTTP Messages | [Read](/psr-7-http-message-interfaces/) |
+| 11 | Container Interface | [Read](/psr-11-container-interface/) |
+| 12 | Extended Coding Style | [Read](/psr-12-extended-coding-style-guide/) |
+| 13 | Hypermedia Links | [Read](/psr-13-hypermedia-links/) |
+| 14 | Event Dispatcher | [Read](/psr-14-event-dispatcher/) |
+| 15 | HTTP Handlers | [Read](/psr-15-http-handlers/) |
+| 16 | Simple Cache | [Read](/psr-16-simple-cache/) |
+| 17 | HTTP Factories | [Read](/psr-17-http-factories/) |
+| 18 | HTTP Client | [Read](/psr-18-http-client/) |
+| 20 | Clock | [Read](/psr-20-clock/) |
 
 ## Practical Learning
 
-Each post will include:
+Each post includes:
 
-- Detailed explanation of the standard
-- Practical implementation examples
-- Common pitfalls and solutions
-- Integration with popular frameworks
+- A relatable analogy explaining what the standard solves
+- The actual PSR interface with commentary
+- A working implementation from our blog API companion project
+- Common mistakes with before/after fixes
+- Framework integration examples (Laravel, Symfony, Slim)
+- A "Try It Yourself" section with exact commands to run
 
 ## Getting Started
 
-To follow along with this series:
-
-1. Clone our companion repository:
+To follow along, clone our companion repository — a blog API that uses all 14 PSRs:
 
 ```bash
 git clone https://github.com/jonesrussell/php-fig-guide.git
@@ -61,20 +95,19 @@ cd php-fig-guide
 composer install
 ```
 
-2. Each PSR implementation has its own:
-   - Directory under `src/`
-   - Complete working examples
-   - Tests to verify compliance
-   - Tagged release (e.g., v0.1.0 for PSR-1)
-
-3. Use the provided Composer scripts:
+The blog API demonstrates every PSR in a real project context. Each PSR has:
+- Implementation code under `src/`
+- PHPUnit tests under `tests/`
 
 ```bash
-# Check coding standards
-composer check-style
+# Run all tests
+composer test
 
-# Fix coding standards automatically
-composer fix-style
+# Run tests for a specific PSR
+composer test -- --filter=PSR7
+
+# Check coding standards (PSR-1 + PSR-12)
+composer check-style
 ```
 
 ## Resources
