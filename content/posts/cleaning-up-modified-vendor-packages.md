@@ -1,7 +1,7 @@
 ---
 title: "Cleaning Up Modified Vendor Packages: Step-by-Step"
 date: 2025-09-19
-categories: [PHP, Composer, Maintenance]
+categories: [php]
 tags: [Composer, Patches, Vendor, Maintenance]
 summary: "Learn how to properly clean up projects with modified vendor packages using Composer patches. Follow along with our example repository."
 slug: "cleaning-up-modified-vendor-packages"

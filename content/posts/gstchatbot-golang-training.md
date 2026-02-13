@@ -1,7 +1,7 @@
 ---
 title: "Building an AI Chatbot with Go: Part 1 - The Foundation"
 date: 2024-03-19
-categories: [golang, ai, chatbot]
+categories: [golang, ai]
 tags: [golang, ai, chatbot, claude]
 description: "Learn how to build a robust AI chatbot using Go and Claude's API, starting with the basic architecture and core functionality."
 slug: "gstchatbot-golang-training"

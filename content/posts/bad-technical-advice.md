@@ -1,7 +1,7 @@
 ---
 title: "Bad Technical Advice Can Wreck Your System"
 date: 2025-05-16
-categories: [Tech, Linux]
+categories: [linux]
 tags: [Ubuntu, WebKitGTK, Troubleshooting, System Administration]
 description: "Learn why mixing Ubuntu package versions is dangerous and how to avoid common system-breaking advice."
 slug: "bad-technical-advice"

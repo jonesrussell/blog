@@ -1,7 +1,7 @@
 ---
 title: "Scaffold and Deploy a Jekyll GitHub Pages Blog in 5 Minutes"
 date: 2018-09-29
-categories: [jekyll, github-pages]
+categories: [web-development]
 tags: [jekyll, github, static-sites, web-development]
 summary: "Learn how to quickly set up and deploy a Jekyll blog to GitHub Pages, with step-by-step instructions for beginners."
 slug: "scaffold-and-deploy-a-jekyll-github-pages-blog-in-5-minutes"

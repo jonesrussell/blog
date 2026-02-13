@@ -1,7 +1,7 @@
 ---
 title: "Implementing Light and Dark Modes: A No-Nonsense Guide"
 date: 2024-03-19
-categories: [web, css, javascript]
+categories: [web-development, javascript]
 tags: [theming, dark-mode, css-variables, user-experience]
 description: "Learn how to implement a robust light/dark theme system using CSS variables and JavaScript, with full system preference support."
 slug: "implementing-light-and-dark-modes"

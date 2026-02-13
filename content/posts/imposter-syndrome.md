@@ -1,7 +1,7 @@
 ---
 title: "Dealing with Imposter Syndrome in Tech"
 date: 2021-03-06
-categories: [career, personal-growth]
+categories: [career]
 tags: [career, mental-health, growth, tech-culture]
 summary: "A personal reflection on experiencing and overcoming imposter syndrome in the tech industry, with practical coping strategies."
 slug: "imposter-syndrome"

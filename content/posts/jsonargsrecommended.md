@@ -1,7 +1,7 @@
 ---
 title: "Docker ENTRYPOINT Best Practices with JSON Arguments"
 date: 2024-03-19
-categories: [docker, devops]
+categories: [docker]
 tags: [docker, entrypoint, containerization, best-practices]
 description: "Learn why using JSON format for Docker ENTRYPOINT is the recommended approach and how it can prevent common containerization issues."
 slug: "jsonargsrecommended"

@@ -1,7 +1,7 @@
 ---
 title: "Cursor AI Tools Reference"
 date: 2025-01-10
-categories: [tools, documentation]
+categories: [tools]
 tags: [cursor-ai, tools, reference, development]
 summary: "A comprehensive reference of tools available to Cursor AI for code manipulation and file operations."
 slug: "cursor-ai-tools"

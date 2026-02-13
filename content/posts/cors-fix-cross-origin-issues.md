@@ -1,7 +1,7 @@
 ---
 title: "CORS: Understanding Cross-Origin Resource Sharing"
 date: 2025-05-16
-categories: [Web Development, Security]
+categories: [web-development, security]
 tags: [CORS, API, Security, Web]
 summary: "Learn what CORS is, why it's essential for web security, and how to implement it properly in your applications."
 slug: "cors-fix-cross-origin-issues"

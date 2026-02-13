@@ -1,6 +1,7 @@
 ---
 title: "Retro'ing and Debugging 2024: A Developer's Journey Through Code and Creativity"
 description: "A reflection on my 2024 journey through software development, AI exploration, and creative pursuits"
+categories: [career]
 tags: [newyearchallenge2025, programming, career, golang]
 slug: "devto-challenge-2025"
 draft: true

@@ -1,7 +1,7 @@
 ---
 title: "The Ultimate AI Prompt Formula for Video Generation"
 date: 2024-03-19
-categories: [ai, prompts, video]
+categories: [ai]
 tags: [ai, prompts, video-generation, creativity]
 description: "Master the art of crafting effective AI video prompts using this comprehensive formula that breaks down subject, movement, scene, and technical aspects."
 slug: "kling-ai-prompt-formula"

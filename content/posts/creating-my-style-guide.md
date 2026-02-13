@@ -1,7 +1,7 @@
 ---
 title: "Meta-Blogging: Creating My Writing Style Guide"
 date: 2024-03-19
-categories: [writing, meta, process]
+categories: [writing]
 tags: [writing, blogging, style-guide, ai-assisted]
 description: "How I collaborated with AI to document my blogging style and created a living style guide for consistency across my posts."
 slug: "creating-my-style-guide"

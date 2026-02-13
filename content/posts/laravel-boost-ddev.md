@@ -1,7 +1,7 @@
 ---
 title: "Using Laravel Boost With DDEV"
 date: 2026-02-10
-categories: [Laravel]
+categories: [laravel]
 tags: [laravel, ddev, mcp, ai]
 summary: "Set up Laravel Boost as an MCP server inside DDEV, with a WSL configuration for Windows users."
 slug: "laravel-boost-ddev"

@@ -1,6 +1,6 @@
 ---
 title: "Understanding Struct Field Alignment in Go"
-categories: [golang, performance]
+categories: [golang]
 tags: [golang, memory, optimization, performance]
 summary: "Learn how struct field ordering impacts memory usage in Go and how to optimize it."
 slug: "understanding-struct-field-alignment-in-go"

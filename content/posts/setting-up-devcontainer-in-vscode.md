@@ -1,7 +1,7 @@
 ---
 title: "Setting Up a Dev Container in VS Code"
 date: 2024-06-29
-categories: [development, tools]
+categories: [tools]
 tags: [vscode, devcontainers, docker, development-environment]
 summary: "Learn how to set up and use Dev Containers in Visual Studio Code for consistent, isolated development environments."
 slug: "setting-up-devcontainer-in-vscode"

@@ -2,7 +2,7 @@
 title: "Python Virtual Environments for Beginners"
 date: 2024-11-29
 summary: "Learn how to isolate Python project dependencies using virtual environments. This guide covers venv basics, activation/deactivation, and best practices for dependency management."
-categories: [python, programming]
+categories: [python]
 tags: [python, virtual-environments, development, tutorial]
 slug: "python-virtual-environments-for-beginners"
 ---

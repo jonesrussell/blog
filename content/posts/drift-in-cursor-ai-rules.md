@@ -1,7 +1,7 @@
 ---
 title: "Drift in Cursor AI Rules"
 date: 2025-06-19
-categories: [AI, Developer Tools]
+categories: [ai, tools]
 tags: [Cursor, AI, Rules, Productivity]
 summary: "Learn how to prevent drift in Cursor AI rules to maintain accurate and relevant AI-assisted development workflows."
 slug: "drift-in-cursor-ai-rules"

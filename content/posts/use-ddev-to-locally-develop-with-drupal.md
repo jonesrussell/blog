@@ -2,7 +2,7 @@
 title: "Use DDEV to Locally Develop with Drupal"
 summary: "Learn how to set up a local Drupal development environment using DDEV, a Docker-based development tool"
 date: 2020-04-24
-categories: [web-development]
+categories: [web-development, docker]
 tags: [drupal, docker, devops, php]
 slug: "use-ddev-to-locally-develop-with-drupal"
 ---

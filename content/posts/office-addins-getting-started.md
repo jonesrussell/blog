@@ -1,6 +1,6 @@
 ---
 title: "Getting Started with Office Add-ins: A Web Developer's Guide"
-categories: [javascript, office-addins]
+categories: [javascript, web-development]
 tags: [javascript, typescript, office-addins, web-development]
 description: "Learn how to build modern Office Add-ins using web technologies like HTML, CSS, and JavaScript, with practical examples and best practices."
 slug: "office-addins-getting-started"
