@@ -117,9 +117,87 @@ try {
    }
    ```
 
+3. **Cache Stampede**
+
+   When a popular cache key expires, every request hits the database simultaneously:
+
+   ```php
+   // Bad - All requests hit the database when cache expires
+   $item = $pool->getItem('popular-posts');
+   if (!$item->isHit()) {
+       $data = $database->getPopularPosts(); // Hundreds of requests run this at once
+       $item->set($data)->expiresAfter(60);
+       $pool->save($item);
+   }
+
+   // Good - Stagger expiration with random jitter
+   $item = $pool->getItem('popular-posts');
+   if (!$item->isHit()) {
+       $data = $database->getPopularPosts();
+       $jitter = random_int(0, 30);
+       $item->set($data)->expiresAfter(60 + $jitter);
+       $pool->save($item);
+   }
+   ```
+
+## Framework Integration
+
+### Laravel
+
+Laravel's cache system supports PSR-6 through a bridge package:
+
+```php
+<?php
+
+use Illuminate\Support\Facades\Cache;
+
+// Laravel's cache can be accessed as a PSR-6 pool
+$pool = app('cache.psr6');
+$item = $pool->getItem('user.1');
+
+if (!$item->isHit()) {
+    $item->set($user);
+    $item->expiresAfter(3600);
+    $pool->save($item);
+}
+```
+
+### Symfony
+
+Symfony's Cache component is a native PSR-6 implementation — no bridge needed:
+
+```php
+<?php
+
+use Symfony\Component\Cache\Adapter\FilesystemAdapter;
+
+// Symfony's adapters implement PSR-6 directly
+$cache = new FilesystemAdapter();
+$item = $cache->getItem('user.1');
+
+if (!$item->isHit()) {
+    $item->set($user);
+    $item->expiresAfter(3600);
+    $cache->save($item);
+}
+```
+
 ## What's Next?
 
 Tomorrow, we'll look at PSR-7 (HTTP Message Interfaces). If you're interested in simpler caching, stay tuned for our upcoming PSR-16 (Simple Cache) article, which offers a more straightforward alternative to PSR-6.
+
+## Try It Yourself
+
+Clone the companion repository and explore the caching examples:
+
+```bash
+git clone https://github.com/jonesrussell/php-fig-guide.git
+cd php-fig-guide
+composer install
+composer test -- --filter=PSR6
+```
+
+See `src/Cache/` for the PSR-6 implementation used in the blog API.
 
 ## Resources
 
