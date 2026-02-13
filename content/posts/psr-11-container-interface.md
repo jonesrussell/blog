@@ -8,7 +8,11 @@ summary: "Learn about PSR-11's container interface standard, how it enables fram
 slug: "psr-11-container-interface"
 ---
 
-PSR-11 defines a common interface for dependency injection containers in PHP. This standardization allows libraries to retrieve services from any container implementation, promoting better interoperability between different frameworks and libraries.
+Ahnii!
+
+> **Prerequisites:** PHP OOP (classes, interfaces, constructors). **Recommended:** Read [PSR-4](/psr-4-autoloading-standard/) and [PSR-3](/psr-3-logger-interface/) first.
+
+Ever created an object that needs five other objects to work, and each of those needs three more? That's the dependency puzzle. PSR-11 defines a common interface for dependency injection containers in PHP — the tool that solves this puzzle automatically.
 
 ## Understanding Dependency Injection Containers
 

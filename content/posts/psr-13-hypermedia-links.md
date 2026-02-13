@@ -1,6 +1,6 @@
 ---
 title: "PSR-13: Hypermedia Links in PHP"
-date: 2025-04-02
+date: 2025-02-24
 categories: [php, standards]
 series: ["php-fig-standards"]
 tags: [php, psr-13, hypermedia, rest]
@@ -8,7 +8,11 @@ summary: "Discover PSR-13's hypermedia link interfaces, understand HATEOAS princ
 slug: "psr-13-hypermedia-links"
 ---
 
-Ahnii! Today we'll explore PSR-13, which defines interfaces for creating and managing hypermedia links in PHP applications. This standard is particularly useful for building REST APIs that follow HATEOAS (Hypermedia as the Engine of Application State) principles, enabling self-documenting and discoverable APIs.
+Ahnii!
+
+> **Prerequisites:** PHP OOP, REST API basics. **Recommended:** Read [PSR-7](/psr-7-http-message-interfaces/) first.
+
+Today we'll explore PSR-13, which defines interfaces for creating and managing hypermedia links in PHP applications. This standard is particularly useful for building REST APIs that follow HATEOAS (Hypermedia as the Engine of Application State) principles, enabling self-documenting and discoverable APIs.
 
 ## Core Interfaces (5 minutes)
 

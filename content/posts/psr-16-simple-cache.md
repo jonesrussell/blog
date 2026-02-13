@@ -1,6 +1,6 @@
 ---
 title: "PSR-16: Simple Cache in PHP"
-date: 2024-03-16
+date: 2025-03-16
 categories: [php, standards]
 series: ["php-fig-standards"]
 tags: [php, php-fig, psr-16, caching]

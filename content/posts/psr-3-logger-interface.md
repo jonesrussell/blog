@@ -13,6 +13,8 @@ slug: "psr-3-logger-interface"
 
 Ahnii!
 
+> **Prerequisites:** Basic PHP OOP (classes, interfaces). **Recommended:** Read [PSR-1](/psr-1-basic-coding-standard/) first.
+
 Recently, I was helping a team migrate from Monolog to a custom logging solution, and guess what? They had to change code in dozens of files because their logging wasn't standardized. That's exactly the problem PSR-3 solves. Let me show you how!
 
 ## Understanding PSR-3 (5 minutes)

@@ -8,7 +8,11 @@ summary: "Deep dive into PSR-7's HTTP message interfaces, understanding HTTP mes
 slug: "psr-7-http-message-interfaces"
 ---
 
-PSR-7 defines common interfaces for representing HTTP messages in PHP. These interfaces enable framework-agnostic HTTP message handling, making it easier to create interoperable HTTP clients, servers, and middleware.
+Ahnii!
+
+> **Prerequisites:** PHP OOP, Composer. **Recommended:** Read [PSR-4](/psr-4-autoloading-standard/) first. **Pairs with:** PSR-15 (middleware) and PSR-17 (factories).
+
+Ever wondered how frameworks like Laravel and Slim handle HTTP requests behind the scenes? PSR-7 defines common interfaces for representing HTTP messages in PHP. These interfaces enable framework-agnostic HTTP message handling, making it easier to create interoperable HTTP clients, servers, and middleware.
 
 ## Core Interfaces
 

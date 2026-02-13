@@ -10,6 +10,8 @@ slug: "psr-4-autoloading-standard"
 
 Ahnii!
 
+> **Prerequisites:** Basic PHP OOP, Composer installed. **Recommended:** Read [PSR-1](/psr-1-basic-coding-standard/) first.
+
 Remember the old days of PHP when we had to manually `require` every single file? Last week, I was helping a team modernize their legacy application that had 50+ require statements at the top of each file. Let me show you how PSR-4 autoloading makes this a problem of the past!
 
 ## Understanding PSR-4 (5 minutes)

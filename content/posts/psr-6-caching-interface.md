@@ -14,6 +14,8 @@ Ever had your application slow to a crawl because of repeated database queries? 
 
 This post is part of our [PSR Standards in PHP series](/psr-standards-in-php-practical-guide-for-developers/). If you're new here, you might want to start with [PSR-1](/psr-1-basic-coding-standard/) for the basics.
 
+> **Prerequisites:** PHP OOP (classes, interfaces). **Recommended:** Read [PSR-4](/psr-4-autoloading-standard/) first. **See also:** [PSR-16](/psr-16-simple-cache/) for simpler caching needs.
+
 ## What Problem Does PSR-6 Solve? (2 minutes)
 
 Before PSR-6, every caching library had its own way of doing things. Want to switch from Memcached to Redis? Rewrite your code. Moving from one framework to another? Learn a new caching API. PSR-6 fixes this by providing a common interface that all caching libraries can implement.

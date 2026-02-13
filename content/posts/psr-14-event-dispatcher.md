@@ -1,6 +1,6 @@
 ---
 title: "PSR-14: Event Dispatcher in PHP"
-date: 2024-02-17
+date: 2025-02-17
 categories: [php, standards]
 series: ["php-fig-standards"]
 tags: [php, php-fig, psr-14, events]

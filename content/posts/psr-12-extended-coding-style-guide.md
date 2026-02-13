@@ -8,7 +8,11 @@ summary: "PSR-12 extends PSR-1 and PSR-2 to provide a comprehensive coding style
 slug: "psr-12-extended-coding-style-guide"
 ---
 
-PSR-12 extends PSR-1 and PSR-2 (now deprecated) to provide a comprehensive coding style guide for modern PHP. This standard ensures consistency across PHP code by defining specific formatting rules.
+Ahnii!
+
+> **Prerequisites:** Read [PSR-1](/psr-1-basic-coding-standard/) first — PSR-12 extends it.
+
+Remember PSR-1's "house rules" for PHP code? PSR-12 is like the detailed home manual. It extends PSR-1 and replaces the deprecated PSR-2 to provide a comprehensive coding style guide for modern PHP.
 
 ## Key Style Rules
 
@@ -152,7 +156,7 @@ class Foo
 
 ## Next Steps
 
-In our next post, we'll explore PSR-13, which defines standards for HTTP message interfaces in PHP. Check out our [example repository](https://github.com/yourusername/php-fig-guide/tree/psr-12) for the implementation of these standards.
+In our next post, we'll explore PSR-13, which defines standards for HTTP message interfaces in PHP. Check out our [example repository](https://github.com/jonesrussell/php-fig-guide/tree/psr-12) for the implementation of these standards.
 
 ## Resources
 

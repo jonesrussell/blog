@@ -1,6 +1,6 @@
 ---
 title: "PSR-15: HTTP Handlers in PHP"
-date: 2024-03-02
+date: 2025-03-02
 categories: [php, standards]
 series: ["php-fig-standards"]
 tags: [php, php-fig, psr-15, http]

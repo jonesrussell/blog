@@ -14,6 +14,8 @@ slug: "psr-1-basic-coding-standard"
 
 Ahnii!
 
+> **Prerequisites:** Basic PHP syntax, a code editor. No prior PSR knowledge needed — this is where we start!
+
 Have you ever pulled down a PHP project and felt like you were reading five different coding styles at once? That's exactly what happened to me last week while helping a team with their legacy codebase. Let me show you how PSR-1 can save you from this headache.
 
 ## Understanding PSR-1 (5 minutes)
