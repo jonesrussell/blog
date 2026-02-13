@@ -40,6 +40,7 @@ title: "Post Title"
 date: YYYY-MM-DD
 categories: []
 tags: []        # max 4 tags
+series: []      # e.g., ["php-fig-standards"]
 summary: ""
 slug: "url-slug"
 draft: true
@@ -52,6 +53,18 @@ Posts follow a specific cultural style:
 - Open with "Ahnii!" greeting
 - Close with "Baamaapii" farewell
 - The archetype in `archetypes/default.md` provides this template
+
+## Gotchas
+
+- Theme submodule may not be checked out after clone/branch switch. Run `git submodule update --init` if you see "found no layout file" warnings during build.
+
+## PSR Blog Series
+
+14-post series covering all accepted PHP-FIG standards (`series: ["php-fig-standards"]`).
+- Posts live in `content/posts/psr-*.md` with an index at `psr-standards-in-php-practical-guide-for-developers.md`
+- Each post follows a template: Ahnii → prerequisites one-liner → What Problem → Core Interfaces → Real-World Implementation → Common Mistakes → Framework Integration → Try It Yourself → What's Next → Baamaapii
+- Companion code repo: `jonesrussell/php-fig-guide` (blog API demonstrating all 14 PSRs)
+- Design docs in `docs/plans/`
 
 ## Deployment
 
