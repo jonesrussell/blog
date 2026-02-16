@@ -1,0 +1,46 @@
+{{- define "main" }}
+
+{{- if .Title }}
+<header class="page-header">
+    <h1>{{ .Title }}</h1>
+    {{- if .Description }}
+    <div class="post-description">
+        {{ .Description }}
+    </div>
+    {{- end }}
+</header>
+{{- end }}
+
+{{- if .Content }}
+<div class="post-content">
+    {{- .Content }}
+</div>
+{{- end }}
+
+<section aria-labelledby="categories-heading">
+    <h2 id="categories-heading" class="terms-heading">Categories</h2>
+    <ul class="terms-tags">
+        {{- range $term := site.Taxonomies.categories.Alphabetical }}
+        {{- with site.GetPage (printf "/categories/%s" $term.Name) }}
+        <li>
+            <a href="{{ .Permalink }}">{{ .Name }} <sup><strong><sup>{{ $term.Count }}</sup></strong></sup></a>
+        </li>
+        {{- end }}
+        {{- end }}
+    </ul>
+</section>
+
+<section aria-labelledby="tags-heading">
+    <h2 id="tags-heading" class="terms-heading">Tags</h2>
+    <ul class="terms-tags">
+        {{- range $term := site.Taxonomies.tags.Alphabetical }}
+        {{- with site.GetPage (printf "/tags/%s" $term.Name) }}
+        <li>
+            <a href="{{ .Permalink }}">{{ .Name }} <sup><strong><sup>{{ $term.Count }}</sup></strong></sup></a>
+        </li>
+        {{- end }}
+        {{- end }}
+    </ul>
+</section>
+
+{{- end }}

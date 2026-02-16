@@ -84,15 +84,10 @@ mainSections = ['posts']
     url = '/search/'
     weight = 2
   [[menu.main]]
-    identifier = 'tags'
-    name = 'Tags'
-    url = '/tags/'
+    identifier = 'topics'
+    name = 'Topics'
+    url = '/topics/'
     weight = 3
-  [[menu.main]]
-    identifier = 'categories'
-    name = 'Categories'
-    url = '/categories/'
-    weight = 4
   [[menu.main]]
     identifier = 'about'
     name = 'About'
