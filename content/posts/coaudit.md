@@ -1,4 +1,14 @@
-# coaudit: AI-Powered Code Audits with GitHub Copilot CLI
+---
+title: "coaudit: AI-Powered Code Audits with GitHub Copilot CLI"
+date: 2026-02-15
+categories: []
+tags: ["github-copilot", "cli", "code-audit", "devtools"]
+summary: "A CLI that runs structured code audits using GitHub Copilot across dead code, architecture, selectors, routing, tests, and observability."
+slug: "coaudit"
+draft: false
+---
+
+Ahnii!
 
 *This is a submission for the [GitHub Copilot CLI Challenge](https://dev.to/challenges/github-2026-01-21)*
 
@@ -215,4 +225,4 @@ This project wouldn't exist without the `-p` batch execution mode. Copilot CLI t
 
 **Try coaudit:** https://github.com/jonesrussell/coaudit
 
----
+Baamaapii 👋
