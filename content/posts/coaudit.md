@@ -76,7 +76,7 @@ node bin/coaudit facebook/react
 
 When you run `coaudit` on a repository, you get a Markdown report like:
 
-```
+```markdown
 # Copilot Pipeline Audit Report
 
 **Repository:** facebook/react
