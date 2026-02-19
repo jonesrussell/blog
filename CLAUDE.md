@@ -32,27 +32,32 @@ task deploy           # Clean + production build
 
 ## Content Conventions
 
+**Style baseline:** `content/posts/laravel-boost-ddev.md` is the reference for voice, structure, and tone. See `docs/blog-style.md` for the full style guide.
+
 ### Post Frontmatter
 
 ```yaml
 ---
-title: "Post Title"
+title: "Post Title"     # Sentence case, descriptive
 date: YYYY-MM-DD
 categories: []
-tags: []        # max 4 tags
-series: []      # e.g., ["php-fig-standards"]
-summary: ""
-slug: "url-slug"
+tags: []                # max 4 tags
+series: []              # e.g., ["php-fig-standards"]
+summary: ""             # One sentence: outcome or audience
+slug: "url-slug"        # kebab-case
 draft: true
 ---
 ```
 
 ### Writing Style
 
-Posts follow a specific cultural style:
-- Open with "Ahnii!" greeting
-- Close with "Baamaapii" farewell
-- The archetype in `archetypes/default.md` provides this template
+- **Greeting/closing:** Open with "Ahnii!" and close with "Baamaapii" (no emoji).
+- **Voice:** Second person, direct, instructional. Reader-focused ("your project", "you can").
+- **Intro:** One short paragraph: what the post is about + one sentence on scope (e.g. "This post covers the standard setup and the extra step for WSL.").
+- **Structure:** Prerequisites (bullet list) when relevant → main sections (clear H2s) → optional "Verify it works" or "Keeping X updated" → Baamaapii. Use H3 for variants (e.g. Standard vs WSL).
+- **Links:** Link the first mention of products or projects (e.g. [DDEV](url), [Laravel Boost](url)).
+- **Code:** After a code block, add one or two sentences explaining what it does or why.
+- The archetype in `archetypes/default.md` provides the template.
 
 ## Gotchas
 
