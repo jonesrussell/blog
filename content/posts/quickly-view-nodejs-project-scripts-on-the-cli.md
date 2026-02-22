@@ -7,6 +7,11 @@ summary: "Create a simple CLI tool to view your Node.js project's npm scripts di
 slug: "quickly-view-nodejs-project-scripts-on-the-cli"
 images:
   - /images/screenshot-scripts.png
+archived: true
+archived_date: 2026-02-22
+sitemap:
+  disable: true
+robotsNoIndex: true
 ---
 
 Ahnii! I previously wrote a command line utility named '[packages](/quickly-view-project-dependencies-on-the-cli/)' which simply prints a list of project dependencies on the command line.

@@ -6,6 +6,11 @@ tags: [docker, entrypoint, containerization, best-practices]
 description: "Learn why using JSON format for Docker ENTRYPOINT is the recommended approach and how it can prevent common containerization issues."
 slug: "jsonargsrecommended"
 draft: true
+archived: true
+archived_date: 2026-02-22
+sitemap:
+  disable: true
+robotsNoIndex: true
 ---
 
 Ahnii,

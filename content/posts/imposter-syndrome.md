@@ -5,6 +5,11 @@ categories: [career]
 tags: [career, mental-health, growth, tech-culture]
 summary: "A personal reflection on experiencing and overcoming imposter syndrome in the tech industry, with practical coping strategies."
 slug: "imposter-syndrome"
+archived: true
+archived_date: 2026-02-22
+sitemap:
+  disable: true
+robotsNoIndex: true
 ---
 
 Ahnii!

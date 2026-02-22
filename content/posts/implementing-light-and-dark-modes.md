@@ -6,6 +6,11 @@ tags: [theming, dark-mode, css-variables, user-experience]
 description: "Learn how to implement a robust light/dark theme system using CSS variables and JavaScript, with full system preference support."
 slug: "implementing-light-and-dark-modes"
 draft: true
+archived: true
+archived_date: 2026-02-22
+sitemap:
+  disable: true
+robotsNoIndex: true
 ---
 
 Ahnii,

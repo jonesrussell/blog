@@ -6,6 +6,11 @@ tags: [golang, linting, golangci-lint, code-quality]
 description: "Learn how golangci-lint can help you maintain clean, secure, and maintainable Go code through automated linting and static analysis."
 slug: "golangci-lint"
 draft: true
+archived: true
+archived_date: 2026-02-22
+sitemap:
+  disable: true
+robotsNoIndex: true
 ---
 
 Ahnii,

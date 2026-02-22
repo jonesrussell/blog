@@ -5,6 +5,11 @@ tags: [javascript, typescript, office-addins, web-development]
 description: "Learn how to build modern Office Add-ins using web technologies like HTML, CSS, and JavaScript, with practical examples and best practices."
 slug: "office-addins-getting-started"
 draft: true
+archived: true
+archived_date: 2026-02-22
+sitemap:
+  disable: true
+robotsNoIndex: true
 ---
 
 Ahnii,

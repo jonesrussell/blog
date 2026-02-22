@@ -5,6 +5,11 @@ date: 2020-04-24
 categories: [web-development, docker]
 tags: [drupal, docker, devops, php]
 slug: "use-ddev-to-locally-develop-with-drupal"
+archived: true
+archived_date: 2026-02-22
+sitemap:
+  disable: true
+robotsNoIndex: true
 ---
 
 I've been developing with Drupal for over 10 years. It's never been known to be quick and easy to install, but with the rise of containers it's now as easy as executing a few commands in a terminal.

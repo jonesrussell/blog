@@ -6,6 +6,11 @@ tags: [writing, blogging, style-guide, ai-assisted]
 description: "How I collaborated with AI to document my blogging style and created a living style guide for consistency across my posts."
 slug: "creating-my-style-guide"
 draft: true
+archived: true
+archived_date: 2026-02-22
+sitemap:
+  disable: true
+robotsNoIndex: true
 ---
 
 > Note: Both this blog post and my blog's style guide documentation were entirely generated through AI analysis of patterns found in my existing blog posts. The "Ahnii" greeting and "Baamaapii" farewell, for example, were identified as consistent patterns across posts.

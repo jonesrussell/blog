@@ -6,6 +6,11 @@ tags: [ai, prompts, video-generation, creativity]
 description: "Master the art of crafting effective AI video prompts using this comprehensive formula that breaks down subject, movement, scene, and technical aspects."
 slug: "kling-ai-prompt-formula"
 draft: true
+archived: true
+archived_date: 2026-02-22
+sitemap:
+  disable: true
+robotsNoIndex: true
 ---
 
 Ahnii,

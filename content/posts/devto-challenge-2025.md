@@ -5,6 +5,11 @@ categories: [career]
 tags: [newyearchallenge2025, programming, career, golang]
 slug: "devto-challenge-2025"
 draft: true
+archived: true
+archived_date: 2026-02-22
+sitemap:
+  disable: true
+robotsNoIndex: true
 ---
 
 This is a submission for the 2025 New Year Writing challenge: Retro'ing and Debugging 2024.

@@ -6,6 +6,11 @@ tags: [golang, ai, chatbot, claude]
 description: "Learn how to build a robust AI chatbot using Go and Claude's API, starting with the basic architecture and core functionality."
 slug: "gstchatbot-golang-training"
 draft: true
+archived: true
+archived_date: 2026-02-22
+sitemap:
+  disable: true
+robotsNoIndex: true
 ---
 
 Ahnii,
