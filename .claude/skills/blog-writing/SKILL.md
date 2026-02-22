@@ -7,33 +7,31 @@ description: Use when creating new blog posts, drafting content, or writing arti
 
 ## Overview
 
-Write blog posts that match this blog's distinctive voice: conversational, practical, and culturally grounded with Anishinaabemowin greetings. Every technical concept gets a relatable real-world analogy.
+Write blog posts that match this blog's voice: second person, direct, instructional, culturally grounded with Anishinaabemowin greetings. Reference post: `content/posts/laravel-boost-ddev.md`. Full style guide: `docs/blog-style.md`.
 
 ## Style Rules (Canonical Authority)
 
 | Element | Rule |
 |---------|------|
 | Greeting | Always open with "Ahnii!" (exclamation mark, own paragraph) |
-| Farewell | Always close with "Baamaapii 👋" (with wave emoji, own paragraph) |
-| Tone | Conversational, first-person, contractions, address reader as "you" |
-| Analogies | **Every** technical concept gets a relatable real-world analogy before the technical explanation |
-| Code blocks | Always specify language tag (`php`, `bash`, `go`, `dockerfile`, etc.) |
-| Internal links | Root-relative with trailing slash: `[Text](/slug/)` |
-| External links | Full HTTPS URLs, descriptive link text (never "click here") |
-| Engagement | End with a question or call-to-action directed at the reader, before farewell |
-| Headings | H2 for main sections, H3 for subsections. No time estimates in headings. |
-| No "Wrapping Up" | Do not use a "Wrapping Up" or "Conclusion" heading. Transition naturally to engagement + farewell. |
+| Farewell | Always close with "Baamaapii" (no emoji, own paragraph) |
+| Voice | Second person, direct, instructional. Address reader as "you"/"your". Not corporate. |
+| Concise | Short sentences. One idea per paragraph. No filler or throat-clearing. |
+| Scoped intro | In the intro, state what the post covers in one sentence |
+| Code blocks | Always specify language tag. After each block, add 1-2 sentences explaining what it does or why. |
+| Links | Link first mention of products, tools, or projects. Internal: root-relative with trailing slash `/slug/`. External: full HTTPS URLs. |
+| Headings | H2 for main sections, H3 for variants/subsections. No time estimates. No "Wrapping Up" or "Conclusion". |
 
 ## Frontmatter (Required Fields)
 
 ```yaml
 ---
-title: "Post Title"
+title: "Post Title"        # sentence case, descriptive
 date: YYYY-MM-DD
-categories: []     # lowercase, hyphenated for multi-word
-tags: []           # max 4 tags
-summary: ""        # one sentence for listings and SEO
-slug: "url-slug"   # lowercase, hyphenated
+categories: []              # lowercase, hyphenated for multi-word
+tags: []                    # max 4 tags
+summary: ""                 # one sentence: outcome or audience
+slug: "url-slug"            # kebab-case
 draft: true
 ---
 ```
@@ -42,30 +40,32 @@ For series posts, add: `series: ["series-name"]`
 
 ## Post Type: General
 
-Use for standalone posts (tutorials, opinions, project showcases, tools).
+Use for standalone posts (tutorials, tools, project showcases).
 
 ```
 Ahnii!
 
-[Hook paragraph: question, story, or relatable scenario that draws the reader in]
+[Intro: what the thing is (link first mentions) + one sentence on scope]
 
-## [Problem/Context Section]
+## Prerequisites
 
-[Real-world analogy explaining the concept]
-[Technical explanation building on the analogy]
+- [Requirement 1]
+- [Requirement 2]
 
-## [2-3 Content Sections with H2 headings]
+## [Main Section]
 
-[Practical content: code examples, steps, comparisons]
-[Each technical concept introduced with an analogy or relatable framing]
+[Content with code examples]
+[After each code block: 1-2 sentences explaining what it does]
 
-## [Practical Takeaway Section]
+## [Additional Sections as needed]
 
-[Actionable steps the reader can try]
+[Use H3 for variants, e.g. "Standard Setup" / "WSL Setup"]
 
-[Engagement prompt: question to the reader or call-to-action]
+## [Verify / Follow-up section when relevant]
 
-Baamaapii 👋
+[e.g. "Verify It Works", "Keeping X Updated"]
+
+Baamaapii
 ```
 
 ## Post Type: Series
@@ -77,24 +77,26 @@ Ahnii!
 
 > **Prerequisites:** [requirements]. **Recommended:** Read [Link](/slug/) first. **Pairs with:** [related posts].
 
-[Hook paragraph connecting to reader's problem/experience]
+[Intro: what this standard/topic is + one sentence on scope]
 
 ## What Problem Does [Topic] Solve?
 
-[Relatable real-world analogy (restaurants, factories, airports, etc.)]
 [Why this matters — the "before" pain point]
 
 ## Core Interfaces / Core Concepts
 
 ### 1. [First Concept]
 [Code with inline comments]
+[1-2 sentences explaining the code]
 
 ### 2. [Second Concept]
 [Code with inline comments]
+[1-2 sentences explaining the code]
 
 ## Real-World Implementation
 
 [Working code example — practical, not theoretical]
+[Explanation of what the code does]
 
 ## Common Mistakes and Fixes
 
@@ -107,10 +109,10 @@ Ahnii!
 ## Framework Integration
 
 ### [Framework 1]
-[Code example]
+[Code example + explanation]
 
 ### [Framework 2]
-[Code example]
+[Code example + explanation]
 
 ## Try It Yourself
 
@@ -120,19 +122,19 @@ Ahnii!
 
 [Link to next post in series with brief description]
 
-[Engagement prompt]
-
-Baamaapii 👋
+Baamaapii
 ```
 
 ## Common Mistakes
 
 | Mistake | Fix |
 |---------|-----|
-| Skipping the analogy | Every post needs at least one real-world analogy before technical explanation |
-| Generic closing ("Wrapping Up", "Conclusion") | Transition naturally — no closing header, just engagement + farewell |
-| Time estimates in headings ("(5 minutes)") | Don't add reading time estimates to section headings |
-| Missing engagement prompt | Always ask the reader a question or suggest an action before farewell |
+| Adding emoji to farewell | Farewell is "Baamaapii" — no emoji |
+| First-person voice | Use second person: "your project", "you can" — not "I found", "my setup" |
+| No explanation after code blocks | After every code block, add 1-2 sentences on what it does or why |
+| Not linking first mentions | Link products/tools/projects on first mention |
+| Generic closing ("Wrapping Up", "Conclusion") | No closing header — transition naturally to farewell |
+| Time estimates in headings | Don't add reading time to headings |
 | More than 4 tags | Pick the 4 most relevant; fewer is fine |
-| Forgetting wave emoji | Farewell is "Baamaapii 👋" not just "Baamaapii" |
-| Using `description` field | Use `summary` field in frontmatter, not `description` |
+| Using `description` field | Use `summary` in frontmatter, not `description` |
+| Filler in intro | State what the post covers in one sentence. No throat-clearing. |
