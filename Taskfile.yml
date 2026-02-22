@@ -46,6 +46,11 @@ tasks:
       - sh: '[ -n "{{.CLI_ARGS}}" ]'
         msg: "Usage: task new-post -- my-post-title"
 
+  audit-posts:
+    desc: Audit posts and write content-todo suggestions (use DRY_RUN=true to print only)
+    cmds:
+      - python3 scripts/audit-posts.py
+
   stats:
     desc: Show site statistics
     cmds:
