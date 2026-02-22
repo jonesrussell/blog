@@ -59,6 +59,12 @@ draft: true
 - **Code:** After a code block, add one or two sentences explaining what it does or why.
 - The archetype in `archetypes/default.md` provides the template.
 
+## Content curation (archiving and deprecated posts)
+
+- **Deprecated/outdated posts** are tracked in `docs/content-todo.md` with recommended action (update, replace + 301, archive). Add or edit rows as you classify posts.
+- **Archiving:** Add to a post's frontmatter: `archived: true`, optional `archived_date: YYYY-MM-DD`, `sitemap.disable: true`, `robotsNoIndex: true`. Archived posts are excluded from home, /posts/, chronological archives, RSS, and sitemap; they remain at the same URL and are listed at [/archived/](/archived/).
+- **Replacing a post:** On the **new** post add `aliases: ["/old-slug/"]` so the old URL redirects; then archive or remove the old post.
+
 ## Gotchas
 
 - Theme submodule may not be checked out after clone/branch switch. Run `git submodule update --init` if you see "found no layout file" warnings during build.

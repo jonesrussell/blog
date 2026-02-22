@@ -45,6 +45,9 @@
 {{- $pages = where $pages "Params.hiddenInHomeList" "!=" "true"  }}
 {{- end }}
 
+{{- /* Exclude archived posts from discovery */}}
+{{- $pages = where $pages "Params.archived" "!=" true }}
+
 {{- /* Sort by date descending so pagination shows newest first */}}
 {{- $pages = sort $pages "Date" "desc" }}
 

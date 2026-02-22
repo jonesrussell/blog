@@ -1,0 +1,7 @@
+{{- if .Param "content_status" }}
+{{- $status := .Param "content_status" }}
+{{- $todo := .Param "content_todo" }}
+<div class="content-status-notice" role="note" aria-label="Content status">
+  <p><strong>Content status: {{ $status }}</strong>{{ with $todo }} — {{ . }}{{ end }}</p>
+</div>
+{{- end }}

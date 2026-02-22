@@ -35,6 +35,11 @@
 {{- $pages := slice }}
 {{- if or $.IsHome $.IsSection }}
 {{- $pages = $pctx.RegularPages }}
+{{- if $.IsHome }}
+{{- $pages = where $pages "Type" "in" site.Params.mainSections }}
+{{- end }}
+{{- /* Exclude archived posts from feed */}}
+{{- $pages = where $pages "Params.archived" "!=" true }}
 {{- else }}
 {{- $pages = $pctx.Pages }}
 {{- end }}

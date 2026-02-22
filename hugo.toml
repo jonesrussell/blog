@@ -89,6 +89,11 @@ mainSections = ['posts']
     url = '/topics/'
     weight = 3
   [[menu.main]]
+    identifier = 'archived'
+    name = 'Archived'
+    url = '/archived/'
+    weight = 4
+  [[menu.main]]
     identifier = 'about'
     name = 'About'
     url = '/about/'
