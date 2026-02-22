@@ -13,9 +13,7 @@ Posts listed here are outdated or deprecated. Prefer the linked action: **update
 
 ### New posts to create
 
-| Suggested title | Suggested slug | Replaces (slug) | Reason |
-|-----------------|-----------------|------------------|--------|
-| Start Developing with Laravel on Ubuntu 24.04 LTS | start-developing-with-laravel-in-ubuntu-24-04 | start-developing-with-laravel-in-ubuntu-20.04 | Version-specific; Ubuntu 20.04 → current LTS |
+*(Start Developing with Laravel on Ubuntu 24.04 LTS was created 2026-02-22; old URL redirects via alias.)*
 
 **Conventions**
 
