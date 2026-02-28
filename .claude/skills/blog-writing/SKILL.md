@@ -18,9 +18,9 @@ Write blog posts that match this blog's voice: second person, direct, instructio
 | Voice | Second person, direct, instructional. Address reader as "you"/"your". Not corporate. |
 | Concise | Short sentences. One idea per paragraph. No filler or throat-clearing. |
 | Scoped intro | In the intro, state what the post covers in one sentence |
-| Code blocks | Always specify language tag. After each block, add 1-2 sentences explaining what it does or why. |
+| Code blocks | Always specify language tag. After each block, add 1-2 sentences explaining what it does or why. For error output, reformat for readability — don't carbon-copy terminal noise. |
 | Links | Link first mention of products, tools, or projects. Internal: root-relative with trailing slash `/slug/`. External: full HTTPS URLs. |
-| Headings | H2 for main sections, H3 for variants/subsections. No time estimates. No "Wrapping Up" or "Conclusion". |
+| Headings | H2 for main sections, H3 for variants/subsections. No time estimates. No "Wrapping Up" or "Conclusion". Use SEO-friendly headings with keywords (e.g., "Fix WSL Browser Hangs With BROWSER=echo" not "The Fix"). |
 
 ## Frontmatter (Required Fields)
 
@@ -125,6 +125,36 @@ Ahnii!
 Baamaapii
 ```
 
+## Screenshots
+
+When a post covers UI, web tools, or anything visual, use the Playwright MCP to capture screenshots.
+
+### When to Include Screenshots
+
+- Documentation or dashboard walkthroughs
+- Before/after UI changes
+- Error messages in browser dev tools
+- OAuth flows or login screens
+- Any step where "what you should see" helps the reader
+
+### How to Capture
+
+1. Use `browser_navigate` to load the page
+2. Use `browser_take_screenshot` to capture:
+   - `filename`: Save to `static/images/posts/{slug}/` with descriptive name
+   - `fullPage: true` for full-page captures when needed
+   - `element` + `ref` to screenshot a specific element (get ref from `browser_snapshot`)
+
+### In the Post
+
+```markdown
+![Description of what the screenshot shows](/blog/images/posts/{slug}/screenshot-name.png)
+```
+
+Note: The `/blog/` prefix is required because the site's baseURL is `https://jonesrussell.github.io/blog/`. Without it, images break in both local dev and production.
+
+Add a brief caption or follow with 1-2 sentences explaining what the reader should notice.
+
 ## Common Mistakes
 
 | Mistake | Fix |
@@ -138,3 +168,6 @@ Baamaapii
 | More than 4 tags | Pick the 4 most relevant; fewer is fine |
 | Using `description` field | Use `summary` in frontmatter, not `description` |
 | Filler in intro | State what the post covers in one sentence. No throat-clearing. |
+| Generic headings | Use descriptive, keyword-rich headings. "Why CLI Tools Hang in WSL" not "The Problem". |
+| Carbon-copy terminal output | Reformat error output for readability. Break long lines, remove noise, keep the key details. |
+| Too narrow scope | If a fix applies broadly, generalize the post. Cover the pattern, not just one tool. |
