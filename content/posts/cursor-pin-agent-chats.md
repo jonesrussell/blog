@@ -5,7 +5,7 @@ categories: [tooling]
 tags: [cursor, ai, productivity]
 summary: "Keep your most useful AI agent conversations at the top of the list with Cursor's pin feature."
 slug: "cursor-pin-agent-chats"
-draft: true
+draft: false
 ---
 
 Ahnii!
@@ -22,7 +22,7 @@ Right-click any chat in the Agents panel to open the context menu, then select *
 
 Pinned chats appear in a separate "Pinned" section at the top of the panel, above your regular chat history. You can see in the screenshot that pinned chats stay visible regardless of how many other conversations you've had since.
 
-## When Pinning Helps
+## When to Pin Agent Chats in Cursor
 
 A few scenarios where pinned chats pay off:
 
@@ -33,8 +33,8 @@ A few scenarios where pinned chats pay off:
 
 The context menu also gives you quick access to Fork Chat (branch off a conversation), Mark as Unread, Rename, and Archive Prior Chats if your list gets cluttered.
 
-## Availability
+## Cursor Version With Pin Support
 
-I noticed this feature in Cursor 0.45.x (version string shows 2.5.26 in settings). If you don't see the Pin option, check for updates.
+This feature appeared in Cursor 0.45.x (version string 2.5.26 in settings). If you don't see the Pin option, check for updates.
 
 Baamaapii
