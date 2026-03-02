@@ -194,4 +194,4 @@ Tomorrow, we'll explore PSR-6 and see how it standardizes caching in PHP applica
 - [Composer Autoloading Documentation](https://getcomposer.org/doc/04-schema.md#autoload)
 - [Series Example Repository](https://github.com/jonesrussell/php-fig-guide) (v0.3.0 - PSR-4 Implementation)
 
-Baamaapii 👋
+Baamaapii

@@ -448,4 +448,4 @@ Next up: [PSR-18: HTTP Client](/psr-18-http-client/) -- how to send HTTP request
 - [Official PSR-15 Specification](https://www.php-fig.org/psr/psr-15/)
 - [PHP-FIG Website](https://www.php-fig.org)
 
-Baamaapii 👋
+Baamaapii

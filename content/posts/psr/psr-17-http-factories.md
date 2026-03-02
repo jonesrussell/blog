@@ -325,4 +325,4 @@ Now that we can create requests and responses, let's process them: [PSR-15: HTTP
 - [Nyholm PSR-7 and PSR-17](https://github.com/Nyholm/psr7)
 - [PHP-FIG Website](https://www.php-fig.org)
 
-Baamaapii 👋
+Baamaapii

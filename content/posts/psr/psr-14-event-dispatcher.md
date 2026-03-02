@@ -380,4 +380,4 @@ Next, we'll dive into the HTTP stack, starting with [PSR-7: HTTP Message Interfa
 - [Official PSR-14 Specification](https://www.php-fig.org/psr/psr-14/)
 - [PHP-FIG Website](https://www.php-fig.org)
 
-Baamaapii 👋
+Baamaapii

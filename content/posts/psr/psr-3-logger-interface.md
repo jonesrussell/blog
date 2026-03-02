@@ -239,4 +239,4 @@ For more information:
 - [Official PSR-3 Specification](https://www.php-fig.org/psr/psr-3/)
 - [PHP-FIG Website](https://www.php-fig.org)
 
-Baamaapii 👋
+Baamaapii

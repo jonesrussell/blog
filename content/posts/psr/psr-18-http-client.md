@@ -372,4 +372,4 @@ We've completed the HTTP stack! Next: [PSR-6: Caching Interface](/psr-6-caching-
 - [Official PSR-18 Specification](https://www.php-fig.org/psr/psr-18/)
 - [PHP-FIG Website](https://www.php-fig.org)
 
-Baamaapii 👋
+Baamaapii

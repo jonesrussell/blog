@@ -116,4 +116,4 @@ composer check-style
 - [PSR Index](https://www.php-fig.org/psr/)
 - [Our Example Repository](https://github.com/jonesrussell/php-fig-guide)
 
-Baamaapii 👋
+Baamaapii

@@ -143,4 +143,4 @@ For more information:
 - [Official PSR-1 Specification](https://www.php-fig.org/psr/psr-1/)
 - [PHP-FIG Website](https://www.php-fig.org)
 
-Baamaapii 👋
+Baamaapii

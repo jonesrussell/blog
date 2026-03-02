@@ -209,4 +209,4 @@ In our next post, we'll explore PSR-15, which builds upon PSR-7 to define HTTP s
 - [Guzzle HTTP Client](https://docs.guzzlephp.org/)
 - [Laminas Diactoros](https://docs.laminas.dev/laminas-diactoros/)
 
-Baamaapii 👋
+Baamaapii

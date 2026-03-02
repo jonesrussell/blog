@@ -34,7 +34,7 @@ A dependency injection container (DIC) is responsible for:
 ```php
 <?php
 
-namespace JonesRussell\PhpFigGuide\PSR11;
+namespace Psr\Container;
 
 interface ContainerInterface
 {
@@ -46,7 +46,7 @@ interface ContainerInterface
      * @throws NotFoundExceptionInterface
      * @throws ContainerExceptionInterface
      */
-    public function get($id);
+    public function get(string $id);
 
     /**
      * Returns true if the container can return an entry for the given identifier.
@@ -54,7 +54,7 @@ interface ContainerInterface
      * @param string $id
      * @return bool
      */
-    public function has($id);
+    public function has(string $id): bool;
 }
 ```
 
@@ -237,4 +237,4 @@ In our next post, we'll explore PSR-14, which defines a standard event dispatche
 - [Official PSR-11 Specification](https://www.php-fig.org/psr/psr-11/)
 - [PHP-DI Documentation](http://php-di.org/)
 
-Baamaapii 👋
+Baamaapii

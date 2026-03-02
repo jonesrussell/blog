@@ -193,4 +193,4 @@ See `src/Link/` for how the blog API adds hypermedia links to post responses.
 - [IANA Link Relations](https://www.iana.org/assignments/link-relations/link-relations.xhtml)
 - [HAL Specification](https://datatracker.ietf.org/doc/html/draft-kelly-json-hal)
 
-Baamaapii 👋
+Baamaapii

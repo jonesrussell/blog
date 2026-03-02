@@ -390,4 +390,4 @@ See `src/Cache/SimpleCache/` for the blog API's simple cache implementation.
 
 Next: [PSR-13: Hypermedia Links](/psr-13-hypermedia-links/) — making your REST APIs self-documenting with standardized link relations.
 
-Baamaapii 👋
+Baamaapii

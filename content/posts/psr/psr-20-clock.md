@@ -358,4 +358,4 @@ If you're just discovering this series, start from [the beginning](/psr-standard
 - [Companion Repository](https://github.com/jonesrussell/php-fig-guide)
 - [Series Index](/psr-standards-in-php-practical-guide-for-developers/)
 
-Baamaapii 👋
+Baamaapii

@@ -29,7 +29,7 @@ PSR-12 replaces PSR-2 (now deprecated) and works alongside PSR-1. If PSR-1 cover
 - The closing `?>` tag MUST be omitted from files containing only PHP.
 - Lines SHOULD be 80 characters or less.
 - There MUST be one blank line after namespace declarations.
-- Opening braces MUST be on the same line as the statement.
+- Opening braces for classes and methods MUST go on the next line. For control structures (`if`, `for`, etc.), braces go on the same line.
 
 ### 2. Class Structure
 
@@ -188,4 +188,4 @@ See `phpcs.xml` for the PSR-12 configuration used across the project.
 - [PHP_CodeSniffer PSR-12 Ruleset](https://github.com/squizlabs/PHP_CodeSniffer/blob/master/src/Standards/PSR12/ruleset.xml)
 - [PHP-CS-Fixer Documentation](https://github.com/FriendsOfPHP/PHP-CS-Fixer)
 
-Baamaapii 👋
+Baamaapii
