@@ -1,12 +1,12 @@
 ---
 title: "Docker from Scratch: Writing Your First Dockerfile"
-date: 2026-02-27
+date: 2026-03-02
 categories: [docker]
 tags: [docker, containers, nodejs, devops]
 series: ["docker-fundamentals"]
 summary: "Learn Dockerfile basics — FROM, COPY, RUN, CMD — and build your first container image."
 slug: "docker-dockerfile-fundamentals"
-draft: true
+draft: false
 ---
 
 Ahnii!
@@ -229,3 +229,7 @@ You should see JSON with the container's hostname, Node version, and uptime.
 Part 2 covers multi-stage builds — how to use one Dockerfile to build your app in a full Node image, then copy the result into a minimal runtime image. Your production images get smaller and more secure.
 
 Baamaapii
+
+---
+
+**Want the complete guide?** All 5 parts of Docker from Scratch as a formatted ebook, plus a Dockerfile cheat sheet and 3 production-ready templates (Node.js, Python, Go). [Grab the bundle on Gumroad →](https://jonesrussell.gumroad.com/l/docker-from-scratch)
