@@ -216,3 +216,7 @@ Make a small code change and build again. Watch how fast the second build comple
 Part 5 wraps the series with advanced Dockerfile patterns: conditional builds with ARG, HEALTHCHECK, cross-platform images, and linting with hadolint.
 
 Baamaapii
+
+---
+
+**Want the complete guide?** All 5 parts of Docker from Scratch as a formatted ebook, plus a Dockerfile cheat sheet and 3 production-ready templates (Node.js, Python, Go). [Grab the bundle on Gumroad →](https://jonesrussell.gumroad.com/l/docker-from-scratch)

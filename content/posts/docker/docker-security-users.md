@@ -201,3 +201,7 @@ Non-root user. Slim base image. No secrets in layers. No `--cache-dir` bloat fro
 Part 4 switches to Go and dives into build performance: layer caching strategies, BuildKit cache mounts, and parallel stages that speed up your builds.
 
 Baamaapii
+
+---
+
+**Want the complete guide?** All 5 parts of Docker from Scratch as a formatted ebook, plus a Dockerfile cheat sheet and 3 production-ready templates (Node.js, Python, Go). [Grab the bundle on Gumroad →](https://jonesrussell.gumroad.com/l/docker-from-scratch)

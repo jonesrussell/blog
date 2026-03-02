@@ -268,3 +268,7 @@ Over five posts, you've built up from a four-line Dockerfile to production patte
 Every pattern in this series stays within the Dockerfile itself. No Compose, no orchestration, no CI/CD. Master these and you have a solid foundation for whatever comes next.
 
 Baamaapii
+
+---
+
+**Want the complete guide?** All 5 parts of Docker from Scratch as a formatted ebook, plus a Dockerfile cheat sheet and 3 production-ready templates (Node.js, Python, Go). [Grab the bundle on Gumroad →](https://jonesrussell.gumroad.com/l/docker-from-scratch)
