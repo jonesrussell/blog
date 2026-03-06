@@ -6,7 +6,7 @@ tags: [docker, containers, devops, buildkit]
 series: ["docker-fundamentals"]
 summary: "Conditional builds with ARG, health checks, cross-platform images, linting, and other Dockerfile patterns for production use."
 slug: "docker-advanced-patterns"
-draft: true
+draft: false
 ---
 
 Ahnii!
