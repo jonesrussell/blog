@@ -38,6 +38,8 @@ draft: true
 
 For series posts, add: `series: ["series-name"]`
 
+Categories can be a single value or multiple: `categories: [ai, php]`
+
 ## Post Type: General
 
 Use for standalone posts (tutorials, tools, project showcases).
@@ -68,62 +70,71 @@ Ahnii!
 Baamaapii
 ```
 
-## Post Type: Series
+## Post Type: Series (Intro Post)
 
-Use for posts in a multi-part series (e.g., PSR php-fig-standards series).
+Use for the **first post** of a multi-part series. Announce the series inline in the intro paragraph and close with a "## What This Week Covers" or "## What This Series Covers" section previewing the schedule.
 
 ```
 Ahnii!
 
-> **Prerequisites:** [requirements]. **Recommended:** Read [Link](/slug/) first. **Pairs with:** [related posts].
+[Intro: what the project/topic is (link first mentions) + one sentence that names the series and its scope]
 
-[Intro: what this standard/topic is + one sentence on scope]
+[Series announcement: "This week is a N-part series covering X. Each post covers..."]
 
-## What Problem Does [Topic] Solve?
+## Why [Topic] Exists
 
-[Why this matters — the "before" pain point]
+[Motivation — the "before" pain point or design rationale]
 
-## Core Interfaces / Core Concepts
+## [Core Concept / Architecture]
 
-### 1. [First Concept]
-[Code with inline comments]
-[1-2 sentences explaining the code]
+[Key ideas, optionally with a diagram or code]
 
-### 2. [Second Concept]
-[Code with inline comments]
-[1-2 sentences explaining the code]
+## What This Week Covers
 
-## Real-World Implementation
+**Monday** — [Post 1 topic]
 
-[Working code example — practical, not theoretical]
-[Explanation of what the code does]
+**Tuesday** — [Post 2 topic]
 
-## Common Mistakes and Fixes
-
-### 1. [Mistake]
-[Bad code → Good code with comments explaining why]
-
-### 2. [Mistake]
-[Bad code → Good code]
-
-## Framework Integration
-
-### [Framework 1]
-[Code example + explanation]
-
-### [Framework 2]
-[Code example + explanation]
-
-## Try It Yourself
-
-[Commands to run from companion repo or hands-on steps]
-
-## What's Next
-
-[Link to next post in series with brief description]
+[etc.]
 
 Baamaapii
 ```
+
+## Post Type: Series (Continuation Post)
+
+Use for **parts 2+ of a series**. Open with a "Series context" blockquote. Section names should match the content — don't force a rigid template. Analytical/essay posts use custom sections; code-heavy posts (e.g., PSR deep-dives) may use Core Concepts / Real-World Implementation / Common Mistakes. Close with an inline teaser paragraph linking to the next part, not a "## What's Next" heading.
+
+```
+Ahnii!
+
+> **Series context:** This is part N of a [Series Name](/series-intro-slug/) series. Read [part N-1](/prev-slug/) for [brief context].
+
+[Intro: what this post covers in one sentence]
+
+## [Section Matching the Content]
+
+[Content — analytical, instructional, or code-heavy as appropriate]
+
+## [Additional Sections]
+
+[Inline teaser before farewell: "Tomorrow: X — brief description."]
+
+Baamaapii
+```
+
+**For code-heavy series posts** (PSR standards, API deep-dives), these sections work well:
+
+```
+## What Problem Does [Topic] Solve?
+## Core Interfaces / Core Concepts
+### 1. [Concept] / ### 2. [Concept]
+## Real-World Implementation
+## Common Mistakes and Fixes
+## Framework Integration
+## Try It Yourself
+```
+
+Do not force these sections on analytical or essay-style posts.
 
 ## Screenshots
 
@@ -171,3 +182,6 @@ Add a brief caption or follow with 1-2 sentences explaining what the reader shou
 | Generic headings | Use descriptive, keyword-rich headings. "Why CLI Tools Hang in WSL" not "The Problem". |
 | Carbon-copy terminal output | Reformat error output for readability. Break long lines, remove noise, keep the key details. |
 | Too narrow scope | If a fix applies broadly, generalize the post. Cover the pattern, not just one tool. |
+| "## What's Next" heading in series | Use an inline teaser paragraph before Baamaapii, not a H2 heading. |
+| "**Prerequisites:**" blockquote label | Series continuation posts use `> **Series context:** This is part N of...` — not "Prerequisites/Recommended/Pairs with". |
+| Forcing PSR template on analytical posts | Section names should fit the content. Essay-style series posts use custom headings, not Core Interfaces / Common Mistakes / Framework Integration. |

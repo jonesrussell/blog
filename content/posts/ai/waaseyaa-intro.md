@@ -1,0 +1,76 @@
+---
+title: "Waaseyaa: building a Drupal-inspired PHP CMS with AI"
+date: 2026-03-16
+categories: [ai, php]
+tags: [waaseyaa, claude-code, php, open-source]
+series: ["waaseyaa"]
+summary: "What waaseyaa is, why it exists, and how planning with GitHub issues before coding changes the dynamic of building complex software with AI."
+slug: "waaseyaa-intro"
+draft: true
+---
+
+Ahnii!
+
+[Waaseyaa](https://github.com/jonesrussell/waaseyaa) is an Anishinaabe word meaning "it is bright" or "there is light." It's also a Drupal-inspired PHP CMS framework — a 29-package monorepo built on PHP 8.3+, Symfony 7.x, with a Nuxt 3 admin SPA. The first application built on it is [Minoo](https://github.com/jonesrussell/waaseyaa-minoo), an Indigenous knowledge platform.
+
+This week is a five-part series covering the framework's architecture and the AI-assisted workflow used to build it. Each post covers one part of the system and shows how [GitHub issues, milestones, and codified context](/codified-context-the-problem/) made it possible to build something this complex working solo.
+
+## Why Build Another CMS Framework?
+
+Drupal is genuinely good software. The entity system, field API, and access control model have been refined over decades of production use. But deploying Drupal means accepting Drupal's opinions about everything — its module system, its theme layer, its database abstraction, its admin UI.
+
+Waaseyaa extracts the parts of Drupal's architecture that are worth keeping — the entity/field model, deny-unless-granted access control, content type abstraction — and rebuilds them on a modern PHP foundation. PHP 8.3 attributes instead of annotations. Symfony's DI container instead of a custom service layer. JSON:API instead of Drupal's REST module. A Nuxt 3 SPA for the admin interface instead of a server-rendered theme.
+
+The result is a framework with Drupal's content modeling semantics and none of Drupal's legacy constraints.
+
+## The Architecture
+
+Waaseyaa is organized into seven layers with explicit dependency rules. Each layer can import from its own layer or lower, never from higher layers.
+
+```
+Layer 0: core, types, contracts
+Layer 1: field, storage
+Layer 2: entity
+Layer 3: access, taxonomy
+Layer 4: node, routing
+Layer 5: api, serialization
+Layer 6: application (Minoo)
+```
+
+Twenty-nine packages across these seven layers, each in its own directory under `packages/`. The packages that map directly to Drupal concepts: entity, field, node, taxonomy, access, vocabulary, content-type. The packages that don't exist in Drupal: ai-schema, ai-agent, ai-pipeline, ai-vector.
+
+The AI integration packages exist because the whole point of building a new framework is the ability to design for current constraints, not 2008 ones.
+
+## Planning With GitHub Issues
+
+The framework exists because of a workflow, not despite it. Building 29 packages solo would be overwhelming without a system for knowing what to work on next and what "done" means for each piece.
+
+GitHub milestones serve as the roadmap. Each milestone is a named architectural phase with a clear scope — not "add features to entity system" but "entity system: field collection API, field type registry, ContentEntityBase." Milestones are completed before the next one opens. Work doesn't drift.
+
+Within each milestone, issues are the unit of work. An issue is opened before code is written, not after. It states the scope, the acceptance criteria, and which packages are in scope. When the issue is closed, the work is done — not "probably done" or "done except for the edge cases."
+
+This workflow changes the AI collaboration dynamic in a specific way: when a Claude Code session opens, the first thing it reads is the issue. The issue scopes the session. The session doesn't drift into adjacent features because the acceptance criteria define what "done" means. The codified context — the framework's CLAUDE.md, domain skills, and specs — provides the architectural knowledge. The issue provides the task scope.
+
+The combination is more effective than either alone. Good context without a scoped task produces exploratory sessions that don't complete. A scoped task without good context produces code that's correct for the issue but wrong for the architecture.
+
+## The Minoo Application
+
+[Minoo](https://github.com/jonesrussell/waaseyaa-minoo) is Anishinaabe for "it is good." It's the first application built on the framework and the reason the framework exists — a platform for managing and sharing Indigenous knowledge: teachings, ceremonies, languages, community events.
+
+Minoo has 13 entity types across 5 domains. It demonstrates that the framework's abstractions generalize: entity types with custom fields, access policies that restrict content by language community, a search interface powered by the [north-cloud](/codified-context-the-problem/) API with indigenous-only filtering enforced server-side.
+
+It also demonstrates the "thin application" pattern: a Minoo `CLAUDE.md` that's 5KB versus the framework's 17KB, one domain skill for application-level patterns, and five specs covering the application-specific subsystems. Critically, Minoo's MCP wiring includes both local `minoo_*` tools and upstream `waaseyaa_*` tools — sessions touching framework-level code retrieve framework specs, sessions touching application-level code retrieve Minoo specs. The framework carries the complexity; the application stays thin, and its codified context routes correctly across both layers.
+
+## What This Week Covers
+
+Each post covers one subsystem, showing both the architecture and how AI-assisted development with structured context worked in practice.
+
+**Tuesday** — The entity system: EntityInterface, ContentEntityBase, the field API. The heart of the framework and the foundation for everything else.
+
+**Wednesday** — Access control: the deny-unless-granted model, AccessPolicyInterface, field-level access, and how Minoo implements indigenous-content filtering.
+
+**Thursday** — The API layer: JSON:API CRUD, ResourceSerializer, SchemaPresenter, and how the Nuxt 3 admin SPA consumes it.
+
+**Friday** — The AI integration packages: ai-schema, ai-agent, ai-pipeline, ai-vector, and what they make possible. Plus an honest account of where the framework stands today versus where it's going.
+
+Baamaapii
