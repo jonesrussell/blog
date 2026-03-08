@@ -21,6 +21,7 @@ Write blog posts that match this blog's voice: second person, direct, instructio
 | Code blocks | Always specify language tag. After each block, add 1-2 sentences explaining what it does or why. For error output, reformat for readability — don't carbon-copy terminal noise. |
 | Links | Link first mention of products, tools, or projects. Internal: root-relative with trailing slash `/slug/`. External: full HTTPS URLs. |
 | Headings | H2 for main sections, H3 for variants/subsections. No time estimates. No "Wrapping Up" or "Conclusion". Use SEO-friendly headings with keywords (e.g., "Fix WSL Browser Hangs With BROWSER=echo" not "The Fix"). |
+| Em dashes | Use sparingly. Heavy "—" usage reads as AI-written. Prefer periods (two short sentences), colons, or commas. One or two per post is enough; zero is fine. |
 
 ## Frontmatter (Required Fields)
 
@@ -182,6 +183,7 @@ Add a brief caption or follow with 1-2 sentences explaining what the reader shou
 | Generic headings | Use descriptive, keyword-rich headings. "Why CLI Tools Hang in WSL" not "The Problem". |
 | Carbon-copy terminal output | Reformat error output for readability. Break long lines, remove noise, keep the key details. |
 | Too narrow scope | If a fix applies broadly, generalize the post. Cover the pattern, not just one tool. |
+| Overusing em dashes (—) | Replace with periods (split into two sentences), colons, or commas. Heavy dash use reads as AI slop. |
 | "## What's Next" heading in series | Use an inline teaser paragraph before Baamaapii, not a H2 heading. |
 | "**Prerequisites:**" blockquote label | Series continuation posts use `> **Series context:** This is part N of...` — not "Prerequisites/Recommended/Pairs with". |
 | Forcing PSR template on analytical posts | Section names should fit the content. Essay-style series posts use custom headings, not Core Interfaces / Common Mistakes / Framework Integration. |
