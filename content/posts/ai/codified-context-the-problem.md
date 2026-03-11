@@ -1,25 +1,25 @@
 ---
 title: "Why AI agents lose their minds in complex codebases"
-date: 2026-03-09
+date: 2026-03-10
 categories: [ai]
 tags: [claude-code, codified-context, ai-agents]
 series: ["codified-context"]
 summary: "Token limits aren't the real problem with AI in large codebases — inconsistent context is. Here's what breaks and why a three-tier architecture fixes it."
 slug: "codified-context-the-problem"
-draft: true
+draft: false
 ---
 
 Ahnii!
 
 If you've worked with AI coding tools long enough, you've hit a specific kind of frustration. The model is capable. You've seen it write good code. But in your codebase, it keeps making the same mistakes — wrong patterns, cross-module violations, code that fails your linter on the first run. Each new session feels like onboarding a developer who forgot everything from last week.
 
-This post sets up the problem that a paper published in February 2025 — ["Codified Context: Infrastructure for AI Agents in a Complex Codebase"](https://arxiv.org/abs/2602.20478) by Vasilopoulos — formalizes and solves. This week covers how that solution works in practice, using two real codebases as live examples.
+This post breaks down the failure modes and introduces the three-tier architecture from ["Codified Context: Infrastructure for AI Agents in a Complex Codebase"](https://arxiv.org/abs/2602.20478) by Vasilopoulos that fixes them.
 
 ## The Token Math Doesn't Scale
 
 A large Claude Code context window holds roughly 200,000 tokens — about 150,000 words, or a medium-sized novel. That sounds generous until you look at what a real production codebase contains.
 
-[north-cloud](https://github.com/north-cloud/north-cloud) is a Go microservices monorepo with fourteen services: crawler, classifier, publisher, search, index-manager, source-manager, auth, dashboard, pipeline, social-publisher, rfp-ingestor, mcp-north-cloud, click-tracker, and nc-http-proxy. Each service has its own database, API, internal packages, and conventions.
+[north-cloud](https://github.com/jonesrussell/north-cloud) is a Go microservices monorepo with fourteen services: crawler, classifier, publisher, search, index-manager, source-manager, auth, dashboard, pipeline, social-publisher, rfp-ingestor, mcp-north-cloud, click-tracker, and nc-http-proxy. Each service has its own database, API, internal packages, and conventions.
 
 Loading everything into context every session is not a viable approach. Even if it were, throwing 50,000 lines of Go at an AI and asking it to "understand the system" doesn't produce good results. Signal drowns in noise.
 
@@ -53,9 +53,9 @@ The paper proposes three tiers of codified knowledge, each with a different deli
 
 The key insight is that not all knowledge needs to be in every session. Crawler-specific knowledge doesn't help a session that's only touching the publisher. Loading everything is wasteful; loading nothing is broken. The three-tier architecture loads the right knowledge at the right time.
 
-## What This Week Covers
+## What This Series Covers
 
-I've applied this architecture to two codebases:
+This architecture has been applied to two codebases:
 
 - **north-cloud** — a Go microservices monorepo with fourteen services, ML sidecars, and an Elasticsearch-backed search pipeline
 - **waaseyaa/framework** — a 29-package PHP CMS framework, Drupal-inspired, with a Nuxt 3 admin SPA
@@ -64,13 +64,13 @@ Both are production systems. Both had the failure modes described above before s
 
 Over the next four posts:
 
-**Tuesday** — Tier 1: writing a project constitution that actually works. What the north-cloud CLAUDE.md contains, why the orchestration trigger table matters, and how waaseyaa scales the same pattern to 29 packages.
+[Part 2: The constitution](/codified-context-constitution/) — writing a project constitution that actually works. What the north-cloud CLAUDE.md contains, why the orchestration trigger table matters, and how waaseyaa scales the same pattern to 29 packages.
 
-**Wednesday** — Tier 2: domain specialist skills. What separates a good skill from a list of instructions. How waaseyaa's orchestration table and north-cloud's service CLAUDE.mds take different approaches to the same problem.
+[Part 3: Specialist skills](/codified-context-specialist-skills/) — domain specialist skills. What separates a good skill from a list of instructions. How waaseyaa's orchestration table and north-cloud's service CLAUDE.mds take different approaches to the same problem.
 
-**Thursday** — Tier 3: cold memory, specs, and MCP retrieval. How waaseyaa's thirty framework specs pair with a custom MCP server, and why north-cloud takes a simpler approach without one.
+[Part 4: Cold memory](/codified-context-cold-memory/) — specs and MCP retrieval. How waaseyaa's thirty framework specs pair with a custom MCP server, and why north-cloud takes a simpler approach without one.
 
-**Friday** — Two skills you can use to apply this to your own codebase: one for setting up the three-tier architecture from scratch, one for maintaining it as the codebase evolves.
+[Part 5: The skills](/codified-context-skills/) — two skills you can use to apply this to your own codebase. One for setting up the three-tier architecture from scratch, one for maintaining it as the codebase evolves.
 
 The failure modes are fixable. The fix requires treating context as infrastructure — designed deliberately, maintained actively, and structured to match how a codebase is actually organized.
 
