@@ -63,7 +63,7 @@ Waaseyaa's MCP tools (`waaseyaa_get_spec` and `waaseyaa_search_specs`) are regis
 
 North-cloud also runs `tools/spec-retrieval/` with a spec retrieval server — but with eight specs covering fourteen services, the orchestration table approach still carries most of the load. Sessions see a direct mapping: file pattern → service CLAUDE.md → spec file. The MCP tools supplement this for cross-service queries.
 
-Three services (source-manager, dashboard, pipeline) have service CLAUDE.mds but no T3 spec yet. They appear in the orchestration table with `—` in the spec column. This is the honest representation: those services are covered at T2 depth, not T3 depth. The work exists to write those specs — it's just not done yet.
+Three services (source-manager, dashboard, pipeline) have service CLAUDE.mds but no Tier 3 spec yet. They appear in the orchestration table with `—` in the spec column. This is the honest representation: those services are covered at T2 depth, not T3 depth. The work exists to write those specs — it's just not done yet.
 
 The decision: if you have fewer than ten specs, direct file references in the constitution may be enough. If you're managing twenty or more specs across multiple subsystems, an MCP retrieval server earns its setup cost. North-cloud sits in the middle and runs both.
 
@@ -129,6 +129,6 @@ Specs written for AI retrieval look different from documentation written for hum
 
 **No project history.** Specs are not design docs. Omit implementation timelines, "we decided to" explanations, phase breakdowns. Include only what's true of the system right now.
 
-Tomorrow: the two skills you can use to apply this whole architecture to your own codebase — one for setup, one for ongoing maintenance.
+Next: [Part 5: The skills](/codified-context-skills/) — two skills you can use to apply this whole architecture to your own codebase. One for setup, one for ongoing maintenance.
 
 Baamaapii

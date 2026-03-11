@@ -126,6 +126,6 @@ Key files: [list of entry points]
 
 The "Related Specs" section is the link to Tier 3. When a session loads a skill and needs deeper context on a specific subsystem, the skill points it to the right spec.
 
-Tomorrow: cold memory — how specs and MCP retrieval handle the architectural knowledge that's too large for either the constitution or a skill.
+Next: [Part 4: Cold memory](/codified-context-cold-memory/) — how specs and MCP retrieval handle the architectural knowledge that's too large for either the constitution or a skill.
 
 Baamaapii

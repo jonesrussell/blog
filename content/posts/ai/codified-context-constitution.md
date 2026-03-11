@@ -128,6 +128,6 @@ A few things commonly end up in CLAUDE.md files that should live elsewhere:
 
 The constitution is not where you put everything important about your codebase. It's where you put the minimum necessary to route any session to the right deeper knowledge — and make sure the most dangerous mistakes don't happen.
 
-Tomorrow: Tier 2 — domain specialist skills, the on-demand agents that carry the deep knowledge the constitution can't hold.
+Next: [Part 3: Specialist skills](/codified-context-specialist-skills/) — the on-demand agents that carry the deep knowledge the constitution can't hold.
 
 Baamaapii

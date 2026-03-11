@@ -59,7 +59,7 @@ Then in any Claude Code session:
 
 Claude reads the skill and begins the audit. It inventories what you have, maps your codebase structure, and works through each tier systematically. For a medium-sized project (20K-50K lines), the initial setup typically produces a working constitution in the same session, with skills and specs drafted in follow-up sessions.
 
-The skill is available at `~/.claude/skills/codified-context/SKILL.md`. You can also copy the full skill content from [part 3](/codified-context-specialist-skills/) of this series.
+The skill is available at `~/.claude/skills/codified-context/SKILL.md`.
 
 ## The `updating-codified-context` Skill
 
