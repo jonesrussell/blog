@@ -1,6 +1,6 @@
 ---
 title: "Domain specialist skills: teaching AI to think like your senior dev"
-date: 2026-03-11
+date: 2026-03-12
 categories: [ai]
 tags: [claude-code, codified-context, ai-agents]
 series: ["codified-context"]

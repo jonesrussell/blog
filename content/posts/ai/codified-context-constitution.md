@@ -1,12 +1,12 @@
 ---
 title: "Writing a CLAUDE.md that actually works"
-date: 2026-03-10
+date: 2026-03-11
 categories: [ai]
 tags: [claude-code, codified-context, ai-agents]
 series: ["codified-context"]
-summary: "What belongs in your project constitution, what doesn't, and how to structure it so AI agents always know where to look — with north-cloud and waaseyaa as live examples."
+summary: "How to structure your CLAUDE.md as a routing layer so AI agents always know where to look."
 slug: "codified-context-constitution"
-draft: true
+draft: false
 ---
 
 Ahnii!
@@ -31,7 +31,6 @@ The most important thing in a project constitution is the orchestration trigger 
 
 Here's the table from north-cloud's `CLAUDE.md`:
 
-```markdown
 | File pattern | Service context | Spec |
 |---|---|---|
 | `crawler/**` | `crawler/CLAUDE.md` | `docs/specs/content-acquisition.md` |
@@ -42,7 +41,6 @@ Here's the table from north-cloud's `CLAUDE.md`:
 | `social-publisher/**` | `social-publisher/CLAUDE.md` | `docs/specs/social-publisher.md` |
 | `rfp-ingestor/**` | `rfp-ingestor/CLAUDE.md` | `docs/specs/rfp-ingestor.md` |
 | `docs/specs/**`, `.claude/**`, `**/CLAUDE.md` | updating-codified-context | — |
-```
 
 Any session working in the crawler reads this table, loads `crawler/CLAUDE.md`, and knows where to find the content acquisition spec. It doesn't need to explore the codebase to understand the service boundaries — the table tells it.
 
@@ -54,9 +52,16 @@ Below the trigger table, the constitution needs a brief system architecture. Not
 
 North-cloud's content pipeline is described in nine lines:
 
-```
-Sources → [Crawler] → ES raw_content → [Classifier + ML Sidecars] → ES classified_content
-  → [Publisher Router] → Redis channels → [Consumers: Streetcode, Social Publisher]
+```mermaid
+graph LR
+    Sources --> Crawler
+    Crawler --> ES_raw_content
+    ES_raw_content --> Classifier_+_ML_Sidecars
+    Classifier_+_ML_Sidecars --> ES_classified_content
+    ES_classified_content --> Publisher_Router
+    Publisher_Router --> Redis_channels
+    Redis_channels --> Streetcode
+    Redis_channels --> Social_Publisher
 ```
 
 Followed by the publisher routing layers (L1 through L11) and one critical dependency rule: services import only from `infrastructure/`. No cross-service imports.
@@ -128,6 +133,8 @@ A few things commonly end up in CLAUDE.md files that should live elsewhere:
 
 The constitution is not where you put everything important about your codebase. It's where you put the minimum necessary to route any session to the right deeper knowledge — and make sure the most dangerous mistakes don't happen.
 
-Next: [Part 3: Specialist skills](/codified-context-specialist-skills/) — the on-demand agents that carry the deep knowledge the constitution can't hold.
+## What's Next
+
+Tomorrow: Part 3 — Specialist skills — covers the on-demand agents that carry the deep knowledge the constitution can't hold.
 
 Baamaapii

@@ -1,6 +1,6 @@
 ---
 title: "The skills to apply codified context to your own codebase"
-date: 2026-03-13
+date: 2026-03-14
 categories: [ai]
 tags: [claude-code, codified-context, ai-agents]
 series: ["codified-context"]

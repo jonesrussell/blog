@@ -1,6 +1,6 @@
 ---
 title: "Cold memory: specs, MCP tools, and on-demand context retrieval"
-date: 2026-03-12
+date: 2026-03-13
 categories: [ai]
 tags: [claude-code, codified-context, ai-agents]
 series: ["codified-context"]

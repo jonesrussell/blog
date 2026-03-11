@@ -2,9 +2,9 @@
 
 **Canonical URL:** https://jonesrussell.github.io/blog/codified-context-the-problem/
 
-## Mastodon / Bluesky
+## Facebook
 
-AI coding tools are capable. But in complex codebases, they keep making the same mistakes every session — wrong patterns, cross-module violations, linter failures. The problem isn't the model. It's how context gets delivered. This post breaks down what breaks and introduces the three-tier architecture that fixes it.
+AI coding tools are capable. But in complex codebases, they keep making the same mistakes every session — wrong patterns, cross-module violations, linter failures. The problem isn't the model. It's how context gets delivered. First post in a five-part series on treating AI context as infrastructure.
 
 https://jonesrussell.github.io/blog/codified-context-the-problem/
 
