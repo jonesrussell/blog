@@ -115,7 +115,7 @@ The architecture grows from real friction, not from planning. You'll build the r
 
 The [Codified Context paper](https://arxiv.org/abs/2602.20478) proposes a metric: knowledge-to-code ratio, defined as lines of codified context divided by lines of source code. The target is above 5%.
 
-North-cloud is at roughly 3-4% today — the constitution and service-level CLAUDE.md files are solid, the specialist skills are in place, but spec coverage is still growing. Waaseyaa is closer to 6-7%, with thirty specs backed by MCP retrieval.
+North-cloud is at roughly 3-4% today — the constitution and service-level CLAUDE.md files are solid, the specialist skills are in place, but spec coverage is still growing. Waaseyaa is closer to 6-7%, with thirty-four specs backed by MCP retrieval.
 
 The ratio is useful as a progress indicator, not a target to optimize. A codebase with a 10% ratio of thin, low-quality specs is worse than one at 3% with a tight, accurate constitution and two excellent skills.
 

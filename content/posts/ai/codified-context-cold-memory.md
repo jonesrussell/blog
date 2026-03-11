@@ -41,9 +41,9 @@ The [Codified Context paper](https://arxiv.org/abs/2602.20478) notes that simple
 
 A lightweight MCP server for spec retrieval is roughly 200 lines of Node.js. It reads markdown files from `docs/specs/`, implements the three tools, and uses stdio transport. That's the entire infrastructure needed for Tier 3.
 
-## Waaseyaa's 30 Specs
+## Waaseyaa's 34 Specs
 
-[Waaseyaa/framework](https://github.com/jonesrussell/waaseyaa) has thirty framework specs and four additional specs in [waaseyaa/minoo](https://github.com/jonesrussell/waaseyaa-minoo). Each covers one subsystem with enough depth that a fresh session can work on that subsystem without exploring source files.
+[Waaseyaa/framework](https://github.com/jonesrussell/waaseyaa) has thirty-four framework specs, with additional specs in [waaseyaa/minoo](https://github.com/jonesrussell/waaseyaa-minoo). Each covers one subsystem with enough depth that a fresh session can work on that subsystem without exploring source files.
 
 The search spec illustrates the depth. It covers:
 
@@ -59,13 +59,15 @@ These details don't belong in the constitution or the search skill. They're too 
 
 Waaseyaa's MCP tools (`waaseyaa_get_spec` and `waaseyaa_search_specs`) are registered in `.claude/settings.json` and available in every session. The skills point to relevant specs; sessions retrieve them when they need the depth.
 
-## North-Cloud's Parallel Setup
+## North-Cloud's Layered MCP Approach
 
-North-cloud also runs `tools/spec-retrieval/` with a spec retrieval server — but with eight specs covering fourteen services, the orchestration table approach still carries most of the load. Sessions see a direct mapping: file pattern → service CLAUDE.md → spec file. The MCP tools supplement this for cross-service queries.
+North-cloud runs the same `tools/spec-retrieval/` pattern as waaseyaa for its thirteen specs covering fourteen services. But it adds a second MCP server on top: a Go-based operational server (`mcp-north-cloud/`) that exposes 25-36 tools for live interaction with running services — crawling, publishing, classification, search, index management, and Grafana alerts. The spec server handles architectural knowledge; the Go server handles runtime operations.
+
+With thirteen specs, the orchestration table approach still carries significant load. Sessions see a direct mapping: file pattern → service CLAUDE.md → spec file. The MCP tools supplement this for cross-service queries and live API access.
 
 Three services (source-manager, dashboard, pipeline) have service CLAUDE.mds but no Tier 3 spec yet. They appear in the orchestration table with `—` in the spec column. This is the honest representation: those services are covered at T2 depth, not T3 depth. The work exists to write those specs — it's just not done yet.
 
-The decision: if you have fewer than ten specs, direct file references in the constitution may be enough. If you're managing twenty or more specs across multiple subsystems, an MCP retrieval server earns its setup cost. North-cloud sits in the middle and runs both.
+The decision: if you have fewer than ten specs, direct file references in the constitution may be enough. If you're managing twenty or more specs across multiple subsystems, an MCP retrieval server earns its setup cost. If your codebase also needs live operational access to running services, a second purpose-built MCP server — like north-cloud's Go server — is a separate concern worth separating.
 
 ## Contract Specs: A Distinct Spec Type
 

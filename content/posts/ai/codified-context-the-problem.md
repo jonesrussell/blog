@@ -17,7 +17,7 @@ This post breaks down the failure modes and introduces the three-tier architectu
 
 ## The Token Math Doesn't Scale
 
-A large Claude Code context window holds roughly 200,000 tokens — about 150,000 words, or a medium-sized novel. That sounds generous until you look at what a real production codebase contains.
+A large Claude Code context window holds roughly 200,000 tokens — about 150,000 words, or a long novel. That sounds generous until you look at what a real production codebase contains.
 
 [north-cloud](https://github.com/jonesrussell/north-cloud) is a Go microservices monorepo with fourteen services: crawler, classifier, publisher, search, index-manager, source-manager, auth, dashboard, pipeline, social-publisher, rfp-ingestor, mcp-north-cloud, click-tracker, and nc-http-proxy. Each service has its own database, API, internal packages, and conventions.
 
@@ -68,7 +68,7 @@ Over the next four posts:
 
 [Part 3: Specialist skills](/codified-context-specialist-skills/) — domain specialist skills. What separates a good skill from a list of instructions. How waaseyaa's orchestration table and north-cloud's service CLAUDE.mds take different approaches to the same problem.
 
-[Part 4: Cold memory](/codified-context-cold-memory/) — specs and MCP retrieval. How waaseyaa's thirty framework specs pair with a custom MCP server, and why north-cloud takes a simpler approach without one.
+[Part 4: Cold memory](/codified-context-cold-memory/) — specs and MCP retrieval. How waaseyaa's thirty-four framework specs pair with a custom MCP server, and how north-cloud layers a Go-based operational MCP server on top of the same spec-retrieval pattern.
 
 [Part 5: The skills](/codified-context-skills/) — two skills you can use to apply this to your own codebase. One for setting up the three-tier architecture from scratch, one for maintaining it as the codebase evolves.
 
