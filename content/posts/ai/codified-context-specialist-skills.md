@@ -6,7 +6,7 @@ tags: [claude-code, codified-context, ai-agents]
 series: ["codified-context"]
 summary: "What specialist skills are, why the 50% domain knowledge rule matters, and how waaseyaa's spec-backed orchestration keeps AI consistent across a 29-package PHP monorepo."
 slug: "codified-context-specialist-skills"
-draft: true
+draft: false
 ---
 
 Ahnii!
@@ -68,7 +68,7 @@ Some heuristics:
 - **Recurring patterns within the subsystem** — a skill is the right place for "here's how routing works in the publisher" or "here's the standard testing setup for crawler jobs."
 - **Distinct domain vocabulary** — if the subsystem has its own concepts (entity, field, access policy) that don't map cleanly to the rest of the codebase, a skill captures that vocabulary once instead of repeating it everywhere.
 
-The inverse is also true: if a rule applies everywhere and someone working anywhere in the codebase needs to know it, it belongs in the constitution, not a skill. The linting rules in north-cloud's CLAUDE.md are a good example — they're project-wide invariants, not crawler-specific knowledge.
+The inverse is also true: if a rule applies everywhere and someone working anywhere in the codebase needs to know it, it belongs in the constitution, not a skill. The linting rules in [north-cloud](https://github.com/jonesrussell/north-cloud)'s CLAUDE.md are a good example — they're project-wide invariants, not crawler-specific knowledge.
 
 ## Waaseyaa's Skill Architecture
 
