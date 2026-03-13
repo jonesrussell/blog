@@ -6,7 +6,7 @@ tags: [claude-code, codified-context, ai-agents]
 series: ["codified-context"]
 summary: "How subsystem specs and MCP retrieval tools handle architectural knowledge too large for hot memory — and why stale specs are worse than no specs."
 slug: "codified-context-cold-memory"
-draft: true
+draft: false
 ---
 
 Ahnii!
@@ -61,17 +61,17 @@ Waaseyaa's MCP tools (`waaseyaa_get_spec` and `waaseyaa_search_specs`) are regis
 
 ## North-Cloud's Layered MCP Approach
 
-North-cloud runs the same `tools/spec-retrieval/` pattern as waaseyaa for its thirteen specs covering fourteen services. But it adds a second MCP server on top: a Go-based operational server (`mcp-north-cloud/`) that exposes 25-36 tools for live interaction with running services — crawling, publishing, classification, search, index management, and Grafana alerts. The spec server handles architectural knowledge; the Go server handles runtime operations.
+[North-cloud](https://github.com/jonesrussell/north-cloud) runs the same `tools/spec-retrieval/` pattern as waaseyaa for its sixteen specs across its services. But it adds a second MCP server on top: a Go-based operational server (`mcp-north-cloud/`) that exposes 25-36 tools for live interaction with running services — crawling, publishing, classification, search, index management, and Grafana alerts. The spec server handles architectural knowledge; the Go server handles runtime operations.
 
-With thirteen specs, the orchestration table approach still carries significant load. Sessions see a direct mapping: file pattern → service CLAUDE.md → spec file. The MCP tools supplement this for cross-service queries and live API access.
+With sixteen specs, the orchestration table approach still carries significant load. Sessions see a direct mapping: file pattern → service CLAUDE.md → spec file. The MCP tools supplement this for cross-service queries and live API access.
 
-Three services (source-manager, dashboard, pipeline) have service CLAUDE.mds but no Tier 3 spec yet. They appear in the orchestration table with `—` in the spec column. This is the honest representation: those services are covered at T2 depth, not T3 depth. The work exists to write those specs — it's just not done yet.
+One service (render-worker) has a service CLAUDE.md but no Tier 3 spec yet. It appears in the orchestration table with `—` in the spec column. This is the honest representation: the service is covered at T2 depth, not T3 depth.
 
 The decision: if you have fewer than ten specs, direct file references in the constitution may be enough. If you're managing twenty or more specs across multiple subsystems, an MCP retrieval server earns its setup cost. If your codebase also needs live operational access to running services, a second purpose-built MCP server — like north-cloud's Go server — is a separate concern worth separating.
 
 ## Contract Specs: A Distinct Spec Type
 
-Waaseyaa's 31 specs include a category that doesn't appear in most implementations: contract specs. These are different from subsystem specs in a specific way — they document the interface agreement between subsystems, not the implementation of any one subsystem.
+Waaseyaa's 34 specs include a category that doesn't appear in most implementations: contract specs. These are different from subsystem specs in a specific way — they document the interface agreement between subsystems, not the implementation of any one subsystem.
 
 An example: `authoring-assist-contract.md` defines what the authoring assist feature promises to the rest of the framework and what it requires in return. Sessions working on the ingestion pipeline read the ingestion contracts. Sessions working on the admin dashboard read the dashboard contract. Neither session needs to understand the other's implementation — they only need to understand the contract between them.
 
@@ -85,7 +85,7 @@ Stale specs are actively harmful. An outdated spec is worse than no spec.
 
 Here's why: a session that has no spec explores the source files and discovers the current state of the system. A session that has a stale spec trusts the spec and generates code against outdated interfaces, wrong field names, or replaced data flows. The stale spec provides false confidence.
 
-North-cloud's constitution includes a warning on exactly this point: "When refactoring a subsystem, update the relevant service CLAUDE.md and `docs/specs/` file. Stale specs cause sessions to generate code conflicting with recent changes."
+[North-cloud](https://github.com/jonesrussell/north-cloud)'s constitution includes a warning on exactly this point: "When refactoring a subsystem, update the relevant service CLAUDE.md and `docs/specs/` file. Stale specs cause sessions to generate code conflicting with recent changes."
 
 Warning the AI isn't enough. You also need tooling.
 
@@ -131,6 +131,8 @@ Specs written for AI retrieval look different from documentation written for hum
 
 **No project history.** Specs are not design docs. Omit implementation timelines, "we decided to" explanations, phase breakdowns. Include only what's true of the system right now.
 
-Next: [Part 5: The skills](/codified-context-skills/) — two skills you can use to apply this whole architecture to your own codebase. One for setup, one for ongoing maintenance.
+## What's Next
+
+[Part 5: The skills](/codified-context-skills/) — two skills you can use to apply this whole architecture to your own codebase. One for setup, one for ongoing maintenance.
 
 Baamaapii

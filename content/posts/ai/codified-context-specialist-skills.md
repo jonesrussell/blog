@@ -74,7 +74,7 @@ The inverse is also true: if a rule applies everywhere and someone working anywh
 
 [Waaseyaa/framework](https://github.com/jonesrussell/waaseyaa) is a 29-package PHP CMS framework with seven architectural layers. Its orchestration table maps eight package groups to `waaseyaa:*` entries — entity-system, access-control, api-layer, node-system, taxonomy, search, plugin-system, versioning.
 
-An important distinction: the `waaseyaa:*` entries in the orchestration table are conceptual labels, not direct Skill tool invocations. When the orchestration table routes a session to `waaseyaa:entity-system`, it means "use the `waaseyaa_get_spec` MCP tool to retrieve the entity-system spec." The framework's T2 knowledge lives primarily in its 31 subsystem specs, retrieved via MCP tools, rather than in standalone skill files.
+An important distinction: the `waaseyaa:*` entries in the orchestration table are conceptual labels, not direct Skill tool invocations. When the orchestration table routes a session to `waaseyaa:entity-system`, it means "use the `waaseyaa_get_spec` MCP tool to retrieve the entity-system spec." The framework's T2 knowledge lives primarily in its 34 subsystem specs, retrieved via MCP tools, rather than in standalone skill files.
 
 This is a deliberate architectural choice. Waaseyaa's subsystem specs are comprehensive enough that they serve both the T2 (domain expertise on demand) and T3 (deep cold memory) roles. Two skill files exist in `skills/`: the main `waaseyaa` domain skill and the `codified-context` skill that lives there as its home repo.
 
@@ -82,9 +82,9 @@ What makes this work at 29 packages: any session touching the entity system retr
 
 ## North-Cloud: Service CLAUDE.mds as T2
 
-North-cloud takes a different approach entirely: it uses service-level `CLAUDE.md` files as its Tier 2, skipping the Skill tool overhead entirely. Fourteen services, fourteen service-level CLAUDE.mds — one per service — each covering quick reference commands, internal architecture, common patterns, and service-specific gotchas.
+North-cloud takes a different approach entirely: it uses service-level `CLAUDE.md` files as its Tier 2, skipping the Skill tool overhead entirely. Seventeen services, seventeen service-level CLAUDE.mds — one per service — each covering quick reference commands, internal architecture, common patterns, and service-specific gotchas.
 
-This is a valid architectural tradeoff. A 14-service Go monorepo doesn't benefit much from Skill tool invocation. Sessions working on the crawler open `crawler/CLAUDE.md` directly via the orchestration table pointer. The file is the skill.
+This is a valid architectural tradeoff. A 17-service Go monorepo doesn't benefit much from Skill tool invocation. Sessions working on the crawler open `crawler/CLAUDE.md` directly via the orchestration table pointer. The file is the skill.
 
 North-cloud does have standalone specialist skills for the areas where cross-service consistency matters most: `nc-crawler`, `nc-publisher`, `nc-classifier`, `nc-infrastructure`, `nc-search-indexing`. These exist for the more complex subsystems where a service CLAUDE.md alone isn't enough depth.
 

@@ -19,7 +19,7 @@ This post breaks down the failure modes and introduces the three-tier architectu
 
 A large Claude Code context window holds roughly 200,000 tokens — about 150,000 words, or a long novel. That sounds generous until you look at what a real production codebase contains.
 
-[north-cloud](https://github.com/jonesrussell/north-cloud) is a Go microservices monorepo with fourteen services: crawler, classifier, publisher, search, index-manager, source-manager, auth, dashboard, pipeline, social-publisher, rfp-ingestor, mcp-north-cloud, click-tracker, and nc-http-proxy. Each service has its own database, API, internal packages, and conventions.
+[north-cloud](https://github.com/jonesrussell/north-cloud) is a Go microservices monorepo with seventeen services: crawler, classifier, publisher, search, index-manager, source-manager, auth, dashboard, pipeline, social-publisher, rfp-ingestor, mcp-north-cloud, click-tracker, nc-http-proxy, ai-observer, render-worker, and search-frontend. Each service has its own database, API, internal packages, and conventions.
 
 Loading everything into context every session is not a viable approach. Even if it were, throwing 50,000 lines of Go at an AI and asking it to "understand the system" doesn't produce good results. Signal drowns in noise.
 
@@ -57,7 +57,7 @@ The key insight is that not all knowledge needs to be in every session. Crawler-
 
 This architecture has been applied to two codebases:
 
-- **north-cloud** — a Go microservices monorepo with fourteen services, ML sidecars, and an Elasticsearch-backed search pipeline
+- **north-cloud** — a Go microservices monorepo with seventeen services, ML sidecars, and an Elasticsearch-backed search pipeline
 - **waaseyaa/framework** — a 29-package PHP CMS framework, Drupal-inspired, with a Nuxt 3 admin SPA
 
 Both are production systems. Both had the failure modes described above before structured context was added. Both work substantially better now.
