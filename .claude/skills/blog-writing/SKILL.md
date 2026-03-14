@@ -34,10 +34,13 @@ tags: []                    # max 4 tags
 summary: ""                 # one sentence: outcome or audience
 slug: "url-slug"            # kebab-case
 draft: true
+devto: true                 # cross-post to dev.to on publish
 ---
 ```
 
 For series posts, add: `series: ["series-name"]`
+
+For dev.to cross-posting, add `devto: true`. The GitHub Actions workflow auto-publishes to dev.to when a post with `devto: true` and `draft: false` is pushed to main. It sets the canonical URL to the blog, maps tags/summary/series, and updates existing articles by canonical URL lookup.
 
 Categories can be a single value or multiple: `categories: [ai, php]`
 

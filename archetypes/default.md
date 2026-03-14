@@ -4,7 +4,9 @@ date: {{ .Date }}
 categories: []
 tags: []
 summary: ""
+slug: "{{ .Name }}"
 draft: true
+devto: true
 ---
 
 Ahnii!
