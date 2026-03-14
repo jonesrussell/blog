@@ -362,6 +362,33 @@ html {
 }
 
 /* --------------------------------------------------------------------------
+   Tables
+   -------------------------------------------------------------------------- */
+.post-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5em 0;
+  font-size: 0.9em;
+}
+
+.post-content th,
+.post-content td {
+  padding: 0.6em 1em;
+  border: 1px solid var(--border);
+  text-align: left;
+}
+
+.post-content th {
+  background: var(--code-bg);
+  font-family: var(--font-heading);
+  font-weight: 600;
+}
+
+.post-content tr:hover {
+  background: var(--accent-glow);
+}
+
+/* --------------------------------------------------------------------------
    Blockquotes
    -------------------------------------------------------------------------- */
 blockquote {

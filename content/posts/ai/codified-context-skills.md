@@ -50,13 +50,11 @@ Run `/codified-context` in any Claude Code session to apply the three-tier archi
 
 The skill starts by measuring what you already have. The output is a gap analysis table:
 
-```markdown
 | Tier | Current state | Gap |
 |------|--------------|-----|
 | 1. Constitution | 45-line CLAUDE.md, no orchestration | Need trigger table, checklists |
 | 2. Skills | 2 generic skills, no domain skills | Need 4 domain skills |
 | 3. Specs | 3 plan docs (session artifacts) | Need reusable specs + retrieval |
-```
 
 This matters because most projects aren't starting from zero. You probably have a CLAUDE.md, maybe some docs. The audit distinguishes session artifacts (one-time implementation plans) from reusable knowledge (interface contracts, data flow patterns, gotchas). Plans describe what was done. Specs describe how the system works now. You mine the former to create the latter.
 
@@ -64,13 +62,11 @@ This matters because most projects aren't starting from zero. You probably have 
 
 The most impactful piece the skill creates is the orchestration trigger table in your constitution:
 
-```markdown
 | File pattern | Specialist skill | Cold memory spec |
 |---|---|---|
-| src/auth/*, src/middleware/auth* | project:auth | docs/specs/authentication.md |
-| src/api/*, src/routes/* | project:api | docs/specs/api-layer.md |
-| docs/specs/**, .claude/**, **/CLAUDE.md | updating-codified-context | — |
-```
+| `src/auth/*, src/middleware/auth*` | `project:auth` | `docs/specs/authentication.md` |
+| `src/api/*, src/routes/*` | `project:api` | `docs/specs/api-layer.md` |
+| `docs/specs/**, .claude/**, **/CLAUDE.md` | `updating-codified-context` | — |
 
 That last row is the self-trigger — any session touching context files automatically loads the maintenance skill. This is one of the most useful patterns from all three codebases. The sessions most likely to change codified context are the ones that need to know how to change it correctly.
 
@@ -121,7 +117,7 @@ Every check produces PASS, WARN, or FAIL. All must pass or warn before setup is 
 
 The second skill is the one that matters more long-term. Most codified context implementations don't fail at setup — they fail at maintenance. Specs go stale. Skills miss new subsystems. The constitution gets extended with content that should live elsewhere.
 
-Run `/updating-codified-context` after any session that changes subsystem interfaces or data flow. The skill addresses five specific failure modes it was built to prevent:
+Run `/updating-codified-context` after any session that changes subsystem interfaces or data flow. The skill addresses five specific failure modes it was built to prevent.
 
 | Failure mode | What happens | What the skill does |
 |---|---|---|
