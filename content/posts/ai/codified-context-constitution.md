@@ -135,6 +135,6 @@ The constitution is not where you put everything important about your codebase. 
 
 ## What's Next
 
-Tomorrow: Part 3 — Specialist skills — covers the on-demand agents that carry the deep knowledge the constitution can't hold.
+Next: [Part 3 — Specialist skills](/codified-context-specialist-skills/) — the on-demand agents that carry the deep knowledge the constitution can't hold.
 
 Baamaapii

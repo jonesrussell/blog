@@ -98,7 +98,7 @@ The decision point is roughly: does your codebase have multiple logical subsyste
 
 ## Writing a Specialist Skill
 
-The structure that works, from the [codified-context skill](/codified-context-skills/):
+The structure that works, from the [codified-context skills](/codified-context-skills/):
 
 ```markdown
 ## Scope
