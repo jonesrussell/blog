@@ -6,7 +6,7 @@ tags: [claude-code, codified-context, ai-agents]
 series: ["codified-context"]
 summary: "Two Claude Code skills for applying and maintaining the three-tier codified context architecture in any codebase — what changed day-to-day and how to get started."
 slug: "codified-context-skills"
-draft: true
+draft: false
 ---
 
 Ahnii!
@@ -53,7 +53,7 @@ mkdir -p ~/.claude/skills/codified-context
 
 Then in any Claude Code session:
 
-```
+```text
 /codified-context
 ```
 
@@ -91,7 +91,7 @@ mkdir -p ~/.claude/skills/updating-codified-context
 
 Run it after any session that changes subsystem interfaces or data flow:
 
-```
+```text
 /updating-codified-context
 ```
 
