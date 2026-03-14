@@ -19,16 +19,14 @@ Both skills are available in the [jonesrussell/skills](https://github.com/jonesr
 
 ## Installing the Skills
 
-Clone the repo and symlink the skills into your Claude Code skills directory:
+Both skills are available as a [Claude Code plugin](https://docs.anthropic.com/en/docs/claude-code/plugins) from the [jonesrussell/skills](https://github.com/jonesrussell/skills) repository. Install the `code-quality-skills` bundle from the plugin marketplace:
 
 ```bash
-git clone https://github.com/jonesrussell/skills.git ~/skills
-mkdir -p ~/.claude/skills
-ln -s ~/skills/skills/codified-context ~/.claude/skills/codified-context
-ln -s ~/skills/skills/updating-codified-context ~/.claude/skills/updating-codified-context
+/plugin marketplace add jonesrussell/skills
+/plugin install code-quality-skills@jonesrussell-skills
 ```
 
-Both skills are now available as slash commands in any Claude Code session. Or copy just the two `SKILL.md` files into `~/.claude/skills/codified-context/` and `~/.claude/skills/updating-codified-context/` if you prefer not to clone the full repo.
+The first command registers the plugin source. The second installs the bundle containing both `codified-context` and `updating-codified-context` (along with a few other code quality skills). Both are now available as slash commands in any Claude Code session.
 
 ## What the Three Tiers Changed
 
