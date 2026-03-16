@@ -19,7 +19,7 @@ Write blog posts that match this blog's voice: second person, direct, instructio
 | Concise | Short sentences. One idea per paragraph. No filler or throat-clearing. |
 | Scoped intro | In the intro, state what the post covers in one sentence |
 | Code blocks | Always specify language tag. After each block, add 1-2 sentences explaining what it does or why. For error output, reformat for readability — don't carbon-copy terminal noise. |
-| Links | Link first mention of products, tools, or projects. Internal: root-relative with trailing slash `/slug/`. External: full HTTPS URLs. |
+| Links | Link first mention of products, tools, or projects. Internal: Hugo relref shortcode `[text]({{< relref "slug" >}})`. External: full HTTPS URLs. Never use raw `/slug/` paths for internal links (they break on the `/blog/` subpath). |
 | Headings | H2 for main sections, H3 for variants/subsections. No time estimates. No "Wrapping Up" or "Conclusion". Use SEO-friendly headings with keywords (e.g., "Fix WSL Browser Hangs With BROWSER=echo" not "The Fix"). |
 | Em dashes | Use sparingly. Heavy "—" usage reads as AI-written. Prefer periods (two short sentences), colons, or commas. One or two per post is enough; zero is fine. |
 

@@ -59,7 +59,7 @@ Run every check. Do not skip items.
 - [ ] All code blocks have language tags
 - [ ] After each code block: 1-2 sentences explaining what it does or why
 - [ ] First mention of products/tools/projects is linked
-- [ ] Internal links use root-relative format with trailing slash: `/slug/`
+- [ ] Internal links use Hugo relref shortcode: `[text]({{< relref "slug" >}})` (never raw `/slug/` paths)
 - [ ] External links use full HTTPS URLs
 - [ ] Voice is second person, direct, instructional ("you"/"your", not "I"/"my")
 - [ ] Concise: short sentences, one idea per paragraph, no filler
