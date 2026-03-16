@@ -1,0 +1,71 @@
+{{- $scratch := newScratch }}
+{{- $scratch.Set "seriesData" slice }}
+{{- range .Data.Terms.Alphabetical }}
+  {{- $term := .Term }}
+  {{- $pages := .Pages }}
+  {{- $termPage := site.GetPage (printf "/series/%s" $term) }}
+  {{- $title := $term }}
+  {{- $description := "" }}
+  {{- with $termPage }}
+    {{- $title = .Title }}
+    {{- $description = .Description }}
+  {{- end }}
+  {{- $repoUrl := "" }}
+  {{- with index site.Data.series $term }}
+    {{- with .repoUrl }}
+      {{- $repoUrl = . }}
+    {{- end }}
+  {{- end }}
+  {{- /* Group pages by series_group using scratch for loop-safe mutation */ -}}
+  {{- $groupScratch := newScratch }}
+  {{- $groupScratch.Set "groupMap" dict }}
+  {{- $groupScratch.Set "groupOrder" slice }}
+  {{- range $pages }}
+    {{- $group := .Params.series_group | default "Main" }}
+    {{- $currentMap := $groupScratch.Get "groupMap" }}
+    {{- if not (index $currentMap $group) }}
+      {{- $groupScratch.Set "groupOrder" ($groupScratch.Get "groupOrder" | append $group) }}
+    {{- end }}
+    {{- $existing := index $currentMap $group | default slice }}
+    {{- $entry := dict
+      "title" .Title
+      "slug" .Slug
+      "permalink" .Permalink
+      "date" (.Date.Format "2006-01-02")
+      "summary" (or .Description (.Summary | plainify | truncate 160))
+      "seriesOrder" (.Params.series_order | default 0)
+    }}
+    {{- with .Params.companion_files }}
+      {{- $entry = merge $entry (dict "companionFiles" .) }}
+    {{- end }}
+    {{- with .Params.test_files }}
+      {{- $entry = merge $entry (dict "testFiles" .) }}
+    {{- end }}
+    {{- with .Params.prerequisites }}
+      {{- $entry = merge $entry (dict "prerequisites" .) }}
+    {{- end }}
+    {{- $existing = $existing | append $entry }}
+    {{- $groupScratch.Set "groupMap" (merge $currentMap (dict $group $existing)) }}
+  {{- end }}
+  {{- /* Build groups array */ -}}
+  {{- $groups := slice }}
+  {{- $groupMap := $groupScratch.Get "groupMap" }}
+  {{- range $groupScratch.Get "groupOrder" }}
+    {{- $groupName := . }}
+    {{- $entries := index $groupMap $groupName }}
+    {{- $entries = sort $entries "seriesOrder" }}
+    {{- $groups = $groups | append (dict "name" $groupName "entries" $entries) }}
+  {{- end }}
+  {{- $seriesEntry := dict
+    "id" $term
+    "title" $title
+    "description" $description
+    "postCount" (len $pages)
+    "groups" $groups
+  }}
+  {{- with $repoUrl }}
+    {{- $seriesEntry = merge $seriesEntry (dict "repoUrl" .) }}
+  {{- end }}
+  {{- $scratch.Set "seriesData" ($scratch.Get "seriesData" | append $seriesEntry) }}
+{{- end }}
+{{- dict "series" ($scratch.Get "seriesData") | jsonify (dict "indent" "  ") }}

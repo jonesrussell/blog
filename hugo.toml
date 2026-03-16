@@ -124,6 +124,7 @@ enableRobotsTXT = true
 
 [outputs]
   home = ['HTML', 'RSS', 'JSON']
+  taxonomy = ['HTML', 'RSS', 'JSON']
 
 [markup]
   [markup.highlight]
