@@ -1,0 +1,30 @@
+<!--
+  Giscus Comments Integration
+  Prerequisites:
+  1. Enable GitHub Discussions on the jonesrussell/blog repository
+     (Settings > General > Features > Discussions)
+  2. Install the Giscus app: https://github.com/apps/giscus
+  3. Get repo-id and category-id from https://giscus.app/ after enabling GitHub Discussions
+  4. Fill in data-repo-id and data-category-id below
+-->
+{{ if .Params.comments | default true }}
+<div class="comments">
+  <!-- Get repo-id and category-id from https://giscus.app/ after enabling GitHub Discussions -->
+  <script src="https://giscus.app/client.js"
+    data-repo="jonesrussell/blog"
+    data-repo-id=""
+    data-category="Blog Comments"
+    data-category-id=""
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="top"
+    data-theme="preferred_color_scheme"
+    data-lang="en"
+    data-loading="lazy"
+    crossorigin="anonymous"
+    async>
+  </script>
+</div>
+{{ end }}

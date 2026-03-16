@@ -1,7 +1,32 @@
+{{ if .IsPage }}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": {{ .Title | jsonify }},
+  "datePublished": {{ .Date.Format "2006-01-02T15:04:05Z07:00" | jsonify }},
+  "dateModified": {{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" | jsonify }},
+  "description": {{ with .Params.summary }}{{ . | jsonify }}{{ else }}{{ .Summary | plainify | jsonify }}{{ end }},
+  "url": {{ .Permalink | jsonify }},
+  "author": {
+    "@type": "Person",
+    "name": {{ .Site.Params.author | jsonify }}
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": {{ .Site.Title | jsonify }},
+    "url": {{ .Site.BaseURL | jsonify }}
+  }
+}
+</script>
+{{ end }}
+
 <style>.terms-heading { font-size: 1.1rem; margin-bottom: 0.5em; }
 section[aria-labelledby] + section[aria-labelledby] { margin-top: 1.5rem; }
 .content-status-notice { margin: 0.75rem 0; padding: 0.75rem 1rem; border: 1px solid var(--border); border-radius: 4px; }
 .content-status-notice p { margin: 0; font-size: 0.9rem; }</style>
+
+<link rel="stylesheet" href="{{ "css/shortcodes.css" | absURL }}">
 
 <!-- Google Fonts: Bricolage Grotesque (headings), Instrument Sans (body), JetBrains Mono (code) -->
 <link rel="preconnect" href="https://fonts.googleapis.com">

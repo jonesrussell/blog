@@ -1,0 +1,32 @@
+{{ $src := .Get "src" }}
+{{ $alt := .Get "alt" }}
+{{ $caption := .Get "caption" }}
+
+{{ $img := .Page.Resources.GetMatch $src }}
+{{ if $img }}
+  {{ $small := $img.Resize "480x webp" }}
+  {{ $medium := $img.Resize "768x webp" }}
+  {{ $large := $img.Resize "1200x webp" }}
+  {{ $fallback := $img.Resize "768x" }}
+  <figure>
+    <picture>
+      <source
+        type="image/webp"
+        srcset="{{ $small.RelPermalink }} 480w, {{ $medium.RelPermalink }} 768w, {{ $large.RelPermalink }} 1200w"
+        sizes="(max-width: 768px) 100vw, 768px">
+      <img
+        src="{{ $fallback.RelPermalink }}"
+        alt="{{ $alt }}"
+        loading="lazy"
+        decoding="async"
+        width="{{ $fallback.Width }}"
+        height="{{ $fallback.Height }}">
+    </picture>
+    {{ with $caption }}<figcaption>{{ . | markdownify }}</figcaption>{{ end }}
+  </figure>
+{{ else }}
+  <figure>
+    <img src="{{ $src }}" alt="{{ $alt }}" loading="lazy" decoding="async">
+    {{ with $caption }}<figcaption>{{ . | markdownify }}</figcaption>{{ end }}
+  </figure>
+{{ end }}

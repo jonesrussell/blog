@@ -1,0 +1,4 @@
+{{ $title := .Get 0 | default (.Get "title") }}
+<div class="tab-pane" data-tab-title="{{ $title }}">
+  {{ .Inner }}
+</div>
