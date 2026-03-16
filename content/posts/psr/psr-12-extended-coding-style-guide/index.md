@@ -3,6 +3,11 @@ title: "PSR-12: Extended Coding Style Guide in PHP"
 date: 2025-02-16
 categories: [php, standards]
 series: ["php-fig-standards"]
+series_order: 2
+series_group: "Foundation"
+companion_files: ["src/PSR12/ExampleClass.php", "src/PSR12/ExtendedCodingStyleGuide.php"]
+test_files: ["tests/PSR12/ExtendedCodingStyleGuideTest.php"]
+prerequisites: [1]
 tags: [php, php-fig, psr-12, coding-style]
 summary: "PSR-12 extends PSR-1 and PSR-2 to provide a comprehensive coding style guide for modern PHP, ensuring consistency across PHP code."
 slug: "psr-12-extended-coding-style-guide"

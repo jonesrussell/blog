@@ -3,6 +3,11 @@ title: "PSR-16: Simple Cache in PHP"
 date: 2025-03-16
 categories: [php, standards]
 series: ["php-fig-standards"]
+series_order: 12
+series_group: "Data & Caching"
+companion_files: ["src/Cache/SimpleCache/FileCache.php"]
+test_files: ["tests/Cache/SimpleCache/FileCacheTest.php"]
+prerequisites: [1, 3]
 tags: [php, php-fig, psr-16, caching]
 summary: "Learn about PSR-16's simple caching interface, understand when to use it over PSR-6, and implement straightforward caching solutions in PHP."
 slug: "psr-16-simple-cache"

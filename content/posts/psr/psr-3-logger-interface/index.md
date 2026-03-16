@@ -4,6 +4,11 @@ date: 2025-01-07
 categories: [php, standards]
 tags: [php, php-fig, psr-3, logging]
 series: ["php-fig-standards"]
+series_order: 4
+series_group: "Core Infrastructure"
+companion_files: ["src/PSR3/SmartLogger.php"]
+test_files: ["tests/PSR3/SmartLoggerTest.php"]
+prerequisites: [1, 3]
 summary: "Learn how to implement and use PSR-3's standardized logging interface in PHP applications, with practical examples of logging implementations and best practices for error handling."
 slug: "psr-3-logger-interface"
 ---

@@ -4,6 +4,11 @@ date: 2025-03-23
 categories: [php, standards]
 tags: [php, php-fig, psr-17, http]
 series: ["php-fig-standards"]
+series_order: 8
+series_group: "HTTP Stack"
+companion_files: ["src/Http/Factory/ResponseFactory.php", "src/Http/Factory/StreamFactory.php"]
+test_files: ["tests/Http/Factory/ResponseFactoryTest.php"]
+prerequisites: [7]
 summary: "Learn how PSR-17's HTTP factory interfaces decouple your code from specific PSR-7 implementations, enabling testable and portable HTTP applications."
 slug: "psr-17-http-factories"
 ---

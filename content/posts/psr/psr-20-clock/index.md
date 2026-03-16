@@ -4,6 +4,11 @@ date: 2025-04-20
 categories: [php, standards]
 tags: [php, php-fig, psr-20, clock]
 series: ["php-fig-standards"]
+series_order: 14
+series_group: "Specialized"
+companion_files: ["src/Clock/SystemClock.php", "src/Clock/FrozenClock.php"]
+test_files: ["tests/Clock/FrozenClockTest.php"]
+prerequisites: [1, 3]
 summary: "Learn how PSR-20's Clock interface makes time-dependent code testable and predictable by abstracting PHP's time functions."
 slug: "psr-20-clock"
 ---

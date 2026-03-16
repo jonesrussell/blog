@@ -3,6 +3,11 @@ title: "PSR-13: Hypermedia Links in PHP"
 date: 2025-02-24
 categories: [php, standards]
 series: ["php-fig-standards"]
+series_order: 13
+series_group: "Specialized"
+companion_files: ["src/PSR13/HypermediaLink.php", "src/PSR13/HypermediaLinkProvider.php"]
+test_files: ["tests/PSR13/HypermediaLinkTest.php", "tests/PSR13/HypermediaLinkProviderTest.php"]
+prerequisites: [1, 3, 7]
 tags: [php, psr-13, hypermedia, rest]
 summary: "Discover PSR-13's hypermedia link interfaces, understand HATEOAS principles, and implement discoverable APIs in PHP applications."
 slug: "psr-13-hypermedia-links"

@@ -3,6 +3,11 @@ title: "PSR-14: Event Dispatcher in PHP"
 date: 2025-02-17
 categories: [php, standards]
 series: ["php-fig-standards"]
+series_order: 6
+series_group: "Core Infrastructure"
+companion_files: ["src/Event/PostCreatedEvent.php", "src/Event/SimpleEventDispatcher.php", "src/Event/SimpleListenerProvider.php"]
+test_files: ["tests/Event/SimpleEventDispatcherTest.php"]
+prerequisites: [1, 3, 5]
 tags: [php, php-fig, psr-14, events]
 summary: "Explore PSR-14's event dispatcher interface, understand event-driven architecture in PHP, and learn best practices for implementing event systems."
 slug: "psr-14-event-dispatcher"

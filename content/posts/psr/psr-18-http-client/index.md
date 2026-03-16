@@ -4,6 +4,11 @@ date: 2025-04-06
 categories: [php, standards]
 tags: [php, php-fig, psr-18, http]
 series: ["php-fig-standards"]
+series_order: 10
+series_group: "HTTP Stack"
+companion_files: ["src/Http/Client/SimpleHttpClient.php", "src/Http/Client/NetworkException.php"]
+test_files: ["tests/Http/Client/SimpleHttpClientTest.php"]
+prerequisites: [7, 8]
 summary: "Discover PSR-18's HTTP client interface for making standardized HTTP requests, enabling swappable HTTP client implementations in PHP."
 slug: "psr-18-http-client"
 ---

@@ -4,6 +4,11 @@ date: 2025-01-08
 categories: [php, standards]
 tags: [php, php-fig, psr-4, autoloading]
 series: ["php-fig-standards"]
+series_order: 3
+series_group: "Foundation"
+companion_files: ["src/PSR4/Core/Database/Connection.php", "src/PSR4/Post/PostController.php"]
+test_files: ["tests/PSR4/Core/Database/ConnectionTest.php", "tests/PSR4/Post/PostControllerTest.php"]
+prerequisites: [1]
 summary: "Master PHP's PSR-4 autoloading standard to organize your code efficiently. Learn how to structure your projects for automatic class loading and seamless package management with Composer."
 slug: "psr-4-autoloading-standard"
 ---

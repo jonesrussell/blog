@@ -3,6 +3,11 @@ title: "PSR-15: HTTP Handlers and Middleware in PHP"
 date: 2025-03-02
 categories: [php, standards]
 series: ["php-fig-standards"]
+series_order: 9
+series_group: "HTTP Stack"
+companion_files: ["src/Http/Middleware/AuthMiddleware.php", "src/Http/Middleware/LoggingMiddleware.php", "src/Http/Middleware/MiddlewarePipeline.php"]
+test_files: ["tests/Http/Middleware/MiddlewarePipelineTest.php"]
+prerequisites: [7, 8]
 tags: [php, php-fig, psr-15, http]
 summary: "Learn about PSR-15's HTTP server request handlers and middleware interfaces, and how they enable modular HTTP application development."
 slug: "psr-15-http-handlers"

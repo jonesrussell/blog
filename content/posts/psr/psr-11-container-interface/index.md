@@ -3,6 +3,11 @@ title: "PSR-11: Container Interface in PHP"
 date: 2025-02-03
 categories: [php, standards]
 series: ["php-fig-standards"]
+series_order: 5
+series_group: "Core Infrastructure"
+companion_files: ["src/PSR11/ExampleContainer.php", "src/PSR11/DatabaseConnection.php", "src/PSR11/Logger.php"]
+test_files: ["tests/PSR11/ExampleContainerTest.php"]
+prerequisites: [1, 3]
 tags: [php, php-fig, psr-11, dependency-injection]
 summary: "Learn about PSR-11's container interface standard, how it enables framework-agnostic dependency injection, and best practices for implementation."
 slug: "psr-11-container-interface"

@@ -4,6 +4,8 @@ date: 2025-01-05
 categories: [php, standards]
 tags: [php, php-fig, psr, coding-standards]
 series: ["php-fig-standards"]
+series_order: 0
+series_group: "Index"
 summary: "A comprehensive series exploring PHP-FIG's PSR standards, with practical examples and real-world applications to help developers write more maintainable and interoperable PHP code."
 slug: "psr-standards-in-php-practical-guide-for-developers"
 ---

@@ -4,6 +4,11 @@ date: 2025-01-10
 categories: [php, standards]
 tags: [php, php-fig, psr-6, caching]
 series: ["php-fig-standards"]
+series_order: 11
+series_group: "Data & Caching"
+companion_files: ["src/PSR6/CacheItem.php", "src/PSR6/FileCachePool.php"]
+test_files: ["tests/PSR6/CacheItemTest.php", "tests/PSR6/FileCachePoolTest.php"]
+prerequisites: [1, 3]
 summary: "Explore PSR-6's caching interface standard, understand cache pools and items, and implement robust caching solutions in PHP applications."
 slug: "psr-6-caching-interface"
 ---

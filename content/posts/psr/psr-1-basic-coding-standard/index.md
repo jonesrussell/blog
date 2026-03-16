@@ -4,6 +4,10 @@ date: 2025-01-06
 categories: [php, standards]
 tags: [php, php-fig, psr-1, coding-standards]
 series: ["php-fig-standards"]
+series_order: 1
+series_group: "Foundation"
+companion_files: ["src/PSR1/UserManager.php"]
+test_files: ["tests/PSR1/UserManagerTest.php"]
 summary: "A guide to PSR-1, the foundational coding standard for PHP that establishes basic rules for files, namespaces, classes, and methods to improve code consistency."
 slug: "psr-1-basic-coding-standard"
 ---
