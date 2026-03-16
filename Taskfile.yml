@@ -72,6 +72,11 @@ tasks:
     cmds:
       - cd themes/PaperMod && git pull origin master
 
+  setup:
+    desc: Set up git hooks
+    cmds:
+      - git config core.hooksPath .husky
+
   deploy:
     desc: Build and prepare for deployment
     deps:
