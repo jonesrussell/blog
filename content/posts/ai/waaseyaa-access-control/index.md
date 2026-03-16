@@ -4,6 +4,8 @@ date: 2026-03-18
 categories: [ai, php]
 tags: [waaseyaa, php, claude-code, open-source]
 series: ["waaseyaa"]
+series_order: 5
+series_group: "Main"
 summary: "How waaseyaa's AccessPolicyInterface implements deny-unless-granted semantics with field-level access control — and how GitHub milestones kept it from scope-creeping."
 slug: "waaseyaa-access-control"
 draft: true

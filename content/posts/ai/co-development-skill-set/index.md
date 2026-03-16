@@ -4,6 +4,8 @@ date: 2026-03-16
 categories: [ai, php]
 tags: [claude-code, waaseyaa, codified-context, skills]
 series: ["waaseyaa"]
+series_order: 2
+series_group: "Main"
 summary: "A skill set that governs framework-app co-development across three repos: enforcing patterns, auditing divergence, and extracting shared code."
 slug: "co-development-skill-set"
 draft: true

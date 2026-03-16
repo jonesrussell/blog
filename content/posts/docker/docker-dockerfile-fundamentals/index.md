@@ -4,6 +4,8 @@ date: 2026-03-02
 categories: [docker]
 tags: [docker, containers, nodejs, devops]
 series: ["docker-fundamentals"]
+series_order: 1
+series_group: "Main"
 summary: "Learn Dockerfile basics — FROM, COPY, RUN, CMD — and build your first container image."
 slug: "docker-dockerfile-fundamentals"
 draft: false

@@ -4,6 +4,8 @@ date: 2026-03-10
 categories: [ai]
 tags: [claude-code, codified-context, ai-agents]
 series: ["codified-context"]
+series_order: 1
+series_group: "Main"
 summary: "Token limits aren't the real problem with AI in large codebases — inconsistent context is. Here's what breaks and why a three-tier architecture fixes it."
 slug: "codified-context-the-problem"
 draft: false

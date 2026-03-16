@@ -4,6 +4,8 @@ date: 2026-03-13
 categories: [ai]
 tags: [claude-code, codified-context, ai-agents]
 series: ["codified-context"]
+series_order: 4
+series_group: "Main"
 summary: "How subsystem specs and MCP retrieval tools handle architectural knowledge too large for hot memory — and why stale specs are worse than no specs."
 slug: "codified-context-cold-memory"
 draft: false

@@ -4,6 +4,8 @@ date: 2026-03-20
 categories: [ai, php]
 tags: [waaseyaa, php, claude-code, open-source]
 series: ["waaseyaa"]
+series_order: 7
+series_group: "Main"
 summary: "What ai-schema, ai-agent, ai-pipeline, and ai-vector enable in a PHP framework designed from the ground up with AI in mind — and an honest look at what's built versus what's planned."
 slug: "waaseyaa-ai-packages"
 draft: true

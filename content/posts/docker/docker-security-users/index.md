@@ -4,6 +4,8 @@ date: 2026-03-04
 categories: [docker]
 tags: [docker, security, python, containers]
 series: ["docker-fundamentals"]
+series_order: 3
+series_group: "Main"
 summary: "Run containers as non-root users, choose minimal base images, and keep secrets out of your Docker layers."
 slug: "docker-security-users"
 draft: false

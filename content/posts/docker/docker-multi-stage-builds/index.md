@@ -4,6 +4,8 @@ date: 2026-03-03
 categories: [docker]
 tags: [docker, containers, nodejs, typescript]
 series: ["docker-fundamentals"]
+series_order: 2
+series_group: "Main"
 summary: "Use multi-stage Dockerfiles to separate build tooling from your runtime image, cutting image size by 90% or more."
 slug: "docker-multi-stage-builds"
 draft: false

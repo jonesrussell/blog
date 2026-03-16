@@ -4,6 +4,8 @@ date: 2026-03-11
 categories: [ai]
 tags: [claude-code, codified-context, ai-agents]
 series: ["codified-context"]
+series_order: 2
+series_group: "Main"
 summary: "How to structure your CLAUDE.md as a routing layer so AI agents always know where to look."
 slug: "codified-context-constitution"
 draft: false

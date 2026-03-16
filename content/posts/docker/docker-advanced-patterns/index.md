@@ -4,6 +4,8 @@ date: 2026-03-06
 categories: [docker]
 tags: [docker, containers, devops, buildkit]
 series: ["docker-fundamentals"]
+series_order: 5
+series_group: "Main"
 summary: "Conditional builds with ARG, health checks, cross-platform images, linting, and other Dockerfile patterns for production use."
 slug: "docker-advanced-patterns"
 draft: false

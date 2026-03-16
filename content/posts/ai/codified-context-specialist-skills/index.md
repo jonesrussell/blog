@@ -4,6 +4,8 @@ date: 2026-03-12
 categories: [ai]
 tags: [claude-code, codified-context, ai-agents]
 series: ["codified-context"]
+series_order: 3
+series_group: "Main"
 summary: "What specialist skills are, why the 50% domain knowledge rule matters, and how waaseyaa's spec-backed orchestration keeps AI consistent across a 29-package PHP monorepo."
 slug: "codified-context-specialist-skills"
 draft: false

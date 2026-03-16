@@ -4,6 +4,8 @@ date: 2026-03-23
 categories: [ai, php]
 tags: [waaseyaa, php, packagist, open-source]
 series: ["waaseyaa"]
+series_order: 8
+series_group: "Main"
 summary: "How waaseyaa went from a monorepo with 38 path-repository subpackages to individually installable Composer packages on Packagist using splitsh-lite."
 slug: "waaseyaa-packagist"
 draft: true

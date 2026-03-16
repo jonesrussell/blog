@@ -4,6 +4,8 @@ date: 2026-03-19
 categories: [ai, php]
 tags: [waaseyaa, php, claude-code, open-source]
 series: ["waaseyaa"]
+series_order: 6
+series_group: "Main"
 summary: "How waaseyaa's JSON:API layer works — ResourceSerializer, SchemaPresenter, and how Tier 3 specs let a new session pick up mid-feature without re-explaining the whole contract."
 slug: "waaseyaa-api-layer"
 draft: true

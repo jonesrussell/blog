@@ -4,6 +4,8 @@ date: 2026-03-16
 categories: [ai, php]
 tags: [waaseyaa, claude-code, php, open-source]
 series: ["waaseyaa"]
+series_order: 1
+series_group: "Main"
 summary: "What waaseyaa is, why it exists, and how planning with GitHub issues before coding changes the dynamic of building complex software with AI."
 slug: "waaseyaa-intro"
 draft: true

@@ -4,6 +4,8 @@ date: 2026-03-05
 categories: [docker]
 tags: [docker, go, buildkit, performance]
 series: ["docker-fundamentals"]
+series_order: 4
+series_group: "Main"
 summary: "Use layer caching, BuildKit cache mounts, and parallel stages to make your Docker builds faster."
 slug: "docker-build-performance"
 draft: false
