@@ -48,7 +48,7 @@
 {{- $pages = $pages | first $limit }}
 {{- end }}
 {{- printf "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>" | safeHTML }}
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:blog="https://jonesrussell.github.io/blog/ns">
   <channel>
     <title>{{ if eq .Title site.Title }}{{ site.Title }}{{ else }}{{ with .Title }}{{ . }} on {{ end }}{{ site.Title }}{{ end }}</title>
     <link>{{ .Permalink }}</link>
@@ -79,6 +79,15 @@
       <guid>{{ .Permalink }}</guid>
       {{- range .Params.categories }}
       <category>{{ . }}</category>
+      {{- end }}
+      {{- range .Params.series }}
+      <blog:series>{{ . }}</blog:series>
+      {{- end }}
+      {{- with .Params.series_order }}
+      <blog:seriesOrder>{{ . }}</blog:seriesOrder>
+      {{- end }}
+      {{- range .Params.tags }}
+      <blog:tag>{{ . }}</blog:tag>
       {{- end }}
       <description>{{ with .Description | html }}{{ . }}{{ else }}{{ .Summary | html }}{{ end -}}</description>
       {{- if and site.Params.ShowFullTextinRSS .Content }}
