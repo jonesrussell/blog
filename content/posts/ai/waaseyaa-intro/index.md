@@ -65,17 +65,17 @@ Minoo has 18 entity types across 6 domains, including a community registry (637 
 
 It also demonstrates the "thin application" pattern: a Minoo `CLAUDE.md` that's 5KB versus the framework's 17KB, one domain skill for application-level patterns, and five specs covering the application-specific subsystems. Critically, Minoo's MCP wiring includes both local `minoo_*` tools and upstream `waaseyaa_*` tools — sessions touching framework-level code retrieve framework specs, sessions touching application-level code retrieve Minoo specs. The framework carries the complexity; the application stays thin, and its codified context routes correctly across both layers.
 
-## What This Week Covers
+## What This Series Covers
 
 Each post covers one subsystem, showing both the architecture and how AI-assisted development with structured context worked in practice.
 
-**Tuesday** — The entity system: EntityInterface, ContentEntityBase, the field API. The heart of the framework and the foundation for everything else.
+**The entity system** — EntityInterface, ContentEntityBase, the field API. The heart of the framework and the foundation for everything else.
 
-**Wednesday** — Access control: the deny-unless-granted model, AccessPolicyInterface, field-level access, and how Minoo implements indigenous-content filtering.
+**Access control** — The deny-unless-granted model, AccessPolicyInterface, field-level access, and how Minoo implements indigenous-content filtering.
 
-**Thursday** — The API layer: JSON:API and GraphQL, ResourceSerializer, SchemaPresenter, and how the Nuxt 3 admin SPA consumes it.
+**The API layer** — JSON:API and GraphQL, ResourceSerializer, SchemaPresenter, and how the Nuxt 3 admin SPA consumes it.
 
-**Friday** — The AI integration packages: ai-schema, ai-agent, ai-pipeline, ai-vector, and what they make possible. Plus an honest account of where the framework stands today versus where it's going.
+**The AI integration packages** — ai-schema, ai-agent, ai-pipeline, ai-vector, and what they make possible. Plus an honest account of where the framework stands today versus where it's going.
 
 Next up: [Three skills for governing multi-repo co-development with Claude Code]({{< relref "co-development-skill-set" >}}).
 
