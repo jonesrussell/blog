@@ -17,7 +17,7 @@ Ahnii!
 
 When you develop a framework and two applications together, the AI assistant working in one repo has no awareness of the other two. It doesn't know that the framework already provides the capability you're about to build from scratch. It doesn't know that the other app solved the same problem last week with a different pattern. And nobody is measuring whether the apps are drifting apart.
 
-This post covers a three-skill system that closes those gaps for [Waaseyaa](https://github.com/jonesrussell/waaseyaa) (framework), [Minoo](https://github.com/jonesrussell/minoo) (Indigenous knowledge platform), and [Claudriel](https://github.com/jonesrussell/claudriel) (AI personal operations). The cycle is: develop with guardrails, measure divergence, extract shared patterns, repeat.
+This post covers a three-skill system that closes those gaps for [Waaseyaa](https://github.com/waaseyaa/framework) (framework), [Minoo](https://github.com/waaseyaa/minoo) (Indigenous knowledge platform), and [Claudriel](https://github.com/jonesrussell/claudriel) (AI personal operations). The cycle is: develop with guardrails, measure divergence, extract shared patterns, repeat.
 
 ## The Problem With Multi-Repo AI Development
 

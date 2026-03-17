@@ -45,7 +45,7 @@ A lightweight MCP server for spec retrieval is roughly 200 lines of Node.js. It 
 
 ## Waaseyaa's 34 Specs
 
-[Waaseyaa/framework](https://github.com/jonesrussell/waaseyaa) has thirty-four framework specs, with additional specs in [waaseyaa/minoo](https://github.com/jonesrussell/waaseyaa-minoo). Each covers one subsystem with enough depth that a fresh session can work on that subsystem without exploring source files.
+[Waaseyaa/framework](https://github.com/waaseyaa/framework) has thirty-four framework specs, with additional specs in [waaseyaa/minoo](https://github.com/waaseyaa/minoo). Each covers one subsystem with enough depth that a fresh session can work on that subsystem without exploring source files.
 
 The search spec illustrates the depth. It covers:
 

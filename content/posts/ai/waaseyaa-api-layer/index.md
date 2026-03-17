@@ -143,6 +143,10 @@ The admin SPA is a Nuxt 3 application using a JSON:API client library. Because t
 
 None of this is custom code in Minoo. It comes from the framework's JSON:API compliance.
 
+## GraphQL
+
+Since this post was drafted, Waaseyaa added a `graphql` package built on [webonyx/graphql-php](https://github.com/webonyx/graphql-php) v15. It auto-generates CRUD queries and mutations from your entity types — the same zero-config philosophy as the JSON:API layer. Filtering, sorting, pagination, and field-level access control carry over from the entity system.
+
 Next: [AI-native PHP: the Waaseyaa AI packages]({{< relref "waaseyaa-ai-packages" >}}).
 
 Baamaapii

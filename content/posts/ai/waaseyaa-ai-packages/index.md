@@ -102,7 +102,7 @@ The planned work for the next milestone: the `VERSIONING.md` and `defaults/` dir
 
 ## Building a Complex Framework Solo
 
-Waaseyaa started as a way to avoid Drupal's legacy while keeping its best ideas. It grew into a 29-package monorepo with seven architectural layers, an admin SPA, an AI integration package set, and a production application in Minoo.
+Waaseyaa started as a way to avoid Drupal's legacy while keeping its best ideas. It grew into a 43-package monorepo with seven architectural layers, an admin SPA, an AI integration package set, and a production application in Minoo.
 
 Building something this large solo is only possible with a workflow that manages complexity across sessions. The GitHub milestones kept scope contained. The issues kept sessions focused. The codified context — the 17KB CLAUDE.md, 31 framework specs backed by MCP retrieval, and the service-level knowledge in each package group — kept the AI collaborator architecturally coherent across the hundreds of sessions it took to get here.
 

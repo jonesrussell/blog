@@ -74,13 +74,13 @@ The inverse is also true: if a rule applies everywhere and someone working anywh
 
 ## Waaseyaa's Skill Architecture
 
-[Waaseyaa/framework](https://github.com/jonesrussell/waaseyaa) is a 29-package PHP CMS framework with seven architectural layers. Its orchestration table maps eight package groups to `waaseyaa:*` entries — entity-system, access-control, api-layer, node-system, taxonomy, search, plugin-system, versioning.
+[Waaseyaa/framework](https://github.com/waaseyaa/framework) is a 43-package PHP CMS framework with seven architectural layers. Its orchestration table maps eight package groups to `waaseyaa:*` entries — entity-system, access-control, api-layer, node-system, taxonomy, search, plugin-system, versioning.
 
 An important distinction: the `waaseyaa:*` entries in the orchestration table are conceptual labels, not direct Skill tool invocations. When the orchestration table routes a session to `waaseyaa:entity-system`, it means "use the `waaseyaa_get_spec` MCP tool to retrieve the entity-system spec." The framework's T2 knowledge lives primarily in its 34 subsystem specs, retrieved via MCP tools, rather than in standalone skill files.
 
 This is a deliberate architectural choice. Waaseyaa's subsystem specs are comprehensive enough that they serve both the T2 (domain expertise on demand) and T3 (deep cold memory) roles. Two skill files exist in `skills/`: the main `waaseyaa` domain skill and the `codified-context` skill that lives there as its home repo.
 
-What makes this work at 29 packages: any session touching the entity system retrieves the entity-system spec via `waaseyaa_get_spec("entity-system")`. A session adding API endpoints retrieves the api-layer spec. The MCP tools are the retrieval mechanism; the specs are the knowledge. The orchestration table maps file patterns to which spec to retrieve.
+What makes this work at 43 packages: any session touching the entity system retrieves the entity-system spec via `waaseyaa_get_spec("entity-system")`. A session adding API endpoints retrieves the api-layer spec. The MCP tools are the retrieval mechanism; the specs are the knowledge. The orchestration table maps file patterns to which spec to retrieve.
 
 ## North-Cloud: Service CLAUDE.mds as T2
 

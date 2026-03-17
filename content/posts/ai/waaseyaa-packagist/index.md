@@ -6,7 +6,7 @@ tags: [waaseyaa, php, packagist, open-source]
 series: ["waaseyaa"]
 series_order: 8
 series_group: "Main"
-summary: "How waaseyaa went from a monorepo with 38 path-repository subpackages to individually installable Composer packages on Packagist using splitsh-lite."
+summary: "How waaseyaa went from a monorepo with 43 path-repository subpackages to individually installable Composer packages on Packagist using splitsh-lite."
 slug: "waaseyaa-packagist"
 draft: false
 ---
@@ -19,7 +19,7 @@ A framework that can't be installed isn't a framework. It's a demo. This post co
 
 ## The Problem With "Just Publish It"
 
-Waaseyaa is a monorepo. The root `composer.json` defines 38 subpackages under `packages/`, each referenced as a path repository with `@dev` constraints. During development, this is convenient. [Composer](https://getcomposer.org/) resolves everything locally, and you never think about versioning.
+Waaseyaa is a monorepo. The root `composer.json` defines 43 subpackages under `packages/`, each referenced as a path repository with `@dev` constraints. During development, this is convenient. [Composer](https://getcomposer.org/) resolves everything locally, and you never think about versioning.
 
 The moment you try to register the root package on Packagist, the problem becomes clear. Packagist can't resolve path repositories. Every `"waaseyaa/entity": "@dev"` in a subpackage's `require` block points to a local directory that doesn't exist on the registry. The root package is unpublishable without publishing every subpackage first.
 
@@ -31,7 +31,7 @@ Before writing any code, four approaches were on the table.
 
 | Strategy | Time to first install | Maintenance | Consumer ergonomics |
 |---|---|---|---|
-| Split into separate repos | Weeks | High — 38 repos to maintain | Clean, but painful to develop |
+| Split into separate repos | Weeks | High — 43 repos to maintain | Clean, but painful to develop |
 | Monorepo + splitsh-lite | Days | Low — automated splits on tag | Clean installs, monorepo dev |
 | Private Satis registry | Days | Medium — self-hosted registry | Requires Satis infrastructure |
 | Composer metapackage | Hours | Low | Installs everything, no granularity |
@@ -60,7 +60,7 @@ This produces a commit hash containing only the contents of `packages/entity/`, 
 
 ## The GitHub Actions Workflow
 
-Manual splits don't scale to 38 packages. A GitHub Actions workflow runs on every tag push, splits each package, and pushes to its mirror.
+Manual splits don't scale to 43 packages. A GitHub Actions workflow runs on every tag push, splits each package, and pushes to its mirror.
 
 ```yaml
 on:
@@ -77,7 +77,7 @@ jobs:
           - { name: 'entity', directory: 'packages/entity' }
           - { name: 'field', directory: 'packages/field' }
           - { name: 'access', directory: 'packages/access' }
-          # ... all 38 packages
+          # ... all 43 packages
     steps:
       - uses: actions/checkout@v4
         with:
@@ -96,7 +96,7 @@ jobs:
 
 The symplify/monorepo-split-github-action wraps splitsh-lite for use in CI.
 
-Each matrix entry runs in parallel. A full split of 38 packages takes about two minutes.
+Each matrix entry runs in parallel. A full split of 43 packages takes about two minutes.
 
 The `fetch-depth: 0` is important. splitsh-lite needs the full git history to produce correct subtree commits. A shallow clone produces broken splits.
 
@@ -145,7 +145,7 @@ The test was straightforward:
 composer require waaseyaa/foundation waaseyaa/entity waaseyaa/api
 ```
 
-It installed cleanly. Autoloading worked. The dependency chain resolved without conflicts. That was enough confidence to create the remaining 35 mirror repos and run the full split.
+It installed cleanly. Autoloading worked. The dependency chain resolved without conflicts. That was enough confidence to create the remaining 40 mirror repos and run the full split.
 
 ## What Consumers See
 
@@ -165,7 +165,7 @@ The monorepo root publishes as `waaseyaa/framework` and requires all subpackages
 
 The important thing about this process is what it didn't change. The monorepo is still the development environment. Tests still run from the root. CI still validates the full dependency graph. Contributors still open PRs against one repo.
 
-The split is invisible during development. It only matters at release time, and it's fully automated. Tag a release, wait two minutes, and 38 packages appear on Packagist with matching versions.
+The split is invisible during development. It only matters at release time, and it's fully automated. Tag a release, wait two minutes, and 43 packages appear on Packagist with matching versions.
 
 That wraps the Waaseyaa series. If you're just finding this, start from the beginning: [Waaseyaa: building a Drupal-inspired PHP CMS with AI]({{< relref "waaseyaa-intro" >}}).
 
