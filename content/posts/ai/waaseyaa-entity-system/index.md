@@ -17,7 +17,7 @@ Ahnii!
 
 [Drupal](https://www.drupal.org/)'s greatest contribution to PHP content management isn't its UI or its module ecosystem — it's the entity/field model. The idea that content types are configurations of typed fields, that any content type can have any field, that fields carry their own storage and validation logic, is what makes Drupal flexible enough to model almost any content domain.
 
-Waaseyaa inherits this model, rewritten for PHP 8.3+ with modern type declarations and [Symfony](https://symfony.com/)'s dependency injection. This post covers how the entity system works and how structured AI context made it buildable across multiple sessions without losing architectural coherence.
+Waaseyaa inherits this model, rewritten for PHP 8.4+ with modern type declarations and [Symfony](https://symfony.com/)'s dependency injection. This post covers how the entity system works and how structured AI context made it buildable across multiple sessions without losing architectural coherence.
 
 ## EntityInterface
 
