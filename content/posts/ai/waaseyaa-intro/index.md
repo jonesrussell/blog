@@ -63,7 +63,7 @@ The combination is more effective than either alone. Good context without a scop
 
 Minoo has 18 entity types across 6 domains, including a community registry (637 First Nations communities), an elder support program, and consent/copyright governance. It demonstrates that the framework's abstractions generalize: entity types with custom fields, access policies that restrict content by language community, a search interface powered by the [north-cloud]({{< relref "codified-context-the-problem" >}}) API with indigenous-only filtering enforced server-side.
 
-It also demonstrates the "thin application" pattern: a Minoo `CLAUDE.md` that's 5KB versus the framework's 17KB, one domain skill for application-level patterns, and five specs covering the application-specific subsystems. Critically, Minoo's MCP wiring includes both local `minoo_*` tools and upstream `waaseyaa_*` tools — sessions touching framework-level code retrieve framework specs, sessions touching application-level code retrieve Minoo specs. The framework carries the complexity; the application stays thin, and its codified context routes correctly across both layers.
+It also demonstrates the "thin application" pattern: a Minoo `CLAUDE.md` that's 12KB versus the framework's 21KB, six domain skills for application-level patterns, and five specs covering the application-specific subsystems. Critically, Minoo's MCP wiring includes both local `minoo_*` tools and upstream `waaseyaa_*` tools — sessions touching framework-level code retrieve framework specs, sessions touching application-level code retrieve Minoo specs. The framework carries the complexity; the application stays thin, and its codified context routes correctly across both layers.
 
 ## What This Series Covers
 
