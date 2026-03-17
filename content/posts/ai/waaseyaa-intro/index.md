@@ -13,19 +13,19 @@ draft: false
 
 Ahnii!
 
-> **Prerequisites:** PHP 8.4+, [Composer](https://getcomposer.org/), and familiarity with [Drupal](https://www.drupal.org/) or [Symfony](https://symfony.com/) concepts.
+> **Prerequisites:** PHP 8.4+, [Composer](https://getcomposer.org/), and familiarity with [Drupal](https://www.drupal.org/), [Laravel](https://laravel.com/), or [Symfony](https://symfony.com/) concepts.
 
-[Waaseyaa](https://github.com/waaseyaa/framework) is an Anishinaabe word meaning "it is bright" or "there is light." It's also a [Drupal](https://www.drupal.org/)-inspired PHP CMS framework — a 43-package monorepo built on PHP 8.4+, [Symfony](https://symfony.com/) 7.x, with a [Nuxt 3](https://nuxt.com/) admin SPA. The first application built on it is [Minoo](https://github.com/waaseyaa/minoo), an Indigenous knowledge platform.
+[Waaseyaa](https://github.com/waaseyaa/framework) is an Anishinaabe word meaning "it is bright" or "there is light." It's also a PHP CMS framework that takes the best ideas from both [Drupal](https://www.drupal.org/) and [Laravel](https://laravel.com/) — forked from Drupal 11's core and stripped of its technical debt, then shaped by Laravel 12's developer experience without carrying its baggage either. The result is a 43-package monorepo built on PHP 8.4+, [Symfony](https://symfony.com/) 7.x, with a [Nuxt 3](https://nuxt.com/) admin SPA. The first application built on it is [Minoo](https://github.com/waaseyaa/minoo), an Indigenous knowledge platform.
 
 This week is a five-part series covering the framework's architecture and the AI-assisted workflow used to build it. Each post covers one part of the system and shows how [GitHub issues, milestones, and codified context]({{< relref "codified-context-the-problem" >}}) made it possible to build something this complex working solo.
 
 ## Why Build Another CMS Framework?
 
-Drupal is genuinely good software. The entity system, field API, and access control model have been refined over decades of production use. But deploying Drupal means accepting Drupal's opinions about everything — its module system, its theme layer, its database abstraction, its admin UI.
+Drupal and Laravel are both genuinely good software. Drupal's entity system, field API, and access control model have been refined over decades of production use. Laravel's developer experience — elegant routing, service providers, Eloquent — set the standard for modern PHP. But both carry technical debt. Deploying Drupal means accepting its module system, theme layer, and database abstraction. Laravel's magic comes with hidden complexity and conventions that fight you when your domain doesn't fit the mold.
 
-Waaseyaa extracts the parts of Drupal's architecture that are worth keeping — the entity/field model, deny-unless-granted access control, content type abstraction — and rebuilds them on a modern PHP foundation. PHP 8.4 attributes instead of annotations. Symfony's DI container instead of a custom service layer. JSON:API and GraphQL instead of Drupal's REST module. A Nuxt 3 SPA for the admin interface instead of a server-rendered theme.
+Waaseyaa started as a fork of Drupal 11's core, stripped down to the architectural patterns worth preserving — the entity/field model, deny-unless-granted access control, content type abstraction. Then it borrowed from Laravel's playbook — clean service providers, expressive routing, a focus on developer ergonomics. The foundation is Symfony 7 components: PHP 8.4 attributes instead of annotations, Symfony's DI container, JSON:API and GraphQL for the API layer, and a Nuxt 3 SPA for the admin interface.
 
-The result is a framework with Drupal's content modeling semantics and none of Drupal's legacy constraints.
+The result is a framework with Drupal's content modeling power, Laravel's developer experience, and neither framework's legacy constraints.
 
 ## The Architecture
 
