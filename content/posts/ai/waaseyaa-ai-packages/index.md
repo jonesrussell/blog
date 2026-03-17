@@ -1,6 +1,6 @@
 ---
 title: "AI-native PHP: the waaseyaa AI packages"
-date: 2026-03-20
+date: 2026-03-23
 categories: [ai, php]
 tags: [waaseyaa, php, claude-code, open-source]
 series: ["waaseyaa"]
@@ -8,14 +8,14 @@ series_order: 7
 series_group: "Main"
 summary: "What ai-schema, ai-agent, ai-pipeline, and ai-vector enable in a PHP framework designed from the ground up with AI in mind — and an honest look at what's built versus what's planned."
 slug: "waaseyaa-ai-packages"
-draft: true
+draft: false
 ---
 
 Ahnii!
 
-> **Series context:** This is the final part of the [Waaseyaa series]({{< relref "waaseyaa-intro" >}}). The week covered the [entity system]({{< relref "waaseyaa-entity-system" >}}), [access control]({{< relref "waaseyaa-access-control" >}}), and the [API layer]({{< relref "waaseyaa-api-layer" >}}).
+> **Series context:** This is part 7 of the [Waaseyaa series]({{< relref "waaseyaa-intro" >}}). The week covered the [entity system]({{< relref "waaseyaa-entity-system" >}}), [access control]({{< relref "waaseyaa-access-control" >}}), and the [API layer]({{< relref "waaseyaa-api-layer" >}}).
 
-The entity system, access control, and API layer are all borrowed ideas — well-proven patterns from Drupal, ported to a modern PHP stack. They're the foundation because they're correct, not because they're new.
+The entity system, access control, and API layer are all borrowed ideas — well-proven patterns from [Drupal](https://www.drupal.org/), ported to a modern PHP stack. They're the foundation because they're correct, not because they're new.
 
 The AI packages are where waaseyaa starts to build something that doesn't have a Drupal equivalent. This post covers the four AI integration packages — what they are, what they enable, and an honest account of where they stand today.
 
@@ -25,7 +25,7 @@ Drupal was designed when content meant text. A node was some fields and a body. 
 
 That model doesn't map well to AI-augmented content workflows. Content is generated with AI assistance. Entities carry embeddings for semantic search. Agents can take actions in the system — summarizing, translating, enriching. Pipelines process content at ingestion time.
 
-If you're building a new CMS framework in 2025, you design for these workflows from the start. That's what the four AI packages do.
+If you're building a new CMS framework in 2026, you design for these workflows from the start. That's what the four AI packages do.
 
 ## ai-schema
 
@@ -46,6 +46,8 @@ interface AgentInterface
     public function execute(AgentAction $action, AgentContext $context): AgentResult;
 }
 ```
+
+The interface defines two methods: one declaring what the agent can do, and one executing a specific action within a given context.
 
 The key design decision: agents operate through the same access control layer as human users. An agent has a user identity, and that identity is subject to `AccessPolicyInterface` like any other user. An agent can't bypass the deny-unless-granted model — it's as constrained as the most restricted human user with the same permissions.
 
@@ -109,5 +111,7 @@ What AI-assisted development does well at this scale: it removes the activation 
 What it doesn't do well: it has no memory of why a decision was made three months ago. The context has to be codified explicitly or it evaporates. That's the work the codified-context series covered this week — making architectural knowledge persistent across the session boundary.
 
 Waaseyaa is open source and in active development. If you're building a content platform that needs content modeling depth, AI integration from the start, and a modern PHP foundation, the framework is worth watching.
+
+Next: [Publishing a PHP monorepo to Packagist with splitsh-lite]({{< relref "waaseyaa-packagist" >}}).
 
 Baamaapii

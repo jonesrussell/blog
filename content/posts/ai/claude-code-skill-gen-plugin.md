@@ -29,7 +29,7 @@ The plugin adds several tools. The one you want is `skill-gen`.
 
 Point `skill-gen` at any documentation URL. For example, to generate a skill for [Taskfile](https://taskfile.dev/):
 
-```
+```bash
 /firecrawl:skill-gen https://taskfile.dev/usage/
 ```
 
@@ -70,7 +70,7 @@ Write from scratch when the skill captures a process or workflow that doesn't li
 
 Whether generated or hand-written, skills follow the same layout:
 
-```
+```text
 ~/.claude/skills/
   your-skill-name/
     SKILL.md

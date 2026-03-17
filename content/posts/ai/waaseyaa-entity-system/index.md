@@ -1,6 +1,6 @@
 ---
-title: "The entity system at the heart of waaseyaa"
-date: 2026-03-17
+title: "The entity system at the heart of Waaseyaa"
+date: 2026-03-20
 categories: [ai, php]
 tags: [waaseyaa, php, claude-code, open-source]
 series: ["waaseyaa"]
@@ -8,16 +8,16 @@ series_order: 4
 series_group: "Main"
 summary: "How waaseyaa's EntityInterface, ContentEntityBase, and field system work — and how the entity-system specialist skill made cross-session development possible."
 slug: "waaseyaa-entity-system"
-draft: true
+draft: false
 ---
 
 Ahnii!
 
-> **Series context:** This is part 2 of the [Waaseyaa series]({{< relref "waaseyaa-intro" >}}). Read [part 1]({{< relref "waaseyaa-intro" >}}) for an overview of the framework, its architecture, and the GitHub issue workflow used to build it.
+> **Series context:** This is part 4 of the [Waaseyaa series]({{< relref "waaseyaa-intro" >}}). Read [part 1]({{< relref "waaseyaa-intro" >}}) for an overview of the framework, its architecture, and the GitHub issue workflow used to build it.
 
-Drupal's greatest contribution to PHP content management isn't its UI or its module ecosystem — it's the entity/field model. The idea that content types are configurations of typed fields, that any content type can have any field, that fields carry their own storage and validation logic, is what makes Drupal flexible enough to model almost any content domain.
+[Drupal](https://www.drupal.org/)'s greatest contribution to PHP content management isn't its UI or its module ecosystem — it's the entity/field model. The idea that content types are configurations of typed fields, that any content type can have any field, that fields carry their own storage and validation logic, is what makes Drupal flexible enough to model almost any content domain.
 
-Waaseyaa inherits this model, rewritten for PHP 8.3+ with modern type declarations and Symfony's dependency injection. This post covers how the entity system works and how structured AI context made it buildable across multiple sessions without losing architectural coherence.
+Waaseyaa inherits this model, rewritten for PHP 8.3+ with modern type declarations and [Symfony](https://symfony.com/)'s dependency injection. This post covers how the entity system works and how structured AI context made it buildable across multiple sessions without losing architectural coherence.
 
 ## EntityInterface
 
@@ -134,6 +134,6 @@ The GitHub issue that drove the initial entity system build scoped the work prec
 
 The combination — issue scope plus codified context — is what makes complex framework development manageable across dozens of sessions.
 
-Next: the access control layer that sits above entities and governs who can do what with them.
+Next: [Deny-unless-granted: access control in Waaseyaa]({{< relref "waaseyaa-access-control" >}}).
 
 Baamaapii

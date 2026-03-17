@@ -2,7 +2,7 @@
 title: "Git hooks are your best defense against AI-generated mess"
 date: 2026-03-16
 categories: [ai, tools]
-tags: [git, claude-code, ai-agents, code-quality]
+tags: [git, claude-code, ai-agents]
 summary: "Git hooks have always enforced standards before code enters a repo. With AI agents writing commits autonomously, they've become essential."
 slug: "git-hooks-ai-agents"
 draft: true

@@ -55,7 +55,7 @@ Listing open sockets revealed Redis and a Postgres container both bound to `0.0.
 ss -tlnp | grep -E "6379|5432"
 ```
 
-```
+```text
 LISTEN  0.0.0.0:6379  ...  north-cloud-redis-1
 LISTEN  0.0.0.0:5432  ...  north-cloud-postgres-crawler-1
 ```
@@ -90,7 +90,7 @@ Verify the binding changed:
 docker ps --format "{{.Names}}\t{{.Ports}}" | grep -E "redis|crawler"
 ```
 
-```
+```text
 north-cloud-redis-1         127.0.0.1:6379->6379/tcp
 north-cloud-postgres-crawler-1  127.0.0.1:5432->5432/tcp
 ```

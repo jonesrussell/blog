@@ -1,6 +1,6 @@
 ---
 title: "Waaseyaa: building a Drupal-inspired PHP CMS with AI"
-date: 2026-03-16
+date: 2026-03-17
 categories: [ai, php]
 tags: [waaseyaa, claude-code, php, open-source]
 series: ["waaseyaa"]
@@ -8,12 +8,14 @@ series_order: 1
 series_group: "Main"
 summary: "What waaseyaa is, why it exists, and how planning with GitHub issues before coding changes the dynamic of building complex software with AI."
 slug: "waaseyaa-intro"
-draft: true
+draft: false
 ---
 
 Ahnii!
 
-[Waaseyaa](https://github.com/jonesrussell/waaseyaa) is an Anishinaabe word meaning "it is bright" or "there is light." It's also a Drupal-inspired PHP CMS framework — a 29-package monorepo built on PHP 8.3+, Symfony 7.x, with a Nuxt 3 admin SPA. The first application built on it is [Minoo](https://github.com/jonesrussell/waaseyaa-minoo), an Indigenous knowledge platform.
+> **Prerequisites:** PHP 8.3+, [Composer](https://getcomposer.org/), and familiarity with [Drupal](https://www.drupal.org/) or [Symfony](https://symfony.com/) concepts.
+
+[Waaseyaa](https://github.com/jonesrussell/waaseyaa) is an Anishinaabe word meaning "it is bright" or "there is light." It's also a [Drupal](https://www.drupal.org/)-inspired PHP CMS framework — a 29-package monorepo built on PHP 8.3+, [Symfony](https://symfony.com/) 7.x, with a [Nuxt 3](https://nuxt.com/) admin SPA. The first application built on it is [Minoo](https://github.com/jonesrussell/waaseyaa-minoo), an Indigenous knowledge platform.
 
 This week is a five-part series covering the framework's architecture and the AI-assisted workflow used to build it. Each post covers one part of the system and shows how [GitHub issues, milestones, and codified context]({{< relref "codified-context-the-problem" >}}) made it possible to build something this complex working solo.
 
@@ -29,7 +31,7 @@ The result is a framework with Drupal's content modeling semantics and none of D
 
 Waaseyaa is organized into seven layers with explicit dependency rules. Each layer can import from its own layer or lower, never from higher layers.
 
-```
+```text
 Layer 0: core, types, contracts
 Layer 1: field, storage
 Layer 2: entity
@@ -39,7 +41,7 @@ Layer 5: api, serialization
 Layer 6: application (Minoo)
 ```
 
-Twenty-nine packages across these seven layers, each in its own directory under `packages/`. The packages that map directly to Drupal concepts: entity, field, node, taxonomy, access, vocabulary, content-type. The packages that don't exist in Drupal: ai-schema, ai-agent, ai-pipeline, ai-vector.
+29 packages across these seven layers, each in its own directory under `packages/`. The packages that map directly to Drupal concepts: entity, field, node, taxonomy, access, vocabulary, content-type. The packages that don't exist in Drupal: ai-schema, ai-agent, ai-pipeline, ai-vector.
 
 The AI integration packages exist because the whole point of building a new framework is the ability to design for current constraints, not 2008 ones.
 
@@ -74,5 +76,7 @@ Each post covers one subsystem, showing both the architecture and how AI-assiste
 **Thursday** — The API layer: JSON:API CRUD, ResourceSerializer, SchemaPresenter, and how the Nuxt 3 admin SPA consumes it.
 
 **Friday** — The AI integration packages: ai-schema, ai-agent, ai-pipeline, ai-vector, and what they make possible. Plus an honest account of where the framework stands today versus where it's going.
+
+Next up: [Three skills for governing multi-repo co-development with Claude Code]({{< relref "co-development-skill-set" >}}).
 
 Baamaapii

@@ -1,6 +1,6 @@
 ---
 title: "Building a temporal layer so your AI never lies about time"
-date: 2026-03-16
+date: 2026-03-19
 categories: [ai, php]
 tags: [claudriel, php, temporal, testing]
 series: ["waaseyaa"]
@@ -8,7 +8,7 @@ series_order: 3
 series_group: "Main"
 summary: "How Claudriel's temporal subsystem pins time per request, resolves timezones from context, and detects clock drift before it corrupts AI reasoning."
 slug: "claudriel-temporal-layer"
-draft: true
+draft: false
 ---
 
 Ahnii!
@@ -226,5 +226,7 @@ No global state. No mocking frameworks. Inject the clock, control the time. Test
 Traditional web apps can tolerate sloppy time handling. A blog post timestamped 200ms off doesn't matter. But AI systems that reason about your schedule, detect patterns in your behavior, and make proactive suggestions need temporal consistency the same way financial systems need transactional consistency.
 
 The temporal layer is seven classes. It adds no external dependencies. The entire subsystem is injectable and testable. The cost of getting time right is low. The cost of getting it wrong is an AI assistant that confidently tells you the wrong thing about your own schedule.
+
+Next: [The entity system at the heart of Waaseyaa]({{< relref "waaseyaa-entity-system" >}}).
 
 Baamaapii

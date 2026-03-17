@@ -10,9 +10,9 @@ draft: true
 
 Ahnii!
 
-Here's a reference guide to all tools available in Cursor AI. This helps both users and AI instances understand what's possible and how to use each tool effectively.
+Here's a reference guide to all tools available in [Cursor AI](https://www.cursor.com/). This helps both users and AI instances understand what's possible and how to use each tool effectively.
 
-## Search Tools (5 minutes)
+## Search Tools
 
 ### Semantic Search
 
@@ -29,7 +29,7 @@ Here's a reference guide to all tools available in Cursor AI. This helps both us
 - Purpose: Fuzzy search for files by name
 - Best for: Finding files when you know part of the name
 
-## File Operations (5 minutes)
+## File Operations
 
 ### Read Files
 
@@ -41,7 +41,7 @@ Here's a reference guide to all tools available in Cursor AI. This helps both us
 - Purpose: Quick directory exploration
 - Best for: Understanding project structure
 
-## Code Editing (10 minutes)
+## Code Editing
 
 ### Edit Files
 
@@ -51,7 +51,7 @@ Here's a reference guide to all tools available in Cursor AI. This helps both us
   - Provide clear edit instructions
   - Include necessary context
 
-## Terminal Operations (5 minutes)
+## Terminal Operations
 
 ### Run Commands
 
@@ -59,7 +59,7 @@ Here's a reference guide to all tools available in Cursor AI. This helps both us
 - Can run in background
 - Maintains shell context between calls
 
-## Usage Tips (5 minutes)
+## Usage Tips
 
 1. **Tool Selection**
    - Start with list_dir for exploration
@@ -72,4 +72,4 @@ Here's a reference guide to all tools available in Cursor AI. This helps both us
    - Gather sufficient context
    - Use most specific tool for the task
 
-Baamaapii 👋
+Baamaapii

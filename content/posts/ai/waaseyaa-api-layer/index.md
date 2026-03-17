@@ -1,6 +1,6 @@
 ---
 title: "JSON:API from framework to SPA: waaseyaa's API layer"
-date: 2026-03-19
+date: 2026-03-22
 categories: [ai, php]
 tags: [waaseyaa, php, claude-code, open-source]
 series: ["waaseyaa"]
@@ -8,12 +8,12 @@ series_order: 6
 series_group: "Main"
 summary: "How waaseyaa's JSON:API layer works — ResourceSerializer, SchemaPresenter, and how Tier 3 specs let a new session pick up mid-feature without re-explaining the whole contract."
 slug: "waaseyaa-api-layer"
-draft: true
+draft: false
 ---
 
 Ahnii!
 
-> **Series context:** This is part 4 of the [Waaseyaa series]({{< relref "waaseyaa-intro" >}}). This post builds on [the entity system]({{< relref "waaseyaa-entity-system" >}}) and [access control]({{< relref "waaseyaa-access-control" >}}) from earlier in the week.
+> **Series context:** This is part 6 of the [Waaseyaa series]({{< relref "waaseyaa-intro" >}}). This post builds on [the entity system]({{< relref "waaseyaa-entity-system" >}}) and [access control]({{< relref "waaseyaa-access-control" >}}) from earlier in the week.
 
 The entity system models your content. The access control layer decides who can see it. The API layer exposes it to the outside world — and in waaseyaa's case, that means a [JSON:API](https://jsonapi.org/) interface consumed by a Nuxt 3 admin SPA.
 
@@ -62,6 +62,8 @@ The serialized form of a `Teaching` entity:
   }
 }
 ```
+
+This shows a single Teaching resource with its attributes and relationship references to language and teacher entities.
 
 `ResourceSerializer` calls `entity->toArray()` and maps the result to JSON:API structure, handling relationship references as links rather than embedded objects. The `RequestContext` carries the access control context — fields that the current user can't view are omitted from the serialized output.
 
@@ -134,13 +136,13 @@ This is the thin-application pattern in practice. Adding a new entity type to Mi
 
 The admin SPA is a Nuxt 3 application using a JSON:API client library. Because the framework is spec-compliant, the SPA gets:
 
-- **Filtering** — filter=title:Water is handled by the framework's query parser, not custom controller code
-- **Pagination** — page[number] and page[size] work on all endpoints
-- **Relationship loading** — include=language,teacher fetches related entities in one request
+- **Filtering** — `filter=title:Water` is handled by the framework's query parser, not custom controller code
+- **Pagination** — `page[number]` and `page[size]` work on all endpoints
+- **Relationship loading** — `include=language,teacher` fetches related entities in one request
 - **Schema introspection** — the SPA generates forms dynamically from the schema endpoint
 
 None of this is custom code in Minoo. It comes from the framework's JSON:API compliance.
 
-Tomorrow: the AI integration packages, where the framework starts to look forward instead of backward.
+Next: [AI-native PHP: the Waaseyaa AI packages]({{< relref "waaseyaa-ai-packages" >}}).
 
 Baamaapii

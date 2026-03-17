@@ -1,6 +1,6 @@
 ---
 title: "Deny-unless-granted: access control in waaseyaa"
-date: 2026-03-18
+date: 2026-03-21
 categories: [ai, php]
 tags: [waaseyaa, php, claude-code, open-source]
 series: ["waaseyaa"]
@@ -8,12 +8,12 @@ series_order: 5
 series_group: "Main"
 summary: "How waaseyaa's AccessPolicyInterface implements deny-unless-granted semantics with field-level access control — and how GitHub milestones kept it from scope-creeping."
 slug: "waaseyaa-access-control"
-draft: true
+draft: false
 ---
 
 Ahnii!
 
-> **Series context:** This is part 3 of the [Waaseyaa series]({{< relref "waaseyaa-intro" >}}). Catch up on [part 1]({{< relref "waaseyaa-intro" >}}) (overview) and [part 2]({{< relref "waaseyaa-entity-system" >}}) (entity system) before reading this.
+> **Series context:** This is part 5 of the [Waaseyaa series]({{< relref "waaseyaa-intro" >}}). Catch up on [part 1]({{< relref "waaseyaa-intro" >}}) (overview) and [part 2]({{< relref "waaseyaa-entity-system" >}}) (entity system) before reading this.
 
 Access control is where frameworks make their most consequential design decisions. The choice between allow-unless-denied and deny-unless-granted isn't a style preference — it determines what happens when your policy logic has a gap.
 
@@ -117,6 +117,6 @@ The skill also flags the OR semantics issue for topic filtering. Merging a user'
 
 Sessions working on access control load this skill and get the full context. The mistake history in the skill represents real mistakes that happened in sessions before the skill existed.
 
-Next: the API layer that exposes entities to the outside world, and how the Nuxt 3 admin SPA consumes it.
+Next: [JSON:API from framework to SPA: Waaseyaa's API layer]({{< relref "waaseyaa-api-layer" >}}).
 
 Baamaapii

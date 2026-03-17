@@ -1,6 +1,6 @@
 ---
 title: "Publishing a PHP monorepo to Packagist with splitsh-lite"
-date: 2026-03-23
+date: 2026-03-24
 categories: [ai, php]
 tags: [waaseyaa, php, packagist, open-source]
 series: ["waaseyaa"]
@@ -8,18 +8,18 @@ series_order: 8
 series_group: "Main"
 summary: "How waaseyaa went from a monorepo with 38 path-repository subpackages to individually installable Composer packages on Packagist using splitsh-lite."
 slug: "waaseyaa-packagist"
-draft: true
+draft: false
 ---
 
 Ahnii!
 
-> **Series context:** This is part 6 of the [Waaseyaa series]({{< relref "waaseyaa-intro" >}}). Previous posts covered the [entity system]({{< relref "waaseyaa-entity-system" >}}), [access control]({{< relref "waaseyaa-access-control" >}}), the [API layer]({{< relref "waaseyaa-api-layer" >}}), and the [AI packages]({{< relref "waaseyaa-ai-packages" >}}).
+> **Series context:** This is part 8 of the [Waaseyaa series]({{< relref "waaseyaa-intro" >}}). Previous posts covered the [entity system]({{< relref "waaseyaa-entity-system" >}}), [access control]({{< relref "waaseyaa-access-control" >}}), the [API layer]({{< relref "waaseyaa-api-layer" >}}), and the [AI packages]({{< relref "waaseyaa-ai-packages" >}}).
 
 A framework that can't be installed isn't a framework. It's a demo. This post covers how waaseyaa went from a monorepo where every subpackage depended on `@dev` path repositories to individually versioned packages on [Packagist](https://packagist.org/).
 
 ## The Problem With "Just Publish It"
 
-Waaseyaa is a monorepo. The root `composer.json` defines 38 subpackages under `packages/`, each referenced as a path repository with `@dev` constraints. During development, this is convenient. Composer resolves everything locally, and you never think about versioning.
+Waaseyaa is a monorepo. The root `composer.json` defines 38 subpackages under `packages/`, each referenced as a path repository with `@dev` constraints. During development, this is convenient. [Composer](https://getcomposer.org/) resolves everything locally, and you never think about versioning.
 
 The moment you try to register the root package on Packagist, the problem becomes clear. Packagist can't resolve path repositories. Every `"waaseyaa/entity": "@dev"` in a subpackage's `require` block points to a local directory that doesn't exist on the registry. The root package is unpublishable without publishing every subpackage first.
 
@@ -94,6 +94,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.SPLIT_GITHUB_TOKEN }}
 ```
 
+The symplify/monorepo-split-github-action wraps splitsh-lite for use in CI.
+
 Each matrix entry runs in parallel. A full split of 38 packages takes about two minutes.
 
 The `fetch-depth: 0` is important. splitsh-lite needs the full git history to produce correct subtree commits. A shallow clone produces broken splits.
@@ -164,5 +166,7 @@ The monorepo root publishes as `waaseyaa/framework` and requires all subpackages
 The important thing about this process is what it didn't change. The monorepo is still the development environment. Tests still run from the root. CI still validates the full dependency graph. Contributors still open PRs against one repo.
 
 The split is invisible during development. It only matters at release time, and it's fully automated. Tag a release, wait two minutes, and 38 packages appear on Packagist with matching versions.
+
+That wraps the Waaseyaa series. If you're just finding this, start from the beginning: [Waaseyaa: building a Drupal-inspired PHP CMS with AI]({{< relref "waaseyaa-intro" >}}).
 
 Baamaapii

@@ -1,6 +1,6 @@
 ---
 title: "Three skills for governing multi-repo co-development with Claude Code"
-date: 2026-03-16
+date: 2026-03-18
 categories: [ai, php]
 tags: [claude-code, waaseyaa, codified-context, skills]
 series: ["waaseyaa"]
@@ -8,13 +8,12 @@ series_order: 2
 series_group: "Main"
 summary: "A skill set that governs framework-app co-development across three repos: enforcing patterns, auditing divergence, and extracting shared code."
 slug: "co-development-skill-set"
-draft: true
-devto: true
+draft: false
 ---
 
 Ahnii!
 
-> **Series context:** This post builds on the [Waaseyaa series]({{< relref "waaseyaa-intro" >}}). It assumes you've read about the [entity system](/blog/waaseyaa-entity-system/) and [codified context architecture]({{< relref "codified-context-the-problem" >}}), but you can follow the design without that background.
+> **Series context:** This post builds on the [Waaseyaa series]({{< relref "waaseyaa-intro" >}}). It assumes you've read about the [entity system]({{< relref "waaseyaa-entity-system" >}}) and [codified context architecture]({{< relref "codified-context-the-problem" >}}), but you can follow the design without that background.
 
 When you develop a framework and two applications together, the AI assistant working in one repo has no awareness of the other two. It doesn't know that the framework already provides the capability you're about to build from scratch. It doesn't know that the other app solved the same problem last week with a different pattern. And nobody is measuring whether the apps are drifting apart.
 
@@ -159,7 +158,7 @@ The extraction log becomes the institutional memory of why framework capabilitie
 
 The three skills form a loop:
 
-```
+```text
 Develop (Skill 1) ──▶ Measure (Skill 2) ──▶ Extract (Skill 3)
      ▲                                              │
      └──────── pattern catalog updated ◀────────────┘
@@ -176,5 +175,7 @@ You could write all of this in a wiki. The framework-or-app criteria, the patter
 Skills work because they're active. They trigger when Claude touches the relevant code paths. They enforce checks before code gets written, not after it ships. And they evolve with the codebase because they live in the repos they govern.
 
 The codified context architecture gives each repo self-awareness. This skill set gives the repos awareness of each other.
+
+Next: [Building a temporal layer so your AI never lies about time]({{< relref "claudriel-temporal-layer" >}}).
 
 Baamaapii

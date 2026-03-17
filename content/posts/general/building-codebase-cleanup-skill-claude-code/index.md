@@ -20,7 +20,7 @@ Here's the full walkthrough: what skills are, the cleanup skill itself (ready to
 
 Skills are markdown files that live in `~/.claude/skills/` as `SKILL.md` files inside named directories. Each one contains structured instructions that Claude Code follows when the skill is invoked.
 
-```
+```text
 ~/.claude/skills/
   cleaning-up-codebases/
     SKILL.md
@@ -313,7 +313,7 @@ If you want to build skills for your own workflows, here's what I've learned:
 
 ### File Structure
 
-```
+```text
 ~/.claude/skills/
   your-skill-name/
     SKILL.md
@@ -340,4 +340,4 @@ description: When to use this skill — be specific so Claude invokes it at the 
 
 **Start specific, generalize later.** My cleanup skill started Rust-specific. That was fine — it captured real patterns from real work. I generalized it later once I understood what was language-specific and what was universal.
 
-Baamaapii 👋
+Baamaapii
