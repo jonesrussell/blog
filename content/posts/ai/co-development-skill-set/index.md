@@ -176,6 +176,6 @@ Skills work because they're active. They trigger when Claude touches the relevan
 
 The codified context architecture gives each repo self-awareness. This skill set gives the repos awareness of each other.
 
-Next: [Building a temporal layer so your AI never lies about time]({{< relref "claudriel-temporal-layer" >}}).
+Next: Building a temporal layer so your AI never lies about time.
 
 Baamaapii

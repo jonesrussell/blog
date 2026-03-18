@@ -134,6 +134,6 @@ The GitHub issue that drove the initial entity system build scoped the work prec
 
 The combination — issue scope plus codified context — is what makes complex framework development manageable across dozens of sessions.
 
-Next: [Deny-unless-granted: access control in Waaseyaa]({{< relref "waaseyaa-access-control" >}}).
+Next: Deny-unless-granted: access control in Waaseyaa.
 
 Baamaapii

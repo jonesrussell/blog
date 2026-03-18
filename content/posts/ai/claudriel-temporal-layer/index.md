@@ -227,6 +227,6 @@ Traditional web apps can tolerate sloppy time handling. A blog post timestamped 
 
 The temporal layer is seven classes. It adds no external dependencies. The entire subsystem is injectable and testable. The cost of getting time right is low. The cost of getting it wrong is an AI assistant that confidently tells you the wrong thing about your own schedule.
 
-Next: [The entity system at the heart of Waaseyaa]({{< relref "waaseyaa-entity-system" >}}).
+Next: The entity system at the heart of Waaseyaa.
 
 Baamaapii

@@ -112,6 +112,6 @@ What it doesn't do well: it has no memory of why a decision was made three month
 
 Waaseyaa is open source and in active development. If you're building a content platform that needs content modeling depth, AI integration from the start, and a modern PHP foundation, the framework is worth watching.
 
-Next: [Publishing a PHP monorepo to Packagist with splitsh-lite]({{< relref "waaseyaa-packagist" >}}).
+Next: Publishing a PHP monorepo to Packagist with splitsh-lite.
 
 Baamaapii
