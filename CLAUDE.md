@@ -68,7 +68,7 @@ draft: true
 ## Gotchas
 
 - Theme submodule may not be checked out after clone/branch switch. Run `git submodule update --init` if you see "found no layout file" warnings during build.
-- Hugo `relref` fails for future-dated posts unless built with `--buildFuture`. The GitHub Actions workflow includes this flag.
+- Hugo `relref` fails for future-dated posts unless built with `--buildFuture`. The workflow does NOT use `--buildFuture`, so future posts stay unpublished until their date. Use plain text for "Next" links to future posts and re-link them with `relref` on publish day.
 - Posts use page bundles in subdirectories (e.g., `content/posts/ai/post-name/index.md`), not flat files in `content/posts/`. Glob with `content/posts/**/*.md` to find all posts.
 
 ## PSR Blog Series
@@ -81,4 +81,4 @@ draft: true
 
 ## Deployment
 
-Automated via GitHub Actions (`.github/workflows/hugo.yml`). Pushes to `main` trigger a build with Hugo extended (`--buildFuture` enabled) and deploy to GitHub Pages. No manual deployment needed — just merge to main.
+Automated via GitHub Actions (`.github/workflows/hugo.yml`). Pushes to `main` trigger a build with Hugo extended and deploy to GitHub Pages. Future-dated posts are excluded until their date. No manual deployment needed — just merge to main.
