@@ -13,7 +13,7 @@ draft: false
 
 Ahnii!
 
-> **Series context:** This post builds on the [Waaseyaa series]({{< relref "waaseyaa-intro" >}}). It assumes you've read about the [entity system]({{< relref "waaseyaa-entity-system" >}}) and [codified context architecture]({{< relref "codified-context-the-problem" >}}), but you can follow the design without that background.
+> **Series context:** This post builds on the [Waaseyaa series]({{< relref "waaseyaa-intro" >}}). It assumes familiarity with [codified context architecture]({{< relref "codified-context-the-problem" >}}), but you can follow the design without that background.
 
 When you develop a framework and two applications together, the AI assistant working in one repo has no awareness of the other two. It doesn't know that the framework already provides the capability you're about to build from scratch. It doesn't know that the other app solved the same problem last week with a different pattern. And nobody is measuring whether the apps are drifting apart.
 
@@ -131,7 +131,7 @@ The extraction process follows a fixed sequence:
 
 1. **Scope.** What capability is being extracted? How do the app implementations differ? What's the minimal generic interface that covers both?
 
-2. **Place.** Waaseyaa uses a layered architecture. Layer 0 is foundation utilities, Layer 1 is core data (entities, storage, access), Layer 2 is content types, Layer 3 is services, Layer 4+ is API and interfaces. Packages can only import from their own layer or lower. The skill determines which layer the extraction belongs to.
+2. **Place.** Waaseyaa uses a layered architecture where packages can only import from their own layer or lower. The skill determines which layer the extraction belongs to.
 
 3. **Design the extension point.** Define the interface or abstract class in the framework. Design the registration mechanism apps will use. Ensure apps can customize behavior without forking framework code.
 
