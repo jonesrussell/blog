@@ -17,7 +17,7 @@ Ahnii!
 
 [Waaseyaa](https://github.com/waaseyaa/framework) is an Anishinaabe word meaning "it is bright" or "there is light." It's also a PHP CMS framework that takes the best ideas from both [Drupal](https://www.drupal.org/) and [Laravel](https://laravel.com/) — forked from Drupal 11's core and stripped of its technical debt, then shaped by Laravel 12's developer experience without carrying its baggage either. The result is a 43-package monorepo built on PHP 8.4+, [Symfony](https://symfony.com/) 7.x, with a [Nuxt 3](https://nuxt.com/) admin SPA. The first application built on it is [Minoo](https://github.com/waaseyaa/minoo), an Indigenous knowledge platform.
 
-This week is a five-part series covering the framework's architecture and the AI-assisted workflow used to build it. Each post covers one part of the system and shows how [GitHub issues, milestones, and codified context]({{< relref "codified-context-the-problem" >}}) made it possible to build something this complex working solo.
+This is a six-part series covering the framework's architecture and the AI-assisted workflow used to build it. Each post covers one part of the system and shows how [GitHub issues, milestones, and codified context]({{< relref "codified-context-the-problem" >}}) made it possible to build something this complex working solo.
 
 ## Why Build Another CMS Framework?
 
@@ -41,6 +41,8 @@ Layer 5: api, serialization
 Layer 6: application (Minoo)
 ```
 
+Each layer can only depend on packages at its own level or below, enforcing a strict dependency direction from infrastructure up to application.
+
 43 packages across these seven layers, each in its own directory under `packages/`. The packages that map directly to Drupal concepts: entity, field, node, taxonomy, access, vocabulary, content-type. The packages that don't exist in Drupal: ai-schema, ai-agent, ai-pipeline, ai-vector.
 
 The AI integration packages exist because the whole point of building a new framework is the ability to design for current constraints, not 2008 ones.
@@ -61,7 +63,7 @@ The combination is more effective than either alone. Good context without a scop
 
 [Minoo](https://github.com/waaseyaa/minoo) is Anishinaabe for "it is good." It's the first application built on the framework and the reason the framework exists — a platform for managing and sharing Indigenous knowledge: teachings, ceremonies, languages, community events. Minoo is live at [minoo.live](https://minoo.live), with full Ojibwe (Anishinaabemowin) translation at [minoo.live/oj/](https://minoo.live/oj/).
 
-Minoo has 18 entity types across 6 domains, including a community registry (637 First Nations communities), an elder support program, and consent/copyright governance. It demonstrates that the framework's abstractions generalize: entity types with custom fields, access policies that restrict content by language community, a search interface powered by the [north-cloud]({{< relref "codified-context-the-problem" >}}) API with indigenous-only filtering enforced server-side.
+Minoo has 18 entity types across 6 domains, including a community registry (637 First Nations communities), an elder support program, and consent/copyright governance. It demonstrates that the framework's abstractions generalize: entity types with custom fields, access policies that restrict content by language community, a search interface powered by the [NorthCloud](https://northcloud.one) API with indigenous-only filtering enforced server-side.
 
 Minoo's codified context includes six domain skills for application-level patterns and five specs covering application-specific subsystems. Its MCP wiring includes both local `minoo_*` tools and upstream `waaseyaa_*` tools — sessions touching framework-level code retrieve framework specs, sessions touching application-level code retrieve Minoo specs. The codified context routes correctly across both layers.
 
