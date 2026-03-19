@@ -6,6 +6,8 @@
 
 When you develop a framework and two apps together, the AI working in one repo has zero awareness of the others. Built a three-skill system for Claude Code that enforces patterns across repos, audits for divergence, and extracts shared code into the framework. Develop → measure → extract → repeat. https://jonesrussell.github.io/blog/co-development-skill-set/
 
+#ClaudeCode #PHP #AI #OpenSource #WebDevelopment #CodingWithAI
+
 ## X (Twitter)
 
 Built 3 Claude Code skills for multi-repo co-development: one enforces patterns, one audits divergence across repos, one extracts shared code into the framework. The cycle: develop → measure → extract → repeat. https://jonesrussell.github.io/blog/co-development-skill-set/
