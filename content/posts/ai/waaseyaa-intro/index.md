@@ -32,7 +32,7 @@ The result is a framework with Drupal's content modeling power, Laravel's develo
 Waaseyaa is organized into seven layers with explicit dependency rules. Each layer can import from its own layer or lower, never from higher layers.
 
 ```text
-Layer 0: core, types, contracts
+Layer 0: core, foundation, typed-data, cache, plugin, validation
 Layer 1: field, storage
 Layer 2: entity
 Layer 3: access, taxonomy
@@ -43,7 +43,7 @@ Layer 6: application (Minoo)
 
 Each layer can only depend on packages at its own level or below, enforcing a strict dependency direction from infrastructure up to application.
 
-43 packages across these seven layers, each in its own directory under `packages/`. The packages that map directly to Drupal concepts: entity, field, node, taxonomy, access, vocabulary, content-type. The packages that don't exist in Drupal: ai-schema, ai-agent, ai-pipeline, ai-vector.
+43 packages across these seven layers, each in its own directory under `packages/`. The packages that map directly to Drupal concepts: entity, field, node, taxonomy, access, media, menu, path, relationship. The packages that don't exist in Drupal: ai-schema, ai-agent, ai-pipeline, ai-vector.
 
 The AI integration packages exist because the whole point of building a new framework is the ability to design for current constraints, not 2008 ones.
 

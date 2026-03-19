@@ -221,6 +221,97 @@ $snapshot = $service->now('test-scope');
 
 No global state. No mocking frameworks. Inject the clock, control the time. Tests for temporal agents can simulate "it's 2 minutes before your next meeting" by constructing the right snapshot and clock health state, then asserting the agent produces the expected notification.
 
+## Common Mistakes
+
+Reaching for `now()` directly instead of using the scoped snapshot:
+
+```php
+// Bad: bypasses the temporal layer entirely
+$deadline = new \DateTimeImmutable();
+$snapshot = $this->timeService->now('request');
+// $deadline and $snapshot->utc() are different instants
+```
+
+```php
+// Good: derive everything from the snapshot
+$snapshot = $this->timeService->now('request');
+$deadline = $snapshot->utc();
+```
+
+The second version guarantees every timestamp in the request is consistent. The first introduces the exact drift the temporal layer exists to prevent.
+
+Ignoring clock health before acting on temporal data:
+
+```php
+// Bad: assumes the clock is trustworthy
+$minutes = $snapshot->minutesUntil($nextMeeting);
+$this->notify("Meeting in {$minutes} minutes");
+```
+
+```php
+// Good: check health first
+$health = $this->clockHealth->assess();
+if (!$health['safe_for_temporal_reasoning']) {
+    return; // suppress time-sensitive notifications
+}
+$minutes = $snapshot->minutesUntil($nextMeeting);
+$this->notify("Meeting in {$minutes} minutes");
+```
+
+If the system clock has drifted, that "3 minutes" could be wrong. The health check costs almost nothing and prevents confidently wrong notifications.
+
+## Framework Integration
+
+To wire the temporal layer into a Laravel application, you register the components in a service provider:
+
+```php
+// TemporalServiceProvider.php
+public function register(): void
+{
+    $this->app->singleton(WallClockInterface::class, SystemWallClock::class);
+    $this->app->singleton(MonotonicClockInterface::class, SystemMonotonicClock::class);
+    $this->app->singleton(AtomicTimeService::class);
+    $this->app->scoped(RequestTimeSnapshotStore::class);
+    $this->app->singleton(TimezoneResolver::class);
+    $this->app->singleton(ClockHealthMonitor::class);
+    $this->app->singleton(TemporalContextFactory::class);
+}
+```
+
+The key binding is `RequestTimeSnapshotStore` as `scoped`. Laravel creates a fresh instance per request and discards it when the request ends. Everything else is a singleton — stateless services that can be shared safely.
+
+A middleware layer captures the initial snapshot at the start of each request:
+
+```php
+public function handle(Request $request, Closure $next): Response
+{
+    $this->temporalContext->snapshotForInteraction(
+        scopeKey: 'request',
+        tenantId: $request->header('X-Tenant-Id'),
+        workspaceUuid: $request->route('workspace'),
+        account: $request->user(),
+        requestTimezone: $request->header('X-Timezone'),
+    );
+
+    return $next($request);
+}
+```
+
+By the time your controller runs, the snapshot is already captured. Controllers and jobs inject `AtomicTimeService` and call `now('request')` to get the pre-captured snapshot — they never need to think about time resolution themselves.
+
+## Try It Yourself
+
+The temporal layer lives in the [`jonesrussell/claudriel`](https://github.com/jonesrussell/claudriel) package. To explore the code:
+
+```bash
+git clone https://github.com/jonesrussell/claudriel.git
+cd claudriel
+composer install
+composer test -- --filter=Temporal
+```
+
+The test suite includes fixed-clock scenarios that demonstrate scoped snapshots, timezone resolution, and clock health assessment. Read through `tests/Unit/Temporal/` to see how each component is tested without real clocks.
+
 ## Why This Matters for AI Systems
 
 Traditional web apps can tolerate sloppy time handling. A blog post timestamped 200ms off doesn't matter. But AI systems that reason about your schedule, detect patterns in your behavior, and make proactive suggestions need temporal consistency the same way financial systems need transactional consistency.

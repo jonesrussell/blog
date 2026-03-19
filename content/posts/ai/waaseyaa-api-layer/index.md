@@ -27,16 +27,26 @@ Waaseyaa implements the JSON:API spec natively for entity CRUD. A `Teaching` ent
 
 ## ResourceSerializer
 
-`ResourceSerializer` converts entity objects into JSON:API document structures:
+`ResourceSerializer` converts entity objects into `JsonApiResource` value objects:
 
 ```php
-class ResourceSerializer
+final class ResourceSerializer
 {
-    public function serialize(EntityInterface $entity, RequestContext $context): array;
-    public function serializeCollection(iterable $entities, RequestContext $context): array;
-    public function deserialize(array $document, string $entityType): EntityInterface;
+    public function serialize(
+        EntityInterface $entity,
+        ?EntityAccessHandler $accessHandler = null,
+        ?AccountInterface $account = null,
+    ): JsonApiResource;
+
+    public function serializeCollection(
+        array $entities,
+        ?EntityAccessHandler $accessHandler = null,
+        ?AccountInterface $account = null,
+    ): array;
 }
 ```
+
+There's no `deserialize()` method — the framework handles inbound JSON:API documents in `JsonApiController` directly, validating the `data.type` and `data.attributes` structure before passing values to entity storage.
 
 The serialized form of a `Teaching` entity:
 
@@ -65,21 +75,28 @@ The serialized form of a `Teaching` entity:
 
 This shows a single Teaching resource with its attributes and relationship references to language and teacher entities.
 
-`ResourceSerializer` calls `entity->toArray()` and maps the result to JSON:API structure, handling relationship references as links rather than embedded objects. The `RequestContext` carries the access control context — fields that the current user can't view are omitted from the serialized output.
+`ResourceSerializer` calls `entity->toArray()` and maps the result to JSON:API structure, excluding entity keys (like `id` and `uuid`) from attributes since they appear at the top level of the resource. When an `EntityAccessHandler` and `AccountInterface` are provided, fields that the current user can't view are omitted from the serialized output.
 
 ## SchemaPresenter
 
 `SchemaPresenter` handles a different problem: not "serialize this entity" but "describe what entities of this type look like." It's used for the SPA's dynamic form generation — when the admin interface needs to render a form for creating a new entity type, it requests the schema first.
 
 ```php
-class SchemaPresenter
+final class SchemaPresenter
 {
-    public function present(string $entityType): array;
-    public function presentField(FieldInterface $field): array;
+    public function present(
+        EntityTypeInterface $entityType,
+        array $fieldDefinitions = [],
+        ?EntityInterface $entity = null,
+        ?EntityAccessHandler $accessHandler = null,
+        ?AccountInterface $account = null,
+    ): array;
 }
 ```
 
-The schema for `Teaching` describes each field's type, validation rules, required status, and relationship targets. The SPA reads this schema and generates the appropriate form inputs — a text input for `title`, a rich text editor for `body`, a relationship picker for `language` and `teacher`.
+The `present()` method returns a JSON Schema (draft-07) array with custom `x-widget` hints for the admin UI. It builds system properties from entity keys automatically, then adds field definitions you pass in. When access control parameters are provided, view-denied fields are removed entirely and edit-denied fields are marked `readOnly` with `x-access-restricted`.
+
+The schema for `Teaching` describes each field's JSON Schema type, widget hint, label, and required status. The SPA reads this schema and generates the appropriate form inputs — a text input for `title`, a rich text editor for `body`, a relationship picker for `language` and `teacher`.
 
 This separation — serializer for data, presenter for schema — means the SPA doesn't need hardcoded knowledge of each entity type's structure. New entity types in Minoo appear in the admin interface automatically.
 
@@ -87,57 +104,64 @@ This separation — serializer for data, presenter for schema — means the SPA 
 
 The api-layer subsystem spec is where Tier 3 cold memory earns its keep most clearly.
 
-A session that opened halfway through implementing relationship sideloading for the Teachings endpoint needed to know: What's the existing ResourceSerializer contract? How does `RequestContext` propagate the access control context? What's the JSON:API format for included relationships? What does the existing test setup look like?
+A session that opened halfway through implementing relationship sideloading for the Teachings endpoint needed to know: What's the existing ResourceSerializer contract? How do `EntityAccessHandler` and `AccountInterface` propagate the access control context? What's the JSON:API format for included relationships? What does the existing test setup look like?
 
 Without a spec, answering these questions requires reading several source files, understanding their interactions, and reconstructing the contract from code. That's 15-20 minutes of session context before the actual work starts.
 
-With the api-layer spec, the session calls `waaseyaa_get_spec("api-layer")` and gets the full picture: `ResourceSerializer` and `SchemaPresenter` method signatures, the `RequestContext` structure, the JSON:API document format for both single resources and collections, the relationship loading contract, and the standard test setup.
+With the api-layer spec, the session calls `waaseyaa_get_spec("api-layer")` and gets the full picture: `ResourceSerializer` and `SchemaPresenter` method signatures, the access control parameter pattern, the JSON:API document format for both single resources and collections, the relationship loading contract, and the standard test setup.
 
 The spec exists precisely because relationship loading was the kind of feature that required multiple sessions to implement. The first session established the contract. Subsequent sessions needed to understand it without re-reading everything the first session produced.
 
 ## A Minoo Endpoint
 
-Here's what a Minoo controller looks like with the framework's API layer handling the heavy work:
+Minoo doesn't need a custom `TeachingController` at all. The framework's `JsonApiController` handles CRUD for any registered entity type:
 
 ```php
-class TeachingController extends AbstractApiController
+final class JsonApiController
 {
     public function __construct(
-        private readonly EntityRepository $repository,
+        private readonly EntityTypeManagerInterface $entityTypeManager,
         private readonly ResourceSerializer $serializer,
-        private readonly PolicyEvaluator $access,
+        private readonly ?EntityAccessHandler $accessHandler = null,
+        private readonly ?AccountInterface $account = null,
     ) {}
 
-    public function show(Request $request, string $id): JsonResponse
+    public function show(string $entityTypeId, int|string $id): JsonApiDocument
     {
-        $teaching = $this->repository->find('teaching', EntityId::from($id));
+        $entity = $this->loadByIdOrUuid($entityTypeId, $id);
 
-        if ($teaching === null) {
-            return $this->notFound();
+        if ($entity === null) {
+            return $this->errorDocument(
+                JsonApiError::notFound("Entity of type '{$entityTypeId}' with ID '{$id}' not found."),
+            );
         }
 
-        $context = RequestContext::fromRequest($request);
-        $result = $this->access->evaluate($teaching, 'read', $context->getUser());
-
-        if ($result->isDenied()) {
-            return $this->forbidden($result->getReason());
+        if ($this->accessHandler !== null && $this->account !== null) {
+            $access = $this->accessHandler->check($entity, 'view', $this->account);
+            if (!$access->isAllowed()) {
+                return $this->errorDocument(
+                    JsonApiError::forbidden("Access denied for viewing entity '{$id}'."),
+                );
+            }
         }
 
-        return $this->json($this->serializer->serialize($teaching, $context));
+        $resource = $this->serializer->serialize($entity, $this->accessHandler, $this->account);
+
+        return JsonApiDocument::fromResource($resource, links: ['self' => "/api/{$entityTypeId}/{$resource->id}"]);
     }
 }
 ```
 
-The controller is thin. Entity loading, access evaluation, and serialization are all framework responsibilities. Minoo's application code handles the routing and the `Teaching`-specific entity type — everything else is inherited.
+The controller is generic. Entity loading, access evaluation, and serialization are all framework responsibilities driven by the entity type ID in the URL. Minoo's `Teaching` entities are served at `/api/teaching/{id}` without any application-specific controller code.
 
-This is the thin-application pattern in practice. Adding a new entity type to Minoo is: define the entity class with its fields, register it in the container, add the controller routes. The framework provides the rest.
+This is the thin-application pattern in practice. Adding a new entity type to Minoo is: define the entity type with its fields and register it with the entity type manager. The framework's `JsonApiController` and `JsonApiRouteProvider` handle the rest — CRUD endpoints, access checks, filtering, pagination, and JSON:API document formatting.
 
 ## What the Nuxt 3 SPA Gets
 
 The admin SPA is a Nuxt 3 application using a JSON:API client library. Because the framework is spec-compliant, the SPA gets:
 
-- **Filtering** — `filter=title:Water` is handled by the framework's query parser, not custom controller code
-- **Pagination** — `page[number]` and `page[size]` work on all endpoints
+- **Filtering** — `filter[title]=Water` is handled by the framework's query parser using `condition()` calls on entity storage queries, not custom controller code
+- **Pagination** — `page[offset]` and `page[limit]` work on all endpoints
 - **Relationship loading** — `include=language,teacher` fetches related entities in one request
 - **Schema introspection** — the SPA generates forms dynamically from the schema endpoint
 

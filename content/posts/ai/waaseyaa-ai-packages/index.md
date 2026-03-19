@@ -42,12 +42,13 @@ The practical use case in Minoo: when generating a new Teaching from a transcrip
 ```php
 interface AgentInterface
 {
-    public function getCapabilities(): CapabilitySet;
-    public function execute(AgentAction $action, AgentContext $context): AgentResult;
+    public function execute(AgentContext $context): AgentResult;
+    public function dryRun(AgentContext $context): AgentResult;
+    public function describe(): string;
 }
 ```
 
-The interface defines two methods: one declaring what the agent can do, and one executing a specific action within a given context.
+The interface defines three methods: `execute` runs the agent's action within a given context, `dryRun` previews what the agent would do without making changes, and `describe` returns a human-readable explanation of the agent's purpose.
 
 The key design decision: agents operate through the same access control layer as human users. An agent has a user identity, and that identity is subject to `AccessPolicyInterface` like any other user. An agent can't bypass the deny-unless-granted model — it's as constrained as the most restricted human user with the same permissions.
 
@@ -76,11 +77,21 @@ The interface is straightforward:
 ```php
 interface VectorStoreInterface
 {
-    public function store(EntityInterface $entity, array $embedding): void;
-    public function search(array $queryEmbedding, SearchOptions $options): VectorSearchResult;
-    public function delete(EntityId $id): void;
+    public function store(EntityEmbedding $embedding): void;
+    public function delete(string $entityTypeId, int|string $entityId): void;
+    public function search(
+        array $queryVector,
+        int $limit = 10,
+        ?string $entityTypeId = null,
+        ?string $langcode = null,
+        array $fallbackLangcodes = [],
+    ): array;
+    public function get(string $entityTypeId, int|string $entityId): ?EntityEmbedding;
+    public function has(string $entityTypeId, int|string $entityId): bool;
 }
 ```
+
+Storage takes an `EntityEmbedding` value object rather than a raw entity and array — the embedding is a first-class concept. Search returns `SimilarityResult[]` sorted by score, with optional filters for entity type and language (including fallback langcodes for multilingual content). The `get` and `has` methods allow checking stored embeddings directly.
 
 The practical implementation stores embeddings in a vector database (pgvector in the current implementation) and exposes semantic search on top of the regular JSON:API query interface. Searching Minoo's teachings by semantic similarity — "find teachings about water" — goes through the vector store, not through the NorthCloud keyword search.
 
@@ -92,7 +103,7 @@ The AI packages are at different stages. Honest accounting:
 
 **ai-schema:** Functional for the entity types currently in Minoo. The schema format is settled. The coverage is complete for the existing entity types.
 
-**ai-agent:** Interface defined, basic execution loop implemented. Agent actions for entity CRUD are working. Workflow triggers are planned for the next milestone.
+**ai-agent:** Interface defined, basic execution loop implemented with dry-run support for previewing changes before committing them. Agent actions for entity CRUD are working. Workflow triggers are planned for the next milestone.
 
 **ai-pipeline:** The orchestration and plugin registration are in place. Two processors are implemented (transcript extraction, summary generation). The review queue integration is planned.
 

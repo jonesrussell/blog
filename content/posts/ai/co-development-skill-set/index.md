@@ -37,10 +37,10 @@ The first skill, `waaseyaa-app-development`, lives in the framework repo and get
 
 ```bash
 # In minoo's skills directory
-ln -s ../../../waaseyaa/skills/waaseyaa/app-development skills/waaseyaa-app-development
+ln -s ../../waaseyaa/skills/waaseyaa/app-development skills/waaseyaa-app-development
 
 # In claudriel's skills directory
-ln -s ../../../waaseyaa/skills/waaseyaa/app-development skills/waaseyaa-app-development
+ln -s ../../waaseyaa/skills/waaseyaa/app-development skills/waaseyaa-app-development
 ```
 
 Symlinks mean both apps always reference the current version. When the framework updates the skill, both apps get the update without copying files.
@@ -149,7 +149,7 @@ The extraction process follows a fixed sequence:
 - **Layer:** 3 (Services)
 - **Extension point:** EnvelopeValidatorInterface
 - **Why:** Identical validation logic in both apps
-- **Apps updated:** Minoo (PR #42), Claudriel (PR #31)
+- **Apps updated:** Minoo, Claudriel
 ```
 
 The extraction log becomes the institutional memory of why framework capabilities exist and where they came from.

@@ -72,29 +72,39 @@ jobs:
   split:
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
         package:
-          - { name: 'entity', directory: 'packages/entity' }
-          - { name: 'field', directory: 'packages/field' }
-          - { name: 'access', directory: 'packages/access' }
+          - { local: 'packages/entity', remote: 'entity' }
+          - { local: 'packages/field', remote: 'field' }
+          - { local: 'packages/access', remote: 'access' }
           # ... all 43 packages
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
+      - name: Install splitsh-lite
+        run: |
+          curl -sL https://github.com/splitsh/lite/releases/download/v1.0.1/lite_linux_amd64.tar.gz | tar xz
+          sudo mv splitsh-lite /usr/local/bin/splitsh-lite
+
       - name: Split and push
-        uses: symplify/monorepo-split-github-action@v2
-        with:
-          package_directory: ${{ matrix.package.directory }}
-          repository_organization: 'waaseyaa'
-          repository_name: ${{ matrix.package.name }}
-          tag: ${{ github.ref_name }}
         env:
-          GITHUB_TOKEN: ${{ secrets.SPLIT_GITHUB_TOKEN }}
+          SPLIT_GH_TOKEN: ${{ secrets.SPLIT_GITHUB_TOKEN }}
+          LOCAL_PREFIX: ${{ matrix.package.local }}
+          REMOTE_REPO: ${{ matrix.package.remote }}
+          REPO_OWNER: ${{ github.repository_owner }}
+          TAG_NAME: ${{ github.ref_name }}
+        run: |
+          REMOTE_URL="https://x-access-token:${SPLIT_GH_TOKEN}@github.com/${REPO_OWNER}/${REMOTE_REPO}.git"
+          SHA=$(splitsh-lite --prefix="${LOCAL_PREFIX}")
+          git remote add split "${REMOTE_URL}" 2>/dev/null || true
+          git push split "${SHA}:refs/heads/main" --force
+          git push split "${SHA}:refs/tags/${TAG_NAME}" --force
 ```
 
-The symplify/monorepo-split-github-action wraps splitsh-lite for use in CI.
+The workflow installs splitsh-lite directly from its GitHub releases, then uses it to produce a subtree commit for each package and push it to the corresponding mirror repo.
 
 Each matrix entry runs in parallel. A full split of 43 packages takes about two minutes.
 
@@ -109,13 +119,13 @@ First, replace `@dev` constraints with semver ranges:
 ```json
 {
   "require": {
-    "waaseyaa/contracts": "^1.1",
-    "waaseyaa/types": "^1.1"
+    "waaseyaa/typed-data": "^0.1",
+    "waaseyaa/plugin": "^0.1"
   }
 }
 ```
 
-Path repositories resolve `@dev` locally, but Packagist needs real version constraints. The `^1.1` range means "any 1.x release starting from 1.1.0."
+Path repositories resolve `@dev` locally, but Packagist needs real version constraints. The `^0.1` range means "any 0.x release starting from 0.1.0."
 
 Second, ensure every `composer.json` has the fields Packagist expects:
 
@@ -124,7 +134,7 @@ Second, ensure every `composer.json` has the fields Packagist expects:
   "name": "waaseyaa/entity",
   "type": "library",
   "description": "Entity system for the Waaseyaa framework",
-  "license": "MIT",
+  "license": "GPL-2.0-or-later",
   "autoload": {
     "psr-4": {
       "Waaseyaa\\Entity\\": "src/"
@@ -159,7 +169,7 @@ composer require waaseyaa/framework
 composer require waaseyaa/entity waaseyaa/field waaseyaa/access
 ```
 
-The monorepo root publishes as `waaseyaa/framework` and requires all subpackages. Individual packages declare their own dependencies, so installing `waaseyaa/entity` pulls in `waaseyaa/contracts` and `waaseyaa/types` automatically but doesn't force you to install `waaseyaa/api` or `waaseyaa/admin`.
+The monorepo root publishes as `waaseyaa/framework` and requires all subpackages. Individual packages declare their own dependencies, so installing `waaseyaa/entity` pulls in `waaseyaa/typed-data` and `waaseyaa/plugin` automatically but doesn't force you to install `waaseyaa/api` or `waaseyaa/admin`.
 
 ## What Stayed the Same
 
