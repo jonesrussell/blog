@@ -1,10 +1,10 @@
 ---
 title: "Deny-unless-granted: access control in waaseyaa"
-date: 2026-03-21
+date: 2026-03-19
 categories: [ai, php]
 tags: [waaseyaa, php, claude-code, open-source]
 series: ["waaseyaa"]
-series_order: 5
+series_order: 3
 series_group: "Main"
 summary: "How waaseyaa's AccessPolicyInterface implements deny-unless-granted semantics with field-level access control — and how GitHub milestones kept it from scope-creeping."
 slug: "waaseyaa-access-control"
@@ -13,7 +13,7 @@ draft: false
 
 Ahnii!
 
-> **Series context:** This is part 5 of the [Waaseyaa series]({{< relref "waaseyaa-intro" >}}). Catch up on [part 1]({{< relref "waaseyaa-intro" >}}) (overview) and [part 2]({{< relref "waaseyaa-entity-system" >}}) (entity system) before reading this.
+> **Series context:** This is part 3 of the [Waaseyaa series]({{< relref "waaseyaa-intro" >}}). Catch up on [part 1]({{< relref "waaseyaa-intro" >}}) (overview) and [part 2]({{< relref "waaseyaa-entity-system" >}}) (entity system) before reading this.
 
 Access control is where frameworks make their most consequential design decisions. The choice between allow-unless-denied and deny-unless-granted isn't a style preference — it determines what happens when your policy logic has a gap.
 

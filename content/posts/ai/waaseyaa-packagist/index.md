@@ -1,10 +1,10 @@
 ---
 title: "Publishing a PHP monorepo to Packagist with splitsh-lite"
-date: 2026-03-24
+date: 2026-03-26
 categories: [ai, php]
 tags: [waaseyaa, php, packagist, open-source]
 series: ["waaseyaa"]
-series_order: 8
+series_order: 10
 series_group: "Main"
 summary: "How waaseyaa went from a monorepo with 43 path-repository subpackages to individually installable Composer packages on Packagist using splitsh-lite."
 slug: "waaseyaa-packagist"
@@ -13,7 +13,7 @@ draft: false
 
 Ahnii!
 
-> **Series context:** This is part 8 of the [Waaseyaa series]({{< relref "waaseyaa-intro" >}}). Previous posts covered the [entity system]({{< relref "waaseyaa-entity-system" >}}), [access control]({{< relref "waaseyaa-access-control" >}}), the [API layer]({{< relref "waaseyaa-api-layer" >}}), and the [AI packages]({{< relref "waaseyaa-ai-packages" >}}).
+> **Series context:** This is part 10 of the [Waaseyaa series]({{< relref "waaseyaa-intro" >}}). Previous posts covered the [entity system]({{< relref "waaseyaa-entity-system" >}}), [access control]({{< relref "waaseyaa-access-control" >}}), the [API layer]({{< relref "waaseyaa-api-layer" >}}), [DBAL migration]({{< relref "waaseyaa-dbal-migration" >}}), [i18n]({{< relref "waaseyaa-i18n" >}}), [testing]({{< relref "waaseyaa-testing" >}}), [deployment]({{< relref "waaseyaa-deployment" >}}), and the [AI packages]({{< relref "waaseyaa-ai-packages" >}}).
 
 A framework that can't be installed isn't a framework. It's a demo. This post covers how waaseyaa went from a monorepo where every subpackage depended on `@dev` path repositories to individually versioned packages on [Packagist](https://packagist.org/).
 
@@ -177,6 +177,16 @@ The important thing about this process is what it didn't change. The monorepo is
 
 The split is invisible during development. It only matters at release time, and it's fully automated. Tag a release, wait two minutes, and 43 packages appear on Packagist with matching versions.
 
-That wraps the Waaseyaa series. If you're just finding this, start from the beginning: [Waaseyaa: building a Drupal-inspired PHP CMS with AI]({{< relref "waaseyaa-intro" >}}).
+## The Full Picture
+
+This series started with a question: what would a PHP CMS framework look like if you designed it today, with AI as a first-class development tool?
+
+Ten posts later, the answer: 38 packages across seven layers, three production applications, a database migration that touched every package, i18n designed for indigenous languages, a test strategy built on in-memory implementations, deployment infrastructure that launches a site in 90 minutes, and AI integration packages that make entity schemas machine-readable.
+
+Waaseyaa started as one person's attempt to keep Drupal's best ideas while shedding its legacy. It grew into a framework powering [Minoo](https://minoo.live) (an indigenous cultural platform), [Claudriel](https://github.com/jonesrussell/claudriel) (an AI personal operations system), and [waaseyaa.org](https://waaseyaa.org) (its own marketing site). Building something this large solo was only possible because of a workflow that combined GitHub issues for scope, codified context for architectural consistency, and AI for the mechanical work of implementation.
+
+The framework is open source and in active development. If you're building a content platform that needs Drupal's content modeling depth, Laravel's developer experience, and AI integration from the ground up, [waaseyaa](https://github.com/waaseyaa/framework) is worth watching.
+
+If you're just finding this series, start from the beginning: [Waaseyaa: building a Drupal-inspired PHP CMS with AI]({{< relref "waaseyaa-intro" >}}).
 
 Baamaapii

@@ -1,10 +1,10 @@
 ---
 title: "The entity system at the heart of Waaseyaa"
-date: 2026-03-20
+date: 2026-03-18
 categories: [ai, php]
 tags: [waaseyaa, php, claude-code, open-source]
 series: ["waaseyaa"]
-series_order: 4
+series_order: 2
 series_group: "Main"
 summary: "How waaseyaa's EntityInterface, ContentEntityBase, and field system work — and how the entity-system specialist skill made cross-session development possible."
 slug: "waaseyaa-entity-system"
@@ -13,7 +13,7 @@ draft: false
 
 Ahnii!
 
-> **Series context:** This is part 4 of the [Waaseyaa series]({{< relref "waaseyaa-intro" >}}). Read [part 1]({{< relref "waaseyaa-intro" >}}) for an overview of the framework, its architecture, and the GitHub issue workflow used to build it.
+> **Series context:** This is part 2 of the [Waaseyaa series]({{< relref "waaseyaa-intro" >}}). Read [part 1]({{< relref "waaseyaa-intro" >}}) for an overview of the framework, its architecture, and the GitHub issue workflow used to build it.
 
 [Drupal](https://www.drupal.org/)'s greatest contribution to PHP content management isn't its UI or its module ecosystem — it's the entity/field model. The idea that content types are configurations of typed fields, that any content type can have any field, that fields carry their own storage and validation logic, is what makes Drupal flexible enough to model almost any content domain.
 

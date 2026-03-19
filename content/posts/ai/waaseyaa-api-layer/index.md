@@ -1,10 +1,10 @@
 ---
 title: "JSON:API from framework to SPA: waaseyaa's API layer"
-date: 2026-03-22
+date: 2026-03-20
 categories: [ai, php]
 tags: [waaseyaa, php, claude-code, open-source]
 series: ["waaseyaa"]
-series_order: 6
+series_order: 4
 series_group: "Main"
 summary: "How waaseyaa's JSON:API layer works — ResourceSerializer, SchemaPresenter, and how Tier 3 specs let a new session pick up mid-feature without re-explaining the whole contract."
 slug: "waaseyaa-api-layer"
@@ -13,7 +13,7 @@ draft: false
 
 Ahnii!
 
-> **Series context:** This is part 6 of the [Waaseyaa series]({{< relref "waaseyaa-intro" >}}). This post builds on [the entity system]({{< relref "waaseyaa-entity-system" >}}) and [access control]({{< relref "waaseyaa-access-control" >}}) from earlier in the week.
+> **Series context:** This is part 4 of the [Waaseyaa series]({{< relref "waaseyaa-intro" >}}). This post builds on [the entity system]({{< relref "waaseyaa-entity-system" >}}) and [access control]({{< relref "waaseyaa-access-control" >}}) from earlier in the series.
 
 The entity system models your content. The access control layer decides who can see it. The API layer exposes it to the outside world — and in waaseyaa's case, that means a [JSON:API](https://jsonapi.org/) interface consumed by a Nuxt 3 admin SPA.
 
@@ -171,6 +171,8 @@ None of this is custom code in Minoo. It comes from the framework's JSON:API com
 
 Since this post was drafted, Waaseyaa added a `graphql` package built on [webonyx/graphql-php](https://github.com/webonyx/graphql-php) v15. It auto-generates CRUD queries and mutations from your entity types — the same zero-config philosophy as the JSON:API layer. Filtering, sorting, pagination, and field-level access control carry over from the entity system.
 
-Next: AI-native PHP: the Waaseyaa AI packages.
+[Claudriel](https://github.com/jonesrussell/claudriel), a personal operations system built on Waaseyaa, is actively migrating its REST endpoints to GraphQL. Entity types like Commitment, Person, Workspace, and ScheduleEntry now have auto-generated GraphQL schemas. The migration validates that the GraphQL layer handles real-world entity complexity — nested relationships, access-controlled fields, and mixed query patterns — not just the simple CRUD cases.
+
+Next: Replacing a homegrown database layer with DBAL.
 
 Baamaapii

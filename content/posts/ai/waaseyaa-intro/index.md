@@ -17,7 +17,7 @@ Ahnii!
 
 [Waaseyaa](https://github.com/waaseyaa/framework) is an Anishinaabe word meaning "it is bright" or "there is light." It's also a PHP CMS framework that takes the best ideas from both [Drupal](https://www.drupal.org/) and [Laravel](https://laravel.com/) — forked from Drupal 11's core and stripped of its technical debt, then shaped by Laravel 12's developer experience without carrying its baggage either. The result is a 43-package monorepo built on PHP 8.4+, [Symfony](https://symfony.com/) 7.x, with a [Nuxt 3](https://nuxt.com/) admin SPA. The first application built on it is [Minoo](https://github.com/waaseyaa/minoo), an Indigenous knowledge platform.
 
-This is a six-part series covering the framework's architecture and the AI-assisted workflow used to build it. Each post covers one part of the system and shows how [GitHub issues, milestones, and codified context]({{< relref "codified-context-the-problem" >}}) made it possible to build something this complex working solo.
+This is a ten-part series covering the framework's architecture and the AI-assisted workflow used to build it. Each post covers one part of the system and shows how [GitHub issues, milestones, and codified context]({{< relref "codified-context-the-problem" >}}) made it possible to build something this complex working solo.
 
 ## Why Build Another CMS Framework?
 
@@ -77,7 +77,17 @@ Each post covers one subsystem, showing both the architecture and how AI-assiste
 
 **The API layer** — JSON:API and GraphQL, ResourceSerializer, SchemaPresenter, and how the Nuxt 3 admin SPA consumes it.
 
+**Replacing the database layer** — Migrating from a homegrown PdoDatabase to Doctrine DBAL across all applications.
+
+**Internationalization** — Language negotiation, multilingual entities, and building i18n for an indigenous cultural platform.
+
+**Testing at scale** — In-memory implementations, integration tests, and keeping 38 packages testable across hundreds of AI sessions.
+
+**Deployment** — From scaffold to live site in 90 minutes: Deployer, Caddy, GitHub Actions across three applications.
+
 **The AI integration packages** — ai-schema, ai-agent, ai-pipeline, ai-vector, and what they make possible. Plus an honest account of where the framework stands today versus where it's going.
+
+**Publishing to Packagist** — How splitsh-lite turns a monorepo into individually installable Composer packages.
 
 Next up: [Three skills for governing multi-repo co-development with Claude Code]({{< relref "co-development-skill-set" >}}).
 

@@ -1,10 +1,10 @@
 ---
 title: "AI-native PHP: the waaseyaa AI packages"
-date: 2026-03-23
+date: 2026-03-25
 categories: [ai, php]
 tags: [waaseyaa, php, claude-code, open-source]
 series: ["waaseyaa"]
-series_order: 7
+series_order: 9
 series_group: "Main"
 summary: "What ai-schema, ai-agent, ai-pipeline, and ai-vector enable in a PHP framework designed from the ground up with AI in mind — and an honest look at what's built versus what's planned."
 slug: "waaseyaa-ai-packages"
@@ -13,7 +13,7 @@ draft: false
 
 Ahnii!
 
-> **Series context:** This is part 7 of the [Waaseyaa series]({{< relref "waaseyaa-intro" >}}). The week covered the [entity system]({{< relref "waaseyaa-entity-system" >}}), [access control]({{< relref "waaseyaa-access-control" >}}), and the [API layer]({{< relref "waaseyaa-api-layer" >}}).
+> **Series context:** This is part 9 of the [Waaseyaa series]({{< relref "waaseyaa-intro" >}}). The series covered the [entity system]({{< relref "waaseyaa-entity-system" >}}), [access control]({{< relref "waaseyaa-access-control" >}}), the [API layer]({{< relref "waaseyaa-api-layer" >}}), [DBAL migration]({{< relref "waaseyaa-dbal-migration" >}}), [i18n]({{< relref "waaseyaa-i18n" >}}), [testing]({{< relref "waaseyaa-testing" >}}), and [deployment]({{< relref "waaseyaa-deployment" >}}).
 
 The entity system, access control, and API layer are all borrowed ideas — well-proven patterns from [Drupal](https://www.drupal.org/), ported to a modern PHP stack. They're the foundation because they're correct, not because they're new.
 
@@ -67,6 +67,8 @@ A pipeline for ingesting a teaching transcript might:
 The pipeline is composable. Each step is a discrete processor that takes an input and produces an output. Steps can be reordered, replaced, or augmented without touching the surrounding steps.
 
 The framework provides the pipeline orchestration and the plugin discovery mechanism. Minoo registers the processors that are specific to its content domain. This is the plugin system applied to AI workflows.
+
+[Claudriel](https://github.com/jonesrussell/claudriel) uses ai-pipeline for its commitment extraction workflow. Gmail messages flow through a `GmailMessageNormalizer`, then a `CommitmentExtractionStep` that uses the Anthropic API to identify commitments — deadlines, promises, follow-ups — with a confidence threshold of 0.7. Candidates below the threshold are silently skipped. The pipeline produces `Commitment` entities that feed the daily brief. This is ai-pipeline in production: composable steps, each with a clear input/output contract, orchestrated by the framework.
 
 ## ai-vector
 
