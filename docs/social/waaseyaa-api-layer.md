@@ -1,4 +1,4 @@
-# Social Posts: JSON:API from framework to SPA: waaseyaa's API layer
+# Social Posts: JSON:API from Framework to SPA: Waaseyaa's API Layer
 
 **Canonical URL:** https://jonesrussell.github.io/blog/waaseyaa-api-layer/
 

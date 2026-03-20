@@ -1,5 +1,5 @@
 ---
-title: "JSON:API from framework to SPA: waaseyaa's API layer"
+title: "JSON:API from Framework to SPA: Waaseyaa's API Layer"
 date: 2026-03-20
 categories: [ai, php]
 tags: [waaseyaa, php, claude-code, open-source]
@@ -98,7 +98,7 @@ The `present()` method returns a JSON Schema (draft-07) array with custom `x-wid
 
 The schema for `Teaching` describes each field's JSON Schema type, widget hint, label, and required status. The SPA reads this schema and generates the appropriate form inputs — a text input for `title`, a rich text editor for `body`, a relationship picker for `language` and `teacher`.
 
-This separation — serializer for data, presenter for schema — means the SPA doesn't need hardcoded knowledge of each entity type's structure. New entity types in Minoo appear in the admin interface automatically.
+This separation — serializer for data, presenter for schema — means the SPA doesn't need hardcoded knowledge of each entity type's structure. New entity types in [Minoo]({{< relref "waaseyaa-intro" >}}) (waaseyaa's reference application) appear in the admin interface automatically.
 
 ## The API Layer Spec and Mid-Feature Pickup
 
@@ -173,6 +173,6 @@ Since this post was drafted, Waaseyaa added a `graphql` package built on [webony
 
 [Claudriel](https://github.com/jonesrussell/claudriel), a personal operations system built on Waaseyaa, is actively migrating its REST endpoints to GraphQL. Entity types like Commitment, Person, Workspace, and ScheduleEntry now have auto-generated GraphQL schemas. The migration validates that the GraphQL layer handles real-world entity complexity — nested relationships, access-controlled fields, and mixed query patterns — not just the simple CRUD cases.
 
-Next: Replacing a homegrown database layer with DBAL.
+Next: [Replacing a homegrown database layer with DBAL]({{< relref "waaseyaa-dbal-migration" >}}).
 
 Baamaapii
