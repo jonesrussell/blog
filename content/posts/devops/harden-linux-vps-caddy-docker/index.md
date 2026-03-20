@@ -6,11 +6,16 @@ tags: [security, linux, docker, fail2ban]
 summary: "Audit and harden a production VPS: SSH root login, exposed service bindings, and fail2ban jails for web traffic and repeat offenders."
 slug: "harden-linux-vps-caddy-docker"
 draft: true
+archived: true
+archived_date: 2026-03-20
+sitemap:
+  disable: true
+robotsNoIndex: true
 ---
 
 Ahnii!
 
-A fresh VPS from a hosting provider usually comes with some sensible defaults — but not all of them. This post covers the audit we ran on a server running [Caddy](https://caddyserver.com/), PHP 8.4, and Docker, what was already solid, and the four gaps we closed.
+A fresh VPS from a hosting provider usually comes with some sensible defaults — but not all of them. This post covers an audit of a server running [Caddy](https://caddyserver.com/), PHP 8.4, and Docker — what was already solid, and the four gaps worth closing.
 
 ## What Was Already in Place
 
@@ -60,7 +65,7 @@ LISTEN  0.0.0.0:6379  ...  north-cloud-redis-1
 LISTEN  0.0.0.0:5432  ...  north-cloud-postgres-crawler-1
 ```
 
-UFW blocked external access, but binding to all interfaces means the OS accepts the connection before the firewall even sees it. That's one fewer layer of defense than you want.
+UFW blocked external access, but Docker manipulates iptables directly and can bypass UFW rules entirely. Binding to `0.0.0.0` means a firewall rule change or Docker network misconfiguration could expose these ports without warning.
 
 Both services are defined in a `docker-compose.base.yml`. The fix is a two-character prefix on the port mapping:
 
@@ -109,12 +114,12 @@ before = common.conf
 [Definition]
 datepattern = "ts":<F-TIME>%%s</F-TIME>
 
-failregex = ^.*"remote_ip":"<HOST>".*"status":(?:40[0145]|403|429|5\d\d).*$
+failregex = ^.*"remote_ip":"<HOST>".*"status":(?:40[0-5]|429|5\d\d).*$
 
 ignoreregex =
 ```
 
-`datepattern` tells fail2ban how to find the timestamp in Caddy's JSON format — `"ts"` holds a Unix epoch float. `failregex` matches lines where the client IP triggered a 400, 401, 403, 404, 405, 429, or any 5xx response.
+`datepattern` tells fail2ban how to find the timestamp in Caddy's JSON format — `"ts"` holds a Unix epoch float. `failregex` matches lines where the client IP triggered a 400–405, 429, or any 5xx response.
 
 Then create the jail:
 
