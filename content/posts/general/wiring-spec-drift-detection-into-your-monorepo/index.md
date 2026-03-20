@@ -2,15 +2,23 @@
 title: "Wiring Spec Drift Detection Into Your Monorepo"
 date: 2026-03-18
 categories: [devops, tools]
-tags: [monorepo, ci-cd, documentation, claude-code]
+tags: [monorepo, ci-cd, documentation, automation]
 summary: "How to turn a spec drift detector from a script nobody runs into a hard gate across your task runner, git hooks, and CI pipeline."
 slug: "wiring-spec-drift-detection-into-your-monorepo"
-draft: true
+draft: false
 ---
 
 Ahnii!
 
 This post walks through wiring a spec drift detector into three enforcement surfaces so stale documentation blocks merges instead of rotting silently.
+
+## Prerequisites
+
+- A monorepo with service directories mapped to spec files
+- A drift detector script (bash) that exits non-zero on stale specs
+- [Taskfile](https://taskfile.dev/) as your task runner
+- [lefthook](https://github.com/evilmartians/lefthook) for git hooks
+- GitHub Actions for CI
 
 ## The Problem With Unforced Specs
 
@@ -145,7 +153,7 @@ The summary line also got more direct:
 1 spec(s) need review. Update specs before merging.
 ```
 
-## Document the Gate
+## Document the Drift Check for Your Team
 
 Update your project's developer docs in three places. Future contributors (and future AI sessions) need to know the gate exists.
 
@@ -161,7 +169,7 @@ In the git hooks section:
 
 > pre-push runs `spec-drift` (drift-detector check)
 
-## The Full Picture
+## How the Three Enforcement Layers Work Together
 
 Here's how the enforcement surfaces layer:
 
@@ -171,6 +179,8 @@ Here's how the enforcement surfaces layer:
 
 A developer with stale specs hits the gate at every level. The earliest catch is `task drift:check` during local development. The latest is the CI job blocking a merge. No gap in enforcement means no gap in spec freshness.
 
-The entire setup took one commit across five files. The detector already existed. Wiring it in was the easy part. The hard part was not having done it sooner.
+The entire setup took one commit across five files. The detector already existed. Wiring it in was the easy part.
+
+The hard part was not having done it sooner.
 
 Baamaapii

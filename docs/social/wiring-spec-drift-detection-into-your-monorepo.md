@@ -6,9 +6,11 @@
 
 Specs go stale the moment nobody enforces freshness. I wired a drift detector into Taskfile, lefthook pre-push, and GitHub Actions so stale docs block merges instead of rotting silently. One commit, five files, three enforcement surfaces. https://jonesrussell.github.io/blog/wiring-spec-drift-detection-into-your-monorepo/
 
+#monorepo #devops #cicd #documentation #automation
+
 ## X (Twitter)
 
-Your monorepo specs are probably stale. Wire a drift detector into task runner + git hooks + CI so stale docs block merges. One commit, three enforcement surfaces. https://jonesrussell.github.io/blog/wiring-spec-drift-detection-into-your-monorepo/
+Your monorepo specs are probably stale. Wire a drift detector into task runner + git hooks + CI so stale docs block merges. https://jonesrussell.github.io/blog/wiring-spec-drift-detection-into-your-monorepo/
 
 ## LinkedIn
 
