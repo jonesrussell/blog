@@ -14,16 +14,45 @@ Ahnii!
 
 This series covers the full lifecycle of a production Linux VPS — from first login to disaster recovery. It is for developers who deploy their own servers and are comfortable with a terminal but are not operations specialists.
 
-1. Provision an Ubuntu VPS and Create a Deploy User — Droplet creation, deploy user, UFW baseline, unattended upgrades
-2. SSH Hardening: Ed25519 Keys and Disabling Root Login — Ed25519 keys, PermitRootLogin no, disable unused auth
-3. UFW, fail2ban, and Banning Repeat Offenders — UFW deep dive, Caddy jail, recidive with nftables
-4. Docker Security on a Shared VPS — Docker/UFW bypass, DOCKER-USER chain, container hardening
-5. Caddy Hardening: Security Headers and Rate Limiting — Security headers, CSP, rate limiting module
-6. Kernel and Systemd Service Hardening — sysctl tuning, systemd sandboxing, security audit
-7. Secrets, Certificates, and Credential Rotation — .env permissions, Ansible Vault, TLS, key rotation
-8. Automated Patching and Server Maintenance — unattended-upgrades, needrestart, log rotation, Docker cleanup
-9. Monitoring, Alerting, and Incident Response — Lightweight monitoring, auditd, post-incident checklist
-10. Backup and Disaster Recovery — Snapshots, database dumps, off-server backups, rebuild runbook
+### 1. [Provision an Ubuntu VPS and Create a Deploy User]({{< relref "provision-ubuntu-vps-deploy-user" >}})
+
+Droplet creation, deploy user, UFW baseline, and unattended upgrades. The "before you do anything else" checklist.
+
+### 2. SSH Hardening: Ed25519 Keys and Disabling Root Login
+
+Ed25519 keys, `PermitRootLogin no`, and disabling unused authentication methods.
+
+### 3. UFW, fail2ban, and Banning Repeat Offenders
+
+UFW deep dive, a fail2ban jail for Caddy access logs, and the recidive jail with nftables.
+
+### 4. Docker Security on a Shared VPS
+
+Why Docker bypasses UFW, the DOCKER-USER chain fix, localhost binding, and container hardening.
+
+### 5. Caddy Hardening: Security Headers and Rate Limiting
+
+Reusable security headers snippet, Content Security Policy, and rate limiting with caddy-ratelimit.
+
+### 6. Kernel and Systemd Service Hardening
+
+sysctl tuning, systemd sandboxing for PHP-FPM and Caddy, and auditing with `systemd-analyze security`.
+
+### 7. Secrets, Certificates, and Credential Rotation
+
+`.env` permissions, Ansible Vault, TLS via Caddy, and zero-downtime credential rotation.
+
+### 8. Automated Patching and Server Maintenance
+
+unattended-upgrades configuration, needrestart, log rotation, and Docker cleanup.
+
+### 9. Monitoring, Alerting, and Incident Response
+
+Lightweight monitoring, auditd for security events, and a post-incident checklist.
+
+### 10. Backup and Disaster Recovery
+
+Snapshots, database dumps, off-server backups, restore testing, and the rebuild runbook.
 
 Each post stands alone — start wherever your server needs the most attention.
 

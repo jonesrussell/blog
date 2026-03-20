@@ -173,6 +173,6 @@ Since this post was drafted, Waaseyaa added a `graphql` package built on [webony
 
 [Claudriel](https://github.com/jonesrussell/claudriel), a personal operations system built on Waaseyaa, is actively migrating its REST endpoints to GraphQL. Entity types like Commitment, Person, Workspace, and ScheduleEntry now have auto-generated GraphQL schemas. The migration validates that the GraphQL layer handles real-world entity complexity — nested relationships, access-controlled fields, and mixed query patterns — not just the simple CRUD cases.
 
-Next: [Replacing a homegrown database layer with DBAL]({{< relref "waaseyaa-dbal-migration" >}}).
+Next: Replacing a homegrown database layer with DBAL.
 
 Baamaapii

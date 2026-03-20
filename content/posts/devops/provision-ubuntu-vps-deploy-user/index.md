@@ -1,6 +1,6 @@
 ---
 title: "Provision an Ubuntu VPS and Create a Deploy User"
-date: 2026-03-21
+date: 2026-03-20
 categories: [devops]
 tags: [linux, security, digitalocean]
 series: ["production-linux"]
