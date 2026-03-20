@@ -5,15 +5,16 @@ categories: [cli, nodejs]
 tags: [cli, nodejs, npm, productivity]
 summary: "Learn how to view your project's package.json dependencies directly from the terminal using built-in npm commands."
 slug: "quickly-view-project-dependencies-on-the-cli"
+draft: false
 ---
 
 > **Update (2025)**: This article has been revised to reflect modern npm capabilities. The original custom tool is no longer necessary as npm now provides these features out of the box.
 
 Ahnii!
 
-I frequently find myself wanting to check package.json dependencies while working in the terminal. Here are the modern ways to do this using npm's built-in commands.
+Need to check `package.json` dependencies without leaving the terminal? Here are the modern ways to do it using npm's built-in commands.
 
-## Built-in NPM Commands (2 minutes)
+## Built-in NPM Commands
 
 ### List All Dependencies
 
@@ -53,7 +54,7 @@ npm ls package-name
 npm outdated
 ```
 
-## Enhanced Features with npm@7+ (2 minutes)
+## Enhanced Features with npm@7+
 
 Newer versions of npm include additional helpful commands:
 
@@ -72,8 +73,6 @@ npm audit
 
 > Note: The custom CLI tool from the original post is no longer necessary with modern npm versions, but you can still find it in the [GitHub repository](https://github.com/jonesrussell/scripts) if interested.
 
-## Wrapping Up
+npm's built-in commands now provide robust dependency management features right out of the box. No extra tools needed.
 
-npm's built-in commands now provide robust dependency management features right out of the box. What's your favorite npm command for managing dependencies? Share below!
-
-Baamaapii 👋
+Baamaapii

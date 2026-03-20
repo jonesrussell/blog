@@ -8,9 +8,10 @@ series_order: 0
 series_group: "Index"
 summary: "A comprehensive series exploring PHP-FIG's PSR standards, with practical examples and real-world applications to help developers write more maintainable and interoperable PHP code."
 slug: "psr-standards-in-php-practical-guide-for-developers"
+draft: false
 ---
 
-Are you tired of wrestling with inconsistent PHP codebases or struggling to make different packages work together? You're not alone! In this series, we'll explore how PHP-FIG's PSR standards can transform your development experience.
+Are you tired of wrestling with inconsistent PHP codebases or struggling to make different packages work together? You're not alone! In this series, you'll explore how PHP-FIG's PSR standards can transform your development experience.
 
 ## What is PHP-FIG?
 
@@ -82,14 +83,14 @@ Each post includes:
 
 - A relatable analogy explaining what the standard solves
 - The actual PSR interface with commentary
-- A working implementation from our blog API companion project
+- A working implementation from the blog API companion project
 - Common mistakes with before/after fixes
 - Framework integration examples (Laravel, Symfony, Slim)
 - A "Try It Yourself" section with exact commands to run
 
 ## Getting Started
 
-To follow along, clone our companion repository — a blog API that uses all 14 PSRs:
+To follow along, clone the companion repository — a blog API that uses all 14 PSRs:
 
 ```bash
 git clone https://github.com/jonesrussell/php-fig-guide.git

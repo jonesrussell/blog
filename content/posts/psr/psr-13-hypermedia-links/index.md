@@ -11,13 +11,14 @@ prerequisites: [1, 3, 7]
 tags: [php, psr-13, hypermedia, rest]
 summary: "Discover PSR-13's hypermedia link interfaces, understand HATEOAS principles, and implement discoverable APIs in PHP applications."
 slug: "psr-13-hypermedia-links"
+draft: false
 ---
 
 Ahnii!
 
 > **Prerequisites:** PHP OOP, REST API basics. **Recommended:** Read [PSR-7]({{< relref "psr-7-http-message-interfaces" >}}) first.
 
-## What Problem Does PSR-13 Solve? (3 minutes)
+## What Problem Does PSR-13 Solve?
 
 Have you ever used a website where you had to manually construct URLs to navigate? Neither have your API consumers — they shouldn't have to either. PSR-13 lets your API tell clients "here's where to go next," like how a website has navigation links.
 
@@ -31,7 +32,7 @@ This is the heart of HATEOAS (Hypermedia as the Engine of Application State) —
 
 Today we'll explore PSR-13, which defines interfaces for creating and managing hypermedia links in PHP applications. This standard is particularly useful for building REST APIs that follow HATEOAS (Hypermedia as the Engine of Application State) principles, enabling self-documenting and discoverable APIs.
 
-## Core Interfaces (5 minutes)
+## Core Interfaces
 
 PSR-13 defines three main interfaces that work together to create a flexible hypermedia linking system.
 
@@ -82,7 +83,7 @@ interface LinkProviderInterface
 }
 ```
 
-## Usage Examples (15 minutes)
+## Usage Examples
 
 ### 1. Basic Link Creation
 
@@ -161,7 +162,7 @@ $link = (new HypermediaLink("/users/{id}/posts"))
     ->withTemplated(true);
 ```
 
-## Next Steps (5 minutes)
+## Next Steps
 
 In our next article, we'll explore PSR-14, which defines interfaces for event handling in PHP applications.
 
@@ -192,7 +193,7 @@ composer test -- --filter=PSR13
 
 See `src/Link/` for how the blog API adds hypermedia links to post responses.
 
-## Resources (5 minutes)
+## Resources
 
 - [Official PSR-13 Specification](https://www.php-fig.org/psr/psr-13/)
 - [IANA Link Relations](https://www.iana.org/assignments/link-relations/link-relations.xhtml)

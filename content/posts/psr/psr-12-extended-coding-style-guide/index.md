@@ -11,6 +11,7 @@ prerequisites: [1]
 tags: [php, php-fig, psr-12, coding-style]
 summary: "PSR-12 extends PSR-1 and PSR-2 to provide a comprehensive coding style guide for modern PHP, ensuring consistency across PHP code."
 slug: "psr-12-extended-coding-style-guide"
+draft: false
 ---
 
 Ahnii!
@@ -167,7 +168,7 @@ class Foo
 
 ## Next Steps
 
-In our next post, we'll explore PSR-13, which defines standards for HTTP message interfaces in PHP. Check out our [example repository](https://github.com/jonesrussell/php-fig-guide/tree/psr-12) for the implementation of these standards.
+In our next post, we'll explore PSR-13, which defines standards for hypermedia links in PHP. Check out our [example repository](https://github.com/jonesrussell/php-fig-guide/tree/psr-12) for the implementation of these standards.
 
 ## Try It Yourself
 

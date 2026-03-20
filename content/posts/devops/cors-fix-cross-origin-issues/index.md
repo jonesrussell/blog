@@ -2,7 +2,8 @@
 title: "CORS: Understanding Cross-Origin Resource Sharing"
 date: 2025-05-16
 categories: [web-development, security]
-tags: [CORS, API, Security, Web]
+tags: [cors, api, security, web]
+draft: false
 summary: "Learn what CORS is, why it's essential for web security, and how to implement it properly in your applications."
 slug: "cors-fix-cross-origin-issues"
 images:
@@ -17,7 +18,7 @@ CORS (Cross-Origin Resource Sharing) is a crucial web security mechanism that co
 
 ![CORS Diagram](/images/cors.png)
 
-### Why CORS Exists
+## Why CORS Exists
 
 Browsers enforce the [same-origin policy](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy) by default, which prevents scripts from one origin from accessing resources on another origin. This security measure protects users from malicious websites that might try to access sensitive data from other sites you're logged into.
 
@@ -29,7 +30,7 @@ Without CORS, a malicious website could potentially:
 
 CORS provides a controlled way for servers to explicitly permit cross-origin requests while maintaining security. Learn more about [CORS on MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CORS).
 
-### Understanding Origins
+## Understanding Origins
 
 An origin consists of three parts: protocol, host, and port. These are considered different origins:
 
@@ -37,7 +38,7 @@ An origin consists of three parts: protocol, host, and port. These are considere
 - `https://api.example.com` and `http://api.example.com` (different protocols)
 - `https://app.example.com` and `https://api.example.com` (different subdomains)
 
-### Implementing CORS
+## Implementing CORS
 
 When you need to allow cross-origin requests, you configure CORS headers on your server. Here's a basic implementation:
 
@@ -51,6 +52,8 @@ app.use((req, res, next) => {
 });
 ```
 
+This Express middleware sets the allowed origin, HTTP methods, and headers on every response, enabling cross-origin requests from your specific domain.
+
 ```python
 # Python/Flask example
 from flask_cors import CORS
@@ -58,6 +61,8 @@ from flask_cors import CORS
 app = Flask(__name__)
 CORS(app, origins=['https://yourdomain.com'])
 ```
+
+The Flask-CORS extension handles preflight requests and header injection automatically, restricted to the origins you specify.
 
 ```java
 // Java/Spring example
@@ -68,7 +73,9 @@ public class ApiController {
 }
 ```
 
-### Security Best Practices
+Spring's `@CrossOrigin` annotation lets you declare allowed origins at the controller or method level, keeping CORS config close to the endpoints it affects.
+
+## Security Best Practices
 
 **Never use wildcards in production:**
 
@@ -87,7 +94,9 @@ res.header('Access-Control-Allow-Methods', 'GET, POST'); // Only what you need
 res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
 ```
 
-### Key Takeaways
+Restricting methods and headers reduces your API's attack surface by only exposing the capabilities your frontend actually needs.
+
+## Key Takeaways
 
 CORS is not a barrier to overcome but a security feature that enables safe cross-origin communication. When implementing CORS:
 
@@ -104,6 +113,4 @@ CORS is not a barrier to overcome but a security feature that enables safe cross
 - [Access-Control-Allow-Origin header - MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Access-Control-Allow-Origin)
 - [CORS errors - MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CORS/Errors)
 
-Got questions about CORS implementation? Drop a comment below!
-
-Baamaapii 👋
+Baamaapii

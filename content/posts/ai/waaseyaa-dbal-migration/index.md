@@ -4,7 +4,7 @@ date: 2026-03-21
 categories: [ai, php]
 tags: [waaseyaa, php, claude-code, dbal]
 series: ["waaseyaa"]
-series_order: 5
+series_order: 7
 series_group: "Main"
 summary: "How waaseyaa migrated from a homegrown PdoDatabase to Doctrine DBAL across 413 commits — and how all three applications upgraded without breaking."
 slug: "waaseyaa-dbal-migration"

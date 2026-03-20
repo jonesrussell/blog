@@ -127,7 +127,7 @@ Recent milestones include the Brain Visualizer (v1.14), Relationship Intelligenc
 
 Claudia solves a real problem. The people, promises, and priorities in your professional life are scattered across email, chat, notes, and your own head. Claudia pulls them into one place and keeps them current.
 
-It is open source under the [PolyForm Noncommercial](https://polyformproject.org/licenses/noncommercial/1.0.0/) license, actively maintained, and the community is welcoming. I contributed seven improvements to the installer recently and all of them were merged the same day. The v1.55.21 "Community Release" cleared the entire GitHub backlog: 13 issues closed, 7 PRs merged, zero open.
+It is open source under the [PolyForm Noncommercial](https://polyformproject.org/licenses/noncommercial/1.0.0/) license, actively maintained, and the community is welcoming. Seven improvements to the installer were contributed recently and all of them were merged the same day. The v1.55.21 "Community Release" cleared the entire GitHub backlog: 13 issues closed, 7 PRs merged, zero open.
 
 If you use Claude Code already, Claudia is worth a look.
 

@@ -5,14 +5,14 @@ categories: [ai, tools]
 tags: [claude-code, skills, code-quality]
 summary: "How to write reusable Claude Code skills, featuring a codebase cleanup skill I built and ran on this very blog."
 slug: "building-codebase-cleanup-skill-claude-code"
-draft: true
+draft: false
 ---
 
 Ahnii!
 
-I've been using Claude Code for a while now, and the feature that changed how I work most isn't the code generation — it's **skills**. Skills are reusable markdown playbooks that teach Claude how to approach specific types of work. Instead of explaining your process every time, you write it once and invoke it whenever you need it.
+If you've been using Claude Code, the feature that changes how you work most isn't the code generation — it's **skills**. Skills are reusable markdown playbooks that teach Claude how to approach specific types of work. Instead of explaining your process every time, you write it once and invoke it whenever you need it.
 
-I built a codebase cleanup skill that systematically audits projects for dead code, scope creep, and architectural drift. Then I ran it on this very blog to see what it would find. The results were genuinely useful — and the process of building the skill taught me more about what makes a good one.
+This post walks through a codebase cleanup skill that systematically audits projects for dead code, scope creep, and architectural drift. It was tested on this very blog, and the results were genuinely useful — the process of building the skill also reveals what makes a good one.
 
 Here's the full walkthrough: what skills are, the cleanup skill itself (ready to copy), and the real findings from running it on a live project.
 
@@ -262,7 +262,7 @@ Not "at the end." After EACH significant change:
 
 ## Running It on This Blog: A Real Demo
 
-I ran this skill on the Hugo blog you're reading right now. Here's what it found — concrete numbers, not hand-waving.
+This skill was tested on the Hugo blog you're reading right now. Here's what it found — concrete numbers, not hand-waving.
 
 ### The Setup
 
@@ -298,7 +298,7 @@ Not everything was a problem. The audit also confirmed:
 
 ### The Fixes
 
-After the owner (me) approved the scope:
+After the owner approved the scope:
 
 - Deleted 12 orphaned images → static files dropped from 17 to 5
 - Removed the dead `.entry-hint-about` CSS rule
@@ -309,7 +309,7 @@ Total time: about 10 minutes of actual changes. The audit itself took longer, bu
 
 ## Writing Your Own Skills
 
-If you want to build skills for your own workflows, here's what I've learned:
+If you want to build skills for your own workflows, here are the key lessons:
 
 ### File Structure
 
@@ -338,6 +338,6 @@ description: When to use this skill — be specific so Claude invokes it at the 
 
 **Build in verification checkpoints.** Don't just say "make changes." Say "make changes, then build, then test, then commit. If the build breaks, revert." This prevents Claude from making five changes and only discovering the first one broke things.
 
-**Start specific, generalize later.** My cleanup skill started Rust-specific. That was fine — it captured real patterns from real work. I generalized it later once I understood what was language-specific and what was universal.
+**Start specific, generalize later.** This cleanup skill started Rust-specific. That was fine — it captured real patterns from real work. Generalize later once you understand what's language-specific and what's universal.
 
 Baamaapii

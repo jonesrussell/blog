@@ -5,7 +5,7 @@ tags: [golang, memory, optimization, performance]
 date: 2024-12-19
 summary: "Learn how struct field ordering impacts memory usage in Go and how to optimize it."
 slug: "understanding-struct-field-alignment-in-go"
-draft: true
+draft: false
 ---
 
 Ahnii!

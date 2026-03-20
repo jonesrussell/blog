@@ -18,11 +18,11 @@ Ahnii!
 
 We've seen how PSR-7 defines HTTP messages and PSR-17 creates them. Now, how do we actually *process* a request and produce a response? That's PSR-15.
 
-> **Prerequisites:** PHP OOP. **Required:** Read [PSR-7]({{< relref "psr-7-http-message-interfaces" >}}) first -- PSR-15 builds directly on it.
+> **Prerequisites:** PHP OOP. **Required:** Read [PSR-7]({{< relref "psr-7-http-message-interfaces" >}}) first. PSR-15 builds directly on it.
 
 ## What Problem Does PSR-15 Solve? (3 minutes)
 
-Think of your HTTP request as a traveler going through an airport. Each checkpoint (middleware) can inspect your boarding pass (headers), check your luggage (body), add a stamp to your passport (modify the request), or turn you away entirely (return an error response). The final gate (the handler) is your destination -- it's where the actual work happens and you get your response.
+Think of your HTTP request as a traveler going through an airport. Each checkpoint (middleware) can inspect your boarding pass (headers), check your luggage (body), add a stamp to your passport (modify the request), or turn you away entirely (return an error response). The final gate (the handler) is your destination, where the actual work happens and you get your response.
 
 Without a standard, every framework's middleware is incompatible. Middleware written for Slim can't be used in Laravel. Middleware from Mezzio won't work in Symfony. PSR-15 fixes this by defining two simple interfaces that every framework can agree on.
 
@@ -30,7 +30,7 @@ The result? You can write an authentication middleware once and use it in any PS
 
 ## Core Interfaces (5 minutes)
 
-PSR-15 defines just two interfaces. That's it -- two interfaces that power every middleware pipeline.
+PSR-15 defines just two interfaces. That's it — two interfaces that power every middleware pipeline.
 
 ### RequestHandlerInterface
 
@@ -51,7 +51,7 @@ interface RequestHandlerInterface
 }
 ```
 
-This is the final destination. A handler takes a request and returns a response -- no delegation, no chain. Think of it as the gate at the end of the airport.
+This is the final destination. A handler takes a request and returns a response, with no delegation or chain. Think of it as the gate at the end of the airport.
 
 ### MiddlewareInterface
 
@@ -82,7 +82,7 @@ Here's the key insight: middleware receives both the request AND the next handle
 3. **Modify the response** that comes back
 4. **Short-circuit** by returning a response without calling the handler at all
 
-That `$handler->handle($request)` call is the delegation pattern -- it passes control to the next layer in the pipeline.
+That `$handler->handle($request)` call is the delegation pattern, passing control to the next layer in the pipeline.
 
 ## Real-World Implementation (10 minutes)
 
@@ -154,7 +154,7 @@ class AuthMiddleware implements MiddlewareInterface
         $token = $request->getHeaderLine('Authorization');
 
         if (empty($token) || !$this->validateToken($token)) {
-            // Short-circuit -- return 401 without calling the handler
+            // Short-circuit: return 401 without calling the handler
             return new Response(
                 401,
                 ['Content-Type' => 'application/json'],
@@ -162,7 +162,7 @@ class AuthMiddleware implements MiddlewareInterface
             );
         }
 
-        // Token is valid -- attach user data to the request
+        // Token is valid: attach user data to the request
         $request = $request->withAttribute('user', $this->getUserFromToken($token));
 
         return $handler->handle($request);
@@ -180,7 +180,7 @@ class AuthMiddleware implements MiddlewareInterface
 }
 ```
 
-If the token is missing or invalid, the pipeline stops right here -- no further middleware or handler runs. If the token is valid, the middleware attaches user data to the request using `withAttribute()` so downstream code can access it.
+If the token is missing or invalid, the pipeline stops right here; no further middleware or handler runs. If the token is valid, the middleware attaches user data to the request using `withAttribute()` so downstream code can access it.
 
 ### CorsMiddleware
 
@@ -246,7 +246,7 @@ class BlogPostHandler implements RequestHandlerInterface
 }
 ```
 
-This is the final destination -- no delegation, just produce a response.
+This is the final destination: no delegation, just produce a response.
 
 ### MiddlewarePipeline
 
@@ -324,7 +324,7 @@ Each middleware wraps the next layer. Logging sees the request first and the res
 If middleware doesn't delegate, the chain breaks and no downstream middleware or handler ever runs.
 
 ```php
-// Bad -- returns a response without delegating
+// Bad: returns a response without delegating
 public function process(
     ServerRequestInterface $request,
     RequestHandlerInterface $handler
@@ -332,7 +332,7 @@ public function process(
     return new Response(200, [], 'Handled!');
 }
 
-// Good -- delegates, then modifies the response
+// Good: delegates, then modifies the response
 public function process(
     ServerRequestInterface $request,
     RequestHandlerInterface $handler
@@ -347,7 +347,7 @@ public function process(
 Don't use globals or superglobals to pass data between middleware. Use the request's attributes instead.
 
 ```php
-// Bad -- storing data in globals
+// Bad: storing data in globals
 public function process(
     ServerRequestInterface $request,
     RequestHandlerInterface $handler
@@ -356,7 +356,7 @@ public function process(
     return $handler->handle($request);
 }
 
-// Good -- using request attributes
+// Good: using request attributes
 public function process(
     ServerRequestInterface $request,
     RequestHandlerInterface $handler
@@ -372,7 +372,7 @@ public function process(
 Each middleware should have one job. If your middleware is handling auth, logging, AND CORS, split it up.
 
 ```php
-// Bad -- one middleware doing three jobs
+// Bad: one middleware doing three jobs
 class KitchenSinkMiddleware implements MiddlewareInterface
 {
     public function process($request, $handler): ResponseInterface
@@ -384,7 +384,7 @@ class KitchenSinkMiddleware implements MiddlewareInterface
     }
 }
 
-// Good -- three focused middleware classes
+// Good: three focused middleware classes
 $pipeline = new MiddlewarePipeline(
     [new LoggingMiddleware($logger), new AuthMiddleware(), new CorsMiddleware()],
     new BlogPostHandler()
@@ -414,7 +414,7 @@ public function handle(Request $request, Closure $next): Response
 
 ### Slim
 
-Slim is built on PSR-15 natively -- any PSR-15 middleware works out of the box:
+Slim is built on PSR-15 natively, so any PSR-15 middleware works out of the box:
 
 ```php
 $app->add(new LoggingMiddleware($logger));
@@ -446,7 +446,7 @@ See `src/Http/Middleware/` for the blog API's middleware stack.
 
 ## What's Next
 
-Next up: [PSR-18: HTTP Client]({{< relref "psr-18-http-client" >}}) -- how to send HTTP requests the standard way, completing our HTTP stack.
+Next up: [PSR-18: HTTP Client]({{< relref "psr-18-http-client" >}}) — how to send HTTP requests the standard way, completing the HTTP stack.
 
 ## Resources
 

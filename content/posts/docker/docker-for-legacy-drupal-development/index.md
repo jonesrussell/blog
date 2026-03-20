@@ -5,6 +5,7 @@ categories: [docker, web-development]
 tags: [docker, drupal, containers, devops]
 summary: "Learn how to leverage Linux containers for migrating Drupal 6 to Drupal 8, with practical examples and best practices."
 slug: "docker-for-legacy-drupal-development"
+draft: false
 archived: true
 archived_date: 2026-02-22
 sitemap:
@@ -12,15 +13,15 @@ sitemap:
 robotsNoIndex: true
 ---
 
-Ahnii,
+Ahnii!
 
-Let me start by saying this guide could be titled "Docker for Development" and be applied to virtually any stack. I'm using Drupal because I recently began a Drupal 6 (D6) to Drupal 8 (D8) website migration.
+This guide could be titled "Docker for Development" and applied to virtually any stack. The examples use [Drupal](https://www.drupal.org/) because the scenario involves a Drupal 6 (D6) to Drupal 8 (D8) website migration.
 
 ## Why Docker for Legacy Development?
 
 The challenge: D6 requires PHP 5.6 or lower, while D8 needs PHP 7.1+. How do you run both PHP versions simultaneously? Instead of managing multiple VMs or complex PHP-FPM setups, Docker provides an elegant solution.
 
-## Understanding Containers vs VMs (5 minutes)
+## Understanding Containers vs VMs
 
 ### Virtual Machines
 
@@ -36,9 +37,9 @@ The challenge: D6 requires PHP 5.6 or lower, while D8 needs PHP 7.1+. How do you
 - Start/stop in milliseconds
 - Resource efficient
 
-## Setting Up the Environment (10 minutes)
+## Setting Up the Environment
 
-First, let's create our MySQL container:
+First, create the MySQL container:
 
 ```bash
 sudo docker run -d \
@@ -69,7 +70,7 @@ sudo docker run -d  \
 nimmis/apache-php5
 ```
 
-## Data Persistence (5 minutes)
+## Data Persistence
 
 Docker offers two options for data persistence:
 
@@ -81,6 +82,8 @@ For development, bind mounts work well:
 ```bash
 -v ~/drupal-6.38:/var/www/html
 ```
+
+This mounts the local Drupal directory into the container so file changes persist on the host.
 
 ## Cleanup
 
@@ -98,8 +101,8 @@ sudo docker container rm drupal-app drupal-mysql
 3. Use .dockerignore files
 4. Keep images small and focused
 
-## Wrapping Up
+## Legacy Environments Made Simple
 
-Docker makes it easy to maintain legacy development environments without compromising your host system. What legacy systems are you maintaining? Share your containerization stories below!
+Docker makes it easy to maintain legacy development environments without compromising your host system.
 
-Baamaapii 👋
+Baamaapii

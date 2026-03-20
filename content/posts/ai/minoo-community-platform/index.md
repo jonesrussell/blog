@@ -10,7 +10,7 @@ draft: true
 
 Ahnii!
 
-I'm building [Minoo](https://minoo.live), a platform that connects Indigenous communities, Knowledge Keepers, Elders, and volunteers across northern Ontario. This post covers what Minoo is, why I'm building it, and how you can help shape it before launch.
+[Minoo](https://minoo.live) is a platform that connects Indigenous communities, Knowledge Keepers, Elders, and volunteers across northern Ontario. This post covers what Minoo is, why it exists, and how you can help shape it before launch.
 
 ## What Minoo Does
 
@@ -53,7 +53,7 @@ But it's early. Content is thin in most areas, and the platform needs real commu
 
 ## How You Can Help
 
-I'm looking for honest feedback before launch. Specifically:
+Honest feedback before launch would be valuable. Specifically:
 
 - **Does the content feel right?** What's missing from the communities, events, or Teachings sections?
 - **Is the volunteer and Elder support flow clear?** Could you walk an Elder through the request process?

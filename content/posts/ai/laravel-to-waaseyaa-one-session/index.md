@@ -2,23 +2,27 @@
 title: "I Migrated a Laravel App to a Custom PHP Framework in One Claude Code Session"
 date: 2026-03-19
 categories: [ai]
-tags: [claude-code, waaseyaa, laravel, migration, php, inertia]
-summary: "How I used Claude Code to build 3 framework packages, scaffold a full application, and get 12 pages rendering — all in a single session."
+tags: [claude-code, waaseyaa, laravel, php]
+summary: "How Claude Code built 3 framework packages, scaffolded a full application, and got 12 pages rendering — all in a single session."
 slug: "laravel-to-waaseyaa-one-session"
 draft: true
 ---
 
+Ahnii!
+
+This post walks through migrating a Laravel 12 application to a custom PHP framework in a single Claude Code session, covering the packages built, the TDD pipeline that made it work, and the gotchas worth knowing.
+
 ## The Setup
 
-GoFormX is a forms management platform. The web frontend has been running on Laravel 12 + Inertia v2 + Vue 3. The Go API backend handles forms and submissions. I've been building Waaseyaa, a PHP framework, and decided it was time to dogfood it — migrate GoFormX from Laravel to Waaseyaa.
+GoFormX is a forms management platform. The web frontend had been running on Laravel 12 + Inertia v2 + Vue 3. The Go API backend handles forms and submissions. Waaseyaa, a PHP framework, was ready to dogfood — time to migrate GoFormX from Laravel to Waaseyaa.
 
-The migration spec was already written. Three new framework packages needed to exist (`waaseyaa/inertia`, `waaseyaa/auth`, `waaseyaa/billing`), plus the entire application scaffold. My plan was to execute this over several sessions.
+The migration spec was already written. Three new framework packages needed to exist (`waaseyaa/inertia`, `waaseyaa/auth`, `waaseyaa/billing`), plus the entire application scaffold. The plan was to execute this over several sessions.
 
 It happened in one.
 
 ## What Got Built
 
-In a single Claude Code session (~8 hours wall time), here's what was produced:
+In a single Claude Code session (~8 hours wall time), here is what was produced:
 
 **3 Waaseyaa packages (all published to Packagist):**
 
@@ -42,7 +46,7 @@ In a single Claude Code session (~8 hours wall time), here's what was produced:
 
 ## The TDD Pipeline That Made It Work
 
-Each package followed the same pattern, which I captured in a reusable skill (`laravel-to-waaseyaa`):
+Each package followed the same pattern, captured in a reusable skill (`laravel-to-waaseyaa`):
 
 1. **Scaffold** — `composer.json`, minimal `ServiceProvider`, wire to root monorepo
 2. **TDD core components** — Write test, watch it fail, implement, watch it pass. Every class gets this treatment.
@@ -60,7 +64,7 @@ The Waaseyaa kernel boots with SQLite for its entity storage layer. GoFormX's us
 
 ### Inertia v3's Page Data Format
 
-This was a fun debugging session. The initial implementation put the page data in a `<script type="application/json" data-page="true">` tag (the v2 convention). White screen. Then we tried a `data-page` attribute on the `#app` div. Still white screen — the JSON parsed fine, but Inertia couldn't find it.
+This was an instructive debugging session. The initial implementation put the page data in a `<script type="application/json" data-page="true">` tag (the v2 convention). White screen. Then a `data-page` attribute on the `#app` div. Still white screen — the JSON parsed fine, but Inertia couldn't find it.
 
 Reading the Inertia v3 source revealed the answer:
 
@@ -94,7 +98,7 @@ The app is structurally complete but not production-ready. The remaining work:
 
 ## The Reusable Skill
 
-The most valuable artifact might be the `laravel-to-waaseyaa` skill — a repeatable 6-phase pipeline for building new Waaseyaa packages. It encodes the exact patterns, conventions, and gotchas discovered during this migration. Next time I port a Laravel feature to Waaseyaa, the skill provides the playbook.
+The most valuable artifact might be the `laravel-to-waaseyaa` skill — a repeatable 6-phase pipeline for building new Waaseyaa packages. It encodes the exact patterns, conventions, and gotchas discovered during this migration. Next time you port a Laravel feature to Waaseyaa, the skill provides the playbook.
 
 ## Takeaway
 
@@ -107,3 +111,5 @@ The migration worked because of three things:
 3. **Incremental verification.** Commit after every task. Test after every component. Don't batch 10 things and hope they all work.
 
 The total test count across the session: 148 tests, all green. Not bad for a day's work.
+
+Baamaapii

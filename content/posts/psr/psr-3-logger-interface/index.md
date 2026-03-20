@@ -11,6 +11,7 @@ test_files: ["tests/PSR3/SmartLoggerTest.php"]
 prerequisites: [1, 3]
 summary: "Learn how to implement and use PSR-3's standardized logging interface in PHP applications, with practical examples of logging implementations and best practices for error handling."
 slug: "psr-3-logger-interface"
+draft: false
 ---
 
 > Updated on Jan 10, 2025: Fixed markdown formatting and removed emojis for consistency.  
@@ -20,9 +21,9 @@ Ahnii!
 
 > **Prerequisites:** Basic PHP OOP (classes, interfaces). **Recommended:** Read [PSR-1]({{< relref "psr-1-basic-coding-standard" >}}) first.
 
-Recently, I was helping a team migrate from Monolog to a custom logging solution, and guess what? They had to change code in dozens of files because their logging wasn't standardized. That's exactly the problem PSR-3 solves. Let me show you how!
+Imagine migrating from Monolog to a custom logging solution and having to change code in dozens of files because the logging wasn't standardized. That's exactly the problem PSR-3 solves.
 
-## Understanding PSR-3 (5 minutes)
+## Understanding PSR-3
 
 Think of PSR-3 as a contract for logging in PHP. Just like how every car has a steering wheel and pedals in roughly the same place (making it easy to switch between cars), PSR-3 ensures all logging libraries work in a similar way.
 
@@ -55,7 +56,7 @@ interface LoggerInterface
 }
 ```
 
-### 2. Log Levels (3 minutes)
+### 2. Log Levels
 
 Think of these levels as a severity scale, from "everything's on fire" to "just FYI":
 
@@ -68,7 +69,7 @@ Think of these levels as a severity scale, from "everything's on fire" to "just 
 7. **Info**: Just keeping you in the loop.
 8. **Debug**: For the curious developers.
 
-## Real-World Implementation (10 minutes)
+## Real-World Implementation
 
 Let's build something practical - a logger that writes to files and sends critical errors to Slack:
 
@@ -148,9 +149,9 @@ class SmartLogger extends AbstractLogger
 }
 ```
 
-## Using It In Your Project (5 minutes)
+## Using It In Your Project
 
-Here's how I use this in my projects:
+Here's how to use this in practice:
 
 ```php
 $logger = new SmartLogger(
@@ -171,7 +172,7 @@ $logger->critical('Payment gateway {gateway} is down!', [
 ]);
 ```
 
-## Framework Integration (5 minutes)
+## Framework Integration
 
 If you're using Laravel or Symfony, they've already done the heavy lifting:
 
@@ -207,7 +208,7 @@ class OrderController extends AbstractController
 }
 ```
 
-## Quick Tips (2 minutes)
+## Quick Tips
 
 1. Be Specific: Include relevant context in your logs
 
@@ -235,7 +236,7 @@ $logger->notice('User not found', ['username' => $username]);
 
 ## Next Steps
 
-Tomorrow, we'll dive into PSR-4 and see how it makes autoloading a breeze. This post is part of our [PSR Standards in PHP series]({{< relref "psr-standards-in-php-practical-guide-for-developers" >}}).
+Tomorrow, you'll dive into PSR-4 and see how it makes autoloading a breeze. This post is part of the [PSR Standards in PHP series]({{< relref "psr-standards-in-php-practical-guide-for-developers" >}}).
 
 ## Resources
 

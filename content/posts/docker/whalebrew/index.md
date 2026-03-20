@@ -5,6 +5,7 @@ categories: [docker, tools]
 tags: [docker, containers, cli, devops]
 summary: "Learn how to use Whalebrew to run Docker containers as if they were native commands, simplifying your development workflow."
 slug: "whalebrew"
+draft: false
 archived: true
 archived_date: 2026-02-22
 sitemap:
@@ -14,9 +15,9 @@ robotsNoIndex: true
 
 Ahnii!
 
-If you're from the Mac world, you've probably used or heard of Homebrew. For the uninformed, Homebrew is the missing package manager for macOS. Whalebrew brings that same convenience to Docker containers.
+If you're from the Mac world, you've probably used or heard of [Homebrew](https://brew.sh/). For the uninformed, Homebrew is the missing package manager for macOS. [Whalebrew](https://github.com/whalebrew/whalebrew) brings that same convenience to Docker containers.
 
-## Why Whalebrew? (2 minutes)
+## Why Whalebrew?
 
 Whalebrew lets you:
 
@@ -25,7 +26,7 @@ Whalebrew lets you:
 - Share complex tools easily
 - Keep your system clean
 
-## Getting Started (5 minutes)
+## Getting Started
 
 Install Whalebrew:
 
@@ -35,7 +36,7 @@ sudo curl -L "https://github.com/bfirsh/whalebrew/releases/download/0.1.0/whaleb
 sudo chmod +x /usr/local/bin/whalebrew
 ```
 
-## Basic Usage (5 minutes)
+## Basic Usage
 
 Install a package:
 
@@ -80,8 +81,8 @@ ENTRYPOINT ["figlet"]
 2. Document requirements
 3. Handle permissions properly
 
-## Wrapping Up
+## Native Commands Without the Mess
 
-Whalebrew makes Docker containers feel native while keeping your system clean. What tools would you containerize? Share your ideas below!
+Whalebrew makes Docker containers feel native while keeping your system clean.
 
-Baamaapii 👋
+Baamaapii

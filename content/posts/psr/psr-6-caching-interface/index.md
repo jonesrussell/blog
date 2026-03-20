@@ -11,6 +11,7 @@ test_files: ["tests/PSR6/CacheItemTest.php", "tests/PSR6/FileCachePoolTest.php"]
 prerequisites: [1, 3]
 summary: "Explore PSR-6's caching interface standard, understand cache pools and items, and implement robust caching solutions in PHP applications."
 slug: "psr-6-caching-interface"
+draft: false
 ---
 
 Ahnii!
@@ -21,11 +22,11 @@ This post is part of our [PSR Standards in PHP series]({{< relref "psr-standards
 
 > **Prerequisites:** PHP OOP (classes, interfaces). **Recommended:** Read [PSR-4]({{< relref "psr-4-autoloading-standard" >}}) first. **See also:** [PSR-16]({{< relref "psr-16-simple-cache" >}}) for simpler caching needs.
 
-## What Problem Does PSR-6 Solve? (2 minutes)
+## What Problem Does PSR-6 Solve?
 
 Before PSR-6, every caching library had its own way of doing things. Want to switch from Memcached to Redis? Rewrite your code. Moving from one framework to another? Learn a new caching API. PSR-6 fixes this by providing a common interface that all caching libraries can implement.
 
-## Core Interfaces (5 minutes)
+## Core Interfaces
 
 Let's look at the two main players:
 
@@ -72,7 +73,7 @@ interface CacheItemInterface
 }
 ```
 
-## Practical Usage (5 minutes)
+## Practical Usage
 
 Let's see how to use this in real code:
 
@@ -99,7 +100,7 @@ try {
 }
 ```
 
-## Common Pitfalls (3 minutes)
+## Common Pitfalls
 
 1. **Key Validation**
 

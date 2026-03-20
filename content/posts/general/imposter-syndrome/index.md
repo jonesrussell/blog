@@ -3,8 +3,9 @@ title: "Dealing with Imposter Syndrome in Tech"
 date: 2021-03-06
 categories: [career]
 tags: [career, mental-health, growth, tech-culture]
-summary: "A personal reflection on experiencing and overcoming imposter syndrome in the tech industry, with practical coping strategies."
+summary: "Practical strategies for recognizing and overcoming imposter syndrome in the tech industry."
 slug: "imposter-syndrome"
+draft: false
 archived: true
 archived_date: 2026-02-22
 sitemap:
@@ -16,7 +17,7 @@ Ahnii!
 
 Ever felt like you don't belong in tech? Like you're just pretending to be a developer? You're not alone. Let's talk about imposter syndrome and how to deal with it.
 
-## What is Imposter Syndrome? (2 minutes)
+## What is Imposter Syndrome?
 
 Imposter syndrome is that nagging feeling that you're:
 
@@ -25,7 +26,7 @@ Imposter syndrome is that nagging feeling that you're:
 - About to be "found out"
 - Not as good as your peers
 
-## Common Triggers (5 minutes)
+## Common Triggers
 
 In tech, imposter syndrome often strikes when:
 
@@ -35,7 +36,7 @@ In tech, imposter syndrome often strikes when:
 - Contributing to open source
 - Working with experienced developers
 
-## Coping Strategies (10 minutes)
+## Coping Strategies
 
 ### 1. Document Your Wins
 
@@ -84,8 +85,6 @@ Find your support network:
 - Be a mentor
 - Share struggles
 
-## Wrapping Up
+Remember: feeling like an imposter often means you're growing and learning. The next time that voice creeps in, revisit your wins folder and remind yourself how far you've come.
 
-Remember: feeling like an imposter often means you're growing and learning. How do you deal with imposter syndrome? Share your experiences below!
-
-Baamaapii 👋
+Baamaapii

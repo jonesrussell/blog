@@ -3,14 +3,14 @@ title: "Manage DigitalOcean Infrastructure With Ansible for Laravel and PHP Apps
 date: 2026-03-18
 categories: [devops]
 tags: [ansible, digitalocean, laravel, caddy]
-summary: "How I structured an Ansible repo to manage two DigitalOcean droplets, six Laravel apps, and a Go microservices platform without replacing the existing Deployer workflow."
+summary: "How to structure an Ansible repo to manage two DigitalOcean droplets, six Laravel apps, and a Go microservices platform without replacing the existing Deployer workflow."
 slug: "ansible-manage-digitalocean-laravel-infrastructure"
 draft: false
 ---
 
 Ahnii!
 
-This post walks through how I built an [Ansible](https://docs.ansible.com/) repo to manage a production [DigitalOcean](https://www.digitalocean.com/) setup: two Ubuntu droplets, six [Laravel](https://laravel.com/) apps, a couple of PHP framework sites, and a Go microservices platform. The goal was to codify everything that was previously managed via manual SSH, without replacing the [Deployer](https://deployer.org/) workflow that already handles app releases.
+This post walks through how to build an [Ansible](https://docs.ansible.com/) repo to manage a production [DigitalOcean](https://www.digitalocean.com/) setup: two Ubuntu droplets, six [Laravel](https://laravel.com/) apps, a couple of PHP framework sites, and a Go microservices platform. The goal is to codify everything that was previously managed via manual SSH, without replacing the [Deployer](https://deployer.org/) workflow that already handles app releases.
 
 ## The Problem
 

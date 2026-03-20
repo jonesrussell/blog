@@ -11,19 +11,20 @@ test_files: ["tests/PSR4/Core/Database/ConnectionTest.php", "tests/PSR4/Post/Pos
 prerequisites: [1]
 summary: "Master PHP's PSR-4 autoloading standard to organize your code efficiently. Learn how to structure your projects for automatic class loading and seamless package management with Composer."
 slug: "psr-4-autoloading-standard"
+draft: false
 ---
 
 Ahnii!
 
 > **Prerequisites:** Basic PHP OOP, Composer installed. **Recommended:** Read [PSR-1]({{< relref "psr-1-basic-coding-standard" >}}) first.
 
-Remember the old days of PHP when we had to manually `require` every single file? Last week, I was helping a team modernize their legacy application that had 50+ require statements at the top of each file. Let me show you how PSR-4 autoloading makes this a problem of the past!
+Remember the old days of PHP when you had to manually `require` every single file? Imagine modernizing a legacy application with 50+ require statements at the top of each file. PSR-4 autoloading makes this a problem of the past.
 
-## Understanding PSR-4 (5 minutes)
+## Understanding PSR-4
 
 Think of PSR-4 as your code's GPS system - it helps PHP find the right files automatically. Just like how a GPS uses addresses to find locations, PSR-4 uses namespaces to locate classes.
 
-### Key Concepts (2 minutes)
+### Key Concepts
 
 1. **Fully Qualified Class Name (FQCN)**
    - Vendor namespace (like your brand)
@@ -35,9 +36,9 @@ Think of PSR-4 as your code's GPS system - it helps PHP find the right files aut
    - Namespace mapping (your GPS coordinates)
    - File location rules (the actual addresses)
 
-## Real-World Example (10 minutes)
+## Real-World Example
 
-Here's how I structure my projects:
+Here's a well-structured project layout:
 
 ```text
 vendor/
@@ -50,7 +51,7 @@ vendor/
                 └── PostRepository.php
 ```
 
-### 1. Setting Up Composer (3 minutes)
+### 1. Setting Up Composer
 
 ```json
 {
@@ -63,7 +64,7 @@ vendor/
 }
 ```
 
-### 2. Creating Classes (2 minutes)
+### 2. Creating Classes
 
 ```php
 <?php
@@ -79,7 +80,7 @@ class PostController
 }
 ```
 
-## Common Patterns I Use (5 minutes)
+## Common Patterns
 
 ### 1. Multiple Namespace Roots
 
@@ -114,9 +115,9 @@ class Connection
 // File location: src/Core/Database/Connection.php
 ```
 
-## Framework Examples (5 minutes)
+## Framework Examples
 
-If you're using Laravel or Symfony (like I do), they follow PSR-4 out of the box:
+If you're using Laravel or Symfony, they follow PSR-4 out of the box:
 
 ### Laravel
 
@@ -152,7 +153,7 @@ class BlogController extends AbstractController
 }
 ```
 
-## Quick Fixes for Common Issues (3 minutes)
+## Quick Fixes for Common Issues
 
 1. **"Class Not Found" Errors**
 
@@ -175,7 +176,7 @@ src/
     └── PostController.php
 ```
 
-## Testing Your Setup (2 minutes)
+## Testing Your Setup
 
 Drop this in `test-autoload.php`:
 
@@ -191,7 +192,7 @@ var_dump($controller->index()); // Should show "Ready to blog!"
 
 ## Next Steps
 
-Tomorrow, we'll explore PSR-6 and see how it standardizes caching in PHP applications. This post is part of our [PSR Standards in PHP series]({{< relref "psr-standards-in-php-practical-guide-for-developers" >}}).
+Tomorrow, you'll explore PSR-6 and see how it standardizes caching in PHP applications. This post is part of the [PSR Standards in PHP series]({{< relref "psr-standards-in-php-practical-guide-for-developers" >}}).
 
 ## Resources
 

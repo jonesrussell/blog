@@ -11,6 +11,7 @@ test_files: ["tests/Http/Client/SimpleHttpClientTest.php"]
 prerequisites: [7, 8]
 summary: "Discover PSR-18's HTTP client interface for making standardized HTTP requests, enabling swappable HTTP client implementations in PHP."
 slug: "psr-18-http-client"
+draft: false
 ---
 
 Ahnii!

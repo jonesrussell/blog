@@ -225,4 +225,4 @@ This project wouldn't exist without the `-p` batch execution mode. Copilot CLI t
 
 **Try coaudit:** https://github.com/jonesrussell/coaudit
 
-Baamaapii 👋
+Baamaapii

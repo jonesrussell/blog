@@ -54,6 +54,8 @@ BROWSER=echo gcloud auth login
 BROWSER=echo netlify login
 ```
 
+Each of these commands prints the authentication URL to your terminal instead of attempting to launch a browser, so you can paste it into your Windows browser manually.
+
 ## Set BROWSER Environment Variable Permanently in WSL
 
 Add this to your `~/.bashrc` or `~/.zshrc`:

@@ -22,11 +22,11 @@ Now that we've seen how PSR-11 wires services together, what if those services n
 
 ## What Problem Does PSR-14 Solve? (3 minutes)
 
-Think of your application as a radio station. When something happens -- a user registers, a post gets published, an order is placed -- the station broadcasts it. Listeners are tuned-in radios: they hear the broadcasts they care about and react accordingly.
+Think of your application as a radio station. When something happens (a user registers, a post gets published, an order is placed), the station broadcasts it. Listeners are tuned-in radios: they hear the broadcasts they care about and react accordingly.
 
-The key insight is **decoupling**. The radio station doesn't need to know who's listening, and listeners don't need to know about each other. A registration broadcast might trigger a welcome email, update analytics, and create a default profile -- all without the registration code knowing any of that exists.
+The key insight is **decoupling**. The radio station doesn't need to know who's listening, and listeners don't need to know about each other. A registration broadcast might trigger a welcome email, update analytics, and create a default profile, all without the registration code knowing any of that exists.
 
-Without a standard, every framework invents its own event system. Symfony has its EventDispatcher, Laravel has its Events facade, and smaller libraries roll their own. PSR-14 standardizes the pattern so event systems become interchangeable -- just like PSR-3 did for logging and PSR-11 did for containers.
+Without a standard, every framework invents its own event system. Symfony has its EventDispatcher, Laravel has its Events facade, and smaller libraries roll their own. PSR-14 standardizes the pattern so event systems become interchangeable, just like PSR-3 did for logging and PSR-11 did for containers.
 
 ## Core Interfaces (5 minutes)
 
@@ -51,7 +51,7 @@ interface EventDispatcherInterface
 }
 ```
 
-One method, one job: take any object as an event, pass it to listeners, and return it. The event object is returned so listeners can modify it -- for example, a validation listener might mark an event as invalid.
+One method, one job: take any object as an event, pass it to listeners, and return it. The event object is returned so listeners can modify it. For example, a validation listener might mark an event as invalid.
 
 ### ListenerProviderInterface
 
@@ -136,7 +136,7 @@ class PostPublishedEvent
 }
 ```
 
-Events are simple data carriers. They hold information about what happened -- nothing more.
+Events are simple data carriers. They hold information about what happened, nothing more.
 
 ### Listener Provider
 
@@ -258,10 +258,10 @@ Notice how the code that creates the post doesn't know about notifications, sear
 
 ### 1. Fat Events That Do Too Much
 
-Events should carry data, not business logic. They describe what happened -- they don't decide what to do about it.
+Events should carry data, not business logic. They describe what happened but don't decide what to do about it.
 
 ```php
-// Bad -- the event does the processing
+// Bad: the event does the processing
 class PostCreatedEvent
 {
     public function process(): void
@@ -272,7 +272,7 @@ class PostCreatedEvent
     }
 }
 
-// Good -- the event carries data, listeners do the work
+// Good: the event carries data, listeners do the work
 class PostCreatedEvent
 {
     public function __construct(private object $post) {}
@@ -285,16 +285,16 @@ class PostCreatedEvent
 Don't write listeners that assume they'll run in a specific order. If order matters, use a single listener that orchestrates the steps explicitly.
 
 ```php
-// Bad -- second listener assumes the first already ran
+// Bad: second listener assumes the first already ran
 $provider->addListener(PostCreatedEvent::class, function ($event) {
     $event->getPost()->slug = generateSlug($event->getPost()->title);
 });
 $provider->addListener(PostCreatedEvent::class, function ($event) {
-    // Assumes slug is already set -- fragile!
+    // Assumes slug is already set (fragile!)
     saveToDatabase($event->getPost());
 });
 
-// Good -- one listener handles the ordered workflow
+// Good: one listener handles the ordered workflow
 $provider->addListener(PostCreatedEvent::class, function ($event) {
     $post = $event->getPost();
     $post->slug = generateSlug($post->title);
@@ -304,7 +304,7 @@ $provider->addListener(PostCreatedEvent::class, function ($event) {
 
 ### 3. Not Using Stoppable Events
 
-When you want to short-circuit processing -- like validation where one failure should stop everything -- use StoppableEventInterface.
+When you want to short-circuit processing, such as validation where one failure should stop everything, use StoppableEventInterface.
 
 ```php
 class ValidationEvent implements StoppableEventInterface
@@ -378,7 +378,7 @@ See `src/Event/` for the blog API's event dispatcher implementation.
 
 ## What's Next
 
-Next, we'll dive into the HTTP stack, starting with [PSR-7: HTTP Message Interfaces]({{< relref "psr-7-http-message-interfaces" >}}) -- the standard that defines how PHP represents HTTP requests and responses.
+Next, we'll dive into the HTTP stack, starting with [PSR-7: HTTP Message Interfaces]({{< relref "psr-7-http-message-interfaces" >}}) — the standard that defines how PHP represents HTTP requests and responses.
 
 ## Resources
 

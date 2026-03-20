@@ -5,6 +5,7 @@ date: 2020-04-24
 categories: [web-development, docker]
 tags: [drupal, docker, devops, php]
 slug: "use-ddev-to-locally-develop-with-drupal"
+draft: false
 archived: true
 archived_date: 2026-02-22
 sitemap:
@@ -12,7 +13,9 @@ sitemap:
 robotsNoIndex: true
 ---
 
-I've been developing with Drupal for over 10 years. It's never been known to be quick and easy to install, but with the rise of containers it's now as easy as executing a few commands in a terminal.
+Ahnii!
+
+Drupal has never been known for quick and easy installation, but with the rise of containers it's now as easy as executing a few commands in a terminal. This post walks through setting up a local Drupal environment using [DDEV](https://ddev.readthedocs.io/).
 
 ## Prerequisites
 
@@ -23,7 +26,7 @@ Installing the prerequisites is beyond the scope of this post but here is a link
 - [Docker Compose](https://docs.docker.com/compose/install/)
 - [DDEV](https://ddev.readthedocs.io/en/latest/#installation)
 
-## Download & Install Drupal
+## Download and Install Drupal
 
 1. _composer_ has become the de-facto standard package manager of PHP projects and the Drupal recommended way to manage a Drupal installation:
 
@@ -78,4 +81,4 @@ DDEV includes some handy functionality, like running composer and [drush](https:
 
 You can easily import/export your database, or tap into [ngrok](https://ngrok.com/) to share a browse-able link to your project accessible from the internet.
 
-Happy developing! Gabekana.
+Baamaapii

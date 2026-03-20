@@ -4,7 +4,7 @@ date: 2026-03-22
 categories: [ai, php]
 tags: [waaseyaa, php, i18n, minoo]
 series: ["waaseyaa"]
-series_order: 6
+series_order: 8
 series_group: "Main"
 summary: "How waaseyaa's i18n package handles language negotiation and multilingual entities — built for an indigenous cultural platform where language isn't a feature, it's the point."
 slug: "waaseyaa-i18n"

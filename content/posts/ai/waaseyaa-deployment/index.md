@@ -4,7 +4,7 @@ date: 2026-03-24
 categories: [ai, php]
 tags: [waaseyaa, deployment, caddy, deployer]
 series: ["waaseyaa"]
-series_order: 8
+series_order: 10
 series_group: "Main"
 summary: "How waaseyaa.org went from first commit to production in 90 minutes — and the deployment patterns shared across three Waaseyaa applications."
 slug: "waaseyaa-deployment"

@@ -10,6 +10,7 @@ companion_files: ["src/PSR1/UserManager.php"]
 test_files: ["tests/PSR1/UserManagerTest.php"]
 summary: "A guide to PSR-1, the foundational coding standard for PHP that establishes basic rules for files, namespaces, classes, and methods to improve code consistency."
 slug: "psr-1-basic-coding-standard"
+draft: false
 ---
 
 > Updated on Jan 7, 2025: Improved writing style and examples for better clarity.
@@ -18,15 +19,15 @@ slug: "psr-1-basic-coding-standard"
 
 Ahnii!
 
-> **Prerequisites:** Basic PHP syntax, a code editor. No prior PSR knowledge needed — this is where we start!
+> **Prerequisites:** Basic PHP syntax, a code editor. No prior PSR knowledge needed — this is where you start!
 
-Have you ever pulled down a PHP project and felt like you were reading five different coding styles at once? That's exactly what happened to me last week while helping a team with their legacy codebase. Let me show you how PSR-1 can save you from this headache.
+Have you ever pulled down a PHP project and felt like you were reading five different coding styles at once? That's a common frustration when working with legacy codebases. PSR-1 can save you from this headache.
 
-## Understanding PSR-1 (5 minutes)
+## Understanding PSR-1
 
 Think of PSR-1 as the "house rules" for PHP code. Just like how every house has basic rules (shoes off at the door, close the fridge, turn off lights), PSR-1 sets the foundation for writing clean PHP code that everyone can understand.
 
-### Files and Namespaces (2 minutes)
+### Files and Namespaces
 
 Here are the ground rules:
 
@@ -34,7 +35,7 @@ Here are the ground rules:
 - Always use UTF-8 without BOM (it prevents weird encoding issues).
 - Keep your files focused - either declare stuff OR do stuff, not both.
 
-### Naming Things Right (3 minutes)
+### Naming Things Right
 
 Let's make it clear:
 
@@ -42,9 +43,9 @@ Let's make it clear:
 - Constants should be in `UPPER_CASE` (like `MAX_ATTEMPTS`, `API_VERSION`).
 - Methods use `camelCase` (like `getUserById`, `processOrder`).
 
-## Real-World Example (10 minutes)
+## Real-World Example
 
-Here's a practical example from our [repository](https://github.com/jonesrussell/php-fig-guide/blob/main/src/PSR1/UserManager.php):
+Here's a practical example from the [repository](https://github.com/jonesrussell/php-fig-guide/blob/main/src/PSR1/UserManager.php):
 
 ```php
 <?php
@@ -98,7 +99,7 @@ Let's break down what makes this code PSR-1 compliant:
 - Constants in `UPPERCASE_WITH_UNDERSCORES`.
 - Method in `camelCase`.
 
-## Common Mistakes and Fixes (5 minutes)
+## Common Mistakes and Fixes
 
 ### The Kitchen Sink File
 
@@ -127,9 +128,9 @@ class user_manager {}
 class UserManager {}
 ```
 
-## Tools to Help You (3 minutes)
+## Tools to Help You
 
-I use these tools in all my projects:
+These tools are useful in any project:
 
 - PHP_CodeSniffer: `composer check-style` to spot issues.
 - Auto-fixing: `composer fix-style` to fix common mistakes.
@@ -138,9 +139,9 @@ I use these tools in all my projects:
 
 ## Next Steps
 
-Tomorrow, we'll explore PSR-3 and see how it makes logging consistent across your applications. This post is part of our [PSR Standards in PHP series]({{< relref "psr-standards-in-php-practical-guide-for-developers" >}}).
+Tomorrow, you'll explore PSR-3 and see how it makes logging consistent across your applications. This post is part of the [PSR Standards in PHP series]({{< relref "psr-standards-in-php-practical-guide-for-developers" >}}).
 
-## Resources (5 minutes)
+## Resources
 
 For more information:
 

@@ -4,7 +4,7 @@ date: 2026-03-19
 categories: [ai, php]
 tags: [claudriel, php, temporal, testing]
 series: ["waaseyaa"]
-series_order: 3
+series_order: 4
 series_group: "Main"
 summary: "How Claudriel's temporal subsystem pins time per request, resolves timezones from context, and detects clock drift before it corrupts AI reasoning."
 slug: "claudriel-temporal-layer"

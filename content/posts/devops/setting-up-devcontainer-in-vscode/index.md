@@ -5,13 +5,14 @@ categories: [tools]
 tags: [vscode, devcontainers, docker, development-environment]
 summary: "Learn how to set up and use Dev Containers in Visual Studio Code for consistent, isolated development environments."
 slug: "setting-up-devcontainer-in-vscode"
+draft: false
 ---
 
-Ahnii,
+Ahnii!
 
-Tired of "it works on my machine" syndrome? Let's fix that with VS Code Dev Containers! I recently switched to using them for all my projects, and it's been a game-changer.
+Tired of "it works on my machine" syndrome? Dev Containers in [VS Code](https://code.visualstudio.com/) solve that by giving every project a reproducible, containerized development environment.
 
-## What are Dev Containers? (2 minutes)
+## What are Dev Containers?
 
 Dev Containers provide:
 
@@ -20,10 +21,10 @@ Dev Containers provide:
 - Project-specific configurations
 - Easy onboarding for new developers
 
-## Quick Setup (5 minutes)
+## Quick Setup
 
 1. **Prerequisites**
-   - Install Docker Desktop
+   - Install [Docker Desktop](https://www.docker.com/products/docker-desktop/)
    - Install VS Code
    - Add "Dev Containers" extension
 
@@ -63,10 +64,6 @@ Dev Containers provide:
    - Use COPY instead of ADD
    - Keep base images updated
 
-## Wrapping Up
+Dev Containers are worth the initial setup time for the consistency and reliability they provide across your projects.
 
-Dev Containers have transformed how I work with different projects. They're worth the initial setup time for the consistency and reliability they provide.
-
-What's your development environment setup like? Have you tried Dev Containers? Share your experiences below!
-
-Baamaapii 👋
+Baamaapii

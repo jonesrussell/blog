@@ -45,8 +45,6 @@ Here's what that looks like in practice:
   2 milestones have no open issues: v1.3, v1.3.1
 ```
 
-Claude receives this summary at the start of your session and can flag untriaged issues immediately.
-
 Claude sees this output and can immediately ask what you want to do about it.
 
 ## Build the Milestone Check Script

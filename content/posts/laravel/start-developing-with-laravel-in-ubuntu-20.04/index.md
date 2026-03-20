@@ -5,6 +5,7 @@ categories: [laravel]
 tags: [web-development, install]
 summary: "A guide to setting up Laravel development environment on Ubuntu 20.04, perfect for beginners in web development"
 slug: "start-developing-with-laravel-in-ubuntu-20.04"
+draft: false
 images:
   - /images/laravel.png
 archived: true
@@ -14,13 +15,15 @@ sitemap:
 robotsNoIndex: true
 ---
 
-First and foremost, I find [Ubuntu](https://ubuntu.com/tutorials/install-ubuntu-desktop#1-overview) the Linux distribution easiest to install and best supported when learning Web Development. I'm sure that's open for debate, but that's what the comments are for.
+Ahnii!
 
-## OK, I'm running Ubuntu, what next?
+[Ubuntu](https://ubuntu.com/tutorials/install-ubuntu-desktop#1-overview) is one of the easiest Linux distributions to install and best supported when learning web development. This post walks through setting up Laravel using DDEV on Ubuntu 20.04.
 
-I suggest that your [install Homebrew](https://blog.aamnah.com/sysadmin/install-homebrew-ubuntu-linux), "The Missing Package Manager for macOS (or Linux)". It's great but if you choose another path, I hope you can still follow along.
+## OK, Ubuntu is running, what next?
 
-## I have Homebrew, now what?
+Start by [installing Homebrew](https://blog.aamnah.com/sysadmin/install-homebrew-ubuntu-linux), "The Missing Package Manager for macOS (or Linux)". If you choose another path, you should still be able to follow along.
+
+## Homebrew is installed, now what?
 
 ### Install DDEV
 
@@ -30,7 +33,7 @@ Follow the directions at <https://ddev.readthedocs.io/en/stable/#installation> w
 
 ### Install Laravel
 
-Copy and paste from below, replace MY_SITE="" with the name you wish to choose for you site:
+Copy and paste from below, replacing `MY_SITE` with the name you want for your site:
 
 ```bash
 MY_SITE=my-laravel-app
@@ -44,8 +47,10 @@ ddev exec "php artisan key:generate"
 ddev launch
 ```
 
-## Bing, bang, boom. I have some Laravel
+## Verify it works
 
-The *ddev launch* command should have opened your default browser to this screen:
+The `ddev launch` command should have opened your default browser to this screen:
 
 ![Laravel welcome page showing successful installation](/images/laravel.png)
+
+Baamaapii

@@ -5,6 +5,7 @@ categories: [web-development]
 tags: [jekyll, github, static-sites, web-development]
 summary: "Learn how to quickly set up and deploy a Jekyll blog to GitHub Pages, with step-by-step instructions for beginners."
 slug: "scaffold-and-deploy-a-jekyll-github-pages-blog-in-5-minutes"
+draft: false
 archived: true
 archived_date: 2026-02-22
 sitemap:
@@ -14,7 +15,7 @@ robotsNoIndex: true
 
 Ahnii!
 
-Static websites have made a comeback. Innovations in content generation, the adoption of Markdown in workflows, deployment technology, and free hosting have made static websites an attractive option for those who don't need the capabilities of a framework or content management system.
+Static websites have made a comeback. Innovations in content generation, the adoption of Markdown in workflows, deployment technology, and free hosting have made static websites an attractive option when you don't need the capabilities of a framework or content management system. This post walks you through setting up a Jekyll blog and deploying it to GitHub Pages.
 
 ## Why Static Sites?
 
@@ -91,10 +92,6 @@ git push -u origin master
 
 Visit <https://username.github.io/my-awesome-site/> to see your live site!
 
-## Wrapping Up
+You now have a working Jekyll blog hosted on GitHub Pages. To create new posts, add markdown files to the `_posts` directory following the naming convention: `YYYY-MM-DD-title.md`.
 
-You now have a working Jekyll blog hosted on GitHub Pages. To create new posts, simply add markdown files to the "_posts" directory following the naming convention: `YYYY-MM-DD-title.md`.
-
-How are you planning to use your new Jekyll blog? Share your ideas below!
-
-Baamaapii 👋
+Baamaapii

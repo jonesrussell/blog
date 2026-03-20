@@ -4,7 +4,7 @@ date: 2026-03-18
 categories: [ai, php]
 tags: [waaseyaa, php, claude-code, open-source]
 series: ["waaseyaa"]
-series_order: 2
+series_order: 3
 series_group: "Main"
 summary: "How waaseyaa's EntityInterface, ContentEntityBase, and field system work — and how the entity-system specialist skill made cross-session development possible."
 slug: "waaseyaa-entity-system"

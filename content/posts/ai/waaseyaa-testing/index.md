@@ -4,7 +4,7 @@ date: 2026-03-23
 categories: [ai, php]
 tags: [waaseyaa, php, testing, claude-code]
 series: ["waaseyaa"]
-series_order: 7
+series_order: 9
 series_group: "Main"
 summary: "How in-memory implementations, a layered test strategy, and AI-assisted test generation keep a 38-package PHP monorepo testable."
 slug: "waaseyaa-testing"

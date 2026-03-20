@@ -5,7 +5,7 @@ categories: [tools]
 tags: [cursor-ai, tools, reference, development]
 summary: "A comprehensive reference of tools available to Cursor AI for code manipulation and file operations."
 slug: "cursor-ai-tools"
-draft: true
+draft: false
 ---
 
 Ahnii!
