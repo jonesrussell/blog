@@ -32,7 +32,7 @@ task deploy           # Clean + production build
 
 ## Content Conventions
 
-**Style baseline:** `content/posts/laravel-boost-ddev.md` is the reference for voice, structure, and tone. See `docs/blog-style.md` for the full style guide.
+**Style baseline:** `content/posts/laravel/laravel-boost-ddev/index.md` is the reference for voice, structure, and tone. See `docs/blog-style.md` for the full style guide.
 
 ### Post Frontmatter
 
@@ -74,7 +74,7 @@ draft: true
 ## PSR Blog Series
 
 14-post series covering all accepted PHP-FIG standards (`series: ["php-fig-standards"]`).
-- Posts live in `content/posts/psr-*.md` with an index at `psr-standards-in-php-practical-guide-for-developers.md`
+- Posts live in `content/posts/psr/*/index.md` with an index at `content/posts/psr/psr-standards-in-php-practical-guide-for-developers/index.md`
 - Each post follows a template: Ahnii → prerequisites one-liner → What Problem → Core Interfaces → Real-World Implementation → Common Mistakes → Framework Integration → Try It Yourself → What's Next → Baamaapii
 - Companion code repo: `jonesrussell/php-fig-guide` (blog API demonstrating all 14 PSRs)
 - Design docs in `docs/plans/`

@@ -41,7 +41,7 @@ tasks:
   new-post:
     desc: Create a new blog post
     cmds:
-      - hugo new posts/{{.CLI_ARGS}}.md
+      - hugo new content/posts/{{.CLI_ARGS}}/index.md
     preconditions:
       - sh: '[ -n "{{.CLI_ARGS}}" ]'
         msg: "Usage: task new-post -- my-post-title"
