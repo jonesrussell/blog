@@ -127,6 +127,6 @@ This is the kind of work where AI shines: clear pattern, well-defined boundaries
 
 ## What's next
 
-With DBAL in place, waaseyaa has a solid foundation for database operations. The next post covers internationalization — building i18n support for Minoo, a cultural platform where multilingual content isn't a nice-to-have but a core requirement.
+With DBAL in place, waaseyaa has a solid foundation for database operations. Next: [i18n for a cultural platform]({{< relref "waaseyaa-i18n" >}}) — building i18n support for Minoo, where multilingual content isn't a nice-to-have but a core requirement.
 
 Baamaapii
