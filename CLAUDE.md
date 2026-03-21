@@ -70,6 +70,9 @@ draft: true
 - Theme submodule may not be checked out after clone/branch switch. Run `git submodule update --init` if you see "found no layout file" warnings during build.
 - Hugo `relref` fails for future-dated posts unless built with `--buildFuture`. The workflow does NOT use `--buildFuture`, so future posts stay unpublished until their date. Use plain text for "Next" links to future posts and re-link them with `relref` on publish day.
 - Posts use page bundles in subdirectories (e.g., `content/posts/ai/post-name/index.md`), not flat files in `content/posts/`. Glob with `content/posts/**/*.md` to find all posts.
+- Internal links must use `relref` (e.g., `{{< relref "post-slug" >}}`), not root-relative paths (e.g., `/post-slug/`). Root-relative paths don't account for the `/blog/` base path in `baseURL` and produce 404s.
+- Always verify localhost URLs before presenting them. The `baseURL` includes `/blog/`, so local dev URLs are `http://localhost:1313/blog/slug/`, not `http://localhost:1313/slug/`.
+- AI-generated blog posts containing code snippets MUST be verified against the actual repos before publishing. Interface signatures, method parameters, and class names are frequently hallucinated. Use `~/dev/` repos as the source of truth.
 
 ## PSR Blog Series
 
