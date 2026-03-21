@@ -1,0 +1,28 @@
+{
+  "name": "blog",
+  "version": "1.0.0",
+  "description": "A Hugo blog migrated from Jekyll, using the PaperMod theme.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jonesrussell/blog.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/jonesrussell/blog/issues"
+  },
+  "homepage": "https://github.com/jonesrussell/blog#readme",
+  "devDependencies": {
+    "gray-matter": "^4.0.3",
+    "playwright": "^1.58.2"
+  }
+}
