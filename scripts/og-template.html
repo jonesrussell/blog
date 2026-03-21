@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    width: 1200px;
+    height: 630px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    overflow: hidden;
+  }
+  .container {
+    width: 1200px;
+    height: 630px;
+    background: linear-gradient(135deg, {{gradient}});
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 60px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+  .circle-1 {
+    position: absolute;
+    top: -40px;
+    right: -40px;
+    width: 280px;
+    height: 280px;
+    border: 4px solid rgba(255,255,255,0.12);
+    border-radius: 50%;
+  }
+  .circle-2 {
+    position: absolute;
+    bottom: -60px;
+    left: -60px;
+    width: 220px;
+    height: 220px;
+    border: 4px solid rgba(255,255,255,0.08);
+    border-radius: 50%;
+  }
+  .badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.2);
+    color: white;
+    font-size: 14px;
+    font-weight: 700;
+    padding: 6px 14px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 24px;
+    width: fit-content;
+  }
+  .title {
+    color: white;
+    font-size: {{fontSize}}px;
+    font-weight: 800;
+    line-height: 1.2;
+    max-width: 90%;
+  }
+  .author {
+    color: rgba(255,255,255,0.7);
+    font-size: 16px;
+    margin-top: 24px;
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="circle-1"></div>
+    <div class="circle-2"></div>
+    <div class="badge">{{series}}</div>
+    <div class="title">{{title}}</div>
+    <div class="author">{{author}}</div>
+  </div>
+</body>
+</html>
