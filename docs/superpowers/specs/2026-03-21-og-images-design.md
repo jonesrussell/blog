@@ -30,7 +30,7 @@ A Node script generates a customized 1200x630 PNG per post at build time, using 
 | `waaseyaa` | `#667eea → #764ba2` | Waaseyaa |
 | `php-fig-standards` | `#0f9b8e → #1a5276` | PHP-FIG Standards |
 | `codified-context` | `#f093fb → #f5576c` | Codified Context |
-| `production-linux` | TBD | Production Linux |
+| `production-linux` | `#e65100 → #bf360c` | Production Linux |
 | (no series) | `#2c3e50 → #4ca1af` | Blog |
 
 New series: add one entry to the map in the generation script.
@@ -41,13 +41,17 @@ New series: add one entry to the map in the generation script.
 
 ### Behavior
 
-1. Scan `content/posts/**/*.md` for frontmatter (`title`, `slug`, `series`)
+1. Scan `content/posts/**/index.md` for frontmatter (`title`, `slug`, `series`)
 2. Read `scripts/og-template.html` and compute SHA-256 hash
 3. Compare hash against `static/images/og/.og-template-hash`
 4. If hash changed → regenerate all images
 5. If hash unchanged → only generate for posts missing a PNG at `static/images/og/{slug}.png`
 6. Launch Playwright (chromium), render template at 1200x630 viewport, screenshot each to PNG
 7. Write new hash to `static/images/og/.og-template-hash`
+
+### Multi-Series Posts
+
+If a post belongs to multiple series (`series: ["a", "b"]`), use the first series in the array for the gradient.
 
 ### Template Variables
 
@@ -58,11 +62,28 @@ The script injects into the HTML template:
 - `{{gradient}}` — CSS gradient value from the color map
 - `{{author}}` — "Russell Jones"
 
+### Title Font Sizing
+
+The script sets font size based on title character count:
+
+- **< 40 chars** — 64px
+- **40–80 chars** — 48px
+- **> 80 chars** — 36px
+
+This is done by the script before rendering, not by CSS alone, to ensure consistent results in the fixed 1200x630 viewport.
+
 ### Dependencies
 
-- `playwright` (already available as MCP plugin; add as dev dependency for the script)
-- Node.js (already in CI for Hugo assets)
-- `gray-matter` (npm package for frontmatter parsing)
+- `playwright` — dev dependency for screenshot rendering
+- `gray-matter` — npm package for frontmatter parsing
+
+### Project Setup
+
+The project has no `package.json`. Implementation must:
+
+1. Run `npm init -y` to create `package.json`
+2. Run `npm install --save-dev playwright gray-matter`
+3. Add `node_modules/` to `.gitignore` (if not already present)
 
 ## HTML Template
 
@@ -73,7 +94,7 @@ A self-contained HTML file at 1200x630px that renders the OG image. Contains:
 - Inline CSS (no external dependencies)
 - The gradient, circles, badge, title, and author name
 - System font stack (no custom fonts to load)
-- Title auto-sizing: starts at a large font size and the template uses CSS `clamp()` or the script adjusts font size based on title length
+- Font size set by the script via template variable `{{fontSize}}`
 
 ## Taskfile Integration
 
@@ -95,9 +116,11 @@ og:regenerate:
 
 Create `layouts/partials/templates/opengraph.html` to override PaperMod's default. The override:
 
-1. Checks if `static/images/og/{slug}.png` exists (using `resources.Get` or `fileExists`)
-2. If yes → use it as the `og:image`
-3. If no → fall back to the site-level `images` default (`og-default.png`)
+1. Uses `fileExists` to check for `static/images/og/{slug}.png` (not `resources.Get`, which only works for `assets/`)
+2. If the file exists → set `og:image` to `{{ printf "images/og/%s.png" .Page.Slug | absURL }}`
+3. If not → fall back to the site-level `images` default (`og-default.png`)
+
+The `og:image` value must be an absolute URL (e.g., `https://jonesrussell.github.io/blog/images/og/waaseyaa-dbal-migration.png`). Use Hugo's `absURL` function to ensure this.
 
 No frontmatter changes needed on any post. The partial auto-resolves based on slug.
 
@@ -105,33 +128,40 @@ No frontmatter changes needed on any post. The partial auto-resolves based on sl
 
 The existing `images = ['images/og-default.png']` in `hugo.toml` remains as the fallback.
 
-## CI Integration
+## Workflow: Local Generation, Committed to Repo
 
-In `.github/workflows/hugo.yml`, add before the Hugo build step:
+OG images are generated locally by the developer and committed to `static/images/og/`. They are **not** generated in CI.
 
-```yaml
-- name: Install Playwright
-  run: npx playwright install chromium --with-deps
+**Rationale:** The blog deploys via GitHub Pages with `contents: read` permissions. CI cannot commit generated files back. Generating locally and committing keeps the workflow simple and the images available for Hugo to reference at build time.
 
-- name: Generate OG images
-  run: node scripts/generate-og-images.js
-```
+**Developer workflow:**
+1. Write or update a post
+2. Run `task og:generate` (generates only missing images)
+3. Commit the new PNGs alongside the post
+4. Push — CI builds Hugo normally, images are already in `static/`
 
-Generated images are committed to `static/images/og/` in the repo, so CI only generates missing ones (incremental). When the template changes, CI regenerates all.
+**Template changes:**
+1. Edit `scripts/og-template.html`
+2. Run `task og:regenerate` (regenerates all images)
+3. Commit all updated PNGs
+4. Push
+
+The `.og-template-hash` file is tracked in git alongside the PNGs.
 
 ## File Layout
 
 ```
+package.json                  # New — dev dependencies
 scripts/
-  generate-og-images.js     # Generation script
-  og-template.html           # HTML template (1200x630)
+  generate-og-images.js       # Generation script
+  og-template.html            # HTML template (1200x630)
 static/images/og/
-  .og-template-hash          # SHA-256 of template for change detection
+  .og-template-hash           # SHA-256 of template (tracked in git)
   waaseyaa-dbal-migration.png
   waaseyaa-i18n.png
   ...
 layouts/partials/templates/
-  opengraph.html             # Override PaperMod's opengraph partial
+  opengraph.html              # Override PaperMod's opengraph partial
 ```
 
 ## Out of Scope
@@ -141,3 +171,4 @@ layouts/partials/templates/
 - Dark/light mode variants
 - Runtime/serverless generation
 - Custom web fonts (uses system font stack)
+- CI-based image generation
