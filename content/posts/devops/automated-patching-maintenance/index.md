@@ -1,6 +1,6 @@
 ---
 title: "Automated Patching and Server Maintenance"
-date: 2026-03-28
+date: 2026-03-27
 categories: [devops]
 tags: [linux, security]
 series: ["production-linux"]

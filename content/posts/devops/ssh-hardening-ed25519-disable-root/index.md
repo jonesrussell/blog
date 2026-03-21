@@ -1,6 +1,6 @@
 ---
 title: "SSH Hardening: Ed25519 Keys and Disabling Root Login"
-date: 2026-03-22
+date: 2026-03-21
 categories: [devops]
 tags: [linux, security, ssh]
 series: ["production-linux"]
@@ -31,7 +31,7 @@ Ed25519 is the current standard over RSA. The key is smaller, the math is faster
 Copy the public key to your server:
 
 ```bash
-ssh-copy-id -i ~/.ssh/id_ed25519.pub deploy@your-server-ip
+ssh-copy-id -i ~/.ssh/id_ed25519.pub deployer@your-server-ip
 ```
 
 This appends your public key to `~/.ssh/authorized_keys` on the server and sets correct permissions. Test the key-based login before you disable password auth — you want to confirm the key works while you still have a fallback.

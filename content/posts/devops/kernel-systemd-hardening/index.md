@@ -1,6 +1,6 @@
 ---
 title: "Kernel and Systemd Service Hardening"
-date: 2026-03-26
+date: 2026-03-25
 categories: [devops]
 tags: [linux, security, systemd]
 series: ["production-linux"]

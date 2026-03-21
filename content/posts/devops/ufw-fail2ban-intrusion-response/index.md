@@ -1,6 +1,6 @@
 ---
 title: "UFW, fail2ban, and Banning Repeat Offenders"
-date: 2026-03-23
+date: 2026-03-22
 categories: [devops]
 tags: [linux, security, fail2ban, caddy]
 series: ["production-linux"]

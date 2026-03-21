@@ -1,6 +1,6 @@
 ---
 title: "Caddy Hardening: Security Headers and Rate Limiting"
-date: 2026-03-25
+date: 2026-03-24
 categories: [devops]
 tags: [security, caddy, linux]
 series: ["production-linux"]

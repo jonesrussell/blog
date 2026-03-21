@@ -1,6 +1,6 @@
 ---
 title: "Monitoring, Alerting, and Incident Response"
-date: 2026-03-29
+date: 2026-03-28
 categories: [devops]
 tags: [linux, monitoring, security]
 series: ["production-linux"]
@@ -72,11 +72,11 @@ This script checks disk usage against a threshold and verifies each listed servi
 Install it:
 
 ```bash
-sudo apt install auditd audispd-plugins
+sudo apt install auditd audisp-plugins
 sudo systemctl enable --now auditd
 ```
 
-This installs the daemon and enables it at boot. The `audispd-plugins` package adds dispatch support for forwarding events to other systems if needed.
+This installs the daemon and enables it at boot. The `audisp-plugins` package adds dispatch support for forwarding events to other systems if needed.
 
 Create a rules file at `/etc/audit/rules.d/hardening.rules`:
 

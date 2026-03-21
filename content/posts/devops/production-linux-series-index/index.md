@@ -1,6 +1,6 @@
 ---
 title: "Production Linux: Secure and Maintain Your Own VPS"
-date: 2026-03-20
+date: 2026-03-19
 categories: [devops]
 tags: [linux, security]
 series: ["production-linux"]
@@ -18,7 +18,7 @@ This series covers the full lifecycle of a production Linux VPS — from first l
 
 Droplet creation, deploy user, UFW baseline, and unattended upgrades. The "before you do anything else" checklist.
 
-### 2. SSH Hardening: Ed25519 Keys and Disabling Root Login
+### 2. [SSH Hardening: Ed25519 Keys and Disabling Root Login]({{< relref "ssh-hardening-ed25519-disable-root" >}})
 
 Ed25519 keys, `PermitRootLogin no`, and disabling unused authentication methods.
 

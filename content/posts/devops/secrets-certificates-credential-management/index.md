@@ -1,6 +1,6 @@
 ---
 title: "Secrets, Certificates, and Credential Rotation"
-date: 2026-03-27
+date: 2026-03-26
 categories: [devops]
 tags: [security, linux, ansible]
 series: ["production-linux"]
