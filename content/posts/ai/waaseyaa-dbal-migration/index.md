@@ -6,7 +6,7 @@ tags: [waaseyaa, php, claude-code, dbal]
 series: ["waaseyaa"]
 series_order: 7
 series_group: "Main"
-summary: "How waaseyaa migrated from a homegrown PdoDatabase to Doctrine DBAL across 413 commits — and how all three applications upgraded without breaking."
+summary: "How waaseyaa migrated from a homegrown PdoDatabase to Doctrine DBAL across 67 commits — and how all three applications upgraded without breaking."
 slug: "waaseyaa-dbal-migration"
 draft: false
 ---
@@ -15,7 +15,7 @@ Ahnii!
 
 > **Series context:** This is part 7 of the [Waaseyaa series]({{< relref "waaseyaa-intro" >}}). This post builds on [the entity system]({{< relref "waaseyaa-entity-system" >}}) and the [API layer]({{< relref "waaseyaa-api-layer" >}}) from earlier in the series.
 
-Every framework eventually outgrows its first database abstraction. Waaseyaa's `PdoDatabase` class served us well through v0.1.0, but by the time three applications depended on it, the cracks were showing. This post covers the migration to [Doctrine DBAL](https://www.doctrine-project.org/projects/dbal.html) — 413 commits across two weeks — and how all three apps upgraded without a single breaking change at the application layer.
+Every framework eventually outgrows its first database abstraction. Waaseyaa's `PdoDatabase` class served us well through v0.1.0, but by the time three applications depended on it, the cracks were showing. This post covers the migration to [Doctrine DBAL](https://www.doctrine-project.org/projects/dbal.html) — 67 commits across three weeks — and how all three apps upgraded without a single breaking change at the application layer.
 
 ## Why replace a working database layer
 
@@ -35,7 +35,7 @@ The query builder alone justified the switch. Instead of concatenating SQL strin
 
 ## The migration scope
 
-The migration touched every package that interacted with the database. In total: 413 commits across roughly two weeks of focused work.
+The migration touched every package that interacted with the database. In total: 67 commits across roughly three weeks of focused work.
 
 Every `PdoDatabase` call site was replaced. The kernel boot sequence changed to initialize a DBAL connection. SQL reserved-word quoting was added to all query builders. Integration tests were rewritten to run against real DBAL connections instead of mocked PDO instances.
 
@@ -52,23 +52,16 @@ $container->set(PdoDatabase::class, $database);
 
 A direct PDO connection, registered in the container. Simple but inflexible.
 
-After the migration, the kernel uses DBAL's `DriverManager`:
+After the migration, the kernel uses `DBALDatabase`, which wraps Doctrine's `DriverManager` internally:
 
 ```php
-use Doctrine\DBAL\DriverManager;
+use Waaseyaa\Database\DBALDatabase;
 
-$connection = DriverManager::getConnection([
-    'dbname'   => $config->get('database.name'),
-    'user'     => $config->get('database.user'),
-    'password' => $config->get('database.password'),
-    'host'     => $config->get('database.host'),
-    'driver'   => $config->get('database.driver'),
-]);
-
-$container->set(Connection::class, $connection);
+$database = DBALDatabase::create($config->get('database'));
+$container->set(DatabaseInterface::class, $database);
 ```
 
-The DBAL `Connection` object is now available to every service through dependency injection. Services depend on the `Connection` interface, not a concrete class. That's a meaningful improvement for testing — you can swap in an SQLite connection for integration tests without changing any service code.
+Services now depend on `DatabaseInterface`, not a concrete class. `DBALDatabase` handles the `DriverManager::getConnection()` call internally. That's a meaningful improvement for testing — you can swap in an SQLite-backed `DBALDatabase` for integration tests without changing any service code.
 
 ## SQL hardening
 
@@ -112,25 +105,25 @@ Each migration runs inside a transaction. If the `up()` method throws an excepti
 
 The real test of any framework migration is whether applications survive it. Three apps depended on waaseyaa's database layer:
 
-**Minoo** upgraded to alpha.25, which shipped with `DBALDatabase` as the default. The upgrade required changing one line in the bootstrap — swapping the old database service registration for the new DBAL connection setup.
+**Minoo** upgraded its waaseyaa dependency to pick up `DBALDatabase` as the default. The upgrade required changing one line in the bootstrap — swapping the old database service registration for the new DBAL connection setup.
 
-**Claudriel** had already been built against a DBAL abstraction interface. When waaseyaa's internals switched from `PdoDatabase` to `DBALDatabase`, Claudriel required zero changes.
+**Claudriel** also depended on waaseyaa's database layer. Its upgrade required an explicit migration from `PdoDatabase` to `DBALDatabase` in its service provider, but the change was mechanical — swap the registration, bump the packages, done.
 
 **waaseyaa.org** launched with the new stack from day one. It never knew the old `PdoDatabase` existed.
 
-The migration was invisible at the application layer because the entity storage interface didn't change. `SqlEntityStorage` is the class that translates entity operations into SQL. It switched its internals from `PdoDatabase` to `DBALDatabase`, but its public API — `find()`, `save()`, `delete()`, `query()` — stayed identical. Applications talk to `SqlEntityStorage`, not to the database connection directly.
+The migration was invisible at the application layer because the entity storage interface didn't change. `SqlEntityStorage` is the class that translates entity operations into SQL. It switched its internals from `PdoDatabase` to `DBALDatabase`, but the `EntityRepository` API that applications use — `find()`, `findBy()`, `save()`, `delete()` — stayed identical. Applications talk to `EntityRepository`, not to the storage layer directly.
 
 This is the payoff of the entity system design from part 3 of this series. The storage interface is a seam. You can replace everything behind it without disturbing the code in front of it.
 
-## How AI handled 413 commits
+## How AI handled the migration
 
-Four hundred thirteen commits in two weeks sounds like a grind. It was — but it was a mechanical grind, which is exactly what AI handles well.
+Sixty-seven commits across three weeks is a steady grind — and it was a mechanical one, which is exactly what AI handles well.
 
 The migration followed a repeatable pattern: find a `PdoDatabase` usage, replace it with the equivalent DBAL call, update the tests, verify, commit. [Claude Code](https://claude.ai/code) executed this pattern across every package in the framework.
 
 The codified context made this tractable. Each session loaded the relevant spec and the migration checklist. The AI understood the pattern, applied it to a subset of packages, and moved on. There was no ambiguity about what the end state should look like — the spec defined the target API, and every commit moved one more call site to that target.
 
-This is the kind of work where AI shines: vast scope, clear pattern, well-defined boundaries. A human would get bored by commit 50. The AI maintained the same attention to detail on commit 413 as on commit 1.
+This is the kind of work where AI shines: clear pattern, well-defined boundaries, methodical execution. The AI maintained the same attention to detail on commit 67 as on commit 1.
 
 ## What's next
 
