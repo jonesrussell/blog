@@ -13,7 +13,7 @@ draft: false
 
 Ahnii!
 
-> **Series context:** This is part 6 of the [Waaseyaa series]({{< relref "waaseyaa-intro" >}}). The previous post covered [replacing the database layer]({{< relref "waaseyaa-dbal-migration" >}}). This post covers internationalization — the subsystem that makes [Minoo](https://minoo.live) a multilingual platform.
+> **Series context:** This is part 8 of the [Waaseyaa series]({{< relref "waaseyaa-intro" >}}). The previous post covered [replacing the database layer]({{< relref "waaseyaa-dbal-migration" >}}). This post covers internationalization — the subsystem that makes [Minoo](https://minoo.live) a multilingual platform, with full Ojibwe translation at [minoo.live/oj/](https://minoo.live/oj/).
 
 Most frameworks treat i18n as a UI concern. You have English strings and French strings. The user picks a locale. Labels change. The content stays the same.
 
@@ -34,16 +34,19 @@ The core contract for language resolution:
 ```php
 interface LanguageManagerInterface
 {
-    public function setCurrentLanguage(string $langcode): void;
-    public function getCurrentLanguage(): string;
-    public function getDefaultLanguage(): string;
+    public function setCurrentLanguage(Language $language): void;
+    public function getCurrentLanguage(): Language;
+    public function getDefaultLanguage(): Language;
+    public function getLanguage(string $id): ?Language;
     public function getLanguages(): array;
+    public function getFallbackChain(string $langcode): array;
+    public function isMultilingual(): bool;
 }
 ```
 
-`getLanguages()` returns all enabled languages for the platform. `getDefaultLanguage()` returns the fallback — for Minoo, that's English. `getCurrentLanguage()` returns whatever the negotiation pipeline resolved for the current request. `setCurrentLanguage()` allows middleware or test harnesses to override it explicitly.
+Languages are `Language` objects, not raw strings. `getLanguages()` returns all enabled languages for the platform. `getDefaultLanguage()` returns the fallback — for Minoo, that's English. `getCurrentLanguage()` returns whatever the negotiation pipeline resolved for the current request. `setCurrentLanguage()` allows middleware or test harnesses to override it explicitly. `getFallbackChain()` returns the ordered list of languages to try when content isn't available in the requested language. `isMultilingual()` is a convenience check for platforms that support more than one language.
 
-The interface is deliberately small. Language resolution is a single responsibility: determine what language context this request operates in. Everything downstream reads from `getCurrentLanguage()`.
+Everything downstream reads from `getCurrentLanguage()` to determine the language context for the current request.
 
 ## Language negotiation
 
@@ -54,11 +57,11 @@ The highest-priority source is the URL prefix. When a user visits `minoo.live/oj
 ```php
 interface LanguageNegotiatorInterface
 {
-    public function negotiate(RequestInterface $request): string;
+    public function negotiate(string $pathInfo, array $headers, array $availableLanguages): ?string;
 }
 ```
 
-The negotiator checks sources in order:
+The negotiator takes the raw path and headers rather than a framework-specific request object, keeping it decoupled from any HTTP layer. It checks sources in order:
 
 1. **URL prefix** — `/oj/` resolves to Ojibwe, `/en/` to English. No prefix falls through to the next source.
 2. **User preference** — If the user is authenticated and has a stored language preference, use it.
@@ -70,21 +73,20 @@ This is a chain-of-responsibility pattern. Each source either returns a resolved
 ```php
 final class UrlPrefixNegotiator implements LanguageNegotiatorInterface
 {
-    public function negotiate(RequestInterface $request): string
+    public function negotiate(string $pathInfo, array $headers, array $availableLanguages): ?string
     {
-        $path = $request->getUri()->getPath();
-        $prefix = $this->extractPrefix($path);
+        $prefix = $this->extractPrefix($pathInfo);
 
-        if ($prefix && $this->languageManager->isValidLanguage($prefix)) {
+        if ($prefix !== null && in_array($prefix, $availableLanguages, true)) {
             return $prefix;
         }
 
-        return '';  // Defer to next negotiator
+        return null;  // Defer to next negotiator
     }
 }
 ```
 
-An empty string means "I don't have an opinion." The negotiation pipeline moves to the next source. This mirrors the neutral-result pattern from [access control]({{< relref "waaseyaa-access-control" >}}) — no opinion means defer, not default.
+A `null` return means "I don't have an opinion." The negotiation pipeline moves to the next source. This mirrors the neutral-result pattern from [access control]({{< relref "waaseyaa-access-control" >}}) — no opinion means defer, not default.
 
 ## Multilingual entities
 
@@ -94,7 +96,7 @@ Language context flows into the entity system through `EntityInterface`:
 interface EntityInterface
 {
     public function language(): string;
-    // ... other methods from post 2
+    // ... other methods from the entity system
 }
 ```
 
@@ -118,7 +120,7 @@ This is a deliberate tradeoff. Ambient context is implicit, which can make debug
 Language and access control intersect in Minoo's `LanguageAccessPolicy`. This policy covers four entity types: dictionary entries, example sentences, word parts, and speakers.
 
 ```php
-#[PolicyAttribute(entityType: ['dictionary_entry', 'example_sentence', 'word_part', 'speaker'])]
+#[PolicyAttribute(entityType: ['dictionary_entry', 'example_sentence', 'word_part', 'dialect_region'])]
 final class LanguageAccessPolicy implements AccessPolicyInterface
 {
     public function access(
@@ -126,18 +128,23 @@ final class LanguageAccessPolicy implements AccessPolicyInterface
         string $operation,
         AccountInterface $account,
     ): AccessResult {
-        if (!$this->communityAccess->hasLanguageAccess($account, $entity->language())) {
-            return AccessResult::forbidden('No access to this language community');
+        if ($account->hasPermission('administer content')) {
+            return AccessResult::allowed('Admin permission.');
         }
 
-        return AccessResult::neutral();
+        return match ($operation) {
+            'view' => (int) $entity->get('status') === 1
+                ? AccessResult::allowed('Published content is publicly viewable.')
+                : AccessResult::neutral('Cannot view unpublished content.'),
+            default => AccessResult::neutral('Non-admin cannot modify language content.'),
+        };
     }
 }
 ```
 
-If the account doesn't have access to the entity's language community, access is forbidden. Otherwise, the policy returns neutral — deferring to other policies for the final grant decision. This connects directly to the deny-unless-granted semantics from [post 3]({{< relref "waaseyaa-access-control" >}}). A neutral result here doesn't mean "allowed." It means "this policy has no objection, but something else still needs to grant access."
+The pattern follows the same deny-unless-granted semantics from [access control]({{< relref "waaseyaa-access-control" >}}). Admins get through. Published content is viewable. Everything else returns neutral — which, without a grant from another policy, means denied. The policy applies to dictionary entries, example sentences, word parts, and dialect regions — the entity types that carry language-specific content.
 
-Community-controlled language access is a real requirement. Some indigenous communities restrict access to certain language materials to community members. This isn't DRM — it's cultural sovereignty. The access control layer enforces it without special-casing.
+Community-controlled language access is a real requirement. Some indigenous communities restrict access to certain language materials to community members. This isn't DRM — it's cultural sovereignty. The access control layer enforces it through the same policy mechanism used throughout the framework.
 
 ## The ai-vector language connection
 
@@ -147,15 +154,16 @@ Waaseyaa's `ai-vector` package handles semantic search. Language boundaries matt
 interface VectorStoreInterface
 {
     public function search(
-        string $query,
-        string $langcode,
-        array $fallbackLangcodes = [],
+        array $queryVector,
         int $limit = 10,
+        ?string $entityTypeId = null,
+        ?string $langcode = null,
+        array $fallbackLangcodes = [],
     ): array;
 }
 ```
 
-The `search()` method accepts a `langcode` and optional `fallbackLangcodes`. A search in Ojibwe returns Ojibwe results. If the Ojibwe corpus doesn't have enough matches, the fallback languages are searched in order.
+The `search()` method takes a pre-computed embedding vector and optional language filters. When `$langcode` is set, results are scoped to that language. If the corpus doesn't have enough matches, `$fallbackLangcodes` are searched in order.
 
 This keeps semantic search honest. Embedding models behave differently across languages. Mixing languages in a single vector search produces unreliable similarity scores. By searching within language boundaries first and falling back explicitly, the results stay meaningful.
 
@@ -171,6 +179,6 @@ This is the pattern that's worked throughout waaseyaa: define the interface, wri
 
 ## Next
 
-Testing 38 packages without losing your mind.
+[Testing a growing package ecosystem without losing your mind](/waaseyaa-testing/).
 
 Baamaapii
