@@ -13,7 +13,7 @@ draft: false
 
 Ahnii!
 
-> **Series context:** This is part 5 of the [Waaseyaa series]({{< relref "waaseyaa-intro" >}}). This post builds on [the entity system]({{< relref "waaseyaa-entity-system" >}}) and the [API layer]({{< relref "waaseyaa-api-layer" >}}) from earlier in the series.
+> **Series context:** This is part 7 of the [Waaseyaa series]({{< relref "waaseyaa-intro" >}}). This post builds on [the entity system]({{< relref "waaseyaa-entity-system" >}}) and the [API layer]({{< relref "waaseyaa-api-layer" >}}) from earlier in the series.
 
 Every framework eventually outgrows its first database abstraction. Waaseyaa's `PdoDatabase` class served us well through v0.1.0, but by the time three applications depended on it, the cracks were showing. This post covers the migration to [Doctrine DBAL](https://www.doctrine-project.org/projects/dbal.html) — 413 commits across two weeks — and how all three apps upgraded without a single breaking change at the application layer.
 
