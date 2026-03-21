@@ -1,12 +1,12 @@
 ---
-title: "Testing 38 packages without losing your mind"
+title: "Testing a 48-package monorepo at scale"
 date: 2026-03-22
 categories: [ai, php]
 tags: [waaseyaa, php, testing, claude-code]
 series: ["waaseyaa"]
 series_order: 9
 series_group: "Main"
-summary: "How in-memory implementations, a layered test strategy, and AI-assisted test generation keep a 38-package PHP monorepo testable."
+summary: "How in-memory implementations, a layered test strategy, and AI-assisted test generation keep a 48-package PHP monorepo testable."
 slug: "waaseyaa-testing"
 draft: false
 ---

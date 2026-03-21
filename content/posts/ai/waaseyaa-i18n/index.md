@@ -179,6 +179,6 @@ This is the pattern that's worked throughout waaseyaa: define the interface, wri
 
 ## Next
 
-[Testing a growing package ecosystem without losing your mind](/waaseyaa-testing/).
+[Testing a growing package ecosystem at scale](/waaseyaa-testing/).
 
 Baamaapii

@@ -15,7 +15,7 @@ Ahnii!
 
 > **Prerequisites:** PHP 8.4+, [Composer](https://getcomposer.org/), and familiarity with [Drupal](https://www.drupal.org/), [Laravel](https://laravel.com/), or [Symfony](https://symfony.com/) concepts.
 
-[Waaseyaa](https://github.com/waaseyaa/framework) is an Anishinaabe word meaning "it is bright" or "there is light." It's also a PHP CMS framework that takes the best ideas from both [Drupal](https://www.drupal.org/) and [Laravel](https://laravel.com/) — forked from Drupal 11's core and stripped of its technical debt, then shaped by Laravel 12's developer experience without carrying its baggage either. The result is a 43-package monorepo built on PHP 8.4+, [Symfony](https://symfony.com/) 7.x, with a [Nuxt 3](https://nuxt.com/) admin SPA. The first application built on it is [Minoo](https://github.com/waaseyaa/minoo), an Indigenous knowledge platform.
+[Waaseyaa](https://github.com/waaseyaa/framework) is an Anishinaabe word meaning "it is bright" or "there is light." It's also a PHP CMS framework that takes the best ideas from both [Drupal](https://www.drupal.org/) and [Laravel](https://laravel.com/) — forked from Drupal 11's core and stripped of its technical debt, then shaped by Laravel 12's developer experience without carrying its baggage either. The result is a 48-package monorepo built on PHP 8.4+, [Symfony](https://symfony.com/) 7.x, with a [Nuxt 3](https://nuxt.com/) admin SPA. The first application built on it is [Minoo](https://github.com/waaseyaa/minoo), an Indigenous knowledge platform.
 
 This is a twelve-part series covering the framework's architecture and the AI-assisted workflow used to build it. Each post covers one part of the system and shows how [GitHub issues, milestones, and codified context]({{< relref "codified-context-the-problem" >}}) made it possible to build something this complex working solo.
 
@@ -43,13 +43,13 @@ Layer 6: application (Minoo)
 
 Each layer can only depend on packages at its own level or below, enforcing a strict dependency direction from infrastructure up to application.
 
-43 packages across these seven layers, each in its own directory under `packages/`. The packages that map directly to Drupal concepts: entity, field, node, taxonomy, access, media, menu, path, relationship. The packages that don't exist in Drupal: ai-schema, ai-agent, ai-pipeline, ai-vector.
+48 packages across these seven layers, each in its own directory under `packages/`. The packages that map directly to Drupal concepts: entity, field, node, taxonomy, access, media, menu, path, relationship. The packages that don't exist in Drupal: ai-schema, ai-agent, ai-pipeline, ai-vector.
 
 The AI integration packages exist because the whole point of building a new framework is the ability to design for current constraints, not 2008 ones.
 
 ## Planning With GitHub Issues
 
-The framework exists because of a workflow, not despite it. Building 43 packages solo would be overwhelming without a system for knowing what to work on next and what "done" means for each piece.
+The framework exists because of a workflow, not despite it. Building 48 packages solo would be overwhelming without a system for knowing what to work on next and what "done" means for each piece.
 
 GitHub milestones serve as the roadmap. Each milestone is a named architectural phase with a clear scope — not "add features to entity system" but "entity system: field collection API, field type registry, ContentEntityBase." Milestones are completed before the next one opens. Work doesn't drift.
 
