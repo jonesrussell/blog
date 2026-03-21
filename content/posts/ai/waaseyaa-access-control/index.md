@@ -1,6 +1,6 @@
 ---
 title: "Deny-unless-granted: access control in waaseyaa"
-date: 2026-03-19
+date: 2026-03-18
 categories: [ai, php]
 tags: [waaseyaa, php, claude-code, open-source]
 series: ["waaseyaa"]
@@ -13,7 +13,7 @@ draft: false
 
 Ahnii!
 
-> **Series context:** This is part 3 of the [Waaseyaa series]({{< relref "waaseyaa-intro" >}}). Catch up on [part 1]({{< relref "waaseyaa-intro" >}}) (overview) and [part 2]({{< relref "waaseyaa-entity-system" >}}) (entity system) before reading this.
+> **Series context:** This is part 5 of the [Waaseyaa series]({{< relref "waaseyaa-intro" >}}). This post builds on the [entity system]({{< relref "waaseyaa-entity-system" >}}) from earlier in the series.
 
 Access control is where frameworks make their most consequential design decisions. The choice between allow-unless-denied and deny-unless-granted isn't a style preference — it determines what happens when your policy logic has a gap.
 
@@ -133,6 +133,6 @@ The skill also flags the OR semantics issue for topic filtering. Merging a user'
 
 Sessions working on access control load this skill and get the full context. The mistake history in the skill represents real mistakes that happened in sessions before the skill existed.
 
-Next: JSON:API from framework to SPA: Waaseyaa's API layer.
+Next: [JSON:API from framework to SPA: Waaseyaa's API layer](/waaseyaa-api-layer/).
 
 Baamaapii

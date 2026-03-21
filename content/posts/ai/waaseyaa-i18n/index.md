@@ -1,6 +1,6 @@
 ---
 title: "i18n for a cultural platform"
-date: 2026-03-22
+date: 2026-03-21
 categories: [ai, php]
 tags: [waaseyaa, php, i18n, minoo]
 series: ["waaseyaa"]

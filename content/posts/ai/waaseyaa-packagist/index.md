@@ -1,6 +1,6 @@
 ---
 title: "Publishing a PHP monorepo to Packagist with splitsh-lite"
-date: 2026-03-26
+date: 2026-03-25
 categories: [ai, php]
 tags: [waaseyaa, php, packagist, open-source]
 series: ["waaseyaa"]

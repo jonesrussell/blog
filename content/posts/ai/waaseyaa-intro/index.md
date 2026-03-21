@@ -1,6 +1,6 @@
 ---
 title: "Waaseyaa: building a Drupal-inspired PHP CMS with AI"
-date: 2026-03-17
+date: 2026-03-14
 categories: [ai, php]
 tags: [waaseyaa, claude-code, php, open-source]
 series: ["waaseyaa"]
@@ -17,7 +17,7 @@ Ahnii!
 
 [Waaseyaa](https://github.com/waaseyaa/framework) is an Anishinaabe word meaning "it is bright" or "there is light." It's also a PHP CMS framework that takes the best ideas from both [Drupal](https://www.drupal.org/) and [Laravel](https://laravel.com/) — forked from Drupal 11's core and stripped of its technical debt, then shaped by Laravel 12's developer experience without carrying its baggage either. The result is a 43-package monorepo built on PHP 8.4+, [Symfony](https://symfony.com/) 7.x, with a [Nuxt 3](https://nuxt.com/) admin SPA. The first application built on it is [Minoo](https://github.com/waaseyaa/minoo), an Indigenous knowledge platform.
 
-This is a ten-part series covering the framework's architecture and the AI-assisted workflow used to build it. Each post covers one part of the system and shows how [GitHub issues, milestones, and codified context]({{< relref "codified-context-the-problem" >}}) made it possible to build something this complex working solo.
+This is a twelve-part series covering the framework's architecture and the AI-assisted workflow used to build it. Each post covers one part of the system and shows how [GitHub issues, milestones, and codified context]({{< relref "codified-context-the-problem" >}}) made it possible to build something this complex working solo.
 
 ## Why Build Another CMS Framework?
 
@@ -71,7 +71,11 @@ Minoo's codified context includes six domain skills for application-level patter
 
 Each post covers one subsystem, showing both the architecture and how AI-assisted development with structured context worked in practice.
 
+**Co-development governance** — Three skills for governing multi-repo co-development: enforcing patterns, auditing divergence, and extracting shared code across Waaseyaa, Minoo, and Claudriel.
+
 **The entity system** — EntityInterface, ContentEntityBase, the field API. The heart of the framework and the foundation for everything else.
+
+**The temporal layer** — How Claudriel's temporal subsystem pins time per request, resolves timezones from context, and detects clock drift before it corrupts AI reasoning.
 
 **Access control** — The deny-unless-granted model, AccessPolicyInterface, field-level access, and how Minoo implements indigenous-content filtering.
 

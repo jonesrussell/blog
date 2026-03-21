@@ -1,6 +1,6 @@
 ---
 title: "Three skills for governing multi-repo co-development with Claude Code"
-date: 2026-03-18
+date: 2026-03-15
 categories: [ai, php]
 tags: [claude-code, waaseyaa, codified-context, skills]
 series: ["waaseyaa"]
@@ -176,6 +176,6 @@ Skills work because they're active. They trigger when Claude touches the relevan
 
 The codified context architecture gives each repo self-awareness. This skill set gives the repos awareness of each other.
 
-Next: Building a temporal layer so your AI never lies about time.
+Next: [The entity system at the heart of Waaseyaa](/waaseyaa-entity-system/).
 
 Baamaapii

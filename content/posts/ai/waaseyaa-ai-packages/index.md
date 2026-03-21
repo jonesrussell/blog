@@ -1,6 +1,6 @@
 ---
 title: "AI-native PHP: the waaseyaa AI packages"
-date: 2026-03-25
+date: 2026-03-24
 categories: [ai, php]
 tags: [waaseyaa, php, claude-code, open-source]
 series: ["waaseyaa"]

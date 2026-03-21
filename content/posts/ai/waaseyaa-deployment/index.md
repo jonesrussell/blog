@@ -1,6 +1,6 @@
 ---
 title: "From scaffold to live site in 90 minutes"
-date: 2026-03-24
+date: 2026-03-23
 categories: [ai, php]
 tags: [waaseyaa, deployment, caddy, deployer]
 series: ["waaseyaa"]

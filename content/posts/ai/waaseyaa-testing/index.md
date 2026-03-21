@@ -1,6 +1,6 @@
 ---
 title: "Testing 38 packages without losing your mind"
-date: 2026-03-23
+date: 2026-03-22
 categories: [ai, php]
 tags: [waaseyaa, php, testing, claude-code]
 series: ["waaseyaa"]

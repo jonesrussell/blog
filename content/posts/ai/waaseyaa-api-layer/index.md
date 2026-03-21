@@ -1,6 +1,6 @@
 ---
 title: "JSON:API from Framework to SPA: Waaseyaa's API Layer"
-date: 2026-03-20
+date: 2026-03-19
 categories: [ai, php]
 tags: [waaseyaa, php, claude-code, open-source]
 series: ["waaseyaa"]
@@ -13,7 +13,7 @@ draft: false
 
 Ahnii!
 
-> **Series context:** This is part 4 of the [Waaseyaa series]({{< relref "waaseyaa-intro" >}}). This post builds on [the entity system]({{< relref "waaseyaa-entity-system" >}}) and [access control]({{< relref "waaseyaa-access-control" >}}) from earlier in the series.
+> **Series context:** This is part 6 of the [Waaseyaa series]({{< relref "waaseyaa-intro" >}}). This post builds on [the entity system]({{< relref "waaseyaa-entity-system" >}}) and [access control]({{< relref "waaseyaa-access-control" >}}) from earlier in the series.
 
 The entity system models your content. The access control layer decides who can see it. The API layer exposes it to the outside world — and in waaseyaa's case, that means a [JSON:API](https://jsonapi.org/) interface consumed by a Nuxt 3 admin SPA.
 
@@ -173,6 +173,6 @@ Since this post was drafted, Waaseyaa added a `graphql` package built on [webony
 
 [Claudriel](https://github.com/jonesrussell/claudriel), a personal operations system built on Waaseyaa, is actively migrating its REST endpoints to GraphQL. Entity types like Commitment, Person, Workspace, and ScheduleEntry now have auto-generated GraphQL schemas. The migration validates that the GraphQL layer handles real-world entity complexity — nested relationships, access-controlled fields, and mixed query patterns — not just the simple CRUD cases.
 
-Next: Replacing a homegrown database layer with DBAL.
+Next: [Replacing a homegrown database layer with DBAL](/waaseyaa-dbal-migration/).
 
 Baamaapii

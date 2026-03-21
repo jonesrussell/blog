@@ -1,6 +1,6 @@
 ---
 title: "The entity system at the heart of Waaseyaa"
-date: 2026-03-18
+date: 2026-03-16
 categories: [ai, php]
 tags: [waaseyaa, php, claude-code, open-source]
 series: ["waaseyaa"]
@@ -13,7 +13,7 @@ draft: false
 
 Ahnii!
 
-> **Series context:** This is part 2 of the [Waaseyaa series]({{< relref "waaseyaa-intro" >}}). Read [part 1]({{< relref "waaseyaa-intro" >}}) for an overview of the framework, its architecture, and the GitHub issue workflow used to build it.
+> **Series context:** This is part 3 of the [Waaseyaa series]({{< relref "waaseyaa-intro" >}}). Read the [series intro]({{< relref "waaseyaa-intro" >}}) for an overview, and [co-development governance]({{< relref "co-development-skill-set" >}}) for how the multi-repo workflow is governed.
 
 [Drupal](https://www.drupal.org/)'s greatest contribution to PHP content management isn't its UI or its module ecosystem — it's the entity/field model. The idea that content types are configurations of typed fields, that any content type can have any field, that fields carry their own storage and validation logic, is what makes Drupal flexible enough to model almost any content domain.
 
@@ -153,6 +153,6 @@ The GitHub issue that drove the initial entity system build scoped the work prec
 
 The combination — issue scope plus codified context — is what makes complex framework development manageable across dozens of sessions.
 
-Next: Deny-unless-granted: access control in Waaseyaa.
+Next: [Building a temporal layer so your AI never lies about time](/claudriel-temporal-layer/).
 
 Baamaapii

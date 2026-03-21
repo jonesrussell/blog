@@ -1,6 +1,6 @@
 ---
 title: "Replacing a homegrown database layer with DBAL"
-date: 2026-03-21
+date: 2026-03-20
 categories: [ai, php]
 tags: [waaseyaa, php, claude-code, dbal]
 series: ["waaseyaa"]
