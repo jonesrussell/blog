@@ -77,6 +77,16 @@ tasks:
     cmds:
       - git config core.hooksPath .husky
 
+  og:generate:
+    desc: Generate OG images for posts missing them (incremental)
+    cmds:
+      - node scripts/generate-og-images.js
+
+  og:regenerate:
+    desc: Force regenerate all OG images
+    cmds:
+      - node scripts/generate-og-images.js --force
+
   deploy:
     desc: Build and prepare for deployment
     deps:
