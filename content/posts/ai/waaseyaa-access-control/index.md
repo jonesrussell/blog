@@ -133,6 +133,6 @@ The skill also flags the OR semantics issue for topic filtering. Merging a user'
 
 Sessions working on access control load this skill and get the full context. The mistake history in the skill represents real mistakes that happened in sessions before the skill existed.
 
-Next: [JSON:API from framework to SPA: Waaseyaa's API layer](/waaseyaa-api-layer/).
+Next: [JSON:API from framework to SPA: Waaseyaa's API layer]({{< relref "waaseyaa-api-layer" >}}).
 
 Baamaapii

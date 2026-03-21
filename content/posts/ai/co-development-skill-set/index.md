@@ -176,6 +176,6 @@ Skills work because they're active. They trigger when Claude touches the relevan
 
 The codified context architecture gives each repo self-awareness. This skill set gives the repos awareness of each other.
 
-Next: [The entity system at the heart of Waaseyaa](/waaseyaa-entity-system/).
+Next: [The entity system at the heart of Waaseyaa]({{< relref "waaseyaa-entity-system" >}}).
 
 Baamaapii

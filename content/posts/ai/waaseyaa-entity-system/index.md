@@ -153,6 +153,6 @@ The GitHub issue that drove the initial entity system build scoped the work prec
 
 The combination — issue scope plus codified context — is what makes complex framework development manageable across dozens of sessions.
 
-Next: [Building a temporal layer so your AI never lies about time](/claudriel-temporal-layer/).
+Next: [Building a temporal layer so your AI never lies about time]({{< relref "claudriel-temporal-layer" >}}).
 
 Baamaapii

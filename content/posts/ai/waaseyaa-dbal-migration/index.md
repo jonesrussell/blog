@@ -113,7 +113,7 @@ The real test of any framework migration is whether applications survive it. Thr
 
 The migration was invisible at the application layer because the entity storage interface didn't change. `SqlEntityStorage` is the class that translates entity operations into SQL. It switched its internals from `PdoDatabase` to `DBALDatabase`, but the `EntityRepository` API that applications use — `find()`, `findBy()`, `save()`, `delete()` — stayed identical. Applications talk to `EntityRepository`, not to the storage layer directly.
 
-This is the payoff of the [entity system design](/waaseyaa-entity-system/) from earlier in this series. The storage interface is a seam. You can replace everything behind it without disturbing the code in front of it.
+This is the payoff of the [entity system design]({{< relref "waaseyaa-entity-system" >}}) from earlier in this series. The storage interface is a seam. You can replace everything behind it without disturbing the code in front of it.
 
 ## How AI handled the migration
 
