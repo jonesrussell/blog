@@ -1,0 +1,86 @@
+name: Sync to Dev.to
+
+on:
+  workflow_run:
+    workflows: ["Deploy Hugo blog to Pages"]
+    types: [completed]
+    branches: [main]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 2
+
+      - name: Setup Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.26'
+
+      - name: Build devto-sync
+        run: cd tools/devto-sync && go build -o ../../bin/devto-sync .
+
+      - name: Find changed posts
+        id: changed
+        run: |
+          sha="${{ github.event.workflow_run.head_sha }}"
+          files=$(git diff --name-only "${sha}^1" "${sha}" -- 'content/posts/**/index.md' 2>/dev/null || true)
+          echo "files<<EOF" >> "$GITHUB_OUTPUT"
+          echo "$files" >> "$GITHUB_OUTPUT"
+          echo "EOF" >> "$GITHUB_OUTPUT"
+          count=$(echo "$files" | grep -c . || true)
+          echo "count=$count" >> "$GITHUB_OUTPUT"
+
+      - name: Push changed posts to Dev.to
+        if: steps.changed.outputs.count != '0'
+        env:
+          DEVTO_API_KEY: ${{ secrets.DEVTO_API_KEY }}
+        run: |
+          set -euo pipefail
+          while IFS= read -r file; do
+            [ -z "$file" ] && continue
+            [ ! -f "$file" ] && continue
+            slug=$(basename "$(dirname "$file")")
+            echo "Pushing: $slug"
+            ./bin/devto-sync push --slug "$slug" || echo "WARN: failed to push $slug"
+          done <<< "${{ steps.changed.outputs.files }}"
+
+      - name: Check for devto_id writebacks
+        id: writeback
+        run: |
+          changes=$(git diff --name-only -- 'content/posts/**/index.md' || true)
+          echo "changes<<EOF" >> "$GITHUB_OUTPUT"
+          echo "$changes" >> "$GITHUB_OUTPUT"
+          echo "EOF" >> "$GITHUB_OUTPUT"
+          if [ -n "$changes" ]; then
+            echo "has_changes=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "has_changes=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Create writeback PR
+        if: steps.writeback.outputs.has_changes == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          sha="${{ github.event.workflow_run.head_sha }}"
+          branch="devto-sync/writeback-${sha:0:7}"
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git checkout -b "$branch"
+          git add content/posts/**/index.md
+          git commit -m "chore: write back devto_id from sync run"
+          git push origin "$branch"
+          gh pr create \
+            --title "chore: write back devto_id values" \
+            --body "Automated PR from devto-sync workflow. New articles were created on Dev.to and their IDs need to be recorded in frontmatter." \
+            --base main \
+            --head "$branch"
