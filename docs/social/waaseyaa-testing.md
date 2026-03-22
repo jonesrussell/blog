@@ -1,4 +1,4 @@
-# Social Posts: Testing 38 packages without losing your mind
+# Social Posts: Testing 48 packages without losing your mind
 
 **Canonical URL:** https://jonesrussell.github.io/blog/waaseyaa-testing/
 
@@ -10,7 +10,7 @@ Read more: https://jonesrussell.github.io/blog/waaseyaa-testing/
 
 ## X (Twitter)
 
-38 PHP packages in one monorepo. In-memory implementations, layered test strategy, and AI-assisted test generation keep it all testable. Here's the approach.
+48 PHP packages in one monorepo. In-memory implementations, layered test strategy, and AI-assisted test generation keep it all testable. Here's the approach.
 
 https://jonesrussell.github.io/blog/waaseyaa-testing/
 
