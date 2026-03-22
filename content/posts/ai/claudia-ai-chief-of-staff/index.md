@@ -1,16 +1,16 @@
 ---
 title: "Claudia: An AI Chief of Staff That Runs on Claude Code"
-date: 2026-03-19
+date: 2026-03-22
 categories: [ai]
 tags: [claude-code, ai-tools, productivity, open-source]
 summary: "Claudia turns Claude Code into a personal chief of staff that remembers your relationships, tracks your commitments, and helps you make better decisions."
 slug: "claudia-ai-chief-of-staff"
-draft: true
+draft: false
 ---
 
 Ahnii!
 
-[Claudia](https://github.com/kbanc85/claudia) is a terminal-based AI chief of staff built on top of [Claude Code](https://docs.anthropic.com/en/docs/claude-code). It remembers your relationships, tracks your commitments, surfaces patterns in your work, and helps you prioritize your day. This post covers what Claudia does, how it works, and how to get started.
+[Claudia](https://github.com/kbanc85/claudia) is a terminal-based AI chief of staff that runs on [Claude Code](https://docs.anthropic.com/en/docs/claude-code). It remembers your relationships, tracks your commitments, surfaces patterns in your work, and helps you prioritize your day. This post covers what Claudia does, how it works, and how to get started.
 
 ## What Claudia Actually Does
 
@@ -24,7 +24,7 @@ The judgment layer is where it gets interesting. Claudia stores your decision-ma
 
 ## How It Works
 
-Claudia has two layers: a template layer that defines her personality and skills, and a memory system that gives her persistent recall. Together they add up to 41 skills, 33 MCP tools, and over 750 tests.
+Claudia has two layers: a template layer that defines her personality and skills, and a memory system that gives her persistent recall. Together they add up to 41 skills, 33 MCP tools, and 756 passing tests.
 
 ### The Template Layer
 
@@ -47,13 +47,13 @@ A Python-based daemon that powers semantic search and pattern detection. It runs
 
 The scheduled jobs handle memory decay (fading old memories while preserving important ones), consolidation (merging duplicates and detecting patterns), and vault sync.
 
-Search uses hybrid ranking: 50% vector similarity, 25% importance, 10% recency, and 15% full-text match. Accessing a memory boosts its score, mimicking how human recall works.
+Search uses hybrid ranking that blends vector similarity, importance, recency, and full-text match. Accessing a memory boosts its score, mimicking how human recall works.
 
-The daemon is self-diagnosing. Run `--preflight` and it validates all 11 startup steps, from Python version to Ollama connectivity. If something breaks, `--repair` auto-fixes common issues like stale WAL checkpoints or missing database directories.
+The daemon is self-diagnosing. Run `--preflight` and it validates startup requirements from Python version to Ollama connectivity. If something breaks, `--repair` auto-fixes common issues like corrupt databases or missing directories.
 
 ## Personalized Onboarding
 
-When you first launch Claudia, she walks you through a conversation to learn about you. Based on what you share, she selects one of five archetypes and a business depth level (Full, Starter, or Minimal). A consultant gets deep per-client structure with milestone plans, stakeholder maps, and decision logs. A solo operator gets pipeline tracking and financial management. The workspace adapts to how you actually work.
+When you first launch Claudia, she walks you through a conversation to learn about you. Based on what you share, she generates a personalized workspace. A consultant gets deep per-client structure with milestone plans, stakeholder maps, and decision logs. A solo operator gets pipeline tracking and financial management. The workspace adapts to how you actually work.
 
 ## Google Workspace Integration
 
@@ -121,13 +121,13 @@ Claudia still works with markdown files alone. You can add the memory system lat
 
 The project moves fast. Claudia went from v1.0 to v1.55 in under two months, with 373 commits and named releases like "The Unified Memory Release," "The Reliability Release," and "The Community Release." The changelog reads like a product roadmap being executed in real time.
 
-Recent milestones include the Brain Visualizer (v1.14), Relationship Intelligence with automatic connection mapping (v1.13), Google Workspace integration (v1.51), Cognitive Tools for local LLM extraction (v1.8), and a Messaging Gateway that lets you talk to Claudia from your phone (v1.9.4).
+Recent milestones include the Brain Visualizer with GPU-accelerated 3D rendering, Relationship Intelligence with automatic connection mapping, Google Workspace integration (v1.51), and a Messaging Gateway that lets you talk to Claudia from your phone.
 
 ## Why It's Worth Trying
 
 Claudia solves a real problem. The people, promises, and priorities in your professional life are scattered across email, chat, notes, and your own head. Claudia pulls them into one place and keeps them current.
 
-It is open source under the [PolyForm Noncommercial](https://polyformproject.org/licenses/noncommercial/1.0.0/) license, actively maintained, and the community is welcoming. Seven improvements to the installer were contributed recently and all of them were merged the same day. The v1.55.21 "Community Release" cleared the entire GitHub backlog: 13 issues closed, 7 PRs merged, zero open.
+It is open source under the [PolyForm Noncommercial](https://polyformproject.org/licenses/noncommercial/1.0.0/) license, actively maintained, and the community is welcoming. I contributed 7 PRs covering installer reliability, a `--skip-memory` flag, and integration tests — 4 merged, and I was credited as the first external contributor. The v1.55.21 "Community Release" cleared the entire GitHub backlog: 13 issues closed, 7 PRs merged, zero open.
 
 If you use Claude Code already, Claudia is worth a look.
 
