@@ -10,7 +10,7 @@ draft: true
 
 Ahnii!
 
-Ruth M. Trucks [posted on LinkedIn](https://www.linkedin.com/in/ruth-m-trucks/) that AI doesn't understand intent. She asked Claude to shorten her content and it stripped the curiosity hooks, conversational rhythm, and direct address that made her writing land. She's right about what happened. But the problem isn't that AI can't preserve voice. It's that she didn't tell it what to protect.
+Ruth M. Trucks [posted on LinkedIn](https://www.linkedin.com/feed/update/urn:li:activity:7441491723412951040/) that AI doesn't understand intent. She asked Claude to shorten her content and it stripped the curiosity hooks, conversational rhythm, and direct address that made her writing land. She's right about what happened. But the problem isn't that AI can't preserve voice. It's that she didn't tell it what to protect.
 
 This post shows how to build a style layer that travels with every prompt you send to [Claude Code](https://docs.anthropic.com/en/docs/claude-code/overview) or any AI writing tool. Encode your rules. Review the output. Feed corrections back in.
 
@@ -113,7 +113,7 @@ This is auditable. You can see exactly what was caught, on which line, and what 
 
 Voice is half the problem. The other half is substance. AI writes confidently about things that are wrong.
 
-A post on this blog about [Claude Code](https://docs.anthropic.com/en/docs/claude-code/overview) hooks used the `--no-milestone` flag for the GitHub CLI. The prose was clean. The structure followed every style rule. The flag doesn't exist. It was caught because the actual command was run before publishing. Without that step, a fabricated flag ships to readers who will try to use it.
+A post on this blog about Claude Code hooks used the `--no-milestone` flag for the GitHub CLI. The prose was clean. The structure followed every style rule. The flag doesn't exist. It was caught because the actual command was run before publishing. Without that step, a fabricated flag ships to readers who will try to use it.
 
 The review checklist for this blog requires verifying code against real repos. Interface signatures, method names, class names, parameter order. AI hallucinates these constantly. The checklist catches it because "does this flag exist?" is a binary check, just like "did the post open with Ahnii?"
 
