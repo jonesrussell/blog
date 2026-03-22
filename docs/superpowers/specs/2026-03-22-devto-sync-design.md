@@ -32,7 +32,15 @@ devto: true               # Controls whether this post syncs to Dev.to (default:
 
 `canonical_url` is always computed from `baseURL` + `slug` — never stored in frontmatter.
 
-Posts without `devto_id` are treated as new when pushed. Posts with `devto: false` are skipped entirely during push. The `devto` field name matches the existing convention already used in the archetype and published posts (e.g., `ai/ai-strips-your-voice-style-layer/index.md`). Hugo's `draft: true` controls whether the post is pushed as a Dev.to draft.
+**Push behavior by frontmatter state:**
+
+| `devto` field | `archived` field | Behavior |
+|---|---|---|
+| `true` (or missing) | `false` (or missing) | Push to Dev.to (create if no `devto_id`, update if present) |
+| `true` (or missing) | `true` | Skip — archived posts are not synced to Dev.to |
+| `false` | any | Skip — explicitly excluded from sync |
+
+Posts without `devto_id` are treated as new when pushed. Hugo's `draft: true` controls whether the post is pushed as a Dev.to draft (published=false). The `devto` field name matches the existing convention in the archetype and published posts.
 
 ## 4. Go CLI Tool
 
@@ -113,11 +121,11 @@ Authentication: `api-key` header with the value from `DEVTO_API_KEY` env var.
 |---|---|
 | `{{< relref "slug" >}}` | `https://jonesrussell.github.io/blog/slug/` |
 | `{{< ref "slug" >}}` | `https://jonesrussell.github.io/blog/slug/` |
-| `{{< figure src="image.png" alt="text" >}}` | `![text](https://jonesrussell.github.io/blog/<post-path>/image.png)` |
-| `{{< highlight lang >}}...{{< /highlight >}}` | `` ```lang ...``` `` |
+
+These are the only shortcodes currently in use across the blog.
 
 - Relative image paths resolved to GitHub Pages URLs (images deploy with the blog)
-- **Unrecognized shortcodes:** Log a warning and strip the shortcode tags, leaving inner content. The `push` command prints a summary of stripped shortcodes so the author can review.
+- **Unrecognized shortcodes:** Log a warning and strip the shortcode tags, leaving inner content. The `push` command prints a summary of stripped shortcodes so the author can review. This covers any future shortcode usage (e.g., `figure`, `highlight`) without pre-building parsers for them.
 
 ### 5.4 Content Transformation (Pull: Dev.to → Blog)
 
@@ -167,7 +175,7 @@ name: Sync to Dev.to
 
 on:
   workflow_run:
-    workflows: ["Deploy Hugo site to Pages"]
+    workflows: ["Deploy Hugo blog to Pages"]
     types: [completed]
     branches: [main]
 ```
@@ -177,7 +185,7 @@ Runs only after the Hugo deploy succeeds.
 ### 6.2 Flow
 
 1. Check out repo, build `devto-sync` binary
-2. Detect changed posts using `git diff-tree --no-commit-id -r ${{ github.event.workflow_run.head_sha }} -- 'content/posts/**/index.md'`. `diff-tree` correctly handles both regular merge commits (diffs against all parents) and squash merges without needing to determine the merge base.
+2. Detect changed posts using `git diff --name-only ${{ github.event.workflow_run.head_sha }}^1 ${{ github.event.workflow_run.head_sha }} -- 'content/posts/**/index.md'`. Diffing against the first parent (`^1`) correctly shows what changed on main regardless of merge strategy (regular merge, squash, or fast-forward). Note: `head_sha` comes from the `workflow_run` event and is the push-to-main commit.
 3. Run `devto-sync push --slug <slug>` for each changed post
 4. If no post files changed, exit early (no API calls)
 
