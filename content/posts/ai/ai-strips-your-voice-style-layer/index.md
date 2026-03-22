@@ -108,3 +108,13 @@ Here's what a real finding looks like:
 Line number. Problem description. Exact fix. No ambiguity.
 
 This is auditable. You can see exactly what was caught, on which line, and what the correction was. You can verify the fix was applied. Compare that to "I reviewed it and it looks good." One is checkable. The other is a guess.
+
+## Teach It Your Domain
+
+Voice is half the problem. The other half is substance. AI writes confidently about things that are wrong.
+
+A post on this blog about [Claude Code](https://docs.anthropic.com/en/docs/claude-code/overview) hooks used the `--no-milestone` flag for the GitHub CLI. The prose was clean. The structure followed every style rule. The flag doesn't exist. It was caught because the actual command was run before publishing. Without that step, a fabricated flag ships to readers who will try to use it.
+
+The review checklist for this blog requires verifying code against real repos. Interface signatures, method names, class names, parameter order. AI hallucinates these constantly. The checklist catches it because "does this flag exist?" is a binary check, just like "did the post open with Ahnii?"
+
+Your domain expertise looks different. Product knowledge, industry terminology, competitive landscape, pricing details. The principle is the same. Give AI verified reference material before asking it to write. Real data. Checked facts. Source documents. Not just "write about X." The style layer protects your voice. The domain layer protects your credibility.
