@@ -177,8 +177,8 @@ The negotiation pipeline was built in three sessions: URL prefix negotiation fir
 
 This is the pattern that's worked throughout waaseyaa: define the interface, write the tests against the interface, then implement. AI sessions are productive because the contracts eliminate ambiguity about what "done" means.
 
-## Next
+## What's next
 
-Testing a growing package ecosystem at scale.
+[Testing a growing package ecosystem at scale]({{< relref "waaseyaa-testing" >}}).
 
 Baamaapii

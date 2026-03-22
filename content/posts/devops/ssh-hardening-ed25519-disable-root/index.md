@@ -121,4 +121,8 @@ For a single-admin VPS, certificates are overkill. You manage one key on one or 
 
 If you grow to a team of developers or a fleet of servers, look at [Smallstep](https://smallstep.com/) for a modern SSH CA implementation. It is worth knowing the pattern exists before you need it.
 
+## What's next
+
+The next post covers [UFW, fail2ban, and banning repeat offenders]({{< relref "ufw-fail2ban-intrusion-response" >}}) — your server's intrusion response layer.
+
 Baamaapii
