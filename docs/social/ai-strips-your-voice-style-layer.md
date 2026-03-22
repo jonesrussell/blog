@@ -1,10 +1,10 @@
-# Social copy: AI strips your voice because you haven't taught it what to protect
+# Social copy: AI strips your voice because it doesn't know what to protect
 
 **Canonical URL:** https://jonesrussell.github.io/blog/ai-strips-your-voice-style-layer/
 
 ## Facebook
 
-AI strips your voice because you told it what to do but not what to protect. This post shows how to build a style layer: encode your rules, review the output, feed corrections back in. Real examples from my own blog writing process.
+AI strips your voice because it doesn't know what to protect. This post shows how to build a style layer: encode your rules, review the output, feed corrections back in. Real examples from my own blog writing process.
 
 https://jonesrussell.github.io/blog/ai-strips-your-voice-style-layer/
 
@@ -12,7 +12,7 @@ https://jonesrussell.github.io/blog/ai-strips-your-voice-style-layer/
 
 ## X (Twitter)
 
-AI strips your voice because you haven't taught it what to protect. Here's how a style layer fixes it.
+AI strips your voice because it doesn't know what to protect. Here's how a style layer fixes it.
 
 https://jonesrussell.github.io/blog/ai-strips-your-voice-style-layer/
 

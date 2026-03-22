@@ -1,16 +1,16 @@
 ---
-title: "AI strips your voice because you haven't taught it what to protect"
+title: "AI strips your voice because it doesn't know what to protect"
 date: 2026-03-22
 categories: [ai]
 tags: [claude-code, ai-tools, writing, content-creation]
 summary: "Stop AI from stripping your writing voice. Encode your style rules, review the output, and feed corrections back in."
 slug: "ai-strips-your-voice-style-layer"
-draft: true
+draft: false
 ---
 
 Ahnii!
 
-Ruth M. Trucks [posted on LinkedIn](https://www.linkedin.com/feed/update/urn:li:activity:7441491723412951040/) that AI doesn't understand intent. She asked Claude to shorten her content and it stripped the curiosity hooks, conversational rhythm, and direct address that made her writing land. She's right about what happened. But the problem isn't that AI can't preserve voice. It's that she didn't tell it what to protect.
+Ruth M. Trucks [posted on LinkedIn](https://www.linkedin.com/feed/update/urn:li:activity:7441491723412951040/) that AI doesn't understand intent. She asked Claude to shorten her content and it stripped the curiosity hooks, conversational rhythm, and direct address that made her writing land. She's right. That's exactly what happens by default. AI doesn't know what to protect unless you tell it.
 
 This post shows how to build a style layer that travels with every prompt you send to [Claude Code](https://docs.anthropic.com/en/docs/claude-code/overview) or any AI writing tool. Encode your rules. Review the output. Feed corrections back in.
 
@@ -72,24 +72,9 @@ Each rule is binary. You can check the output against the list and flag violatio
 
 ## Review the Output
 
-Style rules only work if you check whether they were followed. A review checklist catches drift before you publish. Not "does this sound like me?" but specific, binary checks you can run against the text.
+Style rules only work if you check whether they were followed. This blog uses a separate reviewing skill that turns every rule from the style document into a yes-or-no check. Did the post follow the rule? Pass or fail. No interpretation.
 
-This blog uses a reviewing skill that runs the same checklist on every post. Here's a subset of the actual checks:
-
-- Does the post open with "Ahnii!" (exclamation mark, own paragraph)?
-- Does it close with "Baamaapii" (no emoji, own paragraph)?
-- Is the voice second person throughout ("you"/"your", not "I"/"my")?
-- Do all code blocks have language tags?
-- After each code block, are there 1-2 sentences explaining what it does?
-- Is the first mention of each product or tool linked?
-- Are headings keyword-rich, not generic like "The Problem" or "The Full Picture"?
-- Are em dashes used sparingly (one or two per post max)?
-- Do internal links use `relref` shortcodes, not root-relative paths?
-- Are tags capped at four, and does each tag appear in the body?
-
-Every item is yes or no. You don't interpret. You check.
-
-The skill produces structured findings in a fixed format:
+The key is the output format. The skill produces structured findings:
 
 ```text
 **[CATEGORY]** Line N: description
@@ -133,9 +118,16 @@ Each correction is permanent. Not a sticky note you forget. A rule that fires ev
 
 The system isn't finished. Older posts on this blog still have AI tells. Filler transitions, generic headings, em dashes where periods belong. That's expected. A style layer doesn't retroactively fix everything you published before it existed.
 
-The process is straightforward. You observe what doesn't sound right by reading your own output with fresh eyes. You measure it by tracking what needs fixing. Not a vague sense that "some posts need work." Specific revision plans filed as GitHub issues, auditable and prioritized. This batch of PSR posts needs heading rewrites. That batch of AI posts has too many em dashes. Each issue is scoped, actionable, and trackable.
+The process is straightforward. Read your own output with fresh eyes. Catch what doesn't sound right. Track what needs fixing.
 
-This loop is manual today. You read, you flag, you fix. Automating it is next: mining real work sessions for patterns, flagging drift automatically, feeding corrections back without a human in the loop every time. The tools exist. The style rules are already machine-checkable. Connecting them is engineering, not invention.
+Not a vague sense that "some posts need work." File specific issues:
+
+- These five posts have generic headings.
+- Those ten posts lean too hard on em dashes.
+
+Each one is scoped and trackable.
+
+This loop is manual today. I read, I flag, I fix. Automating it is next. I'm working on mining real work sessions for patterns, flagging drift automatically, and feeding corrections back without me in the loop every time. The style rules are already machine-checkable. Connecting them is engineering, not invention.
 
 The point isn't perfection. It's that each session is better than the last. Your voice gets clearer. The rules get tighter. The output gets closer to what you'd write yourself. That's the whole game.
 
