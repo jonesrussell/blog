@@ -13,9 +13,9 @@ draft: false
 
 Ahnii!
 
-> **Series context:** This is part 7 of the [Waaseyaa series]({{< relref "waaseyaa-intro" >}}). Previous posts covered the [entity system]({{< relref "waaseyaa-entity-system" >}}), [access control]({{< relref "waaseyaa-access-control" >}}), the [API layer]({{< relref "waaseyaa-api-layer" >}}), [DBAL migration]({{< relref "waaseyaa-dbal-migration" >}}), and [i18n]({{< relref "waaseyaa-i18n" >}}).
+> **Series context:** This is part 9 of the [Waaseyaa series]({{< relref "waaseyaa-intro" >}}). Previous posts covered the [entity system]({{< relref "waaseyaa-entity-system" >}}), [access control]({{< relref "waaseyaa-access-control" >}}), the [API layer]({{< relref "waaseyaa-api-layer" >}}), [DBAL migration]({{< relref "waaseyaa-dbal-migration" >}}), and [i18n]({{< relref "waaseyaa-i18n" >}}).
 
-Waaseyaa has 38 packages, 7 architectural layers, and 3 consuming applications. That is a lot of surface area to test. If every test needs a running database, a full DI container, and a web server, the suite takes minutes and breaks constantly. Flaky tests erode trust. Slow tests kill momentum.
+Waaseyaa has 48 packages, 7 architectural layers, and 3 consuming applications. That is a lot of surface area to test. If every test needs a running database, a full DI container, and a web server, the suite takes minutes and breaks constantly. Flaky tests erode trust. Slow tests kill momentum.
 
 This post covers the testing strategy that keeps the monorepo workable: in-memory implementations for speed, a layered test plan for coverage, and AI-assisted generation for volume.
 
@@ -62,7 +62,7 @@ The factory keeps test data consistent across packages. When access control test
 
 The test suite has three levels, each with a clear purpose.
 
-**Unit tests** run per-package with in-memory implementations. They test business logic, validation rules, access checks, and serialization. A unit test for the access control layer creates an in-memory user, assigns a role, and checks whether `AccessManager::check()` returns the right result. No database, no HTTP, no container. These run in seconds.
+**Unit tests** run per-package with in-memory implementations. They test business logic, validation rules, access checks, and serialization. A unit test for the access control layer creates an in-memory user, assigns a role, and checks whether `EntityAccessHandler::check()` returns the right result. No database, no HTTP, no container. These run in seconds.
 
 **Integration tests** use real [SQLite](https://www.sqlite.org/) databases. They catch the bugs that in-memory tests miss — SQL syntax issues, query builder edge cases, and cross-package interactions. The SQL reserved word issue from [post 5]({{< relref "waaseyaa-dbal-migration" >}}) is a perfect example. The in-memory storage had no opinion about column names. SQLite rejected `language` as a column name because it is a reserved word. Only an integration test against a real database caught it.
 
@@ -70,7 +70,7 @@ The test suite has three levels, each with a clear purpose.
 
 ## Claudriel's 195 test files
 
-[Claudriel](https://github.com/jonesrussell/claudriel), the commercial SaaS application built on Waaseyaa, has 195 test files covering its entity types. Commitment entities have tests for CRUD operations, access control enforcement, and pipeline behavior. Workspace entities test membership rules and permission inheritance.
+[Claudriel](https://claudriel.ai), the commercial SaaS application built on Waaseyaa, has 195 test files covering its entity types. Commitment entities have tests for CRUD operations, access control enforcement, and pipeline behavior. Workspace entities test membership rules and permission inheritance.
 
 The test suite uses [PHPUnit](https://phpunit.de/) for unit tests and [Pest](https://pestphp.com/) for more expressive assertion chains. Integration tests spin up a real SQLite database, run migrations, and exercise the full storage layer. The combination catches both logic errors and storage bugs.
 
@@ -79,7 +79,7 @@ it('denies access to unpublished commitments for anonymous users', function () {
     $commitment = EntityFactory::create('commitment', ['status' => 0]);
     $anonymous = EntityFactory::create('user', ['roles' => []]);
 
-    $result = $this->accessManager->check('view', $commitment, $anonymous);
+    $result = $this->accessHandler->check($commitment, 'view', $anonymous);
 
     expect($result->isAllowed())->toBeFalse();
 });
@@ -120,6 +120,6 @@ Where AI struggles is with meaningful [Playwright](https://playwright.dev/) sele
 
 ## What's next
 
-The next post covers deploying a Waaseyaa application — from scaffold to live site in 90 minutes.
+The next post covers deploying a Waaseyaa application — from scaffold to live site in 5 minutes.
 
 Baamaapii
