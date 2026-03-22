@@ -27,12 +27,12 @@ Two optional fields added to post frontmatter:
 
 ```yaml
 devto_id: 1234567        # Dev.to article ID, written after first sync
-devto_published: true     # Controls published state on Dev.to (default: true)
+devto: true               # Controls whether this post syncs to Dev.to (default: true)
 ```
 
 `canonical_url` is always computed from `baseURL` + `slug` — never stored in frontmatter.
 
-Posts without `devto_id` are treated as new when pushed. Posts with `devto_published: false` are pushed as drafts.
+Posts without `devto_id` are treated as new when pushed. Posts with `devto: false` are skipped entirely during push. The `devto` field name matches the existing convention already used in the archetype and published posts (e.g., `ai/ai-strips-your-voice-style-layer/index.md`). Hugo's `draft: true` controls whether the post is pushed as a Dev.to draft.
 
 ## 4. Go CLI Tool
 
@@ -45,7 +45,7 @@ Posts without `devto_id` are treated as new when pushed. Posts with `devto_publi
 | Command | Purpose |
 |---|---|
 | `devto-sync push [--all \| --slug <slug>] [--dry-run]` | Blog → Dev.to (create or update) |
-| `devto-sync pull [--all \| --id <id>] [--dry-run] [--category <cat>]` | Dev.to → Blog (import as page bundle) |
+| `devto-sync pull [--all \| --id <id>] [--dry-run] [--force] [--category <cat>] [--category-map <file>]` | Dev.to → Blog (import as page bundle) |
 | `devto-sync status` | Show sync state across all posts |
 | `devto-sync triage` | Propose archive/update/replace for outdated imports |
 
@@ -101,7 +101,7 @@ Authentication: `api-key` header with the value from `DEVTO_API_KEY` env var.
 | `tags` (max 4) | `article.tags` | |
 | `summary` | `article.description` | |
 | `series[0]` (first element) | `article.series` | Hugo `series` is an array; Dev.to expects a string. Use the first element. Posts in multiple series use the first only. |
-| `devto_published` | `article.published` |
+| `draft` (inverted) | `article.published` |
 | computed from `baseURL` + `slug` | `article.canonical_url` |
 | markdown body | `article.body_markdown` |
 
@@ -125,7 +125,8 @@ Authentication: `api-key` header with the value from `DEVTO_API_KEY` env var.
 - Image URLs kept absolute (Dev.to CDN)
 - Links to own Dev.to posts converted to `{{< relref "slug" >}}` where a matching blog post exists
 - Page bundle created at `content/posts/<category>/<slug>/index.md`
-- **Category assignment:** `pull` requires a `--category` flag (e.g., `--category docker`). For `pull --all`, the tool prompts interactively for each post's category, or accepts a `--category-map <file>` CSV mapping Dev.to IDs to categories.
+- **Category assignment:** `pull --id` requires a `--category` flag (e.g., `--category docker`). For `pull --all`, a `--category-map <file>` CSV mapping Dev.to IDs to categories is required. If no `--category-map` is provided and stdin is a TTY, the tool prompts interactively per post. In non-interactive contexts (no TTY, no `--category-map`), the tool fails with an error.
+- **Series mapping:** Dev.to `series` string is mapped to Hugo `series: ["<value>"]` array in frontmatter.
 - **Draft state:** Pulled posts are created with `draft: true` in Hugo frontmatter. They must be manually reviewed and un-drafted before publishing on the blog.
 
 ### 5.5 Rate Limiting
@@ -135,7 +136,7 @@ Dev.to API rate limits:
 - **Read/Update:** 30 requests per 30 seconds
 - **Create:** 10 requests per 30 seconds (stricter)
 
-The client includes a token-bucket rate limiter that uses the stricter create limit during `push` operations that create new articles, and the standard limit for updates and reads.
+The client tracks create and read/update budgets independently with separate token buckets. During `push --all`, new articles (no `devto_id`) consume from the create bucket (10/30s) while updates consume from the read/update bucket (30/30s).
 
 ### 5.6 Error Handling
 
@@ -176,7 +177,7 @@ Runs only after the Hugo deploy succeeds.
 ### 6.2 Flow
 
 1. Check out repo, build `devto-sync` binary
-2. Detect changed posts using `git diff --name-only ${{ github.event.workflow_run.head_sha }}~1..${{ github.event.workflow_run.head_sha }} -- 'content/posts/**/index.md'`. This handles both regular and squash-merge commits since `workflow_run` provides the exact merge SHA.
+2. Detect changed posts using `git diff-tree --no-commit-id -r ${{ github.event.workflow_run.head_sha }} -- 'content/posts/**/index.md'`. `diff-tree` correctly handles both regular merge commits (diffs against all parents) and squash merges without needing to determine the merge base.
 3. Run `devto-sync push --slug <slug>` for each changed post
 4. If no post files changed, exit early (no API calls)
 
@@ -226,7 +227,7 @@ Heuristic-based with concrete thresholds:
 | Factor | Keep | Update | Replace/Archive |
 |---|---|---|---|
 | **Age** | < 1 year | 1–3 years | > 3 years |
-| **Topic** | Current blog focus (Go, Laravel, Docker, AI, PHP) | Adjacent (Node, general dev) | Deprecated focus (Drupal, old frameworks) |
+| **Topic** | Current: Go, Laravel, Docker, AI/Claude Code, PHP, Linux/VPS, DevOps | Adjacent: Node, JavaScript, Python, general dev, career | Deprecated: Drupal, Svelte, ReactJS (no active blog coverage) |
 | **Content length** | > 500 words with code blocks | > 300 words | < 300 words or no code |
 
 The triage command applies these thresholds to produce a recommendation, but the output is always advisory. Multiple factors combine: a 2-year-old Docker post with code blocks scores "update", not "archive". Age alone doesn't determine the action.
