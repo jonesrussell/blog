@@ -140,3 +140,38 @@ This loop is manual today. You read, you flag, you fix. Automating it is next: m
 The point isn't perfection. It's that each session is better than the last. Your voice gets clearer. The rules get tighter. The output gets closer to what you'd write yourself. That's the whole game.
 
 Baamaapii
+
+<details>
+<summary>How this post was made</summary>
+
+This post was written with Claude Code using the style layer described above.
+
+- **Model:** Claude Opus 4.6
+- **Style skill:** blog-writing (voice rules, structure templates, accuracy checks)
+- **Review skill:** blog-reviewing (checklist with structured findings)
+- **Brainstorming session:** ~25 back-and-forth exchanges to define audience, tone, and structure
+- **Voice corrections during this session:** Em dash usage caught in summary draft, three-item rhythm pattern flagged as AI tell
+- **Domain accuracy checks:** All code snippets and tool references verified against actual repos and documentation before publish
+- **Archetype:** Hugo frontmatter template enforced structure from first line
+- **Feedback memories applied:** "No clickbait phrasing" (from past session), "No em dashes" (reinforced this session)
+- **Review pass:** Automated checklist run before publish
+- **OG image:** Auto-generated from post metadata using Playwright + HTML template
+- **Social copy:** Generated alongside the post for Facebook, X, LinkedIn
+
+</details>
+
+<details>
+<summary>Skills demonstrated across this blog and its infrastructure</summary>
+
+- **Languages:** Go, PHP, TypeScript, Python, Bash, Markdown, YAML
+- **AI and Automation:** Claude Code, Claude API, MCP tools, prompt engineering, skills/knowledge curation for AI agents, OG image generation (Playwright)
+- **Web Frameworks:** Laravel 12, Vue 3, Hugo, Tailwind CSS, Inertia.js
+- **Backend and Architecture:** Clean Architecture, Uber FX (DI), Redis pub/sub, microservices pipeline, REST API design, PSR standards (1-20)
+- **DevOps and Infrastructure:** Docker, GitHub Actions CI/CD, GitHub Pages, Deployer, Caddy, Ansible, DigitalOcean, systemd, UFW/fail2ban
+- **Security:** SSH hardening, SSL/TLS, secrets management, kernel hardening, security headers, rate limiting
+- **Testing and Quality:** Pest, Vitest, testify, golangci-lint, PHP Pint, TDD, code auditing
+- **Tools:** Git, VS Code, Claude Code, DDEV, Task (Taskfile), Playwright, WSL
+- **Content and SEO:** Technical writing, static site optimization, OpenGraph, RSS, content curation, multi-platform social copy
+- **Project Management:** GitHub Issues, milestone tracking, audit workflows, monorepo maintenance, open-source contribution
+
+</details>
