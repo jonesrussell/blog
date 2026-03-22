@@ -12,6 +12,7 @@
 - Triage imported posts: keep, update, or replace + archive
 - Automate ongoing sync via GitHub Actions on merge to main
 - Store Dev.to API key in Ansible vault
+- Provide `--dry-run` flag on all mutating commands for safe first use
 
 ## 2. Principles
 
@@ -43,10 +44,12 @@ Posts without `devto_id` are treated as new when pushed. Posts with `devto_publi
 
 | Command | Purpose |
 |---|---|
-| `devto-sync push [--all \| --slug <slug>]` | Blog → Dev.to (create or update) |
-| `devto-sync pull [--all \| --id <id>]` | Dev.to → Blog (import as page bundle) |
+| `devto-sync push [--all \| --slug <slug>] [--dry-run]` | Blog → Dev.to (create or update) |
+| `devto-sync pull [--all \| --id <id>] [--dry-run] [--category <cat>]` | Dev.to → Blog (import as page bundle) |
 | `devto-sync status` | Show sync state across all posts |
 | `devto-sync triage` | Propose archive/update/replace for outdated imports |
+
+All mutating commands (`push`, `pull`) support `--dry-run` which logs what would happen without making API calls or writing files. Essential for the initial reconciliation of 48+49 posts.
 
 ### 4.3 Project Structure
 
@@ -92,22 +95,29 @@ Authentication: `api-key` header with the value from `DEVTO_API_KEY` env var.
 
 ### 5.2 Field Mapping (Hugo → Dev.to)
 
-| Hugo frontmatter | Dev.to API field |
-|---|---|
-| `title` | `article.title` |
-| `tags` (max 4) | `article.tags` |
-| `summary` | `article.description` |
-| `series` | `article.series` |
+| Hugo frontmatter | Dev.to API field | Notes |
+|---|---|---|
+| `title` | `article.title` | |
+| `tags` (max 4) | `article.tags` | |
+| `summary` | `article.description` | |
+| `series[0]` (first element) | `article.series` | Hugo `series` is an array; Dev.to expects a string. Use the first element. Posts in multiple series use the first only. |
 | `devto_published` | `article.published` |
 | computed from `baseURL` + `slug` | `article.canonical_url` |
 | markdown body | `article.body_markdown` |
 
 ### 5.3 Content Transformation (Push: Blog → Dev.to)
 
-- `{{< relref "slug" >}}` → `https://jonesrussell.github.io/blog/slug/`
-- `{{< figure src="image.png" >}}` → `![alt](https://jonesrussell.github.io/blog/<post-path>/image.png)`
-- Other Hugo shortcodes converted to standard markdown/HTML equivalents
+**Supported shortcodes:**
+
+| Hugo shortcode | Dev.to output |
+|---|---|
+| `{{< relref "slug" >}}` | `https://jonesrussell.github.io/blog/slug/` |
+| `{{< ref "slug" >}}` | `https://jonesrussell.github.io/blog/slug/` |
+| `{{< figure src="image.png" alt="text" >}}` | `![text](https://jonesrussell.github.io/blog/<post-path>/image.png)` |
+| `{{< highlight lang >}}...{{< /highlight >}}` | `` ```lang ...``` `` |
+
 - Relative image paths resolved to GitHub Pages URLs (images deploy with the blog)
+- **Unrecognized shortcodes:** Log a warning and strip the shortcode tags, leaving inner content. The `push` command prints a summary of stripped shortcodes so the author can review.
 
 ### 5.4 Content Transformation (Pull: Dev.to → Blog)
 
@@ -115,10 +125,36 @@ Authentication: `api-key` header with the value from `DEVTO_API_KEY` env var.
 - Image URLs kept absolute (Dev.to CDN)
 - Links to own Dev.to posts converted to `{{< relref "slug" >}}` where a matching blog post exists
 - Page bundle created at `content/posts/<category>/<slug>/index.md`
+- **Category assignment:** `pull` requires a `--category` flag (e.g., `--category docker`). For `pull --all`, the tool prompts interactively for each post's category, or accepts a `--category-map <file>` CSV mapping Dev.to IDs to categories.
+- **Draft state:** Pulled posts are created with `draft: true` in Hugo frontmatter. They must be manually reviewed and un-drafted before publishing on the blog.
 
 ### 5.5 Rate Limiting
 
-Dev.to API limit: 30 requests per 30 seconds. The client includes a token-bucket rate limiter for bulk operations (`--all` flag).
+Dev.to API rate limits:
+
+- **Read/Update:** 30 requests per 30 seconds
+- **Create:** 10 requests per 30 seconds (stricter)
+
+The client includes a token-bucket rate limiter that uses the stricter create limit during `push` operations that create new articles, and the standard limit for updates and reads.
+
+### 5.6 Error Handling
+
+**Bulk operations (`--all`):** On failure, log the error and continue to the next post. After all posts are processed, print a summary of successes and failures. Exit code is non-zero if any post failed.
+
+**Single post operations (`--slug`, `--id`):** On failure, print the error and exit non-zero immediately.
+
+**Common failure modes:**
+
+| Error | Behavior |
+|---|---|
+| 422 Unprocessable Entity | Log the validation error from Dev.to (e.g., body too long, invalid tags). Skip post. |
+| 429 Rate Limited | Wait for the retry-after header duration, then retry once. Fail on second 429. |
+| Network error | Retry once after 5s. Fail on second attempt. |
+| Missing `DEVTO_API_KEY` | Fail immediately with clear error message. |
+
+### 5.7 Pull Scope
+
+`pull --all` only pulls **unmatched** Dev.to articles (those without a corresponding blog post with their `devto_id`). It does not overwrite existing blog posts. To re-import a specific matched post, use `pull --id <id> --force`.
 
 ## 6. GitHub Actions Workflow
 
@@ -140,19 +176,20 @@ Runs only after the Hugo deploy succeeds.
 ### 6.2 Flow
 
 1. Check out repo, build `devto-sync` binary
-2. `git diff` between current and previous commit to find changed `content/posts/**/index.md` files
+2. Detect changed posts using `git diff --name-only ${{ github.event.workflow_run.head_sha }}~1..${{ github.event.workflow_run.head_sha }} -- 'content/posts/**/index.md'`. This handles both regular and squash-merge commits since `workflow_run` provides the exact merge SHA.
 3. Run `devto-sync push --slug <slug>` for each changed post
 4. If no post files changed, exit early (no API calls)
 
 ### 6.3 `devto_id` Writeback
 
-When a new post is pushed to Dev.to for the first time, the API returns the article ID. The workflow:
+When new posts are pushed to Dev.to for the first time, the API returns article IDs. The workflow batches all writebacks into a single PR per workflow run:
 
-1. Commits the updated frontmatter (with new `devto_id`) to a branch `devto-sync/writeback-<sha>`
-2. Opens a PR with the frontmatter change
-3. You merge the PR to keep main clean
+1. Collects all new `devto_id` values from the run
+2. Commits all updated frontmatter files to a branch `devto-sync/writeback-<short-sha>`
+3. Opens a single PR with all frontmatter changes
+4. You merge the PR to keep main clean
 
-This avoids the workflow pushing directly to main.
+One PR per run, not per post. This avoids the workflow pushing directly to main.
 
 ### 6.4 Secrets
 
@@ -162,13 +199,13 @@ This avoids the workflow pushing directly to main.
 
 | Context | How the key is accessed |
 |---|---|
-| **Local dev** | `ansible-vault decrypt` → exported as `DEVTO_API_KEY` env var |
-| **GitHub Actions** | Repository secret `DEVTO_API_KEY` (set once from vault) |
-| **Rotation** | Update vault → update GitHub secret (two steps) |
+| **Local dev** | `DEVTO_API_KEY` env var — sourced from Ansible vault if available, or password manager |
+| **GitHub Actions** | Repository secret `DEVTO_API_KEY` (set via `gh secret set`) |
+| **Rotation** | Update source of truth (vault or password manager) → update GitHub secret |
 
-A Taskfile task `devto:env` decrypts the key and exports it for the current shell session.
+The tool reads `DEVTO_API_KEY` from the environment and fails with a clear error if missing. No secrets in the repo, no `.env` files.
 
-No secrets in the repo, no `.env` files. The tool reads `DEVTO_API_KEY` from the environment and fails with a clear error if missing.
+If Ansible vault is already in use for other secrets, a Taskfile task `devto:env` can decrypt and export for the local session. If not, any password manager works — the tool doesn't care where the env var comes from.
 
 ## 8. Content Triage
 
@@ -184,9 +221,15 @@ Analyzes imported Dev.to posts and proposes one of three actions per post:
 
 ### 8.2 Scoring Criteria
 
-- **Age:** Years since publish date
-- **Topic relevance:** Matches current blog categories (Go, Laravel, Docker, AI tooling, PHP)?
-- **Content quality:** Length, presence of code blocks, structural depth
+Heuristic-based with concrete thresholds:
+
+| Factor | Keep | Update | Replace/Archive |
+|---|---|---|---|
+| **Age** | < 1 year | 1–3 years | > 3 years |
+| **Topic** | Current blog focus (Go, Laravel, Docker, AI, PHP) | Adjacent (Node, general dev) | Deprecated focus (Drupal, old frameworks) |
+| **Content length** | > 500 words with code blocks | > 300 words | < 300 words or no code |
+
+The triage command applies these thresholds to produce a recommendation, but the output is always advisory. Multiple factors combine: a 2-year-old Docker post with code blocks scores "update", not "archive". Age alone doesn't determine the action.
 
 ### 8.3 Output Format
 
