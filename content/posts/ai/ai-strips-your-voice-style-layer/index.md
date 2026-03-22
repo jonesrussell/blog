@@ -118,3 +118,13 @@ A post on this blog about [Claude Code](https://docs.anthropic.com/en/docs/claud
 The review checklist for this blog requires verifying code against real repos. Interface signatures, method names, class names, parameter order. AI hallucinates these constantly. The checklist catches it because "does this flag exist?" is a binary check, just like "did the post open with Ahnii?"
 
 Your domain expertise looks different. Product knowledge, industry terminology, competitive landscape, pricing details. The principle is the same. Give AI verified reference material before asking it to write. Real data. Checked facts. Source documents. Not just "write about X." The style layer protects your voice. The domain layer protects your credibility.
+
+## Feed Corrections Back In
+
+Every correction you make sharpens the next session. Two real examples from this blog.
+
+While brainstorming this post, Claude drafted a summary that used em dashes to set off a clause. The author caught it. That correction became a rule: em dashes signal AI-generated writing, so don't use them. The rule now fires on every future draft before a word reaches the page.
+
+In a past session, Claude suggested a blog title: "Testing 48 packages without losing your mind." The author flagged the casual, clickbait phrasing. That correction became a persistent feedback memory: "Use direct, professional language. No casual or clickbait phrasing." The memory loads automatically in every future session across every project. No one has to remember to paste it in.
+
+Each correction is permanent. Not a sticky note you forget. A rule that fires every time. The system gets sharper with use.
