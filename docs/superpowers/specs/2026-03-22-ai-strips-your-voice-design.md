@@ -132,6 +132,25 @@ A meta disclaimer that proves the post's own thesis. Quick glance says "AI-assis
 
 This block is the proof. Every item listed is a real step in the process, not decoration.
 
+### 10. Skills Behind This Post (separate collapsible block)
+
+A second `<details>` block after "How This Post Was Made." Framed as the skills needed to build this pipeline. Works as a subtle portfolio piece. Scannable categories, expandable for detail.
+
+**Categories and items:**
+
+- **Languages:** Go, PHP, TypeScript, Python, Bash, Markdown, YAML
+- **AI and Automation:** Claude Code, Claude API, MCP tools, prompt engineering, skills/knowledge curation for AI agents, OG image generation (Playwright)
+- **Web Frameworks:** Laravel 12, Vue 3, Hugo, Tailwind CSS, Inertia.js
+- **Backend and Architecture:** Clean Architecture, Uber FX (DI), Redis pub/sub, microservices pipeline, REST API design, PSR standards (1-20)
+- **DevOps and Infrastructure:** Docker, GitHub Actions CI/CD, GitHub Pages, Deployer, Caddy, Ansible, DigitalOcean, systemd, UFW/fail2ban
+- **Security:** SSH hardening, SSL/TLS, secrets management, kernel hardening, security headers, rate limiting
+- **Testing and Quality:** Pest, Vitest, testify, golangci-lint, PHP Pint, TDD, code auditing
+- **Tools:** Git, VS Code, Claude Code, DDEV, Task (Taskfile), Playwright, WSL
+- **Content and SEO:** Technical writing, static site optimization, OpenGraph, RSS, content curation, multi-platform social copy
+- **Project Management:** GitHub Issues, milestone tracking, audit workflows, monorepo maintenance, open-source contribution
+
+Each item is demonstrated somewhere in the blog posts or infrastructure. Not aspirational. Verifiable.
+
 ## Real Examples to Include
 
 1. **Em dash catch (this session):** Summary draft used em dashes. Author caught it. Became a rule.
