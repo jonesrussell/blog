@@ -69,3 +69,42 @@ This archetype pre-fills frontmatter fields, the greeting, and the closing. Hugo
 Each rule is binary. You can check the output against the list and flag violations. "Did the post open with Ahnii?" Yes or no. "Are there more than two em dashes?" Count them. This is what makes style rules useful. Vague guidance like "match my tone" gives AI nothing to optimize for.
 
 **You don't need Claude Code for this.** Paste a style document into any AI chat before asking it to write. ChatGPT, Gemini, Claude on the web. The principle is the same. Give AI a reference document for your voice before it generates a single word. The tool doesn't matter. The constraint document does.
+
+## Review the Output
+
+Style rules only work if you check whether they were followed. A review checklist catches drift before you publish. Not "does this sound like me?" but specific, binary checks you can run against the text.
+
+This blog uses a reviewing skill that runs the same checklist on every post. Here's a subset of the actual checks:
+
+- Does the post open with "Ahnii!" (exclamation mark, own paragraph)?
+- Does it close with "Baamaapii" (no emoji, own paragraph)?
+- Is the voice second person throughout ("you"/"your", not "I"/"my")?
+- Do all code blocks have language tags?
+- After each code block, are there 1-2 sentences explaining what it does?
+- Is the first mention of each product or tool linked?
+- Are headings keyword-rich, not generic like "The Problem" or "The Full Picture"?
+- Are em dashes used sparingly (one or two per post max)?
+- Do internal links use `relref` shortcodes, not root-relative paths?
+- Are tags capped at four, and does each tag appear in the body?
+
+Every item is yes or no. You don't interpret. You check.
+
+The skill produces structured findings in a fixed format:
+
+```text
+**[CATEGORY]** Line N: description
+  Fix: exact correction
+```
+
+Three categories. **MISSING** means a required element is absent. **INCORRECT** means an element exists but violates a rule. **SUGGESTION** means it's not a violation but would improve the post.
+
+Here's what a real finding looks like:
+
+```text
+**INCORRECT** Line 13: Greeting uses comma ("Ahnii,") instead of exclamation mark
+  Fix: Change "Ahnii," to "Ahnii!"
+```
+
+Line number. Problem description. Exact fix. No ambiguity.
+
+This is auditable. You can see exactly what was caught, on which line, and what the correction was. You can verify the fix was applied. Compare that to "I reviewed it and it looks good." One is checkable. The other is a guess.
