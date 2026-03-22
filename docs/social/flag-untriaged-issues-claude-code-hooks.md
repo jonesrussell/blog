@@ -6,11 +6,11 @@
 
 Untriaged GitHub issues pile up fast. This post shows how to build a Claude Code startup hook that flags issues with no milestone and stale milestones before you write any code. Simple shell script, zero manual discipline required. #ClaudeCode #GitHub #DevTools #Automation
 
-Read more: https://jonesrussell.github.io/blog/flag-untriaged-issues-claude-code-hooks/
+https://jonesrussell.github.io/blog/flag-untriaged-issues-claude-code-hooks/
 
 ## X (Twitter)
 
-Use a Claude Code startup hook to catch untriaged GitHub issues before you write a single line of code. Shell script + settings.json = automatic project health checks every session.
+Claude Code hooks can flag untriaged GitHub issues before you write any code. One shell script, a few lines of config.
 
 https://jonesrussell.github.io/blog/flag-untriaged-issues-claude-code-hooks/
 
@@ -18,4 +18,4 @@ https://jonesrussell.github.io/blog/flag-untriaged-issues-claude-code-hooks/
 
 Untriaged issues are invisible until they pile up. This post walks through building a Claude Code startup hook that surfaces issues without milestones and stale milestones at the start of every coding session. A small automation that keeps your project tracker honest.
 
-Read more: https://jonesrussell.github.io/blog/flag-untriaged-issues-claude-code-hooks/
+https://jonesrussell.github.io/blog/flag-untriaged-issues-claude-code-hooks/

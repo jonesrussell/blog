@@ -1,27 +1,29 @@
 ---
 title: "Flag untriaged GitHub issues automatically with Claude Code hooks"
-date: 2026-03-16
+date: 2026-03-22
 categories: [ai]
 tags: [claude-code, github, automation, developer-tools]
 summary: "Use a Claude Code startup hook to surface untriaged GitHub issues and stale milestones before you write any code."
 slug: "flag-untriaged-issues-claude-code-hooks"
-draft: true
-devto: true
+draft: false
 ---
 
 Ahnii!
 
-The best project management happens automatically. [Claude Code](https://docs.anthropic.com/en/docs/claude-code/overview) has a feature called hooks that runs shell commands at key moments during your session. This post shows how to build a startup hook that flags untriaged GitHub issues before you write a single line of code.
+[Claude Code](https://docs.anthropic.com/en/docs/claude-code/overview) has a feature called hooks that runs shell commands at key moments during your session. This post shows how to build a startup hook that flags untriaged GitHub issues before you write a single line of code.
 
 ## What Are Claude Code Hooks
 
-Hooks are shell commands that Claude Code executes in response to events. You configure them in `.claude/settings.json` at the project level. There are several hook types:
+Hooks are shell commands that Claude Code executes in response to lifecycle events. You configure them in `.claude/settings.json` at the project level. The most common hook events:
 
 - **SessionStart** fires when you open Claude Code in a project
 - **PreToolUse** fires before Claude calls a tool (like editing a file or running a command)
 - **PostToolUse** fires after a tool completes
+- **UserPromptSubmit** fires when you send a message
 
-The output of a hook flows into Claude's context. If your `SessionStart` hook prints a warning, Claude sees it and can act on it. That's what makes hooks useful for governance: you surface the right information at the right time, automatically.
+There are [over 20 hook events](https://docs.anthropic.com/en/docs/claude-code/hooks) in total, including `SubagentStart`, `PreCompact`, `Notification`, and more.
+
+For `SessionStart` hooks, stdout flows directly into Claude's context. If your hook prints a warning, Claude sees it and can act on it. That's what makes hooks useful for governance: you surface the right information at the right time, automatically.
 
 ## The Goal: Catch Untriaged Issues Early
 
@@ -36,13 +38,14 @@ Here's what that looks like in practice:
 ```text
 ❯ claude
 
-● Startup hook detected 3 untriaged issues:
+⚠ 3 untriaged issues (no milestone assigned):
+#163 - Clean up dead $twig property writes in controllers
+#162 - Remove continue-on-error from admin bundle CI job
+#161 - Create docs/specs/workflow.md referenced in CLAUDE.md
 
-  #163 - Clean up dead $twig property writes in controllers
-  #162 - Remove continue-on-error from admin bundle CI job
-  #161 - Create docs/specs/workflow.md referenced in CLAUDE.md
-
-  2 milestones have no open issues: v1.3, v1.3.1
+⚠ Milestones with no open issues (possibly stale):
+v1.3
+v1.3.1
 ```
 
 Claude sees this output and can immediately ask what you want to do about it.
@@ -58,7 +61,9 @@ set -euo pipefail
 REPO="${1:-$(gh repo view --json nameWithOwner -q .nameWithOwner)}"
 
 # Find open issues with no milestone
-untriaged=$(gh issue list --repo "$REPO" --no-milestone --state open --json number,title --jq '.[] | "#\(.number) - \(.title)"')
+untriaged=$(gh issue list --repo "$REPO" --search "no:milestone" \
+  --state open --json number,title \
+  --jq '.[] | "#\(.number) - \(.title)"')
 
 if [ -n "$untriaged" ]; then
   count=$(echo "$untriaged" | wc -l)
@@ -68,7 +73,8 @@ if [ -n "$untriaged" ]; then
 fi
 
 # Find milestones with zero open issues
-stale=$(gh api "repos/${REPO}/milestones?state=open" --jq '.[] | select(.open_issues == 0) | .title')
+stale=$(gh api "repos/${REPO}/milestones?state=open" \
+  --jq '.[] | select(.open_issues == 0) | .title')
 
 if [ -n "$stale" ]; then
   echo "⚠ Milestones with no open issues (possibly stale):"
@@ -81,7 +87,7 @@ if [ -z "$untriaged" ] && [ -z "$stale" ]; then
 fi
 ```
 
-The script does two things. First, it queries for open issues that have no milestone assigned. Second, it checks for milestones that have zero open issues, which usually means the milestone is done and should be closed, or something fell through the cracks.
+The script does two things. First, it uses GitHub's search syntax (`no:milestone`) to find open issues with no milestone assigned. Second, it checks for milestones that have zero open issues, which usually means the milestone is done and should be closed, or something fell through the cracks.
 
 Make it executable:
 
@@ -91,11 +97,17 @@ chmod +x bin/check-milestones
 
 This marks the script as executable so your shell can run it directly.
 
+## Verify It Works
+
+Run the script before wiring it into a hook:
+
 ```bash
 ./bin/check-milestones
 ```
 
-This runs the script locally so you can verify the output before wiring it into a hook.
+You should see one of two things. If you have untriaged issues or stale milestones, the script prints warnings with issue numbers and titles. If everything is triaged, you get a clean `✓ All issues triaged, no stale milestones.` message.
+
+If you see `command not found: gh`, install the [GitHub CLI](https://cli.github.com/) first. If you see authentication errors, run `gh auth login`.
 
 Adapt this to your workflow. You might want to check for issues without assignees, issues older than 30 days, or PRs that reference closed issues. The script is yours to extend.
 
@@ -108,19 +120,31 @@ Add the hook to your project's `.claude/settings.json`:
   "hooks": {
     "SessionStart": [
       {
-        "command": "bash bin/check-milestones",
-        "timeout": 10000
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash bin/check-milestones 2>&1",
+            "timeout": 10
+          }
+        ]
       }
     ]
   }
 }
 ```
 
-The `timeout` is in milliseconds. Ten seconds is generous for a `gh` API call, but you want the hook to fail gracefully rather than block your session if your network is slow.
+Each hook event takes an array of matcher groups. The empty `matcher` means "always run." Inside, the `hooks` array holds the commands to execute. The `type` field is required. The `timeout` is in seconds, and 10 is generous for a couple of API calls.
 
-That's the entire configuration. Next time you open Claude Code in this project, the hook fires, the script runs, and Claude receives the output.
+To confirm the hook is wired correctly, open Claude Code in your project:
 
-## What This Looks Like in Practice
+```bash
+claude
+```
+
+You should see the milestone check output appear as a system message at the top of your session. Claude receives this output and can act on it immediately.
+
+## How a Startup Hook Changes Your Workflow
 
 With the hook in place, your workflow changes in a small but useful way. You open Claude Code and immediately see the state of your issue tracker. No extra commands. No switching to the browser to check GitHub.
 
