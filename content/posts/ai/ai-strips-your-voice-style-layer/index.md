@@ -128,3 +128,15 @@ While brainstorming this post, Claude drafted a summary that used em dashes to s
 In a past session, Claude suggested a blog title: "Testing 48 packages without losing your mind." The author flagged the casual, clickbait phrasing. That correction became a persistent feedback memory: "Use direct, professional language. No casual or clickbait phrasing." The memory loads automatically in every future session across every project. No one has to remember to paste it in.
 
 Each correction is permanent. Not a sticky note you forget. A rule that fires every time. The system gets sharper with use.
+
+## Observe, Measure, Refine
+
+The system isn't finished. Older posts on this blog still have AI tells. Filler transitions, generic headings, em dashes where periods belong. That's expected. A style layer doesn't retroactively fix everything you published before it existed.
+
+The process is straightforward. You observe what doesn't sound right by reading your own output with fresh eyes. You measure it by tracking what needs fixing. Not a vague sense that "some posts need work." Specific revision plans filed as GitHub issues, auditable and prioritized. This batch of PSR posts needs heading rewrites. That batch of AI posts has too many em dashes. Each issue is scoped, actionable, and trackable.
+
+This loop is manual today. You read, you flag, you fix. Automating it is next: mining real work sessions for patterns, flagging drift automatically, feeding corrections back without a human in the loop every time. The tools exist. The style rules are already machine-checkable. Connecting them is engineering, not invention.
+
+The point isn't perfection. It's that each session is better than the last. Your voice gets clearer. The rules get tighter. The output gets closer to what you'd write yourself. That's the whole game.
+
+Baamaapii
