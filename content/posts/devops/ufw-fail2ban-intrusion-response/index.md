@@ -199,4 +199,8 @@ nft list ruleset | grep fail2ban
 
 If the recidive jail has fired, you'll see chains and rules named after fail2ban in the output.
 
+## What's next
+
+The next post covers Docker security on a shared VPS — running containers as non-root, isolating networks, and limiting what a compromised container can reach.
+
 Baamaapii
