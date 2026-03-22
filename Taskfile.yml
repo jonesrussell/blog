@@ -96,3 +96,61 @@ tasks:
       - echo "Site built successfully in public/"
     env:
       HUGO_ENV: production
+
+  devto:build:
+    desc: Build the devto-sync tool
+    dir: tools/devto-sync
+    cmds:
+      - go build -o ../../bin/devto-sync .
+    sources:
+      - "**/*.go"
+      - go.mod
+    generates:
+      - ../../bin/devto-sync
+
+  devto:push:
+    desc: Push posts to Dev.to (use SLUG=xxx for single post, or ALL=true for all)
+    deps: [devto:build]
+    cmds:
+      - |
+        args=""
+        {{ if .SLUG }}args="--slug {{.SLUG}}"{{ end }}
+        {{ if .ALL }}args="--all"{{ end }}
+        {{ if .DRY_RUN }}args="$args --dry-run"{{ end }}
+        ./bin/devto-sync push $args
+
+  devto:pull:
+    desc: Import from Dev.to (use ID=xxx or ALL=true with CATEGORY_MAP=file.csv)
+    deps: [devto:build]
+    cmds:
+      - |
+        args=""
+        {{ if .ID }}args="--id {{.ID}} --category {{.CATEGORY}}"{{ end }}
+        {{ if .ALL }}args="--all"{{ end }}
+        {{ if .CATEGORY_MAP }}args="$args --category-map {{.CATEGORY_MAP}}"{{ end }}
+        {{ if .DRY_RUN }}args="$args --dry-run"{{ end }}
+        ./bin/devto-sync pull $args
+
+  devto:status:
+    desc: Show sync state between blog and Dev.to
+    deps: [devto:build]
+    cmds:
+      - ./bin/devto-sync status
+
+  devto:triage:
+    desc: Propose archive/update/replace for imported posts
+    deps: [devto:build]
+    cmds:
+      - ./bin/devto-sync triage
+
+  devto:env:
+    desc: Export DEVTO_API_KEY from Ansible vault (run with 'eval $(task devto:env)')
+    cmds:
+      - echo "export DEVTO_API_KEY=$(ansible-vault decrypt --output - vault/devto-api-key.yml 2>/dev/null | grep api_key | cut -d' ' -f2)"
+    silent: true
+
+  devto:test:
+    desc: Run devto-sync tests
+    dir: tools/devto-sync
+    cmds:
+      - go test ./... -v
