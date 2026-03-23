@@ -9,6 +9,7 @@ series_group: "Main"
 summary: "How Claudriel's temporal subsystem pins time per request, resolves timezones from context, and detects clock drift before it corrupts AI reasoning."
 slug: "claudriel-temporal-layer"
 draft: false
+devto_id: 3364463
 ---
 
 Ahnii!

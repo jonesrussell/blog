@@ -8,6 +8,7 @@ series_order: 9
 summary: "Set up lightweight monitoring and alerting for a solo-developer VPS, plus a post-incident checklist."
 slug: "monitoring-alerting-incident-response"
 draft: false
+devto_id: 3386532
 ---
 
 Ahnii!

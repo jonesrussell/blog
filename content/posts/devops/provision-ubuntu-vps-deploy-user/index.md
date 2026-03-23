@@ -8,6 +8,7 @@ series_order: 1
 summary: "Set up a DigitalOcean droplet from scratch: first SSH connection, deploy user, UFW baseline, and unattended upgrades."
 slug: "provision-ubuntu-vps-deploy-user"
 draft: false
+devto_id: 3378663
 ---
 
 Ahnii!

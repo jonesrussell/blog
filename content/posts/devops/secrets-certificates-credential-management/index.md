@@ -8,6 +8,7 @@ series_order: 7
 summary: "Manage .env files, encrypt secrets with Ansible Vault, and rotate credentials without downtime."
 slug: "secrets-certificates-credential-management"
 draft: false
+devto_id: 3386537
 ---
 
 Ahnii!

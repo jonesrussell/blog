@@ -8,6 +8,7 @@ series_order: 8
 summary: "Configure automatic security patches, detect stale services with needrestart, and keep logs and Docker images from filling your disk."
 slug: "automated-patching-maintenance"
 draft: false
+devto_id: 3386525
 ---
 
 Ahnii!

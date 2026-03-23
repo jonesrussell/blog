@@ -9,6 +9,7 @@ series_group: "Main"
 summary: "How waaseyaa's i18n package handles language negotiation and multilingual entities — built for an indigenous cultural platform where language isn't a feature, it's the point."
 slug: "waaseyaa-i18n"
 draft: false
+devto_id: 3381657
 ---
 
 Ahnii!

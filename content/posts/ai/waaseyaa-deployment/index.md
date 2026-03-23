@@ -9,6 +9,7 @@ series_group: "Main"
 summary: "How waaseyaa.org went from first commit to production in 90 minutes — and the deployment patterns shared across three Waaseyaa applications."
 slug: "waaseyaa-deployment"
 draft: false
+devto_id: 3386520
 ---
 
 Ahnii!

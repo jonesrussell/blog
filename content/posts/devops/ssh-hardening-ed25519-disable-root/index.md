@@ -8,6 +8,7 @@ series_order: 2
 summary: "Lock down SSH access with ed25519 keys, disable root login, and remove unused authentication methods."
 slug: "ssh-hardening-ed25519-disable-root"
 draft: false
+devto_id: 3382110
 ---
 
 Ahnii!

@@ -8,6 +8,7 @@ series_order: 5
 summary: "Add security headers, rate limiting, and server identity removal to your Caddy configuration."
 slug: "caddy-security-headers-rate-limiting"
 draft: false
+devto_id: 3386527
 ---
 
 Ahnii!

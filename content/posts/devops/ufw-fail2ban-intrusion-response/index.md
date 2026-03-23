@@ -9,6 +9,7 @@ aliases: ["/harden-linux-vps-caddy-docker/"]
 summary: "Configure UFW rules, build a fail2ban jail for Caddy access logs, and escalate bans for repeat offenders with the recidive jail."
 slug: "ufw-fail2ban-intrusion-response"
 draft: false
+devto_id: 3385603
 ---
 
 Ahnii!

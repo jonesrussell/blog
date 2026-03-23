@@ -6,6 +6,7 @@ tags: [ansible, digitalocean, laravel, caddy]
 summary: "How to structure an Ansible repo to manage two DigitalOcean droplets, six Laravel apps, and a Go microservices platform without replacing the existing Deployer workflow."
 slug: "ansible-manage-digitalocean-laravel-infrastructure"
 draft: false
+devto_id: 3368825
 ---
 
 Ahnii!

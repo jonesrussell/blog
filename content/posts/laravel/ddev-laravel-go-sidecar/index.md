@@ -6,6 +6,7 @@ tags: [laravel, ddev, go, docker]
 summary: "Run a Go API as a DDEV sidecar so Laravel in the web container can call it by service name, with one shared secret for signed requests."
 slug: "ddev-laravel-go-sidecar"
 draft: false
+devto_id: 3266982
 ---
 
 Ahnii!

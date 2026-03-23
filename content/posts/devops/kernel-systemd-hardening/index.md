@@ -8,6 +8,7 @@ series_order: 6
 summary: "Tune kernel parameters with sysctl and sandbox services with systemd to reduce your VPS attack surface."
 slug: "kernel-systemd-hardening"
 draft: false
+devto_id: 3386529
 ---
 
 Ahnii!

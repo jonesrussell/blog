@@ -8,6 +8,7 @@ series_order: 4
 summary: "Why Docker bypasses your UFW rules, how to fix it, and container hardening practices that matter on a shared VPS."
 slug: "docker-security-shared-vps"
 draft: false
+devto_id: 3386528
 ---
 
 Ahnii!
