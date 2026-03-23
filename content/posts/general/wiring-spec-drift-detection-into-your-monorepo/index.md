@@ -1,11 +1,18 @@
 ---
-title: "Wiring Spec Drift Detection Into Your Monorepo"
-date: 2026-03-18
-categories: [devops, tools]
-tags: [monorepo, ci-cd, documentation, automation]
-summary: "How to turn a spec drift detector from a script nobody runs into a hard gate across your task runner, git hooks, and CI pipeline."
-slug: "wiring-spec-drift-detection-into-your-monorepo"
+categories:
+    - devops
+    - tools
+date: 2026-03-18T00:00:00Z
+devto_id: 3386569
 draft: false
+slug: wiring-spec-drift-detection-into-your-monorepo
+summary: How to turn a spec drift detector from a script nobody runs into a hard gate across your task runner, git hooks, and CI pipeline.
+tags:
+    - monorepo
+    - ci-cd
+    - documentation
+    - automation
+title: Wiring Spec Drift Detection Into Your Monorepo
 ---
 
 Ahnii!

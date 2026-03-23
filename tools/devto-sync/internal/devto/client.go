@@ -38,8 +38,8 @@ func NewClient(apiKey string, opts ...Option) *Client {
 		apiKey:        apiKey,
 		baseURL:       defaultBaseURL,
 		http:          &http.Client{Timeout: 30 * time.Second},
-		createLimiter: newRateLimiter(10, 30*time.Second),
-		readLimiter:   newRateLimiter(30, 30*time.Second),
+		createLimiter: newRateLimiter(3, 30*time.Second),
+		readLimiter:   newRateLimiter(10, 30*time.Second),
 	}
 	for _, opt := range opts {
 		opt(c)

@@ -1,11 +1,17 @@
 ---
-title: "Debugging Bubbletea Command Comparisons: A Learning Experience"
-date: 2024-12-28
-categories: [golang]
-tags: [golang, bubbletea, debugging, tui]
-summary: "Learn about the proper way to handle command comparisons in Bubbletea applications, including common pitfalls and best practices."
-slug: "debugging-bubbletea-commands"
+categories:
+    - golang
+date: 2024-12-28T00:00:00Z
+devto_id: 3386572
 draft: false
+slug: debugging-bubbletea-commands
+summary: Learn about the proper way to handle command comparisons in Bubbletea applications, including common pitfalls and best practices.
+tags:
+    - golang
+    - bubbletea
+    - debugging
+    - tui
+title: 'Debugging Bubbletea Command Comparisons: A Learning Experience'
 ---
 
 Ahnii!

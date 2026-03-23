@@ -1,11 +1,16 @@
 ---
-title: "Generate Claude Code skills from any documentation URL"
-date: 2026-03-16
-categories: [ai]
-tags: [claude-code, skills, plugins]
-summary: "Use the skill-gen plugin to turn any library's documentation into a reusable Claude Code skill in seconds."
-slug: "claude-code-skill-gen-plugin"
+categories:
+    - ai
+date: 2026-03-16T00:00:00Z
+devto_id: 3386547
 draft: true
+slug: claude-code-skill-gen-plugin
+summary: Use the skill-gen plugin to turn any library's documentation into a reusable Claude Code skill in seconds.
+tags:
+    - claude-code
+    - skills
+    - plugins
+title: Generate Claude Code skills from any documentation URL
 ---
 
 Ahnii!

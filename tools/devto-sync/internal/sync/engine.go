@@ -44,8 +44,14 @@ func (e *Engine) PushPost(post *hugo.Post, dryRun bool) (*devto.Article, error) 
 		series = post.Series[0]
 	}
 
-	// Cap tags at 4 (Dev.to limit)
-	tags := post.Tags
+	// Cap tags at 4 (Dev.to limit) and sanitize for Dev.to (no hyphens allowed)
+	tags := make([]string, 0, len(post.Tags))
+	for _, t := range post.Tags {
+		sanitized := strings.ReplaceAll(t, "-", "")
+		if sanitized != "" {
+			tags = append(tags, sanitized)
+		}
+	}
 	if len(tags) > 4 {
 		tags = tags[:4]
 	}

@@ -1,14 +1,22 @@
 ---
-title: "The entity system at the heart of Waaseyaa"
-date: 2026-03-16
-categories: [ai, php]
-tags: [waaseyaa, php, claude-code, open-source]
-series: ["waaseyaa"]
-series_order: 3
-series_group: "Main"
-summary: "How waaseyaa's EntityInterface, ContentEntityBase, and field system work — and how the entity-system specialist skill made cross-session development possible."
-slug: "waaseyaa-entity-system"
+categories:
+    - ai
+    - php
+date: 2026-03-16T00:00:00Z
+devto_id: 3386561
 draft: false
+series:
+    - waaseyaa
+series_group: Main
+series_order: 3
+slug: waaseyaa-entity-system
+summary: How waaseyaa's EntityInterface, ContentEntityBase, and field system work — and how the entity-system specialist skill made cross-session development possible.
+tags:
+    - waaseyaa
+    - php
+    - claude-code
+    - open-source
+title: The entity system at the heart of Waaseyaa
 ---
 
 Ahnii!

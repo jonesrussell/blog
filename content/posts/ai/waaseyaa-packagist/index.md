@@ -1,14 +1,22 @@
 ---
-title: "Publishing a PHP monorepo to Packagist with splitsh-lite"
-date: 2026-03-25
-categories: [ai, php]
-tags: [waaseyaa, php, packagist, open-source]
-series: ["waaseyaa"]
-series_order: 12
-series_group: "Main"
-summary: "How waaseyaa went from a monorepo with 43 path-repository subpackages to individually installable Composer packages on Packagist using splitsh-lite."
-slug: "waaseyaa-packagist"
+categories:
+    - ai
+    - php
+date: 2026-03-25T00:00:00Z
+devto_id: 3386562
 draft: false
+series:
+    - waaseyaa
+series_group: Main
+series_order: 12
+slug: waaseyaa-packagist
+summary: How waaseyaa went from a monorepo with 43 path-repository subpackages to individually installable Composer packages on Packagist using splitsh-lite.
+tags:
+    - waaseyaa
+    - php
+    - packagist
+    - open-source
+title: Publishing a PHP monorepo to Packagist with splitsh-lite
 ---
 
 Ahnii!

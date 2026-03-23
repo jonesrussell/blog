@@ -1,14 +1,22 @@
 ---
-title: "Replacing a homegrown database layer with DBAL"
-date: 2026-03-20
-categories: [ai, php]
-tags: [waaseyaa, php, claude-code, dbal]
-series: ["waaseyaa"]
-series_order: 7
-series_group: "Main"
-summary: "How waaseyaa migrated from a homegrown PdoDatabase to Doctrine DBAL across 67 commits — and how all three applications upgraded without breaking."
-slug: "waaseyaa-dbal-migration"
+categories:
+    - ai
+    - php
+date: 2026-03-20T00:00:00Z
+devto_id: 3386558
 draft: false
+series:
+    - waaseyaa
+series_group: Main
+series_order: 7
+slug: waaseyaa-dbal-migration
+summary: How waaseyaa migrated from a homegrown PdoDatabase to Doctrine DBAL across 67 commits — and how all three applications upgraded without breaking.
+tags:
+    - waaseyaa
+    - php
+    - claude-code
+    - dbal
+title: Replacing a homegrown database layer with DBAL
 ---
 
 Ahnii!

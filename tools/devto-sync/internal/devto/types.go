@@ -1,5 +1,36 @@
 package devto
 
+import (
+	"encoding/json"
+	"strings"
+)
+
+// FlexTags handles Dev.to's inconsistent tag_list field:
+// array of strings in list endpoints, comma-separated string in create/update responses.
+type FlexTags []string
+
+// UnmarshalJSON handles both string and []string JSON values.
+func (ft *FlexTags) UnmarshalJSON(data []byte) error {
+	// Try array first
+	var arr []string
+	if err := json.Unmarshal(data, &arr); err == nil {
+		*ft = arr
+		return nil
+	}
+	// Fall back to comma-separated string
+	var s string
+	if err := json.Unmarshal(data, &s); err != nil {
+		return err
+	}
+	if s == "" {
+		*ft = nil
+		return nil
+	}
+	tags := strings.Split(s, ", ")
+	*ft = tags
+	return nil
+}
+
 // Article represents a Dev.to article (response).
 type Article struct {
 	ID           int      `json:"id"`
@@ -10,8 +41,8 @@ type Article struct {
 	CanonicalURL string   `json:"canonical_url"`
 	Slug         string   `json:"slug"`
 	BodyMarkdown string   `json:"body_markdown"`
-	Tags         []string `json:"tag_list"`    // array of tag strings
-	Series       *string  `json:"series"`      // nullable
+	Tags         FlexTags `json:"tag_list"`
+	Series       *string  `json:"series"`
 	PublishedAt  string   `json:"published_at"`
 }
 

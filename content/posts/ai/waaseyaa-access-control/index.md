@@ -1,14 +1,22 @@
 ---
-title: "Deny-unless-granted: access control in waaseyaa"
-date: 2026-03-18
-categories: [ai, php]
-tags: [waaseyaa, php, claude-code, open-source]
-series: ["waaseyaa"]
-series_order: 5
-series_group: "Main"
-summary: "How waaseyaa's AccessPolicyInterface implements deny-unless-granted semantics with field-level access control — and how GitHub milestones kept it from scope-creeping."
-slug: "waaseyaa-access-control"
+categories:
+    - ai
+    - php
+date: 2026-03-18T00:00:00Z
+devto_id: 3386555
 draft: false
+series:
+    - waaseyaa
+series_group: Main
+series_order: 5
+slug: waaseyaa-access-control
+summary: How waaseyaa's AccessPolicyInterface implements deny-unless-granted semantics with field-level access control — and how GitHub milestones kept it from scope-creeping.
+tags:
+    - waaseyaa
+    - php
+    - claude-code
+    - open-source
+title: 'Deny-unless-granted: access control in waaseyaa'
 ---
 
 Ahnii!

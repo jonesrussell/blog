@@ -1,14 +1,22 @@
 ---
-title: "AI-native PHP: the waaseyaa AI packages"
-date: 2026-03-24
-categories: [ai, php]
-tags: [waaseyaa, php, claude-code, open-source]
-series: ["waaseyaa"]
-series_order: 11
-series_group: "Main"
-summary: "What ai-schema, ai-agent, ai-pipeline, and ai-vector enable in a PHP framework designed from the ground up with AI in mind — and an honest look at what's built versus what's planned."
-slug: "waaseyaa-ai-packages"
+categories:
+    - ai
+    - php
+date: 2026-03-24T00:00:00Z
+devto_id: 3386556
 draft: false
+series:
+    - waaseyaa
+series_group: Main
+series_order: 11
+slug: waaseyaa-ai-packages
+summary: What ai-schema, ai-agent, ai-pipeline, and ai-vector enable in a PHP framework designed from the ground up with AI in mind — and an honest look at what's built versus what's planned.
+tags:
+    - waaseyaa
+    - php
+    - claude-code
+    - open-source
+title: 'AI-native PHP: the waaseyaa AI packages'
 ---
 
 Ahnii!

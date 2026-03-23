@@ -1,11 +1,17 @@
 ---
-title: "I Migrated a Laravel App to a Custom PHP Framework in One Claude Code Session"
-date: 2026-03-19
-categories: [ai]
-tags: [claude-code, waaseyaa, laravel, php]
-summary: "How Claude Code built 3 framework packages, scaffolded a full application, and got 12 pages rendering — all in a single session."
-slug: "laravel-to-waaseyaa-one-session"
+categories:
+    - ai
+date: 2026-03-19T00:00:00Z
+devto_id: 3386553
 draft: true
+slug: laravel-to-waaseyaa-one-session
+summary: How Claude Code built 3 framework packages, scaffolded a full application, and got 12 pages rendering — all in a single session.
+tags:
+    - claude-code
+    - waaseyaa
+    - laravel
+    - php
+title: I Migrated a Laravel App to a Custom PHP Framework in One Claude Code Session
 ---
 
 Ahnii!

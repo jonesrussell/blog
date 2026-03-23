@@ -1,11 +1,17 @@
 ---
-title: "Flag untriaged GitHub issues automatically with Claude Code hooks"
-date: 2026-03-22
-categories: [ai]
-tags: [claude-code, github, automation, developer-tools]
-summary: "Use a Claude Code startup hook to surface untriaged GitHub issues and stale milestones before you write any code."
-slug: "flag-untriaged-issues-claude-code-hooks"
+categories:
+    - ai
+date: 2026-03-22T00:00:00Z
+devto_id: 3386550
 draft: false
+slug: flag-untriaged-issues-claude-code-hooks
+summary: Use a Claude Code startup hook to surface untriaged GitHub issues and stale milestones before you write any code.
+tags:
+    - claude-code
+    - github
+    - automation
+    - developer-tools
+title: Flag untriaged GitHub issues automatically with Claude Code hooks
 ---
 
 Ahnii!

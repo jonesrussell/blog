@@ -1,11 +1,17 @@
 ---
-title: "AI strips your voice because it doesn't know what to protect"
-date: 2026-03-22
-categories: [ai]
-tags: [claude-code, ai-tools, writing, content-creation]
-summary: "Stop AI from stripping your writing voice. Encode your style rules, review the output, and feed corrections back in."
-slug: "ai-strips-your-voice-style-layer"
+categories:
+    - ai
+date: 2026-03-22T00:00:00Z
+devto_id: 3386546
 draft: false
+slug: ai-strips-your-voice-style-layer
+summary: Stop AI from stripping your writing voice. Encode your style rules, review the output, and feed corrections back in.
+tags:
+    - claude-code
+    - ai-tools
+    - writing
+    - content-creation
+title: AI strips your voice because it doesn't know what to protect
 ---
 
 Ahnii!

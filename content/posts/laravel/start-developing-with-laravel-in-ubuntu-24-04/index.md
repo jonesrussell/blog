@@ -1,14 +1,21 @@
 ---
-title: "Start developing with Laravel on Ubuntu 24.04 LTS"
-date: 2026-02-22
-categories: [laravel]
-tags: [laravel, ddev, ubuntu, web-development]
-summary: "Get from Ubuntu 24.04 LTS to a running Laravel 12 app using the official installer first, then the DDEV option for container-based workflows."
-slug: "start-developing-with-laravel-in-ubuntu-24-04"
+aliases:
+    - /start-developing-with-laravel-in-ubuntu-20.04/
+categories:
+    - laravel
+date: 2026-02-22T00:00:00Z
+devto_id: 3386575
 draft: false
-aliases: ["/start-developing-with-laravel-in-ubuntu-20.04/"]
 images:
-  - /images/laravel.png
+    - /images/laravel.png
+slug: start-developing-with-laravel-in-ubuntu-24-04
+summary: Get from Ubuntu 24.04 LTS to a running Laravel 12 app using the official installer first, then the DDEV option for container-based workflows.
+tags:
+    - laravel
+    - ddev
+    - ubuntu
+    - web-development
+title: Start developing with Laravel on Ubuntu 24.04 LTS
 ---
 
 Ahnii!

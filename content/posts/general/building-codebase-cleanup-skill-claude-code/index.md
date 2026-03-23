@@ -1,11 +1,17 @@
 ---
-title: "Building a Codebase Cleanup Skill for Claude Code"
-date: 2026-02-13
-categories: [ai, tools]
-tags: [claude-code, skills, code-quality]
-summary: "How to write reusable Claude Code skills, featuring a codebase cleanup skill I built and ran on this very blog."
-slug: "building-codebase-cleanup-skill-claude-code"
+categories:
+    - ai
+    - tools
+date: 2026-02-13T00:00:00Z
+devto_id: 3386567
 draft: false
+slug: building-codebase-cleanup-skill-claude-code
+summary: How to write reusable Claude Code skills, featuring a codebase cleanup skill I built and ran on this very blog.
+tags:
+    - claude-code
+    - skills
+    - code-quality
+title: Building a Codebase Cleanup Skill for Claude Code
 ---
 
 Ahnii!

@@ -1,14 +1,22 @@
 ---
-title: "Three skills for governing multi-repo co-development with Claude Code"
-date: 2026-03-15
-categories: [ai, php]
-tags: [claude-code, waaseyaa, codified-context, skills]
-series: ["waaseyaa"]
-series_order: 2
-series_group: "Main"
-summary: "A skill set that governs framework-app co-development across three repos: enforcing patterns, auditing divergence, and extracting shared code."
-slug: "co-development-skill-set"
+categories:
+    - ai
+    - php
+date: 2026-03-15T00:00:00Z
+devto_id: 3386549
 draft: false
+series:
+    - waaseyaa
+series_group: Main
+series_order: 2
+slug: co-development-skill-set
+summary: 'A skill set that governs framework-app co-development across three repos: enforcing patterns, auditing divergence, and extracting shared code.'
+tags:
+    - claude-code
+    - waaseyaa
+    - codified-context
+    - skills
+title: Three skills for governing multi-repo co-development with Claude Code
 ---
 
 Ahnii!

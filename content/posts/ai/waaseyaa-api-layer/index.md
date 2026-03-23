@@ -1,14 +1,22 @@
 ---
-title: "JSON:API from Framework to SPA: Waaseyaa's API Layer"
-date: 2026-03-19
-categories: [ai, php]
-tags: [waaseyaa, php, claude-code, open-source]
-series: ["waaseyaa"]
-series_order: 6
-series_group: "Main"
-summary: "How waaseyaa's JSON:API layer works — ResourceSerializer, SchemaPresenter, and how Tier 3 specs let a new session pick up mid-feature without re-explaining the whole contract."
-slug: "waaseyaa-api-layer"
+categories:
+    - ai
+    - php
+date: 2026-03-19T00:00:00Z
+devto_id: 3386557
 draft: false
+series:
+    - waaseyaa
+series_group: Main
+series_order: 6
+slug: waaseyaa-api-layer
+summary: How waaseyaa's JSON:API layer works — ResourceSerializer, SchemaPresenter, and how Tier 3 specs let a new session pick up mid-feature without re-explaining the whole contract.
+tags:
+    - waaseyaa
+    - php
+    - claude-code
+    - open-source
+title: 'JSON:API from Framework to SPA: Waaseyaa''s API Layer'
 ---
 
 Ahnii!

@@ -1,11 +1,17 @@
 ---
-title: "Testing Cobra CLI Apps in Go: A DI Approach"
-date: 2024-07-24
-categories: [golang]
-tags: [golang, cobra, cli, testing]
-summary: "Learn how to effectively test Cobra CLI applications using dependency injection in Go, with practical examples and best practices."
-slug: "a-nod-to-golang-testing-cobra-cli-applications-with-dependency-injection"
+categories:
+    - golang
+date: 2024-07-24T00:00:00Z
+devto_id: 3386571
 draft: false
+slug: a-nod-to-golang-testing-cobra-cli-applications-with-dependency-injection
+summary: Learn how to effectively test Cobra CLI applications using dependency injection in Go, with practical examples and best practices.
+tags:
+    - golang
+    - cobra
+    - cli
+    - testing
+title: 'Testing Cobra CLI Apps in Go: A DI Approach'
 ---
 
 Ahnii!

@@ -1,11 +1,17 @@
 ---
-title: "Introducing Minoo: A Living Map of Indigenous Community"
-date: 2026-03-19
-categories: [projects]
-tags: [indigenous, community, open-source, northern-ontario]
-summary: "Minoo connects Indigenous communities, Knowledge Keepers, and volunteers through a location-aware platform rooted in community values."
-slug: "minoo-community-platform"
+categories:
+    - projects
+date: 2026-03-19T00:00:00Z
+devto_id: 3386554
 draft: true
+slug: minoo-community-platform
+summary: Minoo connects Indigenous communities, Knowledge Keepers, and volunteers through a location-aware platform rooted in community values.
+tags:
+    - indigenous
+    - community
+    - open-source
+    - northern-ontario
+title: 'Introducing Minoo: A Living Map of Indigenous Community'
 ---
 
 Ahnii!

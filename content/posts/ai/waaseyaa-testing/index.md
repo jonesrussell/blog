@@ -1,14 +1,22 @@
 ---
-title: "Testing a 48-package monorepo at scale"
-date: 2026-03-22
-categories: [ai, php]
-tags: [waaseyaa, php, testing, claude-code]
-series: ["waaseyaa"]
-series_order: 9
-series_group: "Main"
-summary: "How in-memory implementations, a layered test strategy, and AI-assisted test generation keep a 48-package PHP monorepo testable."
-slug: "waaseyaa-testing"
+categories:
+    - ai
+    - php
+date: 2026-03-22T00:00:00Z
+devto_id: 3386564
 draft: false
+series:
+    - waaseyaa
+series_group: Main
+series_order: 9
+slug: waaseyaa-testing
+summary: How in-memory implementations, a layered test strategy, and AI-assisted test generation keep a 48-package PHP monorepo testable.
+tags:
+    - waaseyaa
+    - php
+    - testing
+    - claude-code
+title: Testing a 48-package monorepo at scale
 ---
 
 Ahnii!
