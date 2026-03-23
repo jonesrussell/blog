@@ -32,6 +32,7 @@ task devto:push ALL=true       # Push all eligible posts
 task devto:pull ID=123 CATEGORY=go  # Import single article
 task devto:status              # Show sync state
 task devto:triage              # Propose archive/update/replace
+task devto:env                 # Export API key from vault for local use
 task devto:test                # Run tool tests
 ```
 
