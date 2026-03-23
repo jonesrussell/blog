@@ -111,6 +111,9 @@ tasks:
   devto:push:
     desc: Push posts to Dev.to (use SLUG=xxx for single post, or ALL=true for all)
     deps: [devto:build]
+    preconditions:
+      - sh: '[ -n "{{.SLUG}}" ] || [ -n "{{.ALL}}" ]'
+        msg: "Usage: task devto:push SLUG=my-post  OR  task devto:push ALL=true"
     cmds:
       - |
         args=""
@@ -122,6 +125,9 @@ tasks:
   devto:pull:
     desc: Import from Dev.to (use ID=xxx or ALL=true with CATEGORY_MAP=file.csv)
     deps: [devto:build]
+    preconditions:
+      - sh: '[ -n "{{.ID}}" ] || [ -n "{{.ALL}}" ]'
+        msg: "Usage: task devto:pull ID=123 CATEGORY=go  OR  task devto:pull ALL=true CATEGORY_MAP=map.csv"
     cmds:
       - |
         args=""
