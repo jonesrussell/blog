@@ -16,14 +16,14 @@ jobs:
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@v4
         with:
-          fetch-depth: 2
+          fetch-depth: 0
 
       - name: Setup Go
         uses: actions/setup-go@v5
         with:
-          go-version: '1.26'
+          go-version-file: 'tools/devto-sync/go.mod'
 
       - name: Build devto-sync
         run: cd tools/devto-sync && go build -o ../../bin/devto-sync .
@@ -76,7 +76,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git checkout -b "$branch"
-          git add content/posts/**/index.md
+          git add $(git diff --name-only -- 'content/posts/')
           git commit -m "chore: write back devto_id from sync run"
           git push origin "$branch"
           gh pr create \
