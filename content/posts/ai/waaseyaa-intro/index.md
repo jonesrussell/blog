@@ -4,7 +4,7 @@ date: 2026-03-14
 categories: [ai, php]
 tags: [waaseyaa, claude-code, php, open-source]
 series: ["waaseyaa"]
-series_order: 1
+series_order: 0
 series_group: "Main"
 summary: "What waaseyaa is, why it exists, and how planning with GitHub issues before coding changes the dynamic of building complex software with AI."
 slug: "waaseyaa-intro"
@@ -72,28 +72,48 @@ Minoo's codified context includes six domain skills for application-level patter
 
 Each post covers one subsystem, showing both the architecture and how AI-assisted development with structured context worked in practice.
 
-**Co-development governance** — Three skills for governing multi-repo co-development: enforcing patterns, auditing divergence, and extracting shared code across Waaseyaa, Minoo, and Claudriel.
+### 1. [Three Skills for Co-development Governance]({{< relref "co-development-skill-set" >}})
 
-**The entity system** — EntityInterface, ContentEntityBase, the field API. The heart of the framework and the foundation for everything else.
+Three skills for governing multi-repo co-development: enforcing patterns, auditing divergence, and extracting shared code across Waaseyaa, Minoo, and Claudriel.
 
-**The temporal layer** — How Claudriel's temporal subsystem pins time per request, resolves timezones from context, and detects clock drift before it corrupts AI reasoning.
+### 2. [The Entity System]({{< relref "waaseyaa-entity-system" >}})
 
-**Access control** — The deny-unless-granted model, AccessPolicyInterface, field-level access, and how Minoo implements indigenous-content filtering.
+EntityInterface, ContentEntityBase, the field API. The heart of the framework and the foundation for everything else.
 
-**The API layer** — JSON:API and GraphQL, ResourceSerializer, SchemaPresenter, and how the Nuxt 3 admin SPA consumes it.
+### 3. [Claudriel's Temporal Layer]({{< relref "claudriel-temporal-layer" >}})
 
-**Replacing the database layer** — Migrating from a homegrown PdoDatabase to Doctrine DBAL across all applications.
+How Claudriel's temporal subsystem pins time per request, resolves timezones from context, and detects clock drift before it corrupts AI reasoning.
 
-**Internationalization** — Language negotiation, multilingual entities, and building i18n for an indigenous cultural platform.
+### 4. [Access Control]({{< relref "waaseyaa-access-control" >}})
 
-**Testing at scale** — In-memory implementations, integration tests, and keeping 38 packages testable across hundreds of AI sessions.
+The deny-unless-granted model, AccessPolicyInterface, field-level access, and how Minoo implements indigenous-content filtering.
 
-**Deployment** — From scaffold to live site in 90 minutes: Deployer, Caddy, GitHub Actions across three applications.
+### 5. [The API Layer]({{< relref "waaseyaa-api-layer" >}})
 
-**The AI integration packages** — ai-schema, ai-agent, ai-pipeline, ai-vector, and what they make possible. Plus an honest account of where the framework stands today versus where it's going.
+JSON:API and GraphQL, ResourceSerializer, SchemaPresenter, and how the Nuxt 3 admin SPA consumes it.
 
-**Publishing to Packagist** — How splitsh-lite turns a monorepo into individually installable Composer packages.
+### 6. [Replacing the Database Layer]({{< relref "waaseyaa-dbal-migration" >}})
 
-Next up: [Three skills for governing multi-repo co-development with Claude Code]({{< relref "co-development-skill-set" >}}).
+Migrating from a homegrown PdoDatabase to Doctrine DBAL across all applications.
+
+### 7. [Internationalization]({{< relref "waaseyaa-i18n" >}})
+
+Language negotiation, multilingual entities, and building i18n for an indigenous cultural platform.
+
+### 8. [Testing at Scale]({{< relref "waaseyaa-testing" >}})
+
+In-memory implementations, integration tests, and keeping 38 packages testable across hundreds of AI sessions.
+
+### 9. [From Scaffold to Live Site in 90 Minutes]({{< relref "waaseyaa-deployment" >}})
+
+Deployer, Caddy, GitHub Actions across three applications.
+
+### 10. The AI Integration Packages
+
+ai-schema, ai-agent, ai-pipeline, ai-vector, and what they make possible. Plus an honest account of where the framework stands today versus where it's going.
+
+### 11. Publishing to Packagist
+
+How splitsh-lite turns a monorepo into individually installable Composer packages.
 
 Baamaapii

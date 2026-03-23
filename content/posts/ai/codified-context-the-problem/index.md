@@ -4,7 +4,7 @@ date: 2026-03-10
 categories: [ai]
 tags: [claude-code, codified-context, ai-agents]
 series: ["codified-context"]
-series_order: 1
+series_order: 0
 series_group: "Main"
 summary: "Token limits aren't the real problem with AI in large codebases — inconsistent context is. Here's what breaks and why a three-tier architecture fixes it."
 slug: "codified-context-the-problem"
@@ -65,15 +65,21 @@ This architecture has been applied to two codebases:
 
 Both are production systems. Both had the failure modes described above before structured context was added. Both work substantially better now.
 
-Over the next four posts:
+### 1. [The Constitution]({{< relref "codified-context-constitution" >}})
 
-[Part 2: The constitution]({{< relref "codified-context-constitution" >}}) — writing a project constitution that actually works. What the north-cloud CLAUDE.md contains, why the orchestration trigger table matters, and how waaseyaa scales the same pattern to 29 packages.
+Writing a project constitution that actually works. What the north-cloud CLAUDE.md contains, why the orchestration trigger table matters, and how waaseyaa scales the same pattern to 29 packages.
 
-[Part 3: Specialist skills]({{< relref "codified-context-specialist-skills" >}}) — domain specialist skills. What separates a good skill from a list of instructions. How waaseyaa's orchestration table and north-cloud's service CLAUDE.mds take different approaches to the same problem.
+### 2. [Specialist Skills]({{< relref "codified-context-specialist-skills" >}})
 
-[Part 4: Cold memory]({{< relref "codified-context-cold-memory" >}}) — specs and MCP retrieval. How waaseyaa's thirty-four framework specs pair with a custom MCP server, and how north-cloud layers a Go-based operational MCP server on top of the same spec-retrieval pattern.
+Domain specialist skills. What separates a good skill from a list of instructions. How waaseyaa's orchestration table and north-cloud's service CLAUDE.mds take different approaches to the same problem.
 
-[Part 5: The skills]({{< relref "codified-context-skills" >}}) — two skills you can use to apply this to your own codebase. One for setting up the three-tier architecture from scratch, one for maintaining it as the codebase evolves.
+### 3. [Cold Memory]({{< relref "codified-context-cold-memory" >}})
+
+Specs and MCP retrieval. How waaseyaa's thirty-four framework specs pair with a custom MCP server, and how north-cloud layers a Go-based operational MCP server on top of the same spec-retrieval pattern.
+
+### 4. [The Skills]({{< relref "codified-context-skills" >}})
+
+Two skills you can use to apply this to your own codebase. One for setting up the three-tier architecture from scratch, one for maintaining it as the codebase evolves.
 
 The failure modes are fixable. The fix requires treating context as infrastructure — designed deliberately, maintained actively, and structured to match how a codebase is actually organized.
 
