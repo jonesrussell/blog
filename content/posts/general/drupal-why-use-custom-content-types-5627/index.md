@@ -4,6 +4,7 @@ date: "2023-04-02T23:23:25.264Z"
 devto: true
 devto_id: 1418366
 draft: true
+archived: true
 slug: drupal-why-use-custom-content-types-5627
 summary: Structure Content.       In Drupal, a custom content type is a predefined structure used to create...
 tags:
