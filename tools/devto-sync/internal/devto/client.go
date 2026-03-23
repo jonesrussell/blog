@@ -125,6 +125,14 @@ func (c *Client) UpdateArticle(id int, req ArticleCreate) (*Article, error) {
 	return &article, nil
 }
 
+// DeleteArticle deletes an article by ID.
+func (c *Client) DeleteArticle(id int) error {
+	c.readLimiter.wait()
+	url := fmt.Sprintf("%s/api/articles/%d", c.baseURL, id)
+	_, err := c.doRequest("DELETE", url, nil)
+	return err
+}
+
 func (c *Client) doRequest(method, url string, payload []byte) ([]byte, error) {
 	return c.doRequestWithRetry(method, url, payload, 1)
 }

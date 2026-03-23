@@ -7,6 +7,7 @@ summary: "How to set up golangci-lint with a practical configuration that catche
 slug: "golangci-lint"
 draft: false
 devto: true
+devto_id: 3386832
 ---
 
 Ahnii!
