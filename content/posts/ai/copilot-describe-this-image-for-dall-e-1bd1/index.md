@@ -3,7 +3,7 @@ categories: []
 date: "2023-12-07T21:44:39.145Z"
 devto: true
 devto_id: 1691311
-draft: true
+draft: false
 slug: copilot-describe-this-image-for-dall-e-1bd1
 summary: Hello all you image generating AI enthusiasts.  I want to share some output I wasn't expecting, and I...
 tags:

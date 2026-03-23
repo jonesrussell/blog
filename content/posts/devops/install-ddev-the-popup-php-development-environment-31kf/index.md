@@ -3,7 +3,7 @@ categories: []
 date: "2024-02-01T06:06:25.308Z"
 devto: true
 devto_id: 1744329
-draft: true
+draft: false
 slug: install-ddev-the-popup-php-development-environment-31kf
 summary: DDEV is a fantastic open-source tool that can help you set up your local PHP development environments...
 tags:

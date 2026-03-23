@@ -3,7 +3,7 @@ categories: []
 date: "2023-01-06T18:20:37.482Z"
 devto: true
 devto_id: 1320152
-draft: true
+draft: false
 archived: true
 slug: full-stack-kill-it-on-the-command-line-with-oh-my-zsh-ubuntu-jh
 summary: This is my first tutorial video Raw &amp; uncut! From a fresh install of Ubuntu 22.04 I show you...

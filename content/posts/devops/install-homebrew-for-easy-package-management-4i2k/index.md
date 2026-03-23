@@ -3,7 +3,7 @@ categories: []
 date: "2024-01-29T07:48:46.258Z"
 devto: true
 devto_id: 1744322
-draft: true
+draft: false
 slug: install-homebrew-for-easy-package-management-4i2k
 summary: Homebrew is the self-described “Missing Package Manager for macOS (or Linux)”.   It is handy for...
 tags:

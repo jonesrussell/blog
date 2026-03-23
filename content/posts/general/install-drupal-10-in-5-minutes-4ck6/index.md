@@ -3,7 +3,7 @@ categories: []
 date: "2023-01-17T02:59:56.163Z"
 devto: true
 devto_id: 1331379
-draft: true
+draft: false
 archived: true
 slug: install-drupal-10-in-5-minutes-4ck6
 summary: Follow along to get a Drupal 10 website up and running in minutes!  Accepting requests for new...

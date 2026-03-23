@@ -3,7 +3,7 @@ categories: []
 date: "2024-01-29T08:05:29.500Z"
 devto: true
 devto_id: 1744328
-draft: true
+draft: false
 archived: true
 slug: how-to-install-docker-on-ubuntu-for-laravel-development-e2p
 summary: Docker is an essential tool for developing web applications with Laravel and most other projects. It...

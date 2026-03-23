@@ -3,7 +3,7 @@ categories: []
 date: "2023-03-20T19:14:34.857Z"
 devto: true
 devto_id: 1408235
-draft: true
+draft: false
 slug: learn-javascript-my-way-5bh2
 summary: Living playlist                                                                             ...
 tags:

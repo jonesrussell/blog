@@ -3,7 +3,7 @@ categories: []
 date: "2025-05-16T00:00:00.000Z"
 devto: true
 devto_id: 2548048
-draft: true
+draft: false
 slug: cors-fix-cross-origin-issues-32j6
 summary: Ahnii!  CORS (Cross-Origin Resource Sharing) lets your API accept requests from different domains....
 tags:

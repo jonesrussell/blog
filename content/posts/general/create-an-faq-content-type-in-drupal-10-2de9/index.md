@@ -3,7 +3,7 @@ categories: []
 date: "2023-01-28T04:28:28.535Z"
 devto: true
 devto_id: 1344464
-draft: true
+draft: false
 archived: true
 slug: create-an-faq-content-type-in-drupal-10-2de9
 summary: Before creating great content in Drupal you need great Content Types!  In just a few minutes I...

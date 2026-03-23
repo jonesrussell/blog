@@ -3,7 +3,7 @@ categories:
     - projects
 date: 2026-03-19T00:00:00Z
 devto_id: 3386554
-draft: true
+draft: false
 slug: minoo-community-platform
 summary: Minoo connects Indigenous communities, Knowledge Keepers, and volunteers through a location-aware platform rooted in community values.
 tags:

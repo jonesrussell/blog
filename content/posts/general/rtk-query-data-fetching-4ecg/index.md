@@ -3,7 +3,7 @@ categories: []
 date: "2023-02-23T01:34:30.484Z"
 devto: true
 devto_id: 1376075
-draft: true
+draft: false
 slug: rtk-query-data-fetching-4ecg
 summary: Overview   https://redux-toolkit.js.org/rtk-query/overview  RTK Query is a powerful data...
 tags:

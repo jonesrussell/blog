@@ -3,7 +3,7 @@ categories: []
 date: "2023-06-02T13:52:17.803Z"
 devto: true
 devto_id: 1489638
-draft: true
+draft: false
 archived: true
 slug: unpublished-video-1e2g-c2k
 summary: My premium course "Introduction to Drupal CMS"  first timer $10 coupon expires June 5th, 2023:...

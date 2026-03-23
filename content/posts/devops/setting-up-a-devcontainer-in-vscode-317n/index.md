@@ -3,7 +3,7 @@ categories: []
 date: "2024-06-29T00:00:00.000Z"
 devto: true
 devto_id: 1906301
-draft: true
+draft: false
 slug: setting-up-a-devcontainer-in-vscode-317n
 summary: Introduction   Visual Studio Code (VSCode) has become one of the most popular code editors...
 tags:

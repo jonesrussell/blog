@@ -3,7 +3,7 @@ categories: []
 date: "2023-01-23T23:49:36.259Z"
 devto: true
 devto_id: 1339075
-draft: true
+draft: false
 slug: html-dom-loves-javascript-tla-3dnb
 summary: 'Our target: DOM. Yes, that. I don''t know what it is, you don''t know what it is, who gives a f---?...'
 tags:

@@ -3,7 +3,7 @@ categories: []
 date: "2024-05-31T04:01:35.960Z"
 devto: true
 devto_id: 1871424
-draft: true
+draft: false
 archived: true
 slug: easy-sure-quick-never-3m4j
 summary: The near future...   "Sure, that'll be a piece of cake." - You.           Example           ...

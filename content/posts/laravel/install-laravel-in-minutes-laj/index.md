@@ -3,7 +3,7 @@ categories: []
 date: "2023-01-31T03:32:58.737Z"
 devto: true
 devto_id: 1347508
-draft: true
+draft: false
 archived: true
 slug: install-laravel-in-minutes-laj
 summary: There is no secret sauce, and this isn't your Colonel's chicken!  I use Docker and DDEV to start...
