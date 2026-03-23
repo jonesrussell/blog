@@ -4,6 +4,7 @@ date: "2023-02-14T06:48:20.273Z"
 devto: true
 devto_id: 1364832
 draft: true
+archived: true
 slug: ajax-views-in-drupal-10-1j00
 summary: By default a View pager will reload the page on Next and Previous.  I configure the First...
 tags:

@@ -4,6 +4,7 @@ date: "2023-03-10T16:22:59.051Z"
 devto: true
 devto_id: 1395810
 draft: true
+archived: true
 slug: add-a-google-font-to-tailwind-css-2023-651
 summary: Follow along to easily and quickly add Google Fonts to your TailwindCSS project.  I happen to be...
 tags:

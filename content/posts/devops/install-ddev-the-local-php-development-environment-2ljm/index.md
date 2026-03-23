@@ -4,6 +4,7 @@ date: "2023-01-15T18:36:40.033Z"
 devto: true
 devto_id: 1330061
 draft: true
+archived: true
 slug: install-ddev-the-local-php-development-environment-2ljm
 summary: '"DDEV is an open source tool for launching local PHP development environments in minutes."  I use...'
 tags:

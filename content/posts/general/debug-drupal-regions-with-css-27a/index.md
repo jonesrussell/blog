@@ -4,6 +4,7 @@ date: "2023-02-10T05:09:31.581Z"
 devto: true
 devto_id: 1360368
 draft: true
+archived: true
 slug: debug-drupal-regions-with-css-27a
 summary: As part of the First Trillionaire website series I attempt to use our Tailwind CSS implementation...
 tags:

@@ -4,6 +4,7 @@ date: "2023-01-22T11:27:23.301Z"
 devto: true
 devto_id: 1337569
 draft: true
+archived: true
 slug: install-visual-studio-code-on-ubuntu-1fkb
 summary: Quickly install VSCode through Ubuntu Software  Not much to see here but when you assume you look...
 tags:

@@ -4,6 +4,7 @@ date: "2023-01-28T04:33:38.079Z"
 devto: true
 devto_id: 1344465
 draft: true
+archived: true
 slug: drupal-10-and-phpmyadmin-database-quick-look-45al
 summary: In my last video I created a new FAQ content type, added an image field then created the first...
 tags:

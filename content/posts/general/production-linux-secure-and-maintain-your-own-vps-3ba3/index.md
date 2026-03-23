@@ -4,6 +4,7 @@ date: "2026-03-23T01:33:35.073Z"
 devto: true
 devto_id: 3386533
 draft: true
+archived: true
 slug: production-linux-secure-and-maintain-your-own-vps-3ba3
 summary: A 10-post series covering the full lifecycle of a production Linux VPS — from first login to disaster recovery.
 tags:

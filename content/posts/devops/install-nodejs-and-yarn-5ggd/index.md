@@ -4,6 +4,7 @@ date: "2023-01-15T18:53:46.439Z"
 devto: true
 devto_id: 1330068
 draft: true
+archived: true
 slug: install-nodejs-and-yarn-5ggd
 summary: You won't get very far on the web development path without these two packages!  Start the journey...
 tags:

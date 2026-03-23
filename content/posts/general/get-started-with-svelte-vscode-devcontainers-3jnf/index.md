@@ -4,6 +4,7 @@ date: "2023-01-22T14:22:04.485Z"
 devto: true
 devto_id: 1337632
 draft: true
+archived: true
 slug: get-started-with-svelte-vscode-devcontainers-3jnf
 summary: Take the first step in creating your dream website with Svelte, the framework for "Cybernetically...
 tags:

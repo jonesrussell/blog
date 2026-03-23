@@ -4,6 +4,7 @@ date: "2023-01-15T18:08:46.500Z"
 devto: true
 devto_id: 1330048
 draft: true
+archived: true
 slug: run-docker-without-sudo-2m60
 summary: 'Unsure how to run docker commands without "permission denied"?      Instructions:   sudo nano...'
 tags:

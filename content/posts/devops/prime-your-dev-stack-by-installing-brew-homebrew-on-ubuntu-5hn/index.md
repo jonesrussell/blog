@@ -4,6 +4,7 @@ date: "2023-01-09T18:39:56.992Z"
 devto: true
 devto_id: 1322848
 draft: true
+archived: true
 slug: prime-your-dev-stack-by-installing-brew-homebrew-on-ubuntu-5hn
 summary: Before great apps can be developed you need a development stack to work from. https://brew.sh/ takes...
 tags:

@@ -4,6 +4,7 @@ date: "2023-01-21T03:07:57.803Z"
 devto: true
 devto_id: 1336470
 draft: true
+archived: true
 slug: easy-drupal-10-multi-site-setups-with-ddev-1c85
 summary: If you've struggled to setup a multi-site Drupal install then follow along to get started in...
 tags:

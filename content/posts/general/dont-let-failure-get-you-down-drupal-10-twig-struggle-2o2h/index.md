@@ -4,6 +4,7 @@ date: "2023-02-11T08:06:45.530Z"
 devto: true
 devto_id: 1361671
 draft: true
+archived: true
 slug: dont-let-failure-get-you-down-drupal-10-twig-struggle-2o2h
 summary: I hoped to walk you through the process of "proper" Twig debugging in Drupal.  I expected a trip-up...
 tags:

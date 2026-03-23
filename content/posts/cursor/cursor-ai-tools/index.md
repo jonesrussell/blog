@@ -4,6 +4,7 @@ categories:
 date: 2025-01-10T00:00:00Z
 devto_id: 3386565
 draft: false
+archived: true
 slug: cursor-ai-tools
 summary: A comprehensive reference of tools available to Cursor AI for code manipulation and file operations.
 tags:

@@ -4,6 +4,7 @@ date: "2023-03-07T22:08:46.603Z"
 devto: true
 devto_id: 1392348
 draft: true
+archived: true
 slug: drupal-10-poll-module-2023-46l2
 summary: The Poll module at https://www.drupal.org/project/poll is great but doesn't work with Drupal 10...
 tags:

@@ -4,6 +4,7 @@ date: "2023-02-03T12:19:02.337Z"
 devto: true
 devto_id: 1352202
 draft: true
+archived: true
 slug: drupal-10-enable-theme-suggestions-3l8l
 summary: Have you struggled with finding the correct Twig template? I explain the process of turning on...
 tags:
