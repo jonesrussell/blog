@@ -1,16 +1,17 @@
 ---
-title: "Three Tiers of Data Freshness in a SvelteKit Static Site"
-date: 2026-03-23
 categories:
     - general
+date: 2026-03-23T00:00:00Z
+devto: true
+devto_id: 3391923
+draft: true
+slug: sveltekit-live-data-static-site
+summary: How to serve live data from a statically deployed SvelteKit site using prerendered pages, cached client-side fetches, and SPA fallback routes.
 tags:
     - sveltekit
     - github-pages
     - static-sites
-summary: How to serve live data from a statically deployed SvelteKit site using prerendered pages, cached client-side fetches, and SPA fallback routes.
-slug: sveltekit-live-data-static-site
-draft: true
-devto: true
+title: Three Tiers of Data Freshness in a SvelteKit Static Site
 ---
 
 Ahnii!
