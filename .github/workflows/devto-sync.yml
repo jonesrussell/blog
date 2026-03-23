@@ -30,9 +30,27 @@ jobs:
 
       - name: Find changed posts
         id: changed
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           sha="${{ github.event.workflow_run.head_sha }}"
-          files=$(git diff --name-only "${sha}^1" "${sha}" -- 'content/posts/**/index.md' 2>/dev/null || true)
+          # Find the previous deploy by looking at the last successful
+          # workflow_run before this one. Fall back to diffing the full
+          # push range if unavailable.
+          prev_sha=$(gh run list \
+            --workflow "Deploy Hugo blog to Pages" \
+            --status completed \
+            --conclusion success \
+            --json headSha \
+            --limit 2 \
+            -q '.[1].headSha // empty' 2>/dev/null || true)
+          if [ -n "$prev_sha" ] && git cat-file -t "$prev_sha" >/dev/null 2>&1; then
+            echo "Diffing $prev_sha..$sha"
+            files=$(git diff --name-only "$prev_sha" "$sha" -- 'content/posts/**/index.md' 2>/dev/null || true)
+          else
+            echo "No previous deploy SHA found, diffing against parent"
+            files=$(git diff --name-only "${sha}^1" "${sha}" -- 'content/posts/**/index.md' 2>/dev/null || true)
+          fi
           echo "files<<EOF" >> "$GITHUB_OUTPUT"
           echo "$files" >> "$GITHUB_OUTPUT"
           echo "EOF" >> "$GITHUB_OUTPUT"
