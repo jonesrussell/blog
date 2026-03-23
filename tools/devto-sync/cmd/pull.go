@@ -6,7 +6,6 @@ import (
 	"log"
 	"os"
 	"strconv"
-	"strings"
 
 	"github.com/jonesrussell/blog/tools/devto-sync/internal/devto"
 	"github.com/jonesrussell/blog/tools/devto-sync/internal/hugo"
@@ -177,10 +176,10 @@ func importArticle(article *devto.Article, category string) error {
 		fm["series"] = series
 	}
 
-	// Parse tags from comma-separated string
-	if article.Tags != "" {
+	// Convert tags to interface slice for YAML marshaling
+	if len(article.Tags) > 0 {
 		tags := []interface{}{}
-		for _, t := range splitTags(article.Tags) {
+		for _, t := range article.Tags {
 			tags = append(tags, t)
 		}
 		fm["tags"] = tags
@@ -193,17 +192,6 @@ func importArticle(article *devto.Article, category string) error {
 	}
 	log.Printf("Imported: %s → %s", article.Title, path)
 	return nil
-}
-
-// splitTags parses a Dev.to tag_list string (comma and/or space separated) into individual tags.
-func splitTags(s string) []string {
-	// Dev.to tag_list can be "go, testing" or "go testing" — normalize both
-	s = strings.ReplaceAll(s, ",", " ")
-	var tags []string
-	for _, t := range strings.Fields(s) {
-		tags = append(tags, t)
-	}
-	return tags
 }
 
 func init() {
