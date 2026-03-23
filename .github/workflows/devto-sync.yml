@@ -39,8 +39,7 @@ jobs:
           # push range if unavailable.
           prev_sha=$(gh run list \
             --workflow "Deploy Hugo blog to Pages" \
-            --status completed \
-            --conclusion success \
+            --status success \
             --json headSha \
             --limit 2 \
             -q '.[1].headSha // empty' 2>/dev/null || true)
