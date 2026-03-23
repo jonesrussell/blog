@@ -4,6 +4,7 @@ date: "2020-01-20T07:53:37.601Z"
 devto: true
 devto_id: 241571
 draft: true
+archived: true
 slug: install-composer-in-custom-docker-image-3f71
 summary: Install software in Docker with multi-stage builds
 tags:

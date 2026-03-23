@@ -6,7 +6,7 @@ tags: [career, mental-health, growth, tech-culture]
 summary: "Practical strategies for recognizing and overcoming imposter syndrome in the tech industry."
 slug: "imposter-syndrome"
 draft: true
-archived: false
+archived: true
 archived_date: 2026-02-22
 sitemap:
   disable: true

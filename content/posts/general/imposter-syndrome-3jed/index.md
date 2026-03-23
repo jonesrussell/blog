@@ -1,80 +1,47 @@
 ---
-categories: []
-date: "2021-03-06T00:00:00.000Z"
+title: “Dealing with Imposter Syndrome in Tech”
+date: 2021-03-06
+categories: [general]
+tags: [career, mental-health]
+summary: “How growing up Anishnawbek on a Northern Ontario reservation shaped my experience with imposter syndrome as a web developer.”
+slug: “imposter-syndrome-3jed”
+draft: false
 devto: true
 devto_id: 627798
-draft: true
-slug: imposter-syndrome-3jed
-summary: Ahnii! Notice the exclamation point? The Ojibwe greeting for ‘Hello’?  20 years ago I’d slink in the...
-tags:
-    - webdev
-    - my2
-    - selfworth
-    - humans
-title: Imposter Syndrome
----
----
-title: Imposter Syndrome
-published: true
-date: 2021-03-06 00:00:00 UTC
-tags: webdevelopment,my2,selfworth,humans
-canonical_url: https://blog.jonesrussell42.xyz/web-development/2021/03/06/imposter-syndrome-my-2.html
 ---
 
-Ahnii! Notice the exclamation point? The Ojibwe greeting for ‘Hello’?
+Ahnii!
 
-20 years ago I’d slink in the corner and be silent, let alone shout an ‘Indian’ greeting at you.
+Notice the exclamation point? The Ojibwe greeting for “Hello”? Twenty years ago I would have slunk into a corner and stayed silent, let alone shouted an “Indian” greeting at you.
 
-20 years ago I felt like an imposter in the eyes of my co-workers. Meanwhile, I was actually kicking ass.
+Twenty years ago I felt like an imposter in the eyes of my co-workers. Meanwhile, I was actually kicking ass.
 
-![scripts screenshot](https://blog.jonesrussell42.xyz/assets/img/imposter-syndrome.png)
+## Where I Come From
 
-## Introduction
+I’m an Anishnawbek web developer who grew up on a [Northern Ontario reservation](https://sagamok.ca/) as defined by the Canadian Indian Act. In Kindergarten I went to an [Indian Day School](https://en.wikipedia.org/wiki/Canadian_Indian_residential_school_system) where the purpose was to Anglicize us into conformity. By Grade 1 I was able to attend a school operated by people of my community rather than people appointed by Government or Church.
 
-I’m a talented 41 year old Anishnawbek Web Developer who grew up on a [Northern Ontario Indian Reservation](https://sagamok.ca/) as defined by the Canadian Indian Act of 1875, under amendments up until 1951 since I was born in 1979.
+It was not until 1985 that I was “enfranchised” — a legal term meaning you were supposed to consent to abandon your Indigenous identity and communal society in order to merge with the non-Aboriginal majority.
 
-It wasn’t until the amendments of 1985 that I was “enfranchised”.
+## What That Has to Do with Imposter Syndrome
 
-What does that mean? Under the Indian Act:
+[Imposter syndrome](https://www.verywellmind.com/imposter-syndrome-and-social-anxiety-disorder-4156469) is the experience of feeling like a phony — you feel as though at any moment you are going to be found out as a fraud, like you do not belong where you are, and you only got there through luck. It can affect anyone no matter their social status, work background, skill level, or degree of expertise.
 
-> By enfranchising, a person was supposed to be consenting to abandon Indigenous identity and communal society (with its artificial legal disabilities) in order to merge with the "free," individualistic and non-Aboriginal majority.
-
-In other words, in Kindergarten I went to an [Indian Day School](https://en.wikipedia.org/wiki/Canadian_Indian_residential_school_system) where the purpose was to Anglicize us into conformity. I suppose I was lucky in the sense that by Grade 1 I was able to attend a school operated by people of my community rather than people appointed by Government or Church.
-
-## What does that have to do with Imposter Syndrome?
-
-### And, what is Imposter Syndrome?
-
-As defined by [verwellmind](https://www.verywellmind.com/imposter-syndrome-and-social-anxiety-disorder-4156469):
-
-> Impostor syndrome (IS) refers to an internal experience of believing that you are not as competent as others perceive you to be. While this definition is usually narrowly applied to intelligence and achievement, it has links to perfectionism and the social context.
-
-A little technical I know, thankfully so do they:
-
-> To put it simply, imposter syndrome is the experience of feeling like a phony—you feel as though at any moment you are going to be found out as a fraud—like you don't belong where you are, and you only got there through dumb luck. It can affect anyone no matter their social status, work background, skill level, or degree of expertise.
-
-### Am I an Imposter Person?
-
-Seems dramatic sure. But growing up as I did on a reservation surrounded by ‘White’ towns, where in the 80’s the local town bar had an ‘Indian’ side and a ‘White’ side, it gets confusing to be a minority ‘in your own land’.
+Growing up on a reservation surrounded by towns where the local bar had an “Indian” side and a “White” side, it gets confusing to be a minority in your own land. That confusion does not stop when you open a code editor.
 
 ## The Developer Connection
 
-I believe my life experience goes hand in hand with my feelings of Imposter Syndrome in the Web Development world. It’s been a struggle of 4 decades to accept that I am not a phoney human, developer, or any other label I care to attach to myself.
+My life experience goes hand in hand with my feelings of imposter syndrome in web development. It has been a struggle of decades to accept that I am not a phoney human, developer, or any other label I care to attach to myself.
 
-My past was confusing, challenging, heart-breaking, and sometimes tragic. But I had a loving, compassionate, and nurturing family to help get through.
+My past was confusing, challenging, heartbreaking, and sometimes tragic. But I had a loving, compassionate, and nurturing family to help get through.
 
-Ever since IRC, I’ve always felt this online, open-source community to be the nurturing family of my professional life. I’ve come to rely on it and you have all helped me find my confidence as a developer.
+Ever since IRC, I have always felt the online open-source community to be the nurturing family of my professional life. I have come to rely on it and you have all helped me find my confidence as a developer.
 
 I have worth. I am a great web developer.
 
-Check out my newest launch, my personal portfolio built on Svelte, TypeScript & Kubernetes at https://www.jonesrussell42.xyz. The repository is public at https://github.com/jonesrussell/portfolio-sapper.
+## Now What?
 
-## Now what?
+This is an open-source world and every company is a software company.
 
-This is now an open-source world and every company is a software company.
+You are worth it. So do the work.
 
-**You’re worth** it. So do the **work**.
-
-Meegwetch! (Thank you)
-
-P.S. I look forward to hearing from you all.
+Baamaapii
