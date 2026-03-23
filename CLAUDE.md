@@ -22,6 +22,22 @@ task theme:update     # Pull latest PaperMod from master
 task deploy           # Clean + production build
 ```
 
+### Dev.to Sync Tool
+
+A Go CLI tool in `tools/devto-sync/` handles bidirectional sync with Dev.to. Blog is always canonical.
+
+```bash
+task devto:push SLUG=my-post   # Push single post
+task devto:push ALL=true       # Push all eligible posts
+task devto:pull ID=123 CATEGORY=go  # Import single article
+task devto:status              # Show sync state
+task devto:triage              # Propose archive/update/replace
+task devto:env                 # Export API key from vault for local use
+task devto:test                # Run tool tests
+```
+
+Posts opt in via `devto: true` in frontmatter (default in archetype). The `devto_id` field is written automatically after first push. Archived posts are excluded from sync.
+
 ## Configuration
 
 - `hugo.toml` — all Hugo and theme configuration (TOML format)
