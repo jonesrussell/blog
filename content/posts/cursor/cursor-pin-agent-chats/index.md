@@ -6,6 +6,7 @@ tags: [cursor, ai, productivity]
 summary: "Keep your most useful AI agent conversations at the top of the list with Cursor's pin feature."
 slug: "cursor-pin-agent-chats"
 draft: false
+devto_id: 3299735
 ---
 
 Ahnii!

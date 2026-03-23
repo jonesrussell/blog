@@ -9,6 +9,7 @@ series_group: "Index"
 summary: "A comprehensive series exploring PHP-FIG's PSR standards, with practical examples and real-world applications to help developers write more maintainable and interoperable PHP code."
 slug: "psr-standards-in-php-practical-guide-for-developers"
 draft: false
+devto_id: 2258990
 ---
 
 Are you tired of wrestling with inconsistent PHP codebases or struggling to make different packages work together? You're not alone! In this series, you'll explore how PHP-FIG's PSR standards can transform your development experience.

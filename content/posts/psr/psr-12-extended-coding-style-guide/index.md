@@ -12,6 +12,7 @@ tags: [php, php-fig, psr-12, coding-style]
 summary: "PSR-12 extends PSR-1 and PSR-2 to provide a comprehensive coding style guide for modern PHP, ensuring consistency across PHP code."
 slug: "psr-12-extended-coding-style-guide"
 draft: false
+devto_id: 2283374
 ---
 
 Ahnii!

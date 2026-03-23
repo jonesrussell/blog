@@ -9,6 +9,7 @@ series_group: "Main"
 summary: "Use multi-stage Dockerfiles to separate build tooling from your runtime image, cutting image size by 90% or more."
 slug: "docker-multi-stage-builds"
 draft: false
+devto_id: 3306327
 ---
 
 Ahnii!

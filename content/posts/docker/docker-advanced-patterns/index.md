@@ -9,6 +9,7 @@ series_group: "Main"
 summary: "Conditional builds with ARG, health checks, cross-platform images, linting, and other Dockerfile patterns for production use."
 slug: "docker-advanced-patterns"
 draft: false
+devto_id: 3316054
 ---
 
 Ahnii!

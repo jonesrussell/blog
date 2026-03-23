@@ -12,6 +12,7 @@ prerequisites: [1, 3]
 summary: "Learn how PSR-20's Clock interface makes time-dependent code testable and predictable by abstracting PHP's time functions."
 slug: "psr-20-clock"
 draft: false
+devto_id: 3255039
 ---
 
 Ahnii!

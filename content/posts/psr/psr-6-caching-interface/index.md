@@ -12,6 +12,7 @@ prerequisites: [1, 3]
 summary: "Explore PSR-6's caching interface standard, understand cache pools and items, and implement robust caching solutions in PHP applications."
 slug: "psr-6-caching-interface"
 draft: false
+devto_id: 2199954
 ---
 
 Ahnii!

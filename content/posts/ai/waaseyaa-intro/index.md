@@ -9,6 +9,7 @@ series_group: "Main"
 summary: "What waaseyaa is, why it exists, and how planning with GitHub issues before coding changes the dynamic of building complex software with AI."
 slug: "waaseyaa-intro"
 draft: false
+devto_id: 3364461
 ---
 
 Ahnii!

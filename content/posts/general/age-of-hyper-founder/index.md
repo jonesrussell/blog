@@ -6,6 +6,7 @@ tags: [founders, domains, vibe-coding, tech-culture]
 summary: "A short look at the trend of developers and founders listing domain names like titles, and how vibe-coding is the enabler."
 slug: "age-of-hyper-founder"
 draft: false
+devto_id: 3328436
 ---
 
 Ahnii!

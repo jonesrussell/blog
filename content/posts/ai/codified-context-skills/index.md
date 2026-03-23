@@ -9,6 +9,7 @@ series_group: "Main"
 summary: "Two Claude Code skills for applying and maintaining the three-tier codified context architecture — what they do, how they work, and how to get started."
 slug: "codified-context-skills"
 draft: false
+devto_id: 3352070
 ---
 
 Ahnii!

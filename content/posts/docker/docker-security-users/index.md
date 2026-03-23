@@ -9,6 +9,7 @@ series_group: "Main"
 summary: "Run containers as non-root users, choose minimal base images, and keep secrets out of your Docker layers."
 slug: "docker-security-users"
 draft: false
+devto_id: 3309329
 ---
 
 Ahnii!

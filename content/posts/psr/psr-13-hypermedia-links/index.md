@@ -12,6 +12,7 @@ tags: [php, psr-13, hypermedia, rest]
 summary: "Discover PSR-13's hypermedia link interfaces, understand HATEOAS principles, and implement discoverable APIs in PHP applications."
 slug: "psr-13-hypermedia-links"
 draft: false
+devto_id: 2376889
 ---
 
 Ahnii!

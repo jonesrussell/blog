@@ -12,6 +12,7 @@ tags: [php, php-fig, psr-15, http]
 summary: "Learn about PSR-15's HTTP server request handlers and middleware interfaces, and how they enable modular HTTP application development."
 slug: "psr-15-http-handlers"
 draft: false
+devto_id: 3255035
 ---
 
 Ahnii!

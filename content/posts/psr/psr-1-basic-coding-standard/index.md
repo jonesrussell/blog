@@ -11,6 +11,7 @@ test_files: ["tests/PSR1/UserManagerTest.php"]
 summary: "A guide to PSR-1, the foundational coding standard for PHP that establishes basic rules for files, namespaces, classes, and methods to improve code consistency."
 slug: "psr-1-basic-coding-standard"
 draft: false
+devto_id: 2191225
 ---
 
 > Updated on Jan 7, 2025: Improved writing style and examples for better clarity.

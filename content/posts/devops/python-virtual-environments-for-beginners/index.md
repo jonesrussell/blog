@@ -6,6 +6,7 @@ categories: [python]
 tags: [python, virtual-environments, development, tutorial]
 slug: "python-virtual-environments-for-beginners"
 draft: false
+devto_id: 2126676
 ---
 
 Ahnii!

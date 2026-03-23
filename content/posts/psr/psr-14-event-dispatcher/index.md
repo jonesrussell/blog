@@ -12,6 +12,7 @@ tags: [php, php-fig, psr-14, events]
 summary: "Explore PSR-14's event dispatcher interface, understand event-driven architecture in PHP, and learn best practices for implementing event systems."
 slug: "psr-14-event-dispatcher"
 draft: false
+devto_id: 3255034
 ---
 
 Ahnii!

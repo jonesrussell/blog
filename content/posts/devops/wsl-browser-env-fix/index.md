@@ -6,6 +6,7 @@ tags: [wsl, cli, linux]
 summary: "Use BROWSER=echo to prevent CLI tools from hanging when they try to open a browser in WSL."
 slug: "wsl-browser-env-fix"
 draft: false
+devto_id: 3294159
 ---
 
 Ahnii!

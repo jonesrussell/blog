@@ -6,6 +6,7 @@ tags: [linux, processes, command-line, system-administration]
 summary: "Manage Linux processes using Ctrl+Z, jobs, bg, and fg to suspend, resume, and control running jobs."
 slug: "suspend-and-resume-processes-in-linux"
 draft: false
+devto_id: 1975627
 ---
 
 Ahnii!

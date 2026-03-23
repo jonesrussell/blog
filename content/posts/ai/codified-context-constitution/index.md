@@ -9,6 +9,7 @@ series_group: "Main"
 summary: "How to structure your CLAUDE.md as a routing layer so AI agents always know where to look."
 slug: "codified-context-constitution"
 draft: false
+devto_id: 3341004
 ---
 
 Ahnii!

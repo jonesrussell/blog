@@ -6,6 +6,7 @@ tags: ["github-copilot", "cli", "code-audit", "devtools"]
 summary: "A CLI that runs structured code audits using GitHub Copilot across dead code, architecture, selectors, routing, tests, and observability."
 slug: "coaudit"
 draft: false
+devto_id: 3258589
 ---
 
 Ahnii!

@@ -12,6 +12,7 @@ tags: [php, php-fig, psr-11, dependency-injection]
 summary: "Learn about PSR-11's container interface standard, how it enables framework-agnostic dependency injection, and best practices for implementation."
 slug: "psr-11-container-interface"
 draft: false
+devto_id: 2258992
 ---
 
 Ahnii!

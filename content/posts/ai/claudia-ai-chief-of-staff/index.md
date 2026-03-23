@@ -6,6 +6,7 @@ tags: [claude-code, ai-tools, productivity, open-source]
 summary: "Claudia turns Claude Code into a personal chief of staff that remembers your relationships, tracks your commitments, and helps you make better decisions."
 slug: "claudia-ai-chief-of-staff"
 draft: false
+devto_id: 3385605
 ---
 
 Ahnii!

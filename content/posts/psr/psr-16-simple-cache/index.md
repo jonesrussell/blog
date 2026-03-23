@@ -12,6 +12,7 @@ tags: [php, php-fig, psr-16, caching]
 summary: "Learn about PSR-16's simple caching interface, understand when to use it over PSR-6, and implement straightforward caching solutions in PHP."
 slug: "psr-16-simple-cache"
 draft: false
+devto_id: 3255036
 ---
 
 Ahnii!

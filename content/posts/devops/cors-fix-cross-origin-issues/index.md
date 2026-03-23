@@ -8,6 +8,7 @@ summary: "Learn what CORS is, why it's essential for web security, and how to im
 slug: "cors-fix-cross-origin-issues"
 images:
   - /images/cors.png
+devto_id: 2606843
 ---
 
 > **Update - June 16, 2025:** This post has been updated to better explain CORS as a security feature rather than a problem to be "fixed." The content is now language-agnostic and emphasizes why CORS is essential for web security.

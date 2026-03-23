@@ -9,6 +9,7 @@ series_group: "Main"
 summary: "Learn Dockerfile basics — FROM, COPY, RUN, CMD — and build your first container image."
 slug: "docker-dockerfile-fundamentals"
 draft: false
+devto_id: 3302780
 ---
 
 Ahnii!

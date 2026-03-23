@@ -12,6 +12,7 @@ prerequisites: [1, 3]
 summary: "Learn how to implement and use PSR-3's standardized logging interface in PHP applications, with practical examples of logging implementations and best practices for error handling."
 slug: "psr-3-logger-interface"
 draft: false
+devto_id: 2197855
 ---
 
 > Updated on Jan 10, 2025: Fixed markdown formatting and removed emojis for consistency.  

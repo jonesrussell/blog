@@ -9,6 +9,7 @@ series_group: "Main"
 summary: "How subsystem specs and MCP retrieval tools handle architectural knowledge too large for hot memory — and why stale specs are worse than no specs."
 slug: "codified-context-cold-memory"
 draft: false
+devto_id: 3349965
 ---
 
 Ahnii!

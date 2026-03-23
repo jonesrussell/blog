@@ -6,6 +6,7 @@ tags: [golang, interfaces, programming, software-design]
 summary: "Master Go interfaces with practical examples and real-world use cases. Learn how to write more flexible and maintainable code using interface-based design."
 slug: "understanding-go-interfaces"
 draft: false
+devto_id: 2168440
 ---
 
 Ahnii!

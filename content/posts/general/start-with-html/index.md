@@ -6,6 +6,7 @@ tags: [html, beginners, web-development]
 summary: "Why HTML is the best starting point for anyone learning to build for the web, and how to get going without the overwhelm."
 slug: "start-with-html"
 draft: false
+devto_id: 3359951
 ---
 
 Ahnii!

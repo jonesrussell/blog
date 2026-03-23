@@ -12,6 +12,7 @@ prerequisites: [1]
 summary: "Master PHP's PSR-4 autoloading standard to organize your code efficiently. Learn how to structure your projects for automatic class loading and seamless package management with Composer."
 slug: "psr-4-autoloading-standard"
 draft: false
+devto_id: 2197856
 ---
 
 Ahnii!

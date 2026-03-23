@@ -12,6 +12,7 @@ prerequisites: [1, 3]
 summary: "Deep dive into PSR-7's HTTP message interfaces, understanding HTTP message abstraction, and implementing HTTP clients and servers in PHP."
 slug: "psr-7-http-message-interfaces"
 draft: false
+devto_id: 2258991
 ---
 
 Ahnii!

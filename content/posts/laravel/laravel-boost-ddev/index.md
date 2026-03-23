@@ -6,6 +6,7 @@ tags: [laravel, ddev, mcp, ai]
 summary: "Set up Laravel Boost as an MCP server inside DDEV, with a WSL configuration for Windows users."
 slug: "laravel-boost-ddev"
 draft: false
+devto_id: 3247402
 ---
 
 Ahnii!

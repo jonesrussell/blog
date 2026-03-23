@@ -9,6 +9,7 @@ series_group: "Main"
 summary: "Token limits aren't the real problem with AI in large codebases — inconsistent context is. Here's what breaks and why a three-tier architecture fixes it."
 slug: "codified-context-the-problem"
 draft: false
+devto_id: 3337685
 ---
 
 Ahnii!

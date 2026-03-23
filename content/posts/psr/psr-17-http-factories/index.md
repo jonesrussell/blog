@@ -12,6 +12,7 @@ prerequisites: [7]
 summary: "Learn how PSR-17's HTTP factory interfaces decouple your code from specific PSR-7 implementations, enabling testable and portable HTTP applications."
 slug: "psr-17-http-factories"
 draft: false
+devto_id: 3255037
 ---
 
 Ahnii!

@@ -6,6 +6,7 @@ tags: [vscode, devcontainers, docker, development-environment]
 summary: "Learn how to set up and use Dev Containers in Visual Studio Code for consistent, isolated development environments."
 slug: "setting-up-devcontainer-in-vscode"
 draft: false
+devto_id: 2168439
 ---
 
 Ahnii!
