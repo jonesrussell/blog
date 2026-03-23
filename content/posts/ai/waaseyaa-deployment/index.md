@@ -30,7 +30,7 @@ The site doesn't need entities, field types, or access policies. But it loads ev
 
 ## The Deployer pattern
 
-All three Waaseyaa applications — waaseyaa.org, Minoo, and Claudriel — use [Deployer](https://deployer.org/) for artifact-based deployment. The pattern is the same across all three:
+Every Waaseyaa application — waaseyaa.org, Minoo, Claudriel, and [scratch.waaseyaa.org](https://scratch.waaseyaa.org) — uses [Deployer](https://deployer.org/) for artifact-based deployment. The pattern is the same across all of them:
 
 1. GitHub Actions builds the artifact (composer install, npm build).
 2. The workflow rsyncs the build artifact to the server.
@@ -54,7 +54,7 @@ Five lines define the entire deployment target. Deployer handles the symlink rot
 
 ## Caddy as the web server
 
-All three apps use [Caddy](https://caddyserver.com/) as the web server. Caddy provides automatic TLS via Let's Encrypt with zero configuration. No certbot cron jobs. No manual certificate renewal.
+All Waaseyaa apps use [Caddy](https://caddyserver.com/) as the web server. Caddy provides automatic TLS via Let's Encrypt with zero configuration. No certbot cron jobs. No manual certificate renewal.
 
 A representative Caddyfile block:
 
@@ -117,7 +117,7 @@ Five things went wrong during the first waaseyaa.org launch. Each one cost betwe
 
 ## Three apps, one pattern
 
-Minoo, Claudriel, and waaseyaa.org share the Deployer + Caddy + GitHub Actions pattern. The differences are small:
+Every Waaseyaa application shares the Deployer + Caddy + GitHub Actions pattern. The differences between them are small:
 
 - **waaseyaa.org** is the simplest. No database. No user uploads. No queue workers. Four shared files, one shared directory.
 - **Minoo** has more complex shared directories — user uploads, cache directories, and a SQLite database file that persists across releases.
