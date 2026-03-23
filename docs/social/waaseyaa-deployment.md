@@ -1,21 +1,21 @@
-# Social Posts: From scaffold to live site in 90 minutes
+# Social Posts: From scaffold to live site in 11 minutes
 
 **Canonical URL:** https://jonesrussell.github.io/blog/waaseyaa-deployment/
 
 ## Facebook
 
-waaseyaa.org went from first commit to production in 90 minutes. This post covers how that happened and the deployment patterns shared across three Waaseyaa applications -- Caddy, Deployer, and systemd user services. #Waaseyaa #PHP #Deployment #Caddy
+scratch.waaseyaa.org went from `composer create-project` to live HTTPS in 11 minutes. DNS, scaffold, landing page, GitHub repo, CI/CD, server setup, and deploy — all timed. The site is live as permanent proof. #Waaseyaa #PHP #Deployment #Caddy
 
-Read more: https://jonesrussell.github.io/blog/waaseyaa-deployment/
+https://jonesrussell.github.io/blog/waaseyaa-deployment/
 
 ## X (Twitter)
 
-From first commit to production in 90 minutes. How waaseyaa.org shipped fast and the deployment patterns shared across three Waaseyaa applications.
+composer create-project to live HTTPS in 11 minutes. scratch.waaseyaa.org is the proof — go look. Deployer + Caddy + GitHub Actions.
 
 https://jonesrussell.github.io/blog/waaseyaa-deployment/
 
 ## LinkedIn
 
-Shipping a new site from scaffold to production in 90 minutes requires repeatable deployment patterns. This post covers how waaseyaa.org went live that fast, and the Caddy, Deployer, and systemd patterns shared across all three Waaseyaa applications.
+How fast can you go from zero to production with a standardized deployment pattern? 11 minutes. scratch.waaseyaa.org went from composer create-project to live HTTPS, including DNS, CI/CD setup, and server provisioning. The post covers the Deployer, Caddy, and GitHub Actions patterns that make this repeatable.
 
-Read more: https://jonesrussell.github.io/blog/waaseyaa-deployment/
+https://jonesrussell.github.io/blog/waaseyaa-deployment/

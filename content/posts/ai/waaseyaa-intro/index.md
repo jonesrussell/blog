@@ -104,9 +104,9 @@ Language negotiation, multilingual entities, and building i18n for an indigenous
 
 In-memory implementations, integration tests, and keeping 38 packages testable across hundreds of AI sessions.
 
-### 9. [From Scaffold to Live Site in 90 Minutes]({{< relref "waaseyaa-deployment" >}})
+### 9. [From Scaffold to Live Site in 11 Minutes]({{< relref "waaseyaa-deployment" >}})
 
-Deployer, Caddy, GitHub Actions across three applications.
+Deployer, Caddy, GitHub Actions — and a live proof at [scratch.waaseyaa.org](https://scratch.waaseyaa.org).
 
 ### 10. The AI Integration Packages
 

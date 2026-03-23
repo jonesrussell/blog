@@ -1,12 +1,12 @@
 ---
-title: "From scaffold to live site in 90 minutes"
+title: "From scaffold to live site in 11 minutes"
 date: 2026-03-23
 categories: [ai, php]
 tags: [waaseyaa, deployment, caddy, deployer]
 series: ["waaseyaa"]
 series_order: 10
 series_group: "Main"
-summary: "How waaseyaa.org went from first commit to production in 90 minutes — and the deployment patterns shared across three Waaseyaa applications."
+summary: "How a Waaseyaa site goes from composer create-project to production HTTPS in 11 minutes — and the deployment patterns shared across all Waaseyaa applications."
 slug: "waaseyaa-deployment"
 draft: false
 devto_id: 3386520
@@ -16,9 +16,9 @@ Ahnii!
 
 > **Series context:** This is part 9 of the [Waaseyaa series]({{< relref "waaseyaa-intro" >}}). Previous posts covered the [entity system]({{< relref "waaseyaa-entity-system" >}}), [Claudriel's temporal layer]({{< relref "claudriel-temporal-layer" >}}), [access control]({{< relref "waaseyaa-access-control" >}}), the [API layer]({{< relref "waaseyaa-api-layer" >}}), [DBAL migration]({{< relref "waaseyaa-dbal-migration" >}}), [i18n]({{< relref "waaseyaa-i18n" >}}), and [testing]({{< relref "waaseyaa-testing" >}}).
 
-On March 17, 2026, waaseyaa.org went from `composer init` to live in production. Eight commits. Ninety minutes. The site runs on the same framework it markets — dogfooding by necessity, not by choice.
+On March 23, 2026, [scratch.waaseyaa.org](https://scratch.waaseyaa.org) went from `composer create-project` to live HTTPS in 11 minutes. That includes DNS record creation, scaffolding, a custom landing page, GitHub repo setup, CI/CD configuration, server provisioning, and the deploy itself. The site exists as permanent proof — go look.
 
-This post covers how that happened, the deployment pattern shared across all three Waaseyaa applications, and the five things that went wrong along the way.
+This post covers how that speed is possible, the deployment pattern shared across all Waaseyaa applications, and the things that go wrong when you ship this fast.
 
 ## Dogfooding the framework
 
@@ -103,7 +103,7 @@ The workflow checks out both the application and the framework repository side b
 
 ## Deployment post-mortem
 
-Five things went wrong during the 90-minute launch. Each one cost between 5 and 15 minutes to diagnose.
+Five things went wrong during the first waaseyaa.org launch. Each one cost between 5 and 15 minutes to diagnose. The scratch.waaseyaa.org deploy hit two of the same issues — SQLite permissions and Caddy log ownership — proving these are systemic, not one-offs.
 
 **1. Server assumption.** The initial deploy script assumed Nginx. The server runs Caddy. The Caddyfile syntax is different enough that copy-pasting Nginx config blocks doesn't work — `try_files` becomes `php_fastcgi`, `location` blocks become matchers. Lesson: check `systemctl list-units` before writing web server config.
 
@@ -123,7 +123,14 @@ Minoo, Claudriel, and waaseyaa.org share the Deployer + Caddy + GitHub Actions p
 - **Minoo** has more complex shared directories — user uploads, cache directories, and a SQLite database file that persists across releases.
 - **Claudriel** splits its deploy configuration for staging and production environments. Staging deploys on every push to `develop`. Production deploys require a tagged release.
 
-The shared pattern means a new Waaseyaa application can go from scaffold to production in under two hours. The Deployer config is a copy-paste with path changes. The GitHub Actions workflow is a template. The Caddyfile block is six lines.
+The shared pattern means a new Waaseyaa application can go from scaffold to production in minutes, not hours. The [scratch.waaseyaa.org deploy](https://scratch.waaseyaa.org) proved this: `composer create-project`, push to GitHub, and the CI/CD pipeline handles the rest.
+
+```bash
+composer create-project waaseyaa/waaseyaa my-site --stability=dev
+cd my-site
+git init && git add -A && git commit -m "initial scaffold"
+git push  # GitHub Actions builds, transfers, and Deployer deploys
+```
 
 That's the real value of standardizing deployment. Not the individual deploy — the compound speed of every deploy after the first.
 
