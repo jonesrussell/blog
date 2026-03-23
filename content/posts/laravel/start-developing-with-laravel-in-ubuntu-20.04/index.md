@@ -5,6 +5,7 @@ categories: [laravel]
 tags: [web-development, install]
 summary: "A guide to setting up Laravel development environment on Ubuntu 20.04, perfect for beginners in web development"
 slug: "start-developing-with-laravel-in-ubuntu-20.04"
+aliases: ["/start-developing-with-laravel-in-ubuntu-20.04/"]
 draft: false
 images:
   - /images/laravel.png
