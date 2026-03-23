@@ -93,6 +93,9 @@ draft: true
 - Dev.to rejects hyphens in tags (e.g., `php-fig` → `phpfig`). The sync engine strips them automatically.
 - Dev.to rate limits are stricter than documented — use 3 creates per 30s, not 10. The rate limiter in `client.go` is tuned for this.
 - Old RSS imports may leave orphan Dev.to articles holding canonical URLs. Use `bin/devto-sync match` to find conflicts.
+- Dev.to API has no DELETE endpoint — can only unpublish via PUT. Dashboard required for actual deletion.
+- Dev.to has a separate "title already used in last 5 minutes" rate limit beyond the request rate limit.
+- `push --all` will unpublish previously-live Dev.to articles if the blog post has `draft: true` (see issue #30). Review draft status before bulk pushing.
 
 ## PSR Blog Series
 
