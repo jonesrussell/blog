@@ -88,6 +88,11 @@ draft: true
 - Internal links must use `relref` (e.g., `{{< relref "post-slug" >}}`), not root-relative paths (e.g., `/post-slug/`). Root-relative paths don't account for the `/blog/` base path in `baseURL` and produce 404s.
 - Always verify localhost URLs before presenting them. The `baseURL` includes `/blog/`, so local dev URLs are `http://localhost:1313/blog/slug/`, not `http://localhost:1313/slug/`.
 - AI-generated blog posts containing code snippets MUST be verified against the actual repos before publishing. Interface signatures, method parameters, and class names are frequently hallucinated. Use `~/dev/` repos as the source of truth.
+- Hugo `relref` also fails for draft posts. Series index posts that published posts link to must stay published (`draft: false`), even during content refresh.
+- Dev.to API `tag_list` field is an array in list endpoints but a string in create/update responses — the `FlexTags` type in `tools/devto-sync/internal/devto/types.go` handles both.
+- Dev.to rejects hyphens in tags (e.g., `php-fig` → `phpfig`). The sync engine strips them automatically.
+- Dev.to rate limits are stricter than documented — use 3 creates per 30s, not 10. The rate limiter in `client.go` is tuned for this.
+- Old RSS imports may leave orphan Dev.to articles holding canonical URLs. Use `bin/devto-sync match` to find conflicts.
 
 ## PSR Blog Series
 
@@ -100,3 +105,5 @@ draft: true
 ## Deployment
 
 Automated via GitHub Actions (`.github/workflows/hugo.yml`). Pushes to `main` trigger a build with Hugo extended and deploy to GitHub Pages. Future-dated posts are excluded until their date. No manual deployment needed — just merge to main.
+
+Dev.to sync runs automatically after deploy via `.github/workflows/devto-sync.yml`. Changed posts are pushed to Dev.to with `canonical_url` pointing back to the blog. New article IDs are written back via automated PR.
