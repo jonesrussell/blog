@@ -134,6 +134,16 @@ git push  # GitHub Actions builds, transfers, and Deployer deploys
 
 That's the real value of standardizing deployment. Not the individual deploy — the compound speed of every deploy after the first.
 
+## What 11 minutes actually means
+
+The [scratch.waaseyaa.org](https://scratch.waaseyaa.org) deploy was the first timed attempt. It was not clean. The server had pre-existing Caddy log permission issues across multiple sites. The SQLite database needed ownership changes for PHP-FPM. DNS propagation added dead time. Every one of those problems existed before the clock started.
+
+Eleven minutes includes diagnosing and fixing infrastructure issues that had nothing to do with the framework. The deploy itself — scaffold, push, CI/CD, live HTTPS — was a fraction of that.
+
+Those issues are now documented. The Caddy permissions problem has a [tracking issue](https://github.com/jonesrussell/north-cloud/issues/542). The SQLite ownership fix is captured in the deployment skill. The next deploy will be faster because the friction is identified and removable. The baseline is set.
+
+That trajectory points somewhere specific. If the pattern is this repeatable — `composer create-project`, configure a domain, push — it should be a service, not a manual process. [Laravel Cloud](https://cloud.laravel.com/) did this for Laravel. [Acquia](https://www.acquia.com/) did it for Drupal. Waaseyaa Cloud is coming.
+
 ## What's Next
 
 The next post covers the AI-native PHP packages in Waaseyaa — how the framework integrates LLM capabilities directly into the service container.
