@@ -1,12 +1,17 @@
 ---
-title: "Golangci-lint: Your Go Guardian Against Code Smells"
-date: 2024-12-19
-categories: [go]
-tags: [golang, linting, code-quality]
-summary: "How to set up golangci-lint with a practical configuration that catches real bugs without drowning you in noise."
-slug: "golangci-lint"
-draft: false
+categories:
+    - go
+date: 2024-12-19T00:00:00Z
 devto: true
+devto_id: 3386978
+draft: false
+slug: golangci-lint
+summary: How to set up golangci-lint with a practical configuration that catches real bugs without drowning you in noise.
+tags:
+    - golang
+    - linting
+    - code-quality
+title: 'Golangci-lint: Your Go Guardian Against Code Smells'
 ---
 
 Ahnii!
