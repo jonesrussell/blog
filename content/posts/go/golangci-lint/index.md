@@ -1,16 +1,23 @@
 ---
-title: "Golangci-lint: Your GoGuardian Against Code Smells"
-date: 2024-12-19
-categories: [golang, tools]
-tags: [golang, linting, golangci-lint, code-quality]
-summary: "Learn how golangci-lint can help you maintain clean, secure, and maintainable Go code through automated linting and static analysis."
-slug: "golangci-lint"
-draft: true
 archived: false
-archived_date: 2026-02-22
-sitemap:
-  disable: true
+archived_date: 2026-02-22T00:00:00Z
+categories:
+    - golang
+    - tools
+date: 2024-12-19T00:00:00Z
+devto_id: 3386832
+draft: true
 robotsNoIndex: true
+sitemap:
+    disable: true
+slug: golangci-lint
+summary: Learn how golangci-lint can help you maintain clean, secure, and maintainable Go code through automated linting and static analysis.
+tags:
+    - golang
+    - linting
+    - golangci-lint
+    - code-quality
+title: 'Golangci-lint: Your GoGuardian Against Code Smells'
 ---
 
 Ahnii!
