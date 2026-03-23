@@ -8,6 +8,8 @@ Git hooks have been "nice to have" for years. With AI agents now writing and com
 
 https://jonesrussell.github.io/blog/git-hooks-ai-agents/
 
+#GitHooks #AI #ClaudeCode #DevTools
+
 ## X (Twitter)
 
 AI agents write code fast. Git hooks make sure it's correct before it hits your repo. Linting, type checks, tests — all enforced automatically. https://jonesrussell.github.io/blog/git-hooks-ai-agents/

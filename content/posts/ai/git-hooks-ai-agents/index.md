@@ -1,11 +1,10 @@
 ---
 categories:
     - ai
-    - tools
 date: 2026-03-16T00:00:00Z
 devto: true
 devto_id: 3386552
-draft: true
+draft: false
 slug: git-hooks-ai-agents
 summary: Git hooks have always enforced standards before code enters a repo. With AI agents writing commits autonomously, they've become essential.
 tags:
