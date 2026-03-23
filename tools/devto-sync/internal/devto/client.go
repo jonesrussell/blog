@@ -201,7 +201,6 @@ func newRateLimiter(max int, interval time.Duration) *rateLimiter {
 
 func (r *rateLimiter) wait() {
 	r.mu.Lock()
-	defer r.mu.Unlock()
 
 	now := time.Now()
 	elapsed := now.Sub(r.last)
@@ -219,4 +218,5 @@ func (r *rateLimiter) wait() {
 		r.last = time.Now()
 	}
 	r.tokens--
+	r.mu.Unlock()
 }

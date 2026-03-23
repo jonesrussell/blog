@@ -54,6 +54,7 @@ func TransformForDevto(content, baseURL, postPath string) (string, []string) {
 			if strings.HasPrefix(imgPath, "http://") || strings.HasPrefix(imgPath, "https://") {
 				return match
 			}
+			imgPath = strings.TrimPrefix(imgPath, "./")
 			return fmt.Sprintf("%s(%s/%s/%s)", altPart, baseURL, postPath, imgPath)
 		})
 	}

@@ -159,6 +159,12 @@ type TriageResult struct {
 }
 
 // Triage analyzes posts and recommends keep/update/replace actions.
+// This is a package-level function that does not require a Dev.to client.
+func Triage(posts []*hugo.Post) []TriageResult {
+	return (&Engine{}).Triage(posts)
+}
+
+// Triage analyzes posts and recommends keep/update/replace actions.
 func (e *Engine) Triage(posts []*hugo.Post) []TriageResult {
 	var results []TriageResult
 

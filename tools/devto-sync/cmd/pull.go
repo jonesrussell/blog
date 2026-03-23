@@ -112,7 +112,7 @@ func pullAllArticles(client *devto.Client, existingIDs map[int]bool, catMap map[
 		return fmt.Errorf("list articles: %w", err)
 	}
 
-	var imported, skipped int
+	var imported, skipped, failed int
 	for _, article := range articles {
 		if !article.Published {
 			continue
@@ -140,12 +140,21 @@ func pullAllArticles(client *devto.Client, existingIDs map[int]bool, catMap map[
 
 		if err := importArticle(&article, category); err != nil {
 			log.Printf("ERROR [%d]: %v", article.ID, err)
+			failed++
 			continue
 		}
 		imported++
 	}
 
-	fmt.Printf("\nPull complete: %d imported, %d skipped (already exist)\n", imported, skipped)
+	fmt.Printf("\nPull complete: %d imported, %d skipped (already exist)", imported, skipped)
+	if failed > 0 {
+		fmt.Printf(", %d failed", failed)
+	}
+	fmt.Println()
+
+	if failed > 0 {
+		os.Exit(1)
+	}
 	return nil
 }
 

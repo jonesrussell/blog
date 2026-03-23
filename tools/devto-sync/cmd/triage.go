@@ -5,7 +5,6 @@ import (
 	"os"
 	"text/tabwriter"
 
-	"github.com/jonesrussell/blog/tools/devto-sync/internal/devto"
 	"github.com/jonesrussell/blog/tools/devto-sync/internal/hugo"
 	devsync "github.com/jonesrussell/blog/tools/devto-sync/internal/sync"
 	"github.com/spf13/cobra"
@@ -16,14 +15,6 @@ var triageCmd = &cobra.Command{
 	Short: "Propose archive/update/replace actions for imported posts",
 	Long:  "Analyzes imported Dev.to posts by age, topic, and content quality. Output is advisory only.",
 	RunE: func(cmd *cobra.Command, args []string) error {
-		apiKey := os.Getenv("DEVTO_API_KEY")
-		if apiKey == "" {
-			return fmt.Errorf("DEVTO_API_KEY environment variable is required")
-		}
-
-		client := devto.NewClient(apiKey)
-		engine := devsync.NewEngine(client, baseURL)
-
 		posts, err := hugo.ListPosts(contentDir)
 		if err != nil {
 			return fmt.Errorf("list posts: %w", err)
@@ -37,7 +28,7 @@ var triageCmd = &cobra.Command{
 			}
 		}
 
-		results := engine.Triage(imported)
+		results := devsync.Triage(imported)
 
 		w := tabwriter.NewWriter(os.Stdout, 0, 0, 2, ' ', 0)
 		fmt.Fprintln(w, "SLUG\tPUBLISHED\tACTION\tREASON")

@@ -53,6 +53,7 @@ func ParsePost(path string) (*Post, error) {
 	}
 
 	content := string(data)
+	content = strings.ReplaceAll(content, "\r\n", "\n")
 	parts := strings.SplitN(content, "---\n", 3)
 	if len(parts) < 3 {
 		return nil, fmt.Errorf("invalid frontmatter in %s: expected --- delimiters", path)
