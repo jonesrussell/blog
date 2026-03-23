@@ -146,4 +146,74 @@ This is the highest isolation model available — a container escape doesn't yie
 
 For most VPS deployments, localhost binding plus DOCKER-USER rules plus container hardening gives you the practical security gains without the compatibility overhead.
 
+## Common Mistakes
+
+**Publishing ports without a bind address:**
+
+```yaml
+# Bad — exposed on all interfaces
+ports:
+  - "6379:6379"
+
+# Good — localhost only
+ports:
+  - "127.0.0.1:6379:6379"
+```
+
+Every port mapping without an explicit bind address is reachable from the internet, regardless of your UFW rules.
+
+**Running containers as root with full capabilities:**
+
+```yaml
+# Bad — default root with all capabilities
+services:
+  app:
+    image: myapp:latest
+
+# Good — non-root, minimal capabilities
+services:
+  app:
+    image: myapp:latest
+    user: "1000:1000"
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+```
+
+A container running as root with full capabilities gives an attacker everything they need after a container escape.
+
+**Using mutable tags in production:**
+
+```yaml
+# Bad — tag can change without notice
+image: redis:7
+
+# Good — pinned to a specific digest
+image: redis@sha256:a1b2c3d4e5f6...
+```
+
+A tag like `redis:7` can point to a different image tomorrow. Digests are immutable.
+
+## Try It Yourself
+
+Audit your running containers:
+
+```bash
+# Check for ports exposed on all interfaces
+docker ps --format "table {{.Names}}\t{{.Ports}}" | grep -v 127.0.0.1
+
+# Check which containers run as root
+docker ps -q | xargs docker inspect --format '{{.Name}} user={{.Config.User}}' | grep 'user=$'
+
+# Scan an image for CVEs
+trivy image myimage:latest
+```
+
+If any containers show ports without `127.0.0.1:` or run with an empty user field, apply the fixes from this post.
+
+## What's Next
+
+Next in the series: Caddy Security Headers and Rate Limiting — covers TLS configuration, security headers, and request rate limiting at the reverse proxy layer.
+
 Baamaapii

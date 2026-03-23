@@ -24,11 +24,11 @@ Droplet creation, deploy user, UFW baseline, and unattended upgrades. The "befor
 
 Ed25519 keys, `PermitRootLogin no`, and disabling unused authentication methods.
 
-### 3. UFW, fail2ban, and Banning Repeat Offenders
+### 3. [UFW, fail2ban, and Banning Repeat Offenders]({{< relref "ufw-fail2ban-intrusion-response" >}})
 
 UFW deep dive, a fail2ban jail for Caddy access logs, and the recidive jail with nftables.
 
-### 4. Docker Security on a Shared VPS
+### 4. [Docker Security on a Shared VPS]({{< relref "docker-security-shared-vps" >}})
 
 Why Docker bypasses UFW, the DOCKER-USER chain fix, localhost binding, and container hardening.
 

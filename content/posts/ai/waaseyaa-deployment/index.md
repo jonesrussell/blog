@@ -14,7 +14,7 @@ devto_id: 3386520
 
 Ahnii!
 
-> **Series context:** This is part 8 of the [Waaseyaa series]({{< relref "waaseyaa-intro" >}}). Previous posts covered the [entity system]({{< relref "waaseyaa-entity-system" >}}), [access control]({{< relref "waaseyaa-access-control" >}}), the [API layer]({{< relref "waaseyaa-api-layer" >}}), [DBAL migration]({{< relref "waaseyaa-dbal-migration" >}}), [i18n]({{< relref "waaseyaa-i18n" >}}), and [testing]({{< relref "waaseyaa-testing" >}}).
+> **Series context:** This is part 9 of the [Waaseyaa series]({{< relref "waaseyaa-intro" >}}). Previous posts covered the [entity system]({{< relref "waaseyaa-entity-system" >}}), [Claudriel's temporal layer]({{< relref "claudriel-temporal-layer" >}}), [access control]({{< relref "waaseyaa-access-control" >}}), the [API layer]({{< relref "waaseyaa-api-layer" >}}), [DBAL migration]({{< relref "waaseyaa-dbal-migration" >}}), [i18n]({{< relref "waaseyaa-i18n" >}}), and [testing]({{< relref "waaseyaa-testing" >}}).
 
 On March 17, 2026, waaseyaa.org went from `composer init` to live in production. Eight commits. Ninety minutes. The site runs on the same framework it markets — dogfooding by necessity, not by choice.
 
@@ -127,7 +127,7 @@ The shared pattern means a new Waaseyaa application can go from scaffold to prod
 
 That's the real value of standardizing deployment. Not the individual deploy — the compound speed of every deploy after the first.
 
-## Next
+## What's Next
 
 The next post covers the AI-native PHP packages in Waaseyaa — how the framework integrates LLM capabilities directly into the service container.
 
