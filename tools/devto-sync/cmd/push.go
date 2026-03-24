@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"strconv"
 
 	"github.com/jonesrussell/blog/tools/devto-sync/internal/devto"
 	"github.com/jonesrussell/blog/tools/devto-sync/internal/hugo"
@@ -13,6 +14,7 @@ import (
 
 var pushAll bool
 var pushSlug string
+var orgID int
 
 var pushCmd = &cobra.Command{
 	Use:   "push",
@@ -26,6 +28,19 @@ var pushCmd = &cobra.Command{
 
 		client := devto.NewClient(apiKey)
 		engine := devsync.NewEngine(client, baseURL)
+
+		// Resolve org ID from flag or environment variable
+		oid := orgID
+		if oid == 0 {
+			if envVal := os.Getenv("DEVTO_ORG_ID"); envVal != "" {
+				parsed, err := strconv.Atoi(envVal)
+				if err != nil {
+					return fmt.Errorf("invalid DEVTO_ORG_ID=%q: %w", envVal, err)
+				}
+				oid = parsed
+			}
+		}
+		engine.OrgID = oid
 
 		posts, err := hugo.ListPosts(contentDir)
 		if err != nil {
@@ -97,5 +112,6 @@ var pushCmd = &cobra.Command{
 func init() {
 	pushCmd.Flags().BoolVar(&pushAll, "all", false, "Push all eligible posts")
 	pushCmd.Flags().StringVar(&pushSlug, "slug", "", "Push a specific post by slug")
+	pushCmd.Flags().IntVar(&orgID, "org-id", 0, "Dev.to organization ID to publish under")
 	rootCmd.AddCommand(pushCmd)
 }
