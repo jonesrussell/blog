@@ -65,6 +65,14 @@ type CommentUser struct {
 	Name     string `json:"name"`
 }
 
+// Tag represents a Dev.to tag from the public tag registry.
+type Tag struct {
+	ID        int    `json:"id"`
+	Name      string `json:"name"`
+	BGColor   string `json:"bg_color_hex"`
+	TextColor string `json:"text_color_hex"`
+}
+
 // ArticleCreate is the request body for creating/updating articles.
 type ArticleCreate struct {
 	Article ArticleBody `json:"article"`
