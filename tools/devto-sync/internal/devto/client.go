@@ -140,6 +140,21 @@ func (c *Client) ListComments(articleID int) ([]Comment, error) {
 	return comments, nil
 }
 
+// ListFollowers returns a page of followers for the authenticated user.
+func (c *Client) ListFollowers(page, perPage int) ([]Follower, error) {
+	c.readLimiter.wait()
+	url := fmt.Sprintf("%s/api/followers/users?page=%d&per_page=%d&sort=-created_at", c.baseURL, page, perPage)
+	body, err := c.doRequest("GET", url, nil)
+	if err != nil {
+		return nil, fmt.Errorf("list followers page %d: %w", page, err)
+	}
+	var followers []Follower
+	if err := json.Unmarshal(body, &followers); err != nil {
+		return nil, fmt.Errorf("decode followers: %w", err)
+	}
+	return followers, nil
+}
+
 // DeleteArticle deletes an article by ID.
 func (c *Client) DeleteArticle(id int) error {
 	c.readLimiter.wait()

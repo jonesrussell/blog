@@ -73,6 +73,16 @@ type Tag struct {
 	TextColor string `json:"text_color_hex"`
 }
 
+// Follower represents a Dev.to follower.
+type Follower struct {
+	ID           int    `json:"id"`
+	UserID       int    `json:"user_id"`
+	Name         string `json:"name"`
+	Username     string `json:"username"`
+	CreatedAt    string `json:"created_at"`
+	ProfileImage string `json:"profile_image"`
+}
+
 // ArticleCreate is the request body for creating/updating articles.
 type ArticleCreate struct {
 	Article ArticleBody `json:"article"`
