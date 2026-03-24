@@ -168,6 +168,12 @@ tasks:
     cmds:
       - ./bin/devto-sync analytics {{.CLI_ARGS}}
 
+  devto:listings:
+    desc: Create a Dev.to listing
+    deps: [devto:build]
+    cmds:
+      - ./bin/devto-sync listings {{.CLI_ARGS}}
+
   devto:test:
     desc: Run devto-sync tests
     dir: tools/devto-sync

@@ -148,6 +148,25 @@ func (c *Client) DeleteArticle(id int) error {
 	return err
 }
 
+// CreateListing creates a new Dev.to listing. Returns the created listing.
+func (c *Client) CreateListing(req ListingCreate) (*Listing, error) {
+	c.createLimiter.wait()
+	url := fmt.Sprintf("%s/api/listings", c.baseURL)
+	payload, err := json.Marshal(req)
+	if err != nil {
+		return nil, fmt.Errorf("encode listing: %w", err)
+	}
+	body, err := c.doRequest("POST", url, payload)
+	if err != nil {
+		return nil, fmt.Errorf("create listing: %w", err)
+	}
+	var listing Listing
+	if err := json.Unmarshal(body, &listing); err != nil {
+		return nil, fmt.Errorf("decode listing: %w", err)
+	}
+	return &listing, nil
+}
+
 func (c *Client) doRequest(method, url string, payload []byte) ([]byte, error) {
 	return c.doRequestWithRetry(method, url, payload, 1)
 }
