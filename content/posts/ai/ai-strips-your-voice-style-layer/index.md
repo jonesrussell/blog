@@ -20,21 +20,13 @@ Ruth M. Trucks [posted on LinkedIn](https://www.linkedin.com/feed/update/urn:li:
 
 This post shows how to build a style layer that travels with every prompt you send to [Claude Code](https://docs.anthropic.com/en/docs/claude-code/overview) or any AI writing tool. Encode your rules. Review the output. Feed corrections back in.
 
-## Why AI Strips Your Voice
+## The Fix Is a Constraint Document, Not a Better Prompt
 
-"Shorten this" gives AI one objective and zero constraints. It optimizes for the goal you stated. Your curiosity hooks aren't tagged as protected. Your conversational rhythm has no weight in the prompt. So they go first. They're the easiest tokens to cut.
+You can tell AI "keep my hooks, preserve the rhythm, don't touch the direct address." That works — once. Close the session and it's gone. Next time you start over, re-explaining the same constraints, hoping you remember them all.
 
-This is predictable behavior. You asked for shorter. The model delivered shorter. It had no way to know which parts of your writing carry the weight.
+The style layer makes your voice permanent. Two files: a template that locks structure, and a style document that locks voice. They load before AI generates a single word. Every session. Every project. No copy-pasting.
 
-Soren Kai made this point in the LinkedIn thread: the prompt-level fix works. Tell AI what to preserve. Give it examples. Share the constraints. But that approach is session-by-session. Close the terminal and it's gone. You start over next time.
-
-The style layer makes it permanent. You define your voice rules once. They load automatically with every prompt. No copy-pasting. No re-explaining. Your constraints survive across sessions, projects, and tools.
-
-## The Style Layer
-
-Two files do most of the work: a template that locks structure, and a style document that locks voice. Together they form the style layer.
-
-**The template.** Every new post on this blog starts from a Hugo archetype. Before you write a word, the structure is already set.
+Here's what that looks like in practice. Every new post on this blog starts from a Hugo archetype. Before you write a word, the structure is already set.
 
 ```yaml
 ---
@@ -59,9 +51,9 @@ Your content here...
 Baamaapii
 ```
 
-This archetype pre-fills frontmatter fields, the greeting, and the closing. Hugo generates it automatically when you run `task new-post -- my-slug`. The AI never has to guess your post structure. It's already there.
+Hugo generates this automatically when you run `task new-post -- my-slug`. The AI never has to guess your post structure. It's already there.
 
-**The style rules.** A markdown file tells the AI exactly how your writing should sound. Not "be conversational." Specific, checkable constraints. Here are real rules from this blog's style document:
+But structure alone won't save your voice. "Be conversational" gives AI nothing to work with. You need specific, checkable constraints. Here are real rules from this blog's style document:
 
 - Open with "Ahnii!", close with "Baamaapii" (no emoji)
 - Second person, direct, instructional. Address the reader as "you"/"your". Not corporate.
@@ -72,15 +64,15 @@ This archetype pre-fills frontmatter fields, the greeting, and the closing. Hugo
 - No "Wrapping Up" or "Conclusion" headings.
 - Link first mention of products, tools, or projects.
 
-Each rule is binary. You can check the output against the list and flag violations. "Did the post open with Ahnii?" Yes or no. "Are there more than two em dashes?" Count them. This is what makes style rules useful. Vague guidance like "match my tone" gives AI nothing to optimize for.
+Each rule is binary. "Did the post open with Ahnii?" Yes or no. "Are there more than two em dashes?" Count them. Vague guidance like "match my tone" gives AI nothing to optimize for. Binary rules give it everything.
 
-**You don't need Claude Code for this.** Paste a style document into any AI chat before asking it to write. ChatGPT, Gemini, Claude on the web. The principle is the same. Give AI a reference document for your voice before it generates a single word. The tool doesn't matter. The constraint document does.
+**You don't need Claude Code for this.** Paste a style document into any AI chat before asking it to write. ChatGPT, Gemini, Claude on the web. The tool doesn't matter. The constraint document does.
+
+But rules you never enforce are rules that don't exist. That's the next piece.
 
 ## Review the Output
 
-Style rules only work if you check whether they were followed. This blog uses a separate reviewing skill that turns every rule from the style document into a yes-or-no check. Did the post follow the rule? Pass or fail. No interpretation.
-
-The key is the output format. The skill produces structured findings:
+This blog uses a reviewing skill that turns every style rule into a yes-or-no check. Pass or fail. No interpretation. The skill produces structured findings:
 
 ```text
 **[CATEGORY]** Line N: description
@@ -98,11 +90,11 @@ Here's what a real finding looks like:
 
 Line number. Problem description. Exact fix. No ambiguity.
 
-This is auditable. You can see exactly what was caught, on which line, and what the correction was. You can verify the fix was applied. Compare that to "I reviewed it and it looks good." One is checkable. The other is a guess.
+One is checkable. The other is a guess. And if voice were the only thing AI got wrong, you'd be done here. It's not.
 
 ## Teach It Your Domain
 
-Voice is half the problem. The other half is substance. AI writes confidently about things that are wrong.
+AI writes confidently about things that are wrong.
 
 A post on this blog about Claude Code hooks used the `--no-milestone` flag for the GitHub CLI. The prose was clean. The structure followed every style rule. The flag doesn't exist. It was caught because the actual command was run before publishing. Without that step, a fabricated flag ships to readers who will try to use it.
 
@@ -155,6 +147,14 @@ This post was written with Claude Code using the style layer described above.
 - **Review pass:** Automated checklist run before publish
 - **OG image:** Auto-generated from post metadata using Playwright + HTML template
 - **Social copy:** Generated alongside the post for Facebook, X, LinkedIn
+
+</details>
+
+<details>
+<summary>Changelog</summary>
+
+- **2026-03-22:** Published
+- **2026-03-24:** Revised intro pacing and section flow based on copywriter feedback (Ruth M. Trucks) — tightened the hook, cut redundant explanation, added forward momentum between sections
 
 </details>
 
