@@ -125,6 +125,21 @@ func (c *Client) UpdateArticle(id int, req ArticleCreate) (*Article, error) {
 	return &article, nil
 }
 
+// ListComments returns all top-level comments for an article.
+func (c *Client) ListComments(articleID int) ([]Comment, error) {
+	c.readLimiter.wait()
+	url := fmt.Sprintf("%s/api/comments?a_id=%d", c.baseURL, articleID)
+	body, err := c.doRequest("GET", url, nil)
+	if err != nil {
+		return nil, fmt.Errorf("list comments for article %d: %w", articleID, err)
+	}
+	var comments []Comment
+	if err := json.Unmarshal(body, &comments); err != nil {
+		return nil, fmt.Errorf("decode comments: %w", err)
+	}
+	return comments, nil
+}
+
 // DeleteArticle deletes an article by ID.
 func (c *Client) DeleteArticle(id int) error {
 	c.readLimiter.wait()
