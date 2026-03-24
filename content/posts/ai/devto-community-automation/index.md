@@ -1,17 +1,18 @@
 ---
-title: "Automate your Dev.to presence with the Forem API"
-date: 2026-03-23
 categories:
     - ai
+date: 2026-03-23T00:00:00Z
+devto: true
+devto_id: 3392406
+draft: false
+slug: devto-community-automation
+summary: Build scripts that track your Dev.to analytics, surface unanswered comments, monitor follower growth, and engage with your community automatically.
 tags:
     - devto
     - typescript
     - cli
     - automation
-summary: Build scripts that track your Dev.to analytics, surface unanswered comments, monitor follower growth, and engage with your community automatically.
-slug: devto-community-automation
-draft: false
-devto: true
+title: Automate your Dev.to presence with the Forem API
 ---
 
 Ahnii!
