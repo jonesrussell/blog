@@ -15,6 +15,7 @@ import (
 type Engine struct {
 	client  *devto.Client
 	baseURL string
+	OrgID   int
 }
 
 // NewEngine creates a new sync engine.
@@ -64,7 +65,8 @@ func (e *Engine) PushPost(post *hugo.Post, dryRun bool) (*devto.Article, error) 
 			Tags:         tags,
 			Description:  post.Summary,
 			CanonicalURL: canonicalURL,
-			Series:       series,
+			Series:         series,
+			OrganizationID: e.OrgID,
 		},
 	}
 

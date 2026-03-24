@@ -53,11 +53,12 @@ type ArticleCreate struct {
 
 // ArticleBody contains the fields for create/update.
 type ArticleBody struct {
-	Title        string   `json:"title"`
-	BodyMarkdown string   `json:"body_markdown"`
-	Published    bool     `json:"published"`
-	Tags         []string `json:"tags"`
-	Description  string   `json:"description,omitempty"`
-	CanonicalURL string   `json:"canonical_url,omitempty"`
-	Series       string   `json:"series,omitempty"`
+	Title          string   `json:"title"`
+	BodyMarkdown   string   `json:"body_markdown"`
+	Published      bool     `json:"published"`
+	Tags           []string `json:"tags"`
+	Description    string   `json:"description,omitempty"`
+	CanonicalURL   string   `json:"canonical_url,omitempty"`
+	Series         string   `json:"series,omitempty"`
+	OrganizationID int      `json:"organization_id,omitempty"`
 }
