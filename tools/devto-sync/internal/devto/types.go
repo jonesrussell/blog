@@ -83,6 +83,43 @@ type Follower struct {
 	ProfileImage string `json:"profile_image"`
 }
 
+// ArticleUser represents a user in article responses.
+type ArticleUser struct {
+	Username string `json:"username"`
+	Name     string `json:"name"`
+}
+
+// ReactionToggle is the request body for toggling a reaction.
+type ReactionToggle struct {
+	Category      string `json:"category"`
+	ReactableID   int    `json:"reactable_id"`
+	ReactableType string `json:"reactable_type"`
+}
+
+// ReactionResult is the response from toggling a reaction.
+type ReactionResult struct {
+	Result   string `json:"result"`
+	Category string `json:"category"`
+	ID       int    `json:"id"`
+}
+
+// FollowedTag represents a tag the authenticated user follows.
+type FollowedTag struct {
+	ID     int     `json:"id"`
+	Name   string  `json:"name"`
+	Points float64 `json:"points"`
+}
+
+// ArticleByTag represents an article returned by the tag-based listing endpoint.
+type ArticleByTag struct {
+	ID              int         `json:"id"`
+	Title           string      `json:"title"`
+	URL             string      `json:"url"`
+	User            ArticleUser `json:"user"`
+	PublicReactions int         `json:"public_reactions_count"`
+	PublishedAt     string      `json:"published_at"`
+}
+
 // ArticleCreate is the request body for creating/updating articles.
 type ArticleCreate struct {
 	Article ArticleBody `json:"article"`

@@ -162,6 +162,7 @@ tasks:
       - echo "export DEVTO_API_KEY=$(ansible-vault decrypt --output - vault/devto-api-key.yml 2>/dev/null | grep api_key | cut -d' ' -f2)"
     silent: true
 
+<<<<<<< HEAD
   devto:analytics:
     desc: Show article performance stats
     deps: [devto:build]
@@ -185,6 +186,17 @@ tasks:
     deps: [devto:build]
     cmds:
       - ./bin/devto-sync followers
+
+  devto:engage:
+    desc: Like recent articles in tags you follow
+    deps: [devto:build]
+    cmds:
+      - |
+        args=""
+        {{ if .LIMIT }}args="$args --limit {{.LIMIT}}"{{ end }}
+        {{ if .DAYS }}args="$args --days {{.DAYS}}"{{ end }}
+        {{ if .DRY_RUN }}args="$args --dry-run"{{ end }}
+        ./bin/devto-sync engage $args
 
   devto:test:
     desc: Run devto-sync tests
