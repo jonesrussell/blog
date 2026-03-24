@@ -167,6 +167,21 @@ func (c *Client) CreateListing(req ListingCreate) (*Listing, error) {
 	return &listing, nil
 }
 
+// ListTags returns tags from the Dev.to public tag registry.
+func (c *Client) ListTags(page, perPage int) ([]Tag, error) {
+	c.readLimiter.wait()
+	url := fmt.Sprintf("%s/api/tags?page=%d&per_page=%d", c.baseURL, page, perPage)
+	body, err := c.doRequest("GET", url, nil)
+	if err != nil {
+		return nil, fmt.Errorf("list tags page %d: %w", page, err)
+	}
+	var tags []Tag
+	if err := json.Unmarshal(body, &tags); err != nil {
+		return nil, fmt.Errorf("decode tags: %w", err)
+	}
+	return tags, nil
+}
+
 func (c *Client) doRequest(method, url string, payload []byte) ([]byte, error) {
 	return c.doRequestWithRetry(method, url, payload, 1)
 }
