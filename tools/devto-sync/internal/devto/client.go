@@ -197,6 +197,55 @@ func (c *Client) ListTags(page, perPage int) ([]Tag, error) {
 	return tags, nil
 }
 
+// ToggleReaction toggles a reaction (like/unicorn/readinglist) on a reactable.
+func (c *Client) ToggleReaction(req ReactionToggle) (*ReactionResult, error) {
+	c.createLimiter.wait()
+	url := fmt.Sprintf("%s/api/reactions", c.baseURL)
+	payload, err := json.Marshal(req)
+	if err != nil {
+		return nil, fmt.Errorf("encode reaction: %w", err)
+	}
+	body, err := c.doRequest("POST", url, payload)
+	if err != nil {
+		return nil, fmt.Errorf("toggle reaction: %w", err)
+	}
+	var result ReactionResult
+	if err := json.Unmarshal(body, &result); err != nil {
+		return nil, fmt.Errorf("decode reaction result: %w", err)
+	}
+	return &result, nil
+}
+
+// ListFollowedTags returns tags the authenticated user follows.
+func (c *Client) ListFollowedTags() ([]FollowedTag, error) {
+	c.readLimiter.wait()
+	url := fmt.Sprintf("%s/api/follows/tags", c.baseURL)
+	body, err := c.doRequest("GET", url, nil)
+	if err != nil {
+		return nil, fmt.Errorf("list followed tags: %w", err)
+	}
+	var tags []FollowedTag
+	if err := json.Unmarshal(body, &tags); err != nil {
+		return nil, fmt.Errorf("decode followed tags: %w", err)
+	}
+	return tags, nil
+}
+
+// ListArticlesByTag returns recent articles for a given tag.
+// The top parameter specifies the time window in days.
+func (c *Client) ListArticlesByTag(tag string, top int) ([]ArticleByTag, error) {
+	c.readLimiter.wait()
+	url := fmt.Sprintf("%s/api/articles?tag=%s&top=%d&per_page=10", c.baseURL, tag, top)
+	body, err := c.doRequest("GET", url, nil)
+	if err != nil {
+		return nil, fmt.Errorf("list articles by tag %q: %w", tag, err)
+	}
+	var articles []ArticleByTag
+	if err := json.Unmarshal(body, &articles); err != nil {
+		return nil, fmt.Errorf("decode articles by tag: %w", err)
+	}
+	return articles, nil
+}
 func (c *Client) doRequest(method, url string, payload []byte) ([]byte, error) {
 	return c.doRequestWithRetry(method, url, payload, 1)
 }
