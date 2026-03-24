@@ -96,6 +96,9 @@ draft: true
 - Dev.to API has no DELETE endpoint — can only unpublish via PUT. Dashboard required for actual deletion.
 - Dev.to has a separate "title already used in last 5 minutes" rate limit beyond the request rate limit.
 - `push --all` will unpublish previously-live Dev.to articles if the blog post has `draft: true` (see issue #30). Review draft status before bulk pushing.
+- Grepping for `draft: true` can match archetype templates embedded at the bottom of posts. To find actual drafts, grep only within frontmatter (between the first pair of `---` delimiters).
+- OG images are auto-detected by slug: `static/images/og/{slug}.png`. Run `task og:generate` before deploying new posts (see #32 for wiring this into the build).
+- The OG image generator (`scripts/generate-og-images.js`) can produce filenames with curly quotes — verify output filenames match slugs exactly (see #31).
 
 ## PSR Blog Series
 
