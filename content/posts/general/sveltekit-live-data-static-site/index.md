@@ -9,7 +9,7 @@ tags:
     - static-sites
 summary: How to serve live data from a statically deployed SvelteKit site using prerendered pages, cached client-side fetches, and SPA fallback routes.
 slug: sveltekit-live-data-static-site
-draft: true
+draft: false
 devto: true
 ---
 
