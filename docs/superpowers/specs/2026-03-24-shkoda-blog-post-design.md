@@ -22,6 +22,7 @@ Lead with the game (Approach A). Hook the reader with a playable game, show what
 
 ```yaml
 title: "Shkoda: a campfire word game for learning Ojibwe"
+date: 2026-03-24
 slug: shkoda-campfire-word-game-ojibwe
 categories: [ai]
 tags: [waaseyaa, minoo, open-source, claude-code]
@@ -35,10 +36,12 @@ draft: true
 One paragraph. Shkoda is live at minoo.live/games/shkoda. A word game that teaches Ojibwe vocabulary. The campfire burns as long as you keep guessing. Free, no account needed.
 
 ### 2. "How the game works"
-Three modes (daily challenge, practice, streak), two directions (English to Ojibwe, Ojibwe to English), adaptive difficulty by word length and part of speech. Screenshots of the game in action. The Wordle-style share grid. Player-focused, not technical.
+Three modes (daily challenge, practice, streak), two directions (English to Ojibwe, Ojibwe to English), adaptive difficulty by word length and part of speech. Daily challenge also follows a weekly difficulty schedule: easier mid-week (Mon/Wed/Fri), harder on weekends (Sat/Sun). Screenshots of the game in action. The Wordle-style share grid. Player-focused, not technical.
 
 ### 3. "Every round ends with a teaching"
-After each round (win or lose), the player sees the definition, stem, example sentence, and related words from the dictionary database. The game is a vehicle for the dictionary, not the other way around. This is what separates Shkoda from a generic hangman clone.
+After each round (win or lose), the player sees the definition, part of speech, stem, and a link to the full dictionary entry. The game is a vehicle for the dictionary, not the other way around. This is what separates Shkoda from a generic hangman clone.
+
+**Note:** The example sentence display has a field-name mismatch between server (`example_ojibwe`/`example_english`) and client (`example_sentence`). Verify this is resolved before claiming example sentences appear in the teaching screen, or omit from the post.
 
 ### 4. "A living language, not a frozen one"
 The name correction story: originally named "Ishkode," the author's mother (an elder) corrected it to "Shkoda." Possibly dialect-related. This is the process of learning a living language. The word pool grows as dictionary entries sync from the community pipeline. Minoo isn't preserving a museum piece; it's serving a living community.
@@ -46,8 +49,8 @@ The name correction story: originally named "Ishkode," the author's mother (an e
 ### 5. "How it's built"
 Brief technical section for developers. Key points:
 - Waaseyaa entity system: GameSession (content entity) and DailyChallenge (config entity)
-- Hybrid validation: server-validated daily challenge (word never sent to client, prevents cheating), client-validated practice/streak (instant UX, lower stakes)
-- Vanilla JS frontend (645 lines), no framework
+- Hybrid validation: server-validated daily challenge (word never sent to client, prevents cheating), client-validated practice/streak (word base64-obfuscated, not encrypted; deliberate tradeoff of security for instant UX since stakes are low)
+- Vanilla JS frontend (~650 lines), no framework
 - SVG campfire with CSS state transitions (data-fire-state attribute)
 - Word pool drawn from Minoo's existing dictionary_entry and example_sentence entities
 - API: 5 REST endpoints under /api/games/shkoda/
