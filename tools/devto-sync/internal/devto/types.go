@@ -70,6 +70,28 @@ type ArticleCreate struct {
 	Article ArticleBody `json:"article"`
 }
 
+// Listing represents a Dev.to listing (response).
+type Listing struct {
+	ID       int    `json:"id"`
+	Title    string `json:"title"`
+	Category string `json:"category"`
+	Slug     string `json:"slug"`
+}
+
+// ListingCreate is the request body for creating listings.
+type ListingCreate struct {
+	Listing ListingBody `json:"listing"`
+}
+
+// ListingBody contains the fields for listing create.
+type ListingBody struct {
+	Title             string   `json:"title"`
+	BodyMarkdown      string   `json:"body_markdown"`
+	Category          string   `json:"category"`
+	Tags              []string `json:"tags,omitempty"`
+	ContactViaConnect bool     `json:"contact_via_connect,omitempty"`
+}
+
 // ArticleBody contains the fields for create/update.
 type ArticleBody struct {
 	Title          string   `json:"title"`
