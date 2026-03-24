@@ -1,17 +1,18 @@
 ---
-title: "Shkoda: a campfire word game for learning Ojibwe"
-date: 2026-03-24
 categories:
     - ai
+date: 2026-03-24T00:00:00Z
+devto: true
+devto_id: 3396475
+draft: false
+slug: shkoda-campfire-word-game-ojibwe
+summary: The first game on minoo.live teaches Ojibwe vocabulary through a campfire that burns as long as you keep guessing right.
 tags:
     - waaseyaa
     - minoo
     - open-source
     - language-revitalization
-summary: "The first game on minoo.live teaches Ojibwe vocabulary through a campfire that burns as long as you keep guessing right."
-slug: shkoda-campfire-word-game-ojibwe
-draft: false
-devto: true
+title: 'Shkoda: a campfire word game for learning Ojibwe'
 ---
 
 Ahnii!
