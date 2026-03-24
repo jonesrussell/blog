@@ -162,7 +162,6 @@ tasks:
       - echo "export DEVTO_API_KEY=$(ansible-vault decrypt --output - vault/devto-api-key.yml 2>/dev/null | grep api_key | cut -d' ' -f2)"
     silent: true
 
-<<<<<<< HEAD
   devto:analytics:
     desc: Show article performance stats
     deps: [devto:build]
