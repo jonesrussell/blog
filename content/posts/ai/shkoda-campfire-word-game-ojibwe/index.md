@@ -52,7 +52,7 @@ The game was originally called "Ishkode." My mother, an elder, corrected the spe
 
 The word pool grows automatically as new dictionary entries are added through the community pipeline. Minoo is not preserving a museum piece. It is serving a living community.
 
-So how does all of this actually work under the hood?
+The community shapes the language. The framework underneath makes that possible.
 
 ## How Shkoda is built on the Waaseyaa framework
 
