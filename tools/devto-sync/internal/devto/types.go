@@ -42,12 +42,27 @@ type Article struct {
 	Slug         string   `json:"slug"`
 	BodyMarkdown string   `json:"body_markdown"`
 	Tags         FlexTags `json:"tag_list"`
-	Series       *string  `json:"series"`
-	PublishedAt             string   `json:"published_at"`
-	PageViewsCount         int      `json:"page_views_count"`
-	PositiveReactionsCount int      `json:"positive_reactions_count"`
-	PublicReactionsCount   int      `json:"public_reactions_count"`
-	CommentsCount          int      `json:"comments_count"`
+	Series                 *string  `json:"series"`
+	PublishedAt            string   `json:"published_at"`
+	PageViewsCount         int     `json:"page_views_count"`
+	PositiveReactionsCount int     `json:"positive_reactions_count"`
+	PublicReactionsCount   int     `json:"public_reactions_count"`
+	CommentsCount          int     `json:"comments_count"`
+}
+
+// Comment represents a Dev.to comment.
+type Comment struct {
+	IDCode    string      `json:"id_code"`
+	BodyHTML  string      `json:"body_html"`
+	User      CommentUser `json:"user"`
+	CreatedAt string      `json:"created_at"`
+	Children  []Comment   `json:"children"`
+}
+
+// CommentUser represents the author of a comment.
+type CommentUser struct {
+	Username string `json:"username"`
+	Name     string `json:"name"`
 }
 
 // ArticleCreate is the request body for creating/updating articles.

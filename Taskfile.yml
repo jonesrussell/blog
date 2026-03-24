@@ -150,6 +150,12 @@ tasks:
     cmds:
       - ./bin/devto-sync triage
 
+  devto:comments:
+    desc: Show unanswered comments across articles
+    deps: [devto:build]
+    cmds:
+      - ./bin/devto-sync comments
+
   devto:env:
     desc: Export DEVTO_API_KEY from Ansible vault (run with 'eval $(task devto:env)')
     cmds:
