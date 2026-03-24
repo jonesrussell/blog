@@ -41,8 +41,10 @@ function findPosts() {
         const raw = fs.readFileSync(full, 'utf-8');
         const { data } = matter(raw);
         if (data.slug && data.title) {
+          // Strip curly quotes and other non-ASCII from slugs
+          const cleanSlug = data.slug.replace(/[\u2018\u2019\u201C\u201D]/g, '');
           posts.push({
-            slug: data.slug,
+            slug: cleanSlug,
             title: data.title,
             series: data.series || [],
           });

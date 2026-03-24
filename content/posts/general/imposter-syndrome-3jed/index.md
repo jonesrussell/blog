@@ -4,7 +4,7 @@ date: 2021-03-06
 categories: [general]
 tags: [career, mental-health]
 summary: “How growing up Anishnawbek on a Northern Ontario reservation shaped my experience with imposter syndrome as a web developer.”
-slug: “imposter-syndrome-3jed”
+slug: imposter-syndrome-3jed
 draft: false
 devto: true
 devto_id: 627798

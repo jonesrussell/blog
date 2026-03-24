@@ -92,6 +92,7 @@ tasks:
     deps:
       - clean
     cmds:
+      - task: og:generate
       - hugo --gc --minify
       - echo "Site built successfully in public/"
     env:
