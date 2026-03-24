@@ -18,7 +18,7 @@
 }
 
 /* Dark mode (default) */
-.dark {
+:root[data-theme="dark"] {
   --theme: #0a0a0f;
   --entry: #111118;
   --primary: rgba(255, 255, 255, 0.84);
@@ -33,7 +33,7 @@
 }
 
 /* Light mode */
-:root:not(.dark) {
+:root:not([data-theme="dark"]) {
   --theme: #faf8f5;
   --entry: #ffffff;
   --primary: rgba(10, 10, 15, 0.88);
