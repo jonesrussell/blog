@@ -10,7 +10,7 @@ tags:
     - language-revitalization
 summary: "The first game on minoo.live teaches Ojibwe vocabulary through a campfire that burns as long as you keep guessing right."
 slug: shkoda-campfire-word-game-ojibwe
-draft: true
+draft: false
 devto: true
 ---
 
