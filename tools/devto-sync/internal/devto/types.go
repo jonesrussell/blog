@@ -43,7 +43,11 @@ type Article struct {
 	BodyMarkdown string   `json:"body_markdown"`
 	Tags         FlexTags `json:"tag_list"`
 	Series       *string  `json:"series"`
-	PublishedAt  string   `json:"published_at"`
+	PublishedAt             string   `json:"published_at"`
+	PageViewsCount         int      `json:"page_views_count"`
+	PositiveReactionsCount int      `json:"positive_reactions_count"`
+	PublicReactionsCount   int      `json:"public_reactions_count"`
+	CommentsCount          int      `json:"comments_count"`
 }
 
 // ArticleCreate is the request body for creating/updating articles.
