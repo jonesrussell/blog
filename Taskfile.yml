@@ -180,6 +180,12 @@ tasks:
     cmds:
       - ./bin/devto-sync tags
 
+  devto:followers:
+    desc: Track follower count and growth
+    deps: [devto:build]
+    cmds:
+      - ./bin/devto-sync followers
+
   devto:test:
     desc: Run devto-sync tests
     dir: tools/devto-sync

@@ -30,3 +30,6 @@ node_modules/
 # Built binaries
 bin/
 .task/
+
+# Dev.to sync local data
+tools/devto-sync/data/
