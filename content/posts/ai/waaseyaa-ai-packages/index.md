@@ -39,7 +39,7 @@ If you're building a new CMS framework in 2026, you design for these workflows f
 
 The schema format is designed for AI, not for humans. Field names come with semantic descriptions. Relationships include their cardinality and the target entity type's schema. Validation rules are expressed in terms an LLM can act on.
 
-The practical use case in [Minoo](https://github.com/waaseyaa/minoo): when generating a new Teaching from a transcript, the AI agent reads the schema to understand what fields to populate, what's required, and how to structure relationships. The schema makes entity structure machine-readable in a way that the JSON:API schema endpoint doesn't quite achieve. The JSON:API schema is designed for form generation, not for LLM reasoning.
+The practical use case in [Minoo](https://github.com/waaseyaa/minoo): when generating a new Teaching from a transcript, the AI agent reads the schema to understand what fields to populate, what's required, and how to structure relationships. The schema makes entity structure machine-readable in a way that the JSON:API schema endpoint doesn't quite achieve. The JSON:API schema is designed for form generation, not for LLM reasoning. But knowing what an entity looks like isn't useful if nothing can act on that knowledge.
 
 ## ai-agent
 
@@ -58,7 +58,7 @@ The interface defines three methods: `execute` runs the agent's action within a 
 
 The key design decision: agents operate through the same access control layer as human users. An agent has a user identity, and that identity is subject to `AccessPolicyInterface` like any other user. An agent can't bypass the deny-unless-granted model. It's as constrained as the most restricted human user with the same permissions.
 
-This matters for Minoo specifically. An agent summarizing teachings operates with the permissions of the user who invoked it. If the user can't see restricted teachings, the agent can't see them either. The access control layer is the boundary, not a firewall bolted on after the fact.
+This matters for Minoo specifically. An agent summarizing teachings operates with the permissions of the user who invoked it. If the user can't see restricted teachings, the agent can't see them either. The access control layer is the boundary, not a firewall bolted on after the fact. Agents can act, but they need orchestration — a way to chain actions into workflows.
 
 ## ai-pipeline
 
@@ -74,7 +74,7 @@ The pipeline is composable. Each step is a discrete processor that takes an inpu
 
 The framework provides the pipeline orchestration and the plugin discovery mechanism. Minoo registers the processors that are specific to its content domain. This is the plugin system applied to AI workflows.
 
-[Claudriel](https://github.com/jonesrussell/claudriel) uses ai-pipeline for its commitment extraction workflow. Gmail messages flow through a `GmailMessageNormalizer`, then a `CommitmentExtractionStep` that uses the Anthropic API to identify commitments — deadlines, promises, follow-ups — with a confidence threshold of 0.7. Candidates below the threshold are silently skipped. The pipeline produces `Commitment` entities that feed the daily brief. This is ai-pipeline in production: composable steps, each with a clear input/output contract, orchestrated by the framework.
+[Claudriel](https://github.com/jonesrussell/claudriel) uses ai-pipeline for its commitment extraction workflow. Gmail messages flow through a `GmailMessageNormalizer`, then a `CommitmentExtractionStep` that uses the Anthropic API to identify commitments — deadlines, promises, follow-ups — with a confidence threshold of 0.7. Candidates below the threshold are silently skipped. The pipeline produces `Commitment` entities that feed the daily brief. This is ai-pipeline in production: composable steps, each with a clear input/output contract, orchestrated by the framework. Pipelines transform content, but finding it again requires something beyond keyword search.
 
 ## ai-vector
 
@@ -103,7 +103,7 @@ Storage takes an `EntityEmbedding` value object rather than a raw entity and arr
 
 The practical implementation stores embeddings in a vector database ([pgvector](https://github.com/pgvector/pgvector) in the current implementation) and exposes semantic search on top of the regular JSON:API query interface. Searching Minoo's teachings by semantic similarity ("find teachings about water") goes through the vector store, not through the [NorthCloud]({{< relref "waaseyaa-intro" >}}) keyword search.
 
-The NorthCloud integration handles real-time news-style search. The vector store handles semantic similarity search over indigenous knowledge content. They coexist; neither replaces the other.
+The NorthCloud integration handles real-time news-style search. The vector store handles semantic similarity search over indigenous knowledge content. They coexist; neither replaces the other. That's the package set. The question is: how much of it actually works?
 
 ## Package Maturity: What Ships Today vs. What's Planned
 
@@ -117,7 +117,30 @@ The AI packages are at different stages. Honest accounting:
 
 **ai-vector:** The `VectorStoreInterface` and pgvector implementation are working. Automatic embedding generation on entity save is implemented. The semantic search endpoint is under development.
 
-The planned work for the next milestone: the `VERSIONING.md` and `defaults/` directory that establish how packages declare compatibility constraints, the release-gate workflow that enforces those constraints in CI, and the dynamic listing pages in Minoo that surface semantic search results alongside keyword search.
+The planned work for the next milestone: the `VERSIONING.md` and `defaults/` directory that establish how packages declare compatibility constraints, the release-gate workflow that enforces those constraints in CI, and the dynamic listing pages in Minoo that surface semantic search results alongside keyword search. But four packages are just the foundation.
+
+## What's Coming: The Agentic Framework
+
+The four packages above are the foundation. The [next milestone](https://github.com/waaseyaa/framework/issues/619) expands waaseyaa into a native agentic framework by adding three new packages and extending `ai-agent` with kernel-level capabilities.
+
+**New packages:**
+
+- **ai-memory** — conversation history, semantic knowledge (backed by ai-vector), and episodic recall. The hippocampus: agents remember what happened, what they learned, and what matters.
+- **ai-guardrails** — programmatic safety enforcement. Tool permission policies, action classification (reversible vs. irreversible), input/output validation. Safety as code, not prompts-as-policy.
+- **ai-observability** — full execution traces, cost tracking per agent run, and anomaly detection. You can't improve what you can't measure.
+
+**ai-agent kernel extensions:**
+
+- **Planning** — goal decomposition into ordered steps with acceptance criteria and learn-forward context between steps.
+- **Routing** — task classification and dynamic model selection. Simple requests get a smaller model; complex ones escalate automatically.
+- **Reflection** — self-critique loops where agents evaluate their own output before returning it.
+- **Multi-agent** — agent registry, delegation, and result synthesis. One agent can dispatch work to others and combine the results.
+
+The architecture follows a brainstem-and-organs model: `ai-agent` orchestrates, but each organ package (memory, guardrails, observability) is independent. They don't depend on the brainstem, and the brainstem doesn't assume they're present. Composable via service providers.
+
+The design extracts patterns from [LangGraph](https://github.com/langchain-ai/langgraph), [CrewAI](https://github.com/crewAIInc/crewAI), and [Neuron AI](https://github.com/inspector-apm/neuron-ai), then builds them waaseyaa-native — entity system as the persistence layer, access control baked in, PHP-first.
+
+[Claudriel](https://github.com/jonesrussell/claudriel) is the proving ground. Its [agentic patterns epic](https://github.com/jonesrussell/claudriel/issues/523) maps all 21 patterns from Gullí's *Agentic Design Patterns* framework, and many of them depend directly on these waaseyaa packages. Semantic memory for the daily brief needs ai-memory. Commitment extraction already uses ai-pipeline. Safety validation as agent autonomy increases needs ai-guardrails. A few patterns — RAG orchestration, learning/adaptation feedback loops, structured reasoning scaffolding — don't have dedicated packages yet and may emerge as the framework matures or fold into ai-agent's kernel extensions.
 
 ## Building a Complex Framework Solo
 
