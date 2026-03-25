@@ -1,12 +1,18 @@
 ---
-title: "Building an Ojibwe Crossword Puzzle for Minoo"
-date: 2026-03-25
-categories: [ai]
-tags: [waaseyaa, ojibwe, minoo, games]
-summary: "How Minoo's crossword game teaches Anishinaabemowin through daily puzzles, Elder-authored clues, and a three-layer learning design."
-slug: "minoo-crossword-ojibwe"
-draft: true
+categories:
+    - ai
+date: 2026-03-25T00:00:00Z
 devto: true
+devto_id: 3403847
+draft: true
+slug: minoo-crossword-ojibwe
+summary: How Minoo's crossword game teaches Anishinaabemowin through daily puzzles, Elder-authored clues, and a three-layer learning design.
+tags:
+    - waaseyaa
+    - ojibwe
+    - minoo
+    - games
+title: Building an Ojibwe Crossword Puzzle for Minoo
 ---
 
 Ahnii!
