@@ -2,9 +2,9 @@
 
 **Canonical URL:** https://jonesrussell.github.io/blog/waaseyaa-packagist/
 
-## Mastodon / Bluesky
+## Facebook
 
-Tried to publish a 38-package PHP monorepo to Packagist and discovered "just publish it" doesn't work when every subpackage uses @dev path repositories. Here's how splitsh-lite solved it — monorepo dev workflow stays the same, Packagist gets individual versioned packages.
+Tried to publish a 38-package PHP monorepo to Packagist and discovered "just publish it" doesn't work when every subpackage uses @dev path repositories. Here's how splitsh-lite solved it — monorepo dev workflow stays the same, Packagist gets individual versioned packages. #PHP #Packagist #OpenSource #Monorepo
 
 https://jonesrussell.github.io/blog/waaseyaa-packagist/
 

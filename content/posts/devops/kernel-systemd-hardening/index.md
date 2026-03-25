@@ -159,4 +159,6 @@ This shows a breakdown of which directives are set and which are missing, along 
 
 After applying the overrides above, both Caddy and PHP-FPM should score in the 2–4 range. That is not perfect, but it is a significant reduction from the default of 9+.
 
+Next up: Secrets, Certificates, and Credential Management — managing TLS renewals, rotating deploy keys, and keeping credentials out of your shell history.
+
 Baamaapii

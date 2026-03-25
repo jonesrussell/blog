@@ -1,21 +1,21 @@
-# Social Posts: AI-native PHP: the waaseyaa AI packages
+# Social copy: AI-native PHP: the waaseyaa AI packages
 
 **Canonical URL:** https://jonesrussell.github.io/blog/waaseyaa-ai-packages/
 
 ## Facebook
 
-What does AI-native PHP look like? Waaseyaa ships four AI packages: ai-schema, ai-agent, ai-pipeline, and ai-vector. This post covers what they enable in a framework designed from the ground up with AI in mind -- and an honest look at what is built versus what is planned. #Waaseyaa #PHP #AI #OpenSource
+What does AI-native PHP look like? Waaseyaa ships four AI packages today — ai-schema, ai-agent, ai-pipeline, ai-vector — and three more are coming: ai-memory, ai-guardrails, ai-observability. This post covers what they enable, an honest look at what's built vs. planned, and the agentic framework roadmap. #Waaseyaa #PHP #AI #OpenSource
 
-Read more: https://jonesrussell.github.io/blog/waaseyaa-ai-packages/
+https://jonesrussell.github.io/blog/waaseyaa-ai-packages/
 
 ## X (Twitter)
 
-Four AI packages built into a PHP framework: ai-schema, ai-agent, ai-pipeline, ai-vector. What they enable and an honest look at what is built vs. planned.
+Waaseyaa's four AI packages are growing to seven. ai-memory, ai-guardrails, ai-observability join the framework alongside ai-agent kernel extensions for planning, routing, and reflection.
 
 https://jonesrussell.github.io/blog/waaseyaa-ai-packages/
 
 ## LinkedIn
 
-Waaseyaa ships four AI packages as first-class framework components: ai-schema, ai-agent, ai-pipeline, and ai-vector. This post covers what each package enables and provides an honest assessment of what is production-ready versus what remains on the roadmap.
+Waaseyaa ships four AI packages as first-class framework components, with three more on the roadmap: ai-memory, ai-guardrails, and ai-observability. This post covers what each package enables, where they stand today, and how Claudriel serves as the proving ground for all 21 agentic design patterns.
 
-Read more: https://jonesrussell.github.io/blog/waaseyaa-ai-packages/
+https://jonesrussell.github.io/blog/waaseyaa-ai-packages/
