@@ -5,7 +5,7 @@ categories: [ai]
 tags: [waaseyaa, ojibwe, minoo, games]
 summary: "How Minoo's crossword game teaches Anishinaabemowin through daily puzzles, Elder-authored clues, and a three-layer learning design."
 slug: "minoo-crossword-ojibwe"
-draft: true
+draft: false
 devto: true
 ---
 
