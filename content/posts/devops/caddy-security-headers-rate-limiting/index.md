@@ -13,7 +13,7 @@ devto_id: 3386527
 
 Ahnii!
 
-> This is part 5 of the [Production Linux series]({{< relref "production-linux-series-index" >}}). Previous: [Docker Security on a Shared VPS]({{< relref "docker-security-shared-vps" >}}).
+> **Series context:** This is part 5 of the [Production Linux series]({{< relref "production-linux-series-index" >}}). Previous: [Docker Security on a Shared VPS]({{< relref "docker-security-shared-vps" >}}).
 
 [Caddy](https://caddyserver.com/) handles TLS automatically, but it doesn't add security headers by default. This post adds them, along with rate limiting and server identity removal.
 
@@ -156,5 +156,7 @@ curl -I https://yourdomain.com
 The response should include `strict-transport-security`, `x-content-type-options`, `x-frame-options`, and your CSP header. Check that `server` is absent from the output.
 
 For a scored report, paste your domain into [securityheaders.com](https://securityheaders.com). It grades each header and flags anything missing or misconfigured.
+
+Next: Kernel and Systemd Service Hardening.
 
 Baamaapii
