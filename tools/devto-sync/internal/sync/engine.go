@@ -88,6 +88,22 @@ func (e *Engine) PushPost(post *hugo.Post, dryRun bool) (*devto.Article, error) 
 		return article, nil
 	}
 
+	// Check for existing article by canonical URL to prevent duplicates
+	// (e.g., when a writeback PR with devto_id hasn't been merged yet)
+	existing, err := e.client.FindByCanonicalURL(canonicalURL)
+	if err != nil {
+		log.Printf("WARNING: canonical URL lookup failed for %s: %v (proceeding with create)", post.Slug, err)
+	}
+	if existing != nil {
+		log.Printf("Found existing article by canonical URL (id=%d), updating instead of creating", existing.ID)
+		article, err := e.client.UpdateArticle(existing.ID, req)
+		if err != nil {
+			return nil, fmt.Errorf("update %q (id=%d, found by canonical URL): %w", post.Slug, existing.ID, err)
+		}
+		log.Printf("Updated: %s (id=%d)", post.Title, article.ID)
+		return article, nil
+	}
+
 	article, err := e.client.CreateArticle(req)
 	if err != nil {
 		return nil, fmt.Errorf("create %q: %w", post.Slug, err)

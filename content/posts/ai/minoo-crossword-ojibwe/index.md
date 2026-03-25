@@ -7,6 +7,7 @@ summary: "How Minoo's crossword game teaches Anishinaabemowin through daily puzz
 slug: "minoo-crossword-ojibwe"
 draft: false
 devto: true
+devto_id: 3404417
 ---
 
 Ahnii!

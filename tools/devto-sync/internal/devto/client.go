@@ -87,6 +87,21 @@ func (c *Client) GetArticle(id int) (*Article, error) {
 	return &article, nil
 }
 
+// FindByCanonicalURL searches the user's articles for one matching the given canonical URL.
+// Returns nil if no match is found.
+func (c *Client) FindByCanonicalURL(canonicalURL string) (*Article, error) {
+	articles, err := c.ListMyArticles()
+	if err != nil {
+		return nil, err
+	}
+	for _, a := range articles {
+		if a.CanonicalURL == canonicalURL {
+			return &a, nil
+		}
+	}
+	return nil, nil
+}
+
 // CreateArticle creates a new article. Returns the created article.
 func (c *Client) CreateArticle(req ArticleCreate) (*Article, error) {
 	c.createLimiter.wait()
