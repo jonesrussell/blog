@@ -132,4 +132,6 @@ Add the public key as a deploy key in the GitHub repository settings. Store the 
 
 Credential management is not a one-time setup. It is an ongoing practice: enforce file permissions after every deployment, keep secrets encrypted in version control, monitor certificate expiry, and rotate credentials on a schedule. The habits you build now prevent the incidents you would otherwise spend a weekend recovering from.
 
+Next up: Automated Patching and Server Maintenance covers unattended-upgrades, scheduled maintenance windows, and keeping your server current without surprises.
+
 Baamaapii
