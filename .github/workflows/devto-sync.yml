@@ -8,7 +8,6 @@ on:
 
 permissions:
   contents: write
-  pull-requests: write
 
 jobs:
   sync:
@@ -83,21 +82,11 @@ jobs:
             echo "has_changes=false" >> "$GITHUB_OUTPUT"
           fi
 
-      - name: Create writeback PR
+      - name: Commit writeback to main
         if: steps.writeback.outputs.has_changes == 'true'
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          sha="${{ github.event.workflow_run.head_sha }}"
-          branch="devto-sync/writeback-${sha:0:7}"
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git checkout -b "$branch"
           git add $(git diff --name-only -- 'content/posts/')
           git commit -m "chore: write back devto_id from sync run"
-          git push origin "$branch"
-          gh pr create \
-            --title "chore: write back devto_id values" \
-            --body "Automated PR from devto-sync workflow. New articles were created on Dev.to and their IDs need to be recorded in frontmatter." \
-            --base main \
-            --head "$branch"
+          git push origin HEAD:main
