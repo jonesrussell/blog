@@ -1,12 +1,18 @@
 ---
-title: "He spent two years letting cars drive him. Now he's back on horses."
-date: 2026-03-27
-categories: [ai]
-tags: [ai, opinion, tools, satire]
-summary: "A man spent two years letting cars drive him around. He's back on horses. 865 engineers debated whether that means the cars are broken."
-slug: "back-to-riding-horses"
-draft: false
+categories:
+    - ai
+date: 2026-03-27T00:00:00Z
 devto: true
+devto_id: 3415960
+draft: false
+slug: back-to-riding-horses
+summary: A man spent two years letting cars drive him around. He's back on horses. 865 engineers debated whether that means the cars are broken.
+tags:
+    - ai
+    - opinion
+    - tools
+    - satire
+title: He spent two years letting cars drive him. Now he's back on horses.
 ---
 
 Ahnii!
