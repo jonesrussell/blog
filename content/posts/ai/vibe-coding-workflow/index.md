@@ -35,3 +35,11 @@ That's the pattern the critics are describing. They're right about what they see
 Before AI, copying from Stack Overflow without reading it was the same failure mode. The mechanism changed. The mistake didn't. And if the mistake was always about skipping understanding, then fixing it was always about building understanding back into the process. Not about which tool generated the code.
 
 The question is what that process should look like.
+
+## The Responsibility Didn't Change
+
+You have always been responsible for code you ship. Your own code. A teammate's PR you approved. A library you pulled in without reading the changelog. The review contract has always been the same: understand what you're merging before you merge it.
+
+AI didn't introduce a new kind of responsibility. It made it easier to skip the old one.
+
+Treating AI as an autopilot is the mistake. Treating it as a contributor whose output you review before it ships is the workflow.
