@@ -32,6 +32,6 @@ You prompt. You accept. You paste. You ship. No review. No tests. No mental mode
 
 That's the pattern the critics are describing. They're right about what they see. They're wrong about what causes it.
 
-Before AI, copying from Stack Overflow without reading it was the same failure mode. The mechanism changed. The mistake didn't. And if the mistake was always about skipping understanding, then fixing it was always about building understanding back into the process -- not about which tool generated the code.
+Before AI, copying from Stack Overflow without reading it was the same failure mode. The mechanism changed. The mistake didn't. And if the mistake was always about skipping understanding, then fixing it was always about building understanding back into the process. Not about which tool generated the code.
 
 The question is what that process should look like.
