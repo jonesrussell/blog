@@ -28,8 +28,10 @@ The true version of the concern is narrower: you can't debug code you don't *und
 
 ## What Bad Workflow Actually Looks Like
 
-The critics are observing something real. The pattern they're seeing: prompt, accept, paste, ship. No review. No tests. No mental model of what the code actually does. When it breaks in production, you can't debug it because you never understood it.
+You prompt. You accept. You paste. You ship. No review. No tests. No mental model of what the code actually does. When it breaks in production, you can't debug it because you never understood it.
 
-That's a real problem. But it's not a vibe coding problem. It's a workflow problem.
+That's the pattern the critics are describing. They're right about what they see. They're wrong about what causes it.
 
-The same failure mode existed before AI. Copying code from Stack Overflow without understanding it was the prior incarnation. The mechanism changed. The mistake is the same: shipping code you haven't internalized as your own responsibility.
+Before AI, copying from Stack Overflow without reading it was the same failure mode. The mechanism changed. The mistake didn't. And if the mistake was always about skipping understanding, then fixing it was always about building understanding back into the process -- not about which tool generated the code.
+
+The question is what that process should look like.
