@@ -25,3 +25,11 @@ This claim gets passed around like it's profound. It isn't.
 If you've ever traced a bug into a third-party library, you've debugged code you didn't write. If you've read a Laravel stack trace, stepped through a webpack bundle, or dug into a Go runtime panic, you've debugged code you didn't write. The claim is empirically false, and you've probably already disproved it yourself.
 
 The true version of the concern is narrower: you can't debug code you don't *understand*. That's real. But it's a different problem, and it predates AI by decades. What AI changed is the speed at which that debt accumulates. The question is what kind of workflow you have when it does.
+
+## What Bad Workflow Actually Looks Like
+
+The critics are observing something real. The pattern they're seeing: prompt, accept, paste, ship. No review. No tests. No mental model of what the code actually does. When it breaks in production, you can't debug it because you never understood it.
+
+That's a real problem. But it's not a vibe coding problem. It's a workflow problem.
+
+The same failure mode existed before AI. Copying code from Stack Overflow without understanding it was the prior incarnation. The mechanism changed. The mistake is the same: shipping code you haven't internalized as your own responsibility.
