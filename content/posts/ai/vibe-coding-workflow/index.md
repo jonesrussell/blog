@@ -1,17 +1,18 @@
 ---
-title: "Vibe coding isn't the problem. Your workflow is."
-date: 2026-03-27
 categories:
     - ai
+date: 2026-03-27T00:00:00Z
+devto: true
+devto_id: 3416691
+draft: false
+slug: vibe-coding-workflow
+summary: The critics of vibe coding aren't wrong about the symptoms — they're wrong about the cause.
 tags:
     - ai
     - opinion
     - tools
     - workflow
-summary: "The critics of vibe coding aren't wrong about the symptoms — they're wrong about the cause."
-slug: vibe-coding-workflow
-draft: false
-devto: true
+title: Vibe coding isn't the problem. Your workflow is.
 ---
 
 Ahnii!
