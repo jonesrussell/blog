@@ -1,12 +1,18 @@
 ---
-title: "Building a contact database for Indigenous harvesting authority governance"
-date: 2026-03-27
-categories: [projects]
-tags: [python, data, indigenous, scraping]
-summary: "How I built a two-notebook pipeline using ISC profiles and community website scraping to collect governance contacts for ~637 First Nations communities across Canada."
-slug: "indigenous-harvesters"
-draft: false
+categories:
+    - projects
+date: 2026-03-27T00:00:00Z
 devto: true
+devto_id: 3415512
+draft: false
+slug: indigenous-harvesters
+summary: How I built a two-notebook pipeline using ISC profiles and community website scraping to collect governance contacts for ~637 First Nations communities across Canada.
+tags:
+    - python
+    - data
+    - indigenous
+    - scraping
+title: Building a contact database for Indigenous harvesting authority governance
 ---
 
 Ahnii!
