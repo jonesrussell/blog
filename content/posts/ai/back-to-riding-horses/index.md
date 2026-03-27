@@ -3,7 +3,7 @@ title: "He spent two years letting cars drive him. Now he's back on horses."
 date: 2026-03-27
 categories: [ai]
 tags: [ai, opinion, tools, satire]
-summary: "A satirical take on the Hacker News debate about vibe coding and AI tools: whether going back to manual work proves the tools are broken or the user is."
+summary: "A man spent two years letting cars drive him around. He's back on horses. 865 engineers debated whether that means the cars are broken."
 slug: "back-to-riding-horses"
 draft: false
 devto: true
