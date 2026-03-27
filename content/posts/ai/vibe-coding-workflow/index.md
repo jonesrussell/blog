@@ -43,3 +43,17 @@ You have always been responsible for code you ship. Your own code. A teammate's 
 AI didn't introduce a new kind of responsibility. It made it easier to skip the old one.
 
 Treating AI as an autopilot is the mistake. Treating it as a contributor whose output you review before it ships is the workflow.
+
+## What a Better Workflow Looks Like
+
+Treat AI output like a PR from a junior developer. Read every line before you merge. If a block of code does something you can't explain, that's a review comment, not a ship.
+
+Build a mental model as you go. You should be able to describe what each piece does and why it's there. If you can't, you don't own it yet. Keep working until you do.
+
+Review in chunks, not all at once. A 300-line AI response reviewed as a unit is a 300-line PR approved without reading. Break it into pieces and review each one.
+
+Test before you ship. Not as a formality. As verification. If you don't know what the code is supposed to do, you can't write a test that proves it works.
+
+None of these habits are new. They're the same ones good developers applied before AI existed. The tool changed. The workflow didn't have to.
+
+Baamaapii
