@@ -10,7 +10,7 @@ tags:
     - workflow
 summary: "The critics of vibe coding aren't wrong about the symptoms — they're wrong about the cause."
 slug: vibe-coding-workflow
-draft: true
+draft: false
 devto: true
 ---
 
