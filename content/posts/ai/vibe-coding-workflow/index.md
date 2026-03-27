@@ -16,7 +16,7 @@ devto: true
 
 Ahnii!
 
-The criticism of vibe coding isn't baseless. Developers are shipping AI-generated code they don't understand, and users are finding the bugs. But the critics keep pointing at the tool. Vibe coding isn't the problem. Using it without discipline is. This post covers where the critics go wrong, what bad workflow actually looks like, and what a better workflow looks like instead.
+The criticism of vibe coding isn't baseless. You've seen it: AI-generated code shipped without review, bugs found by users instead of you. But the critics keep pointing at the tool. Vibe coding isn't the problem. Using it without discipline is. This post covers where the critics go wrong, what bad workflow actually looks like, and what a better workflow looks like instead.
 
 ## "You Can't Debug What You Didn't Write" Is a Myth
 
