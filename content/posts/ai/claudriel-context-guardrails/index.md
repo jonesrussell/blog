@@ -1,12 +1,18 @@
 ---
-title: "Managing LLM context in a real application"
-date: 2026-03-27
-categories: [ai]
-tags: [ai, llm, php, claudriel]
-summary: "How Claudriel manages LLM context in production: conversation trimming, turn budgets, model fallback, prompt caching, and per-turn token telemetry."
-slug: "claudriel-context-guardrails"
-draft: false
+categories:
+    - ai
+date: 2026-03-27T00:00:00Z
 devto: true
+devto_id: 3415842
+draft: false
+slug: claudriel-context-guardrails
+summary: 'How Claudriel manages LLM context in production: conversation trimming, turn budgets, model fallback, prompt caching, and per-turn token telemetry.'
+tags:
+    - ai
+    - llm
+    - php
+    - claudriel
+title: Managing LLM context in a real application
 ---
 
 Ahnii!
