@@ -1,12 +1,18 @@
 ---
-title: "Fix TOCTOU race conditions with atomic SQLite upserts"
-date: 2026-03-28
-categories: [php]
-tags: [php, sqlite, concurrency, waaseyaa]
-summary: "Replace check-then-insert patterns with INSERT OR REPLACE to eliminate race conditions in SQLite."
-slug: "atomic-upsert-replace-toctou"
-draft: true
+categories:
+    - php
+date: 2026-03-28T00:00:00Z
 devto: true
+devto_id: 3420838
+draft: true
+slug: atomic-upsert-replace-toctou
+summary: Replace check-then-insert patterns with INSERT OR REPLACE to eliminate race conditions in SQLite.
+tags:
+    - php
+    - sqlite
+    - concurrency
+    - waaseyaa
+title: Fix TOCTOU race conditions with atomic SQLite upserts
 ---
 
 Ahnii!

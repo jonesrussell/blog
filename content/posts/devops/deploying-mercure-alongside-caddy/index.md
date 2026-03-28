@@ -1,12 +1,18 @@
 ---
-title: "Deploying Mercure alongside Caddy on a shared VPS"
-date: 2026-03-28
-categories: [devops]
-tags: [caddy, mercure, ansible, sse]
-summary: "How to run Mercure for real-time SSE alongside Caddy as your web server, with solutions for port conflicts, gzip interference, and JWT configuration."
-slug: "deploying-mercure-alongside-caddy"
-draft: true
+categories:
+    - devops
+date: 2026-03-28T00:00:00Z
 devto: true
+devto_id: 3420837
+draft: true
+slug: deploying-mercure-alongside-caddy
+summary: How to run Mercure for real-time SSE alongside Caddy as your web server, with solutions for port conflicts, gzip interference, and JWT configuration.
+tags:
+    - caddy
+    - mercure
+    - ansible
+    - sse
+title: Deploying Mercure alongside Caddy on a shared VPS
 ---
 
 Ahnii!

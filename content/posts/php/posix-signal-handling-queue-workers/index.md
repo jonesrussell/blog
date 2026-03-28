@@ -1,12 +1,18 @@
 ---
-title: "POSIX signal handling for graceful PHP queue workers"
-date: 2026-03-28
-categories: [php]
-tags: [php, waaseyaa, queues, linux]
-summary: "How to handle SIGTERM and SIGINT in a PHP queue worker so jobs finish cleanly instead of dying mid-process."
-slug: "posix-signal-handling-queue-workers"
-draft: true
+categories:
+    - php
+date: 2026-03-28T00:00:00Z
 devto: true
+devto_id: 3420842
+draft: true
+slug: posix-signal-handling-queue-workers
+summary: How to handle SIGTERM and SIGINT in a PHP queue worker so jobs finish cleanly instead of dying mid-process.
+tags:
+    - php
+    - waaseyaa
+    - queues
+    - linux
+title: POSIX signal handling for graceful PHP queue workers
 ---
 
 Ahnii!

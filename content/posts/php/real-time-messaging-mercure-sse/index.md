@@ -1,12 +1,18 @@
 ---
-title: "Real-time messaging with Mercure SSE in PHP"
-date: 2026-03-28
-categories: [php]
-tags: [php, mercure, sse, waaseyaa]
-summary: "How to build a real-time messaging system with Mercure server-sent events, covering threads, user blocking, and email digests."
-slug: "real-time-messaging-mercure-sse"
-draft: false
+categories:
+    - php
+date: 2026-03-28T00:00:00Z
 devto: true
+devto_id: 3420843
+draft: false
+slug: real-time-messaging-mercure-sse
+summary: How to build a real-time messaging system with Mercure server-sent events, covering threads, user blocking, and email digests.
+tags:
+    - php
+    - mercure
+    - sse
+    - waaseyaa
+title: Real-time messaging with Mercure SSE in PHP
 ---
 
 Ahnii!

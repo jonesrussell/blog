@@ -1,12 +1,18 @@
 ---
-title: "Adding Google Sign-In to a PHP application"
-date: 2026-03-28
-categories: [php]
-tags: [php, oauth, google, authentication]
-summary: "How to add Google Sign-In to a PHP app with proper account linking, password-less rejection, and consent screen setup."
-slug: "google-sign-in-waaseyaa-app"
-draft: true
+categories:
+    - php
+date: 2026-03-28T00:00:00Z
 devto: true
+devto_id: 3420840
+draft: true
+slug: google-sign-in-waaseyaa-app
+summary: How to add Google Sign-In to a PHP app with proper account linking, password-less rejection, and consent screen setup.
+tags:
+    - php
+    - oauth
+    - google
+    - authentication
+title: Adding Google Sign-In to a PHP application
 ---
 
 Ahnii!

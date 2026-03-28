@@ -1,12 +1,18 @@
 ---
-title: "Extracting a PHP framework from a live application"
-date: 2026-03-28
-categories: [php]
-tags: [php, waaseyaa, refactoring, architecture]
-summary: "How to extract reusable framework packages from a running application without breaking production, using real examples from the Waaseyaa framework."
-slug: "extracting-framework-from-live-app"
-draft: true
+categories:
+    - php
+date: 2026-03-28T00:00:00Z
 devto: true
+devto_id: 3420839
+draft: true
+slug: extracting-framework-from-live-app
+summary: How to extract reusable framework packages from a running application without breaking production, using real examples from the Waaseyaa framework.
+tags:
+    - php
+    - waaseyaa
+    - refactoring
+    - architecture
+title: Extracting a PHP framework from a live application
 ---
 
 Ahnii!

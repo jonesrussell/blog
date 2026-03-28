@@ -1,12 +1,18 @@
 ---
-title: "Passing the original entity into lifecycle events"
-date: 2026-03-28
-categories: [php]
-tags: [php, waaseyaa, tdd, events]
-summary: "How to give event listeners access to the pre-mutation state of an entity, test-driven from failing tests to working implementation."
-slug: "original-entity-in-lifecycle-events"
-draft: true
+categories:
+    - php
+date: 2026-03-28T00:00:00Z
 devto: true
+devto_id: 3420841
+draft: true
+slug: original-entity-in-lifecycle-events
+summary: How to give event listeners access to the pre-mutation state of an entity, test-driven from failing tests to working implementation.
+tags:
+    - php
+    - waaseyaa
+    - tdd
+    - events
+title: Passing the original entity into lifecycle events
 ---
 
 Ahnii!
