@@ -12,4 +12,4 @@ Real-time messaging in PHP with Mercure SSE. Threads, user blocking, email diges
 
 ## LinkedIn
 
-This post covers building a real-time messaging system in PHP using Mercure server-sent events. It walks through threads, the MercurePublisher, user blocking that does not reveal the block, and email digests for offline users. https://jonesrussell.github.io/blog/real-time-messaging-mercure-sse/
+This post covers building a real-time messaging system in PHP using Mercure server-sent events. It walks through the MercurePublisher, bidirectional user block enforcement, and email digests for offline users. https://jonesrussell.github.io/blog/real-time-messaging-mercure-sse/
