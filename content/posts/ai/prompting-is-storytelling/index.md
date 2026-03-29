@@ -1,16 +1,17 @@
 ---
-title: "Prompting isn't engineering, it's storytelling"
-date: 2026-03-29
 categories:
     - ai
+date: 2026-03-29T00:00:00Z
+devto: true
+devto_id: 3425139
+draft: false
+slug: prompting-is-storytelling
+summary: The best prompts don't give instructions. They set a scene the model can reason inside.
 tags:
     - prompt-engineering
     - context-engineering
     - ai-tools
-summary: "The best prompts don't give instructions. They set a scene the model can reason inside."
-slug: "prompting-is-storytelling"
-draft: false
-devto: true
+title: Prompting isn't engineering, it's storytelling
 ---
 
 Ahnii!
