@@ -1,17 +1,18 @@
 ---
-title: "Generate Open Graph images with Playwright and an HTML template"
-date: 2026-03-29
 categories:
     - devops
+date: 2026-03-29T00:00:00Z
+devto: true
+devto_id: 3426990
+draft: false
+slug: generating-og-images-playwright
+summary: Build a script that generates consistent OG social card images from an HTML template using Playwright screenshots, with smart caching and series-aware gradients.
 tags:
     - playwright
     - nodejs
     - hugo
     - seo
-summary: Build a script that generates consistent OG social card images from an HTML template using Playwright screenshots, with smart caching and series-aware gradients.
-slug: generating-og-images-playwright
-draft: false
-devto: true
+title: Generate Open Graph images with Playwright and an HTML template
 ---
 
 Ahnii!
