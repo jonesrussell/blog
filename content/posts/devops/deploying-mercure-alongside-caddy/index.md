@@ -4,7 +4,7 @@ categories:
 date: 2026-03-28T00:00:00Z
 devto: true
 devto_id: 3420837
-draft: true
+draft: false
 slug: deploying-mercure-alongside-caddy
 summary: How to run Mercure for real-time SSE alongside Caddy as your web server, with solutions for port conflicts, gzip interference, and JWT configuration.
 tags:
@@ -19,7 +19,14 @@ Ahnii!
 
 [Mercure](https://mercure.rocks/) is a real-time push protocol built on server-sent events (SSE). It ships as a standalone binary that embeds its own [Caddy](https://caddyserver.com/) server. If you already run Caddy as your web server, you now have two Caddy processes fighting over ports. This post covers how to deploy both on the same VPS using [Ansible](https://www.ansible.com/), with solutions for every gotcha that came up.
 
-## The port conflict
+## Prerequisites
+
+- A VPS with Caddy already serving your sites
+- Ansible for deployment automation
+- The [Mercure binary](https://mercure.rocks/docs/hub/install) installed on the server
+- A domain with DNS pointed at your VPS
+
+## Resolving the port conflict
 
 Mercure's embedded Caddy wants to bind to port 443 and run its own admin API on port 2019. Your main Caddy already owns both. The fix is to disable auto-HTTPS on Mercure and bind it to a localhost-only port:
 
@@ -43,7 +50,7 @@ http://localhost:3080 {
 
 `auto_https off` prevents Mercure's Caddy from requesting certificates. `admin localhost:2039` moves the admin API off port 2019 where your main Caddy is already listening. Mercure listens on `localhost:3080` where only your main Caddy can reach it.
 
-Port 3000 was the first attempt, but Docker was already using it. 3080 worked.
+Pick a port that is not already in use on your server. Port 3080 is a safe default since common tools like Docker tend to claim ports in the 3000 range.
 
 ## Proxying SSE through your main Caddy
 
@@ -138,7 +145,7 @@ User={{ deploy_user }}
 Restart=always
 ```
 
-Set the `User` to your deploy user so Mercure can access its BoltDB directory. The role also sets up a cron job for the message digest command, which runs every four hours to email notification summaries for unread messages.
+Set the `User` to your deploy user so Mercure can access its BoltDB directory.
 
 ## Health check
 
