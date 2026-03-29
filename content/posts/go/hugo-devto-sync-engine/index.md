@@ -1,17 +1,18 @@
 ---
-title: "Build a Hugo-to-Dev.to sync engine in Go"
-date: 2026-03-29
 categories:
     - go
+date: 2026-03-29T00:00:00Z
+devto: true
+devto_id: 3426908
+draft: false
+slug: hugo-devto-sync-engine
+summary: How to build a CLI tool in Go that syncs Hugo blog posts to Dev.to via the Forem API, handling canonical URLs, tag sanitization, rate limits, and content transformation.
 tags:
     - devto
     - hugo
     - go
     - automation
-summary: How to build a CLI tool in Go that syncs Hugo blog posts to Dev.to via the Forem API, handling canonical URLs, tag sanitization, rate limits, and content transformation.
-slug: hugo-devto-sync-engine
-draft: false
-devto: true
+title: Build a Hugo-to-Dev.to sync engine in Go
 ---
 
 Ahnii!
