@@ -1,12 +1,18 @@
 ---
-title: "Build an eval harness for 184 AI agent prompts with promptfoo"
-date: 2026-03-30
-categories: [ai]
-tags: [promptfoo, evals, ai-agents, llm]
-summary: "How to build an LLM-as-judge eval system that scores AI agent prompts on quality, identity, and safety."
-slug: "eval-harness-agency-agents"
-draft: false
+categories:
+    - ai
+date: 2026-03-30T00:00:00Z
 devto: true
+devto_id: 3432081
+draft: false
+slug: eval-harness-agency-agents
+summary: How to build an LLM-as-judge eval system that scores AI agent prompts on quality, identity, and safety.
+tags:
+    - promptfoo
+    - evals
+    - ai-agents
+    - llm
+title: Build an eval harness for 184 AI agent prompts with promptfoo
 ---
 
 Ahnii!
