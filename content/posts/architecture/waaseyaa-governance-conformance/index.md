@@ -1,13 +1,20 @@
 ---
-title: "The conformance engine: how Waaseyaa brings code into alignment with its canonical model"
-date: 2026-04-01
-categories: ["architecture"]
-tags: ["architecture", "platform", "php", "governance"]
-summary: "How Waaseyaa built a governed conformance engine after completing remediation: freezing a canonical model, classifying drift, building an execution DAG, and running batch-driven refactors with invariant verification at every step."
-slug: "waaseyaa-governance-conformance"
-series: ["waaseyaa-governance"]
-series_order: 3
+categories:
+    - architecture
+date: 2026-04-01T00:00:00Z
+devto_id: 3441041
 draft: true
+series:
+    - waaseyaa-governance
+series_order: 3
+slug: waaseyaa-governance-conformance
+summary: 'How Waaseyaa built a governed conformance engine after completing remediation: freezing a canonical model, classifying drift, building an execution DAG, and running batch-driven refactors with invariant verification at every step.'
+tags:
+    - architecture
+    - platform
+    - php
+    - governance
+title: 'The conformance engine: how Waaseyaa brings code into alignment with its canonical model'
 ---
 
 Ahnii!

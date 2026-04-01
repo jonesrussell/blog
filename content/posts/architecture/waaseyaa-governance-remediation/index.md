@@ -1,13 +1,20 @@
 ---
-title: "Eight milestones, one chain: executing the Waaseyaa remediation program"
-date: 2026-04-01
-categories: ["architecture"]
-tags: ["architecture", "platform", "php", "governance"]
-summary: "How the Waaseyaa framework ran eight dependency-ordered milestones, closed the exit-gate without reopening prior scopes, and established the fixed baseline that conformance work depends on."
-slug: "waaseyaa-governance-remediation"
-series: ["waaseyaa-governance"]
-series_order: 2
+categories:
+    - architecture
+date: 2026-04-01T00:00:00Z
+devto_id: 3441042
 draft: true
+series:
+    - waaseyaa-governance
+series_order: 2
+slug: waaseyaa-governance-remediation
+summary: How the Waaseyaa framework ran eight dependency-ordered milestones, closed the exit-gate without reopening prior scopes, and established the fixed baseline that conformance work depends on.
+tags:
+    - architecture
+    - platform
+    - php
+    - governance
+title: 'Eight milestones, one chain: executing the Waaseyaa remediation program'
 ---
 
 Ahnii!

@@ -1,13 +1,20 @@
 ---
-title: "Waaseyaa governance series"
-date: 2026-04-01
-categories: ["architecture"]
-tags: ["architecture", "platform", "php", "governance"]
-summary: "A three-part series on how the Waaseyaa framework built a governed implementation platform: from invariant-driven audit through eight-milestone remediation to a batch-driven conformance engine."
-slug: "waaseyaa-governance"
-series: ["waaseyaa-governance"]
-series_order: 0
+categories:
+    - architecture
+date: 2026-04-01T00:00:00Z
+devto_id: 3441043
 draft: false
+series:
+    - waaseyaa-governance
+series_order: 0
+slug: waaseyaa-governance
+summary: 'A three-part series on how the Waaseyaa framework built a governed implementation platform: from invariant-driven audit through eight-milestone remediation to a batch-driven conformance engine.'
+tags:
+    - architecture
+    - platform
+    - php
+    - governance
+title: Waaseyaa governance series
 ---
 
 Ahnii!

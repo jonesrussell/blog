@@ -1,13 +1,20 @@
 ---
-title: "The audit that started everything: how Waaseyaa designed an invariant-driven architectural review"
-date: 2026-04-01
-categories: ["architecture"]
-tags: ["architecture", "platform", "php", "governance"]
-summary: "How the Waaseyaa framework designed and ran a formal invariant-driven audit across 52 packages, what it found, and how those findings were turned into a dependency-ordered eight-milestone remediation program."
-slug: "waaseyaa-governance-audit"
-series: ["waaseyaa-governance"]
-series_order: 1
+categories:
+    - architecture
+date: 2026-04-01T00:00:00Z
+devto_id: 3441040
 draft: false
+series:
+    - waaseyaa-governance
+series_order: 1
+slug: waaseyaa-governance-audit
+summary: How the Waaseyaa framework designed and ran a formal invariant-driven audit across 52 packages, what it found, and how those findings were turned into a dependency-ordered eight-milestone remediation program.
+tags:
+    - architecture
+    - platform
+    - php
+    - governance
+title: 'The audit that started everything: how Waaseyaa designed an invariant-driven architectural review'
 ---
 
 Ahnii!
