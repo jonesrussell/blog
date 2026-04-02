@@ -2,9 +2,10 @@
 categories:
     - ai
 date: 2026-04-02T00:00:00Z
+devto_id: 3446271
 draft: false
 slug: real-ai-assisted-pr-remediation
-summary: PR #1022 started as a small admin UI fix and became the first full end-to-end remediation run of the Waaseyaa AI workflow: audit, refactor, review, CI failures, contract repair, spec drift closure, and merge.
+summary: PR
 tags:
     - ai
     - workflow
