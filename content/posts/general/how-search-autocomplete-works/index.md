@@ -1,11 +1,17 @@
 ---
-title: "How Search Autocomplete Works — And I Rebuilt My Frontend to Prove It"
-date: 2026-03-22
-categories: [php, search]
-tags: [waaseyaa, elasticsearch, autocomplete]
-summary: "Build a search frontend with live autocomplete using PHP, Elasticsearch suggest, and zero JavaScript frameworks."
-slug: "how-search-autocomplete-works"
+categories:
+    - php
+    - search
+date: 2026-03-22T00:00:00Z
+devto_id: 3446477
 draft: true
+slug: how-search-autocomplete-works
+summary: Build a search frontend with live autocomplete using PHP, Elasticsearch suggest, and zero JavaScript frameworks.
+tags:
+    - waaseyaa
+    - elasticsearch
+    - autocomplete
+title: How Search Autocomplete Works — And I Rebuilt My Frontend to Prove It
 ---
 
 Ahnii!
