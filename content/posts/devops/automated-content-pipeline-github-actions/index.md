@@ -1,11 +1,16 @@
 ---
-title: "Automate Your Content Pipeline With GitHub Actions and Issues"
-date: 2026-04-05
-categories: [devops]
-tags: [github-actions, automation, content]
-summary: "Build a daily content mining pipeline that scans your repos and queues post ideas as GitHub issues."
-slug: "automated-content-pipeline-github-actions"
+categories:
+    - devops
+date: 2026-04-05T00:00:00Z
+devto_id: 3455365
 draft: false
+slug: automated-content-pipeline-github-actions
+summary: Build a daily content mining pipeline that scans your repos and queues post ideas as GitHub issues.
+tags:
+    - github-actions
+    - automation
+    - content
+title: Automate Your Content Pipeline With GitHub Actions and Issues
 ---
 
 Ahnii!
