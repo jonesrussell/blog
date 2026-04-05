@@ -1,12 +1,18 @@
 ---
-title: "Build a free links page with GitHub Pages"
-date: 2026-04-05
-categories: [general]
-tags: [github, github-pages, html, personal-site]
-summary: "How to turn your GitHub profile into a links page you own, with zero dependencies and no monthly fee."
-slug: "github-links-page"
-draft: false
+categories:
+    - general
+date: 2026-04-05T00:00:00Z
 devto: true
+devto_id: 3456799
+draft: false
+slug: github-links-page
+summary: How to turn your GitHub profile into a links page you own, with zero dependencies and no monthly fee.
+tags:
+    - github
+    - github-pages
+    - html
+    - personal-site
+title: Build a free links page with GitHub Pages
 ---
 
 Ahnii!
