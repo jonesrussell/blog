@@ -1,11 +1,16 @@
 ---
-title: "Domain Routing in Waaseyaa: Replacing a Giant Dispatcher With Small Routers"
-date: 2026-04-05
-categories: [waaseyaa]
-tags: [php, architecture, waaseyaa]
-summary: "How Waaseyaa splits a monolithic controller dispatcher into domain-specific routers using a two-method interface."
-slug: "waaseyaa-domain-routing-architecture"
+categories:
+    - waaseyaa
+date: 2026-04-05T00:00:00Z
+devto_id: 3457032
 draft: true
+slug: waaseyaa-domain-routing-architecture
+summary: How Waaseyaa splits a monolithic controller dispatcher into domain-specific routers using a two-method interface.
+tags:
+    - php
+    - architecture
+    - waaseyaa
+title: 'Domain Routing in Waaseyaa: Replacing a Giant Dispatcher With Small Routers'
 ---
 
 Ahnii!

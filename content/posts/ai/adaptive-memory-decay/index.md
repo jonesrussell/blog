@@ -1,12 +1,18 @@
 ---
-title: "Adaptive memory decay in Claudriel"
-date: 2026-03-27
-categories: [ai]
-tags: [claudriel, ai, waaseyaa, php]
-summary: "How Claudriel uses a daily importance score decay to keep its memory relevant without growing indefinitely."
-slug: "adaptive-memory-decay"
-draft: true
+categories:
+    - ai
+date: 2026-03-27T00:00:00Z
 devto: true
+devto_id: 3457030
+draft: true
+slug: adaptive-memory-decay
+summary: How Claudriel uses a daily importance score decay to keep its memory relevant without growing indefinitely.
+tags:
+    - claudriel
+    - ai
+    - waaseyaa
+    - php
+title: Adaptive memory decay in Claudriel
 ---
 
 Ahnii!

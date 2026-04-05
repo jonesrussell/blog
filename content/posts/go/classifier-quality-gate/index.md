@@ -1,12 +1,18 @@
 ---
-title: "Building a quality gate for a Go ML classifier pipeline"
-date: 2026-03-27
-categories: [go]
-tags: [go, machine-learning, pipeline, elasticsearch]
-summary: "How to add a configurable quality gate to a Go microservices classifier that rejects low-confidence content before it reaches your publishing pipeline."
-slug: "classifier-quality-gate"
-draft: true
+categories:
+    - go
+date: 2026-03-27T00:00:00Z
 devto: true
+devto_id: 3457031
+draft: true
+slug: classifier-quality-gate
+summary: How to add a configurable quality gate to a Go microservices classifier that rejects low-confidence content before it reaches your publishing pipeline.
+tags:
+    - go
+    - machine-learning
+    - pipeline
+    - elasticsearch
+title: Building a quality gate for a Go ML classifier pipeline
 ---
 
 Ahnii!
