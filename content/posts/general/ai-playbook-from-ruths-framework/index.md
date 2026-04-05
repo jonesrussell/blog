@@ -1,11 +1,16 @@
 ---
-title: "How to Build an AI Content Playbook That Actually Protects Your Voice"
-date: 2026-04-05
-categories: [general]
-tags: [ai, content-strategy, brand]
-summary: "Turn Ruth Doherty's AI content framework into a concrete playbook for your own pipeline."
-slug: "ai-playbook-from-ruths-framework"
+categories:
+    - general
+date: 2026-04-05T00:00:00Z
+devto_id: 3457172
 draft: false
+slug: ai-playbook-from-ruths-framework
+summary: Turn Ruth Doherty's AI content framework into a concrete playbook for your own pipeline.
+tags:
+    - ai
+    - content-strategy
+    - brand
+title: How to Build an AI Content Playbook That Actually Protects Your Voice
 ---
 
 Ahnii!
