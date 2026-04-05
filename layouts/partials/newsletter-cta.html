@@ -1,0 +1,43 @@
+<aside class="newsletter-cta" aria-label="Newsletter signup">
+  <div class="newsletter-cta-inner">
+    <h3>Enjoyed this post?</h3>
+    <p>I write about web development, Go, Laravel, Docker, and building things that work. Subscribe to get new posts delivered to your inbox.</p>
+    <a href="https://jonesrussell42.substack.com/subscribe" class="newsletter-cta-btn" target="_blank" rel="noopener">
+      Subscribe on Substack
+    </a>
+  </div>
+</aside>
+
+<style>
+.newsletter-cta {
+  margin: 2rem 0;
+  padding: 1.5rem;
+  border: 2px solid var(--border);
+  border-radius: 12px;
+  background: var(--code-bg);
+  text-align: center;
+}
+.newsletter-cta-inner h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1.2rem;
+}
+.newsletter-cta-inner p {
+  margin: 0 0 1rem;
+  color: var(--secondary);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+.newsletter-cta-btn {
+  display: inline-block;
+  padding: 0.6rem 1.5rem;
+  background: var(--primary);
+  color: var(--theme);
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+.newsletter-cta-btn:hover {
+  opacity: 0.85;
+}
+</style>

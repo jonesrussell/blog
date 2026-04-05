@@ -1,0 +1,84 @@
+{{ define "main" }}
+
+<article class="post-single">
+  <header class="post-header">
+    <h1 class="post-title">Page Not Found</h1>
+    <div class="post-description">
+      The page you're looking for doesn't exist or has been moved.
+    </div>
+  </header>
+
+  <div class="post-content">
+    <h2 id="search">Search for it</h2>
+    <p>Try searching for what you were looking for:</p>
+    <div id="searchbox" style="margin-bottom: 2rem;">
+      <input id="search-query" type="search" placeholder="Type to search..."
+        style="width: 100%; padding: 0.75rem 1rem; font-size: 1rem; border: 2px solid var(--border); border-radius: 8px; background: var(--code-bg); color: var(--primary);"
+        autofocus>
+      <div id="search-results" style="margin-top: 1rem;"></div>
+    </div>
+
+    <h2 id="recent">Recent Posts</h2>
+    <ul>
+      {{- range (where site.RegularPages "Section" "posts" | first 8) }}
+      <li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
+      {{- end }}
+    </ul>
+
+    <p style="margin-top: 2rem;">
+      Or head back to the <a href="{{ site.BaseURL }}">homepage</a>.
+    </p>
+  </div>
+</article>
+
+<script src="{{ "blog/index.json" | absURL }}"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@7.0.0/dist/fuse.min.js"></script>
+<script>
+(function () {
+  var input = document.getElementById('search-query');
+  var resultsEl = document.getElementById('search-results');
+  if (!input || !resultsEl) return;
+
+  // Extract search term from referrer if possible
+  var params = new URLSearchParams(window.location.search);
+  var q = params.get('q') || '';
+  if (!q) {
+    // Try to extract a meaningful term from the current path
+    var slug = window.location.pathname.replace(/\//g, ' ').trim();
+    if (slug) input.placeholder = 'e.g. ' + slug.split(' ').pop();
+  } else {
+    input.value = q;
+  }
+
+  var fuse;
+  fetch('{{ "index.json" | absURL }}')
+    .then(function (r) { return r.json(); })
+    .then(function (data) {
+      fuse = new Fuse(data, {
+        keys: ['title', 'summary', 'content'],
+        threshold: 0.4,
+        distance: 1000,
+        includeScore: true
+      });
+      if (input.value) doSearch(input.value);
+    });
+
+  input.addEventListener('input', function () { doSearch(this.value); });
+
+  function doSearch(query) {
+    if (!fuse || !query) { resultsEl.innerHTML = ''; return; }
+    var results = fuse.search(query).slice(0, 6);
+    if (!results.length) {
+      resultsEl.innerHTML = '<p>No results found.</p>';
+      return;
+    }
+    resultsEl.innerHTML = '<ul>' + results.map(function (r) {
+      return '<li><a href="' + r.item.permalink + '">' + r.item.title + '</a>' +
+        (r.item.summary ? '<br><small style="color:var(--secondary)">' + r.item.summary + '</small>' : '') +
+        '</li>';
+    }).join('') + '</ul>';
+  }
+})();
+</script>
+
+{{ end }}
