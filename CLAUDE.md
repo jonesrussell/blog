@@ -99,6 +99,9 @@ draft: true
 - Grepping for `draft: true` can match archetype templates embedded at the bottom of posts. To find actual drafts, grep only within frontmatter (between the first pair of `---` delimiters).
 - OG images are auto-detected by slug: `static/images/og/{slug}.png`. Run `task og:generate` before deploying new posts (see #32 for wiring this into the build).
 - The OG image generator (`scripts/generate-og-images.js`) can produce filenames with curly quotes — verify output filenames match slugs exactly (see #31).
+- Custom `layouts/404.html` reuses PaperMod's Fuse.js search index (`index.json`) for live search. If you change the JSON output format, test the 404 page too.
+- `layouts/partials/newsletter-cta.html` is included in `_default/single.html` after post content. Uses PaperMod CSS variables for dark/light mode. Links to `jonesrussell42.substack.com/subscribe`.
+- `extend_head.html` contains both BlogPosting and BreadcrumbList JSON-LD structured data. The BreadcrumbList uses `.CurrentSection` for the middle breadcrumb, so it only works correctly on pages that have a section parent.
 
 ## PSR Blog Series
 
@@ -113,3 +116,11 @@ draft: true
 Automated via GitHub Actions (`.github/workflows/hugo.yml`). Pushes to `main` trigger a build with Hugo extended and deploy to GitHub Pages. Future-dated posts are excluded until their date. No manual deployment needed — just merge to main.
 
 Dev.to sync runs automatically after deploy via `.github/workflows/devto-sync.yml`. Changed posts are pushed to Dev.to with `canonical_url` pointing back to the blog. New article IDs are written back via automated PR.
+
+### Social distribution via Buffer
+
+After publishing a post, social copy should be distributed via the Buffer GraphQL API, not manually copy-pasted. The blog-writing skill generates a companion file at `docs/social/{slug}.md` with platform-specific copy for Facebook, X, and LinkedIn.
+
+**To distribute:** Use the `/content-pipeline` skill, which reads the social copy and posts to all three channels via Buffer's `createPost` mutation (one call per channel). The content pipeline spec at `docs/superpowers/specs/2026-04-04-content-pipeline-design.md` has full Buffer API details including auth, channel IDs, and GraphQL examples.
+
+**Channel config:** `~/.claude/skills/content-pipeline/channels.env` stores Buffer channel IDs. API key is in `BUFFER_API_KEY` env var.
