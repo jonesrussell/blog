@@ -55,6 +55,9 @@ enableRobotsTXT = true
     name = 'youtube'
     url = 'https://www.youtube.com/@fullstackdev42'
   [[params.socialIcons]]
+    name = 'substack'
+    url = 'https://jonesrussell42.substack.com'
+  [[params.socialIcons]]
     name = 'rss'
     url = '/blog/feed.xml'
 
