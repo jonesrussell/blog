@@ -28,10 +28,20 @@ That gap is the entire point of Minoo Elders.
 
 Three people make the system go: an Elder (or a family member), a community coordinator, and a volunteer. The flow stays small on purpose.
 
-1. An Elder submits a request: a ride, groceries, yard work, or a visit.
-2. A community coordinator reviews the request and matches it to a nearby volunteer.
-3. The volunteer reaches out, arranges the details, and shows up.
-4. The coordinator follows up afterward to make sure it went well.
+{{< steps >}}
+  {{< step "Submit a request" >}}
+  An Elder asks for a ride, groceries, yard work, or a visit.
+  {{< /step >}}
+  {{< step "Coordinator matches" >}}
+  Reviews the request and finds a nearby volunteer.
+  {{< /step >}}
+  {{< step "Volunteer shows up" >}}
+  Reaches out, arranges the details, and provides help.
+  {{< /step >}}
+  {{< step "Coordinator follows up" >}}
+  Checks in afterward to make sure it went well.
+  {{< /step >}}
+{{< /steps >}}
 
 The follow-up is where most "match a helper to a person in need" software stops paying attention. Minoo runs the loop through step 4 because an Elder who had a bad ride usually won't call back to complain. They'll just stop calling. If you're the coordinator, your job is to catch that early.
 
@@ -55,6 +65,8 @@ Building the platform was the easy half. The hard half is finding the right coor
 
 If that's you, or someone in your community, Minoo Elders is ready. The infrastructure is built. The form works. The phone path works. What it needs is people willing to run it.
 
-Visit [minoo.live/elders](https://minoo.live/elders) to see how it works. If you want to run it in your community, find me at [jonesrussell.github.io](https://jonesrussell.github.io/) and let's talk.
+{{< cta title="Want to run Minoo Elders in your community?" button="Find me online" href="https://jonesrussell.github.io/" >}}
+Visit [minoo.live/elders](https://minoo.live/elders) to see how it works, then reach out and we'll set you up as a community coordinator.
+{{< /cta >}}
 
 Baamaapii
