@@ -10,7 +10,7 @@ tags:
     - github-actions
     - automation
     - content
-title: Automate Your Content Pipeline With GitHub Actions and Issues
+title: Automate your content pipeline with GitHub Actions and Issues
 ---
 
 Ahnii!
@@ -21,9 +21,13 @@ You ship work every day, but most of it never becomes a post. The problem isn't 
 
 The system has three moving parts: a [GitHub Actions](https://docs.github.com/en/actions) workflow that runs on a cron schedule, an issue template that standardizes the format, and label-based stages that track each idea from raw commit to published post.
 
-```
-commit lands → Action mines it → issue created (stage:mined)
-  → you curate (stage:curated) → produce copy (stage:ready) → distribute
+```mermaid
+flowchart TD
+    A[commit lands] --> B[Action mines it]
+    B --> C[issue created<br/>stage:mined]
+    C --> D[you curate<br/>stage:curated]
+    D --> E[produce copy<br/>stage:ready]
+    E --> F[distribute]
 ```
 
 Every stage is a GitHub label. You always know where each content idea sits, and nothing moves forward without your decision.
