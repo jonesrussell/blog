@@ -65,4 +65,12 @@ The coordinator is the system. The software is the leverage.
 A short description of what the action does and why the reader should care. One or two sentences.
 {{< /cta >}}
 
+## Stats
+
+{{< stats >}}
+  {{< stat "612" "Pages" >}}
+  {{< stat "97%" "Cache hit" >}}
+  {{< stat "0" "JS deps" >}}
+{{< /stats >}}
+
 Baamaapii

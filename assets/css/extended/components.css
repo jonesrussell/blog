@@ -149,3 +149,33 @@ body.dark {
   opacity: 0.85;
   text-decoration: none;
 }
+
+/* ----- Stats ----- */
+.stats {
+  display: flex;
+  gap: 12px;
+  margin: 1.5em 0;
+  flex-wrap: wrap;
+}
+.stat {
+  flex: 1;
+  min-width: 120px;
+  text-align: center;
+  padding: 18px 14px;
+  background: var(--entry);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+}
+.stat-number {
+  font-size: 2em;
+  font-weight: bold;
+  color: var(--primary);
+  line-height: 1.1;
+}
+.stat-label {
+  font-size: 0.75em;
+  color: var(--secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-top: 4px;
+}
