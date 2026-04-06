@@ -29,3 +29,29 @@ body.dark {
   --component-success: #81c784;
   --component-success-bg: rgba(129, 199, 132, 0.12);
 }
+
+/* ----- Callout ----- */
+.callout {
+  display: flex;
+  gap: 14px;
+  padding: 16px 20px;
+  margin: 1.5em 0;
+  border-left: 4px solid var(--tertiary);
+  background: var(--entry);
+  border-radius: 0 6px 6px 0;
+}
+.callout-marker {
+  font-size: 1.2em;
+  flex-shrink: 0;
+  line-height: 1.4;
+}
+.callout-body {
+  flex: 1;
+}
+.callout-body > :first-child { margin-top: 0; }
+.callout-body > :last-child { margin-bottom: 0; }
+.callout-info { border-left-color: var(--component-info); background: var(--component-info-bg); }
+.callout-warning { border-left-color: var(--component-warning); background: var(--component-warning-bg); }
+.callout-tip { border-left-color: var(--component-tip); background: var(--component-tip-bg); }
+.callout-note { border-left-color: var(--component-note); background: var(--component-note-bg); }
+.callout-success { border-left-color: var(--component-success); background: var(--component-success-bg); }

@@ -1,0 +1,9 @@
+{{- /* Valid types: info, warning, tip, note, success. Defaults to note if unspecified. */ -}}
+{{- $type := .Get "type" | default "note" -}}
+{{- $emoji := dict "info" "💡" "warning" "⚠️" "tip" "✨" "note" "📝" "success" "✅" -}}
+<div class="callout callout-{{ $type }}">
+  <div class="callout-marker">{{ index $emoji $type }}</div>
+  <div class="callout-body">
+    {{ .Inner | markdownify }}
+  </div>
+</div>

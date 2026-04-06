@@ -14,4 +14,26 @@ This post is an internal preview of every visual component shortcode available o
 
 Components are added to this post as they get implemented in the plan.
 
+## Callout
+
+{{< callout type="info" >}}
+This is an info callout. Use it for asides that interrupt the main flow without belonging in it.
+{{< /callout >}}
+
+{{< callout type="warning" >}}
+This is a warning callout. Use it for gotchas, version-specific notes, or things that will break if ignored.
+{{< /callout >}}
+
+{{< callout type="tip" >}}
+This is a tip callout. Genuinely supplementary content goes here.
+{{< /callout >}}
+
+{{< callout type="note" >}}
+This is a note callout. Neutral aside.
+{{< /callout >}}
+
+{{< callout type="success" >}}
+This is a success callout. Confirmation that something worked.
+{{< /callout >}}
+
 Baamaapii
