@@ -1,11 +1,17 @@
 ---
-title: "Day One of the Content Pipeline: What Broke and What I Fixed"
-date: 2026-04-06
-categories: [devops]
-tags: [github-actions, automation, content, claude-code]
-summary: "First-run lessons from an automated content pipeline. Noise, human-only merges, and a backwards production step surfaced in 24 hours."
-slug: "refining-content-pipeline-github-actions"
+categories:
+    - devops
+date: 2026-04-06T00:00:00Z
+devto_id: 3458517
 draft: true
+slug: refining-content-pipeline-github-actions
+summary: First-run lessons from an automated content pipeline. Noise, human-only merges, and a backwards production step surfaced in 24 hours.
+tags:
+    - github-actions
+    - automation
+    - content
+    - claude-code
+title: 'Day One of the Content Pipeline: What Broke and What I Fixed'
 ---
 
 Ahnii!
