@@ -1,11 +1,14 @@
 ---
-title: "Visual Components Preview"
-date: 2026-04-06
-categories: [general]
-tags: [components]
-summary: "Internal preview of all visual component shortcodes. Draft only — never publish."
-slug: "component-preview"
+categories:
+    - general
+date: 2026-04-06T00:00:00Z
+devto_id: 3462633
 draft: true
+slug: component-preview
+summary: Internal preview of all visual component shortcodes. Draft only — never publish.
+tags:
+    - components
+title: Visual Components Preview
 ---
 
 Ahnii!
