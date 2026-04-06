@@ -34,7 +34,37 @@ if (document.querySelector('pre.mermaid')) {
   document.head.appendChild(style);
   var s = document.createElement('script');
   s.type = 'module';
-  s.textContent = "import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.esm.min.mjs'; mermaid.initialize({ startOnLoad: true, theme: document.body.classList.contains('dark') ? 'dark' : 'default' });";
+  s.textContent = [
+    "import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.esm.min.mjs';",
+    "function isDark() {",
+    "  return document.documentElement.classList.contains('dark') ||",
+    "         document.body.classList.contains('dark') ||",
+    "         (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);",
+    "}",
+    "function renderMermaid() {",
+    "  mermaid.initialize({ startOnLoad: false, theme: isDark() ? 'dark' : 'default' });",
+    "  document.querySelectorAll('pre.mermaid').forEach(function (el) {",
+    "    if (!el.dataset.source) { el.dataset.source = el.textContent; }",
+    "    el.removeAttribute('data-processed');",
+    "    el.innerHTML = el.dataset.source;",
+    "  });",
+    "  mermaid.run({ querySelector: 'pre.mermaid' });",
+    "}",
+    "renderMermaid();",
+    "var lastDark = isDark();",
+    "var observer = new MutationObserver(function () {",
+    "  var nowDark = isDark();",
+    "  if (nowDark !== lastDark) { lastDark = nowDark; renderMermaid(); }",
+    "});",
+    "observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });",
+    "observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });",
+    "if (window.matchMedia) {",
+    "  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function () {",
+    "    var nowDark = isDark();",
+    "    if (nowDark !== lastDark) { lastDark = nowDark; renderMermaid(); }",
+    "  });",
+    "}"
+  ].join('\n');
   document.body.appendChild(s);
 }
 </script>
