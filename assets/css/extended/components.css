@@ -1,0 +1,31 @@
+/* Visual components — shared accent palette and base styles.
+ * Theme-bound colors use PaperMod CSS variables (--theme, --entry, etc.)
+ * for automatic dark mode. Only the accent colors below are component-owned.
+ * Spec: docs/superpowers/specs/2026-04-06-blog-visual-components-design.md
+ */
+
+:root {
+  --component-info: #2196f3;
+  --component-info-bg: rgba(33, 150, 243, 0.08);
+  --component-warning: #f57c00;
+  --component-warning-bg: rgba(245, 124, 0, 0.08);
+  --component-tip: #7b1fa2;
+  --component-tip-bg: rgba(123, 31, 162, 0.08);
+  --component-note: #455a64;
+  --component-note-bg: rgba(69, 90, 100, 0.08);
+  --component-success: #2e7d32;
+  --component-success-bg: rgba(46, 125, 50, 0.08);
+}
+
+body.dark {
+  --component-info: #64b5f6;
+  --component-info-bg: rgba(100, 181, 246, 0.12);
+  --component-warning: #ffb74d;
+  --component-warning-bg: rgba(255, 183, 77, 0.12);
+  --component-tip: #ba68c8;
+  --component-tip-bg: rgba(186, 104, 200, 0.12);
+  --component-note: #90a4ae;
+  --component-note-bg: rgba(144, 164, 174, 0.12);
+  --component-success: #81c784;
+  --component-success-bg: rgba(129, 199, 132, 0.12);
+}
