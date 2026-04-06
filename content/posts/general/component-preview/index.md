@@ -73,4 +73,15 @@ A short description of what the action does and why the reader should care. One 
   {{< stat "0" "JS deps" >}}
 {{< /stats >}}
 
+## Compare
+
+{{< compare >}}
+  {{< before >}}
+  Binder, sticky notes, and a phone full of texts. Volunteers no-show and nobody finds out until the Elder stops calling.
+  {{< /before >}}
+  {{< after >}}
+  Form, match, follow-up. The coordinator catches a bad ride before the Elder gives up.
+  {{< /after >}}
+{{< /compare >}}
+
 Baamaapii

@@ -179,3 +179,41 @@ body.dark {
   letter-spacing: 0.5px;
   margin-top: 4px;
 }
+
+/* ----- Compare (before/after) ----- */
+.compare {
+  display: flex;
+  gap: 12px;
+  margin: 1.5em 0;
+}
+.compare-before, .compare-after {
+  flex: 1;
+  display: flex;
+  gap: 12px;
+  align-items: baseline;
+  padding: 14px 18px;
+  border-radius: 6px;
+  border: 1px solid;
+}
+.compare-before {
+  background: var(--component-warning-bg);
+  border-color: var(--component-warning);
+}
+.compare-after {
+  background: var(--component-success-bg);
+  border-color: var(--component-success);
+}
+.compare-marker {
+  font-size: 1.2em;
+  font-weight: bold;
+  flex-shrink: 0;
+  line-height: 1.4;
+}
+.compare-before .compare-marker { color: var(--component-warning); }
+.compare-after .compare-marker { color: var(--component-success); }
+.compare-body { flex: 1; }
+.compare-body > :first-child { margin-top: 0; }
+.compare-body > :last-child { margin-bottom: 0; }
+@media (max-width: 600px) {
+  .compare { flex-direction: column; }
+}
