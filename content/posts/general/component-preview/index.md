@@ -59,4 +59,10 @@ This is a success callout. Confirmation that something worked.
 The coordinator is the system. The software is the leverage.
 {{< /pullquote >}}
 
+## CTA
+
+{{< cta title="Want to try this?" button="Get started" href="https://example.com/" >}}
+A short description of what the action does and why the reader should care. One or two sentences.
+{{< /cta >}}
+
 Baamaapii

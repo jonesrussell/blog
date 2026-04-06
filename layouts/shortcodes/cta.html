@@ -1,0 +1,9 @@
+{{- /* Required params: title, button, href. Body content rendered as markdown. */ -}}
+{{- $title := .Get "title" -}}
+{{- $button := .Get "button" -}}
+{{- $href := .Get "href" -}}
+<div class="cta">
+  <h3 class="cta-title">{{ $title }}</h3>
+  <div class="cta-body">{{ .Inner | markdownify }}</div>
+  <a class="cta-button" href="{{ $href }}">{{ $button }}</a>
+</div>
