@@ -1,12 +1,19 @@
 ---
-title: "Remember when server-side rendering was just rendering?"
-date: 2026-04-06
-categories: [php, waaseyaa]
-tags: [php, waaseyaa, ssr, twig]
-summary: "How Waaseyaa's SSR package renders HTML the way PHP always has, with Twig templates, field formatters, and a theme chain loader, no JavaScript runtime required."
-slug: "waaseyaa-ssr-remember-when-rendering-was-just-rendering"
-draft: false
+categories:
+    - php
+    - waaseyaa
+date: 2026-04-06T00:00:00Z
 devto: true
+devto_id: 3458212
+draft: false
+slug: waaseyaa-ssr-remember-when-rendering-was-just-rendering
+summary: How Waaseyaa's SSR package renders HTML the way PHP always has, with Twig templates, field formatters, and a theme chain loader, no JavaScript runtime required.
+tags:
+    - php
+    - waaseyaa
+    - ssr
+    - twig
+title: Remember when server-side rendering was just rendering?
 ---
 
 Ahnii!
