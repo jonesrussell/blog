@@ -49,6 +49,8 @@ Posts opt in via `devto: true` in frontmatter (default in archetype). The `devto
 
 **Style baseline:** `content/posts/laravel/laravel-boost-ddev/index.md` is the reference for voice, structure, and tone. See `docs/blog-style.md` for the full style guide.
 
+**Visual components:** Six Hugo shortcodes (`callout`, `steps`, `pullquote`, `cta`, `stats`, `compare`) live in `layouts/shortcodes/`. Styles in `assets/css/extended/components.css`. Usage rules in `docs/superpowers/specs/2026-04-06-blog-visual-components-design.md`. Live preview at the draft post `content/posts/general/component-preview/index.md`.
+
 ### Post Frontmatter
 
 ```yaml
