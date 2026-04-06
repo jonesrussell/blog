@@ -4,9 +4,7 @@
 
 ## Facebook
 
-Replaced a 1,000-line controller dispatcher in Waaseyaa with domain-specific routers. Each implements a two-method interface: supports() and handle(). New domains are additive, existing routers never change. Wrote up the pattern and the real implementation.
-
-https://jonesrussell.github.io/blog/waaseyaa-domain-routing-architecture/
+Replaced a 1,000-line controller dispatcher in Waaseyaa with domain-specific routers. Each implements a two-method interface: supports() and handle(). New domains are additive, existing routers never change. Wrote up the pattern and the real implementation. https://jonesrussell.github.io/blog/waaseyaa-domain-routing-architecture/ #php #architecture #waaseyaa
 
 ## X (Twitter)
 

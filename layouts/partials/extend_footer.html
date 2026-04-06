@@ -27,3 +27,14 @@
   entries.forEach(function (entry) { observer.observe(entry); });
 })();
 </script>
+<script>
+if (document.querySelector('pre.mermaid')) {
+  var style = document.createElement('style');
+  style.textContent = 'pre.mermaid { background: none; border: none; padding: 0; margin: 1em 0; overflow-x: auto; max-width: 100%; text-align: center; } pre.mermaid svg { max-width: 100%; height: auto; display: inline-block; }';
+  document.head.appendChild(style);
+  var s = document.createElement('script');
+  s.type = 'module';
+  s.textContent = "import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.esm.min.mjs'; mermaid.initialize({ startOnLoad: true, theme: document.body.classList.contains('dark') ? 'dark' : 'default' });";
+  document.body.appendChild(s);
+}
+</script>
