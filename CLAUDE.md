@@ -97,7 +97,7 @@ draft: true
 - Dev.to has a separate "title already used in last 5 minutes" rate limit beyond the request rate limit.
 - `push --all` will unpublish previously-live Dev.to articles if the blog post has `draft: true` (see issue #30). Review draft status before bulk pushing.
 - Grepping for `draft: true` can match archetype templates embedded at the bottom of posts. To find actual drafts, grep only within frontmatter (between the first pair of `---` delimiters).
-- OG images are auto-detected by slug: `static/images/og/{slug}.png`. Run `task og:generate` before deploying new posts (see #32 for wiring this into the build).
+- OG images are auto-detected by slug: `static/images/og/{slug}.png`. Generation is now wired into `task build`, `task build:drafts`, `task serve`, `task serve:prod`, `task check`, and `task deploy` as a dependency, plus the GitHub Actions workflow. The script is incremental — it only generates missing images, and auto-regenerates everything when `scripts/og-template.html` changes (template hash is tracked at `static/images/og/.og-template-hash`). Use `task og:regenerate` to force a full rebuild manually.
 - The OG image generator (`scripts/generate-og-images.js`) can produce filenames with curly quotes — verify output filenames match slugs exactly (see #31).
 - Custom `layouts/404.html` reuses PaperMod's Fuse.js search index (`index.json`) for live search. If you change the JSON output format, test the 404 page too.
 - `layouts/partials/newsletter-cta.html` is included in `_default/single.html` after post content. Uses PaperMod CSS variables for dark/light mode. Links to `jonesrussell42.substack.com/subscribe`.

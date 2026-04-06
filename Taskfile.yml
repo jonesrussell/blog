@@ -11,16 +11,19 @@ tasks:
 
   serve:
     desc: Start development server with live reload and drafts
+    deps: [og:generate]
     cmds:
       - hugo server -D --navigateToChanged
 
   serve:prod:
     desc: Start server in production mode (no drafts)
+    deps: [og:generate]
     cmds:
       - hugo server --navigateToChanged
 
   build:
     desc: Build site for production
+    deps: [og:generate]
     cmds:
       - hugo --gc --minify
     env:
@@ -28,6 +31,7 @@ tasks:
 
   build:drafts:
     desc: Build site including drafts
+    deps: [og:generate]
     cmds:
       - hugo --gc --minify -D
 
@@ -64,6 +68,7 @@ tasks:
 
   check:
     desc: Check for common issues
+    deps: [og:generate]
     cmds:
       - hugo --gc --minify --printPathWarnings
 
