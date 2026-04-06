@@ -55,3 +55,49 @@ body.dark {
 .callout-tip { border-left-color: var(--component-tip); background: var(--component-tip-bg); }
 .callout-note { border-left-color: var(--component-note); background: var(--component-note-bg); }
 .callout-success { border-left-color: var(--component-success); background: var(--component-success-bg); }
+
+/* ----- Steps ----- */
+.steps {
+  counter-reset: step;
+  margin: 1.5em 0;
+}
+.step {
+  counter-increment: step;
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  padding: 14px 18px;
+  margin-bottom: 12px;
+  background: var(--entry);
+  border-left: 3px solid var(--primary);
+  border-radius: 0 6px 6px 0;
+}
+.step:last-child {
+  margin-bottom: 0;
+}
+.step-badge {
+  background: var(--primary);
+  color: var(--theme);
+  min-width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 0.95em;
+  flex-shrink: 0;
+}
+.step-badge::before {
+  content: counter(step);
+}
+.step-body {
+  flex: 1;
+}
+.step-title {
+  font-weight: bold;
+  margin-bottom: 4px;
+  color: var(--primary);
+}
+.step-content > :first-child { margin-top: 0; }
+.step-content > :last-child { margin-bottom: 0; }

@@ -36,4 +36,21 @@ This is a note callout. Neutral aside.
 This is a success callout. Confirmation that something worked.
 {{< /callout >}}
 
+## Steps
+
+{{< steps >}}
+  {{< step "Submit a request" >}}
+  An Elder asks for a ride, groceries, yard work, or a visit.
+  {{< /step >}}
+  {{< step "Coordinator matches" >}}
+  Reviews the request and finds a nearby volunteer.
+  {{< /step >}}
+  {{< step "Volunteer shows up" >}}
+  Reaches out, arranges details, and provides help.
+  {{< /step >}}
+  {{< step "Coordinator follows up" >}}
+  Makes sure everything went well.
+  {{< /step >}}
+{{< /steps >}}
+
 Baamaapii

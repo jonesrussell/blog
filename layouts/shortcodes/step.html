@@ -1,0 +1,8 @@
+{{- /* Positional arg 0 = step title. Body content rendered as markdown. */ -}}
+<div class="step">
+  <div class="step-badge"></div>
+  <div class="step-body">
+    <div class="step-title">{{ .Get 0 }}</div>
+    <div class="step-content">{{ .Inner | markdownify }}</div>
+  </div>
+</div>
