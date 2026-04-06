@@ -1,11 +1,17 @@
 ---
-title: "Minoo Elders: An Indigenous Platform for Community Elder Support"
-date: 2026-04-06
-categories: [general]
-tags: [minoo, elders, indigenous, community]
-summary: "What Minoo Elders is, how it works, and why it needs community coordinators to actually serve people."
-slug: "minoo-elders"
+categories:
+    - general
+date: 2026-04-06T00:00:00Z
+devto_id: 3461194
 draft: true
+slug: minoo-elders
+summary: What Minoo Elders is, how it works, and why it needs community coordinators to actually serve people.
+tags:
+    - minoo
+    - elders
+    - indigenous
+    - community
+title: 'Minoo Elders: An Indigenous Platform for Community Elder Support'
 ---
 
 Ahnii!
