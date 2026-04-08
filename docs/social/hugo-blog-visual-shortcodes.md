@@ -12,6 +12,8 @@ The new post walks through each shortcode with the actual template code and usag
 
 https://jonesrussell.github.io/blog/hugo-blog-visual-shortcodes/
 
+#hugo #claudecode #webdev
+
 ## X
 
 Added six visual shortcodes to my Hugo blog (callout, steps, stats, compare, cta, pullquote) in one Claude Code session. No JS, dark mode automatic. Post covers the full implementation. https://jonesrussell.github.io/blog/hugo-blog-visual-shortcodes/

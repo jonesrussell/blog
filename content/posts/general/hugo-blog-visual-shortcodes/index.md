@@ -13,26 +13,26 @@ Ahnii!
 
 [PaperMod](https://github.com/adityatelange/hugo-PaperMod) is a clean, fast Hugo theme. What it doesn't give you out of the box is a component library — no callouts, no numbered steps, no before/after comparisons. If you write tutorials or technical posts, you end up compensating with blockquotes and bold text where purpose-built components would serve the reader better.
 
-I added six shortcodes to this blog in a single [Claude Code](https://claude.com/claude-code) session. This post shows you what I built, how each one works, and how to add the same components to your own Hugo blog.
+This post covers all six shortcodes, the CSS behind them, and how to add the same components to your own PaperMod blog. All of it came together in a single [Claude Code](https://claude.com/claude-code) session.
 
 ## What we're building
 
 Six shortcodes, one CSS file:
 
-- **callout** — highlighted aside with five severity types
-- **steps / step** — auto-numbered procedure blocks
-- **pullquote** — large-format quote for emphasis
-- **stats / stat** — side-by-side metric tiles
-- **compare / before / after** — side-by-side comparison panels
-- **cta** — call-to-action box with a button
+- **callout**: highlighted aside with five severity types
+- **steps / step**: auto-numbered procedure blocks
+- **pullquote**: large-format quote for emphasis
+- **stats / stat**: side-by-side metric tiles
+- **compare / before / after**: side-by-side comparison panels
+- **cta**: call-to-action box with a button
 
 All styles hook into PaperMod's CSS variables (`--primary`, `--entry`, `--border`, etc.), so they adapt to dark and light mode automatically with no extra work.
 
 ## File locations
 
-Hugo resolves shortcodes from `layouts/shortcodes/`. Create one `.html` file per shortcode:
+[Hugo](https://gohugo.io/) resolves shortcodes from `layouts/shortcodes/`. Create one `.html` file per shortcode:
 
-```
+```text
 layouts/shortcodes/
   callout.html
   steps.html
@@ -45,7 +45,7 @@ layouts/shortcodes/
   after.html
 ```
 
-The CSS goes in `assets/css/extended/`. PaperMod loads everything in that directory automatically — no import statements needed.
+The CSS goes in `assets/css/extended/`. PaperMod loads everything in that directory automatically; no import statements needed.
 
 ## The shortcodes
 
@@ -64,13 +64,13 @@ The CSS goes in `assets/css/extended/`. PaperMod loads everything in that direct
 
 Usage in a post:
 
-```
+```text
 {{</* callout type="warning" */>}}
 Run `git stash` before switching branches or you will lose your changes.
 {{</* /callout */>}}
 ```
 
-The `markdownify` call means you can use inline markdown inside the callout body — backtick code, bold, links — all render correctly.
+The `markdownify` call means you can use inline markdown inside the callout body: backtick code, bold, links. All render correctly.
 
 ### Steps and step
 
@@ -90,11 +90,11 @@ The `markdownify` call means you can use inline markdown inside the callout body
 </div>
 ```
 
-The step badge is numbered via CSS counters — no JavaScript, no manual numbering.
+The step badge is numbered via CSS counters. No JavaScript, no manual numbering.
 
 Usage:
 
-```
+```text
 {{</* steps */>}}
 {{</* step "Install dependencies" */>}}
 Run `npm install` in the project root.
@@ -122,7 +122,7 @@ Run `npm run dev`. The site is available at `http://localhost:5173`.
 
 Usage:
 
-```
+```text
 {{</* stats */>}}
 {{</* stat "6" "shortcodes" */>}}
 {{</* stat "1" "CSS file" */>}}
@@ -157,7 +157,7 @@ The `before` panel uses the warning colour from PaperMod's palette; `after` uses
 
 Usage:
 
-```
+```text
 {{</* compare */>}}
 {{</* before */>}}
 Blockquote hacks repurposed as callouts.
@@ -185,7 +185,7 @@ Purpose-built `callout` shortcode with five types.
 
 Usage:
 
-```
+```text
 {{</* cta title="Try it yourself" button="View the source" href="https://github.com/jonesrussell/blog" */>}}
 All six shortcodes and the CSS are in the repo.
 {{</* /cta */>}}
@@ -193,7 +193,7 @@ All six shortcodes and the CSS are in the repo.
 
 ### Pullquote
 
-The simplest of the six — a styled blockquote for pull emphasis.
+The simplest of the six: a styled blockquote for pull emphasis.
 
 ```html
 <blockquote class="pullquote">
@@ -203,7 +203,7 @@ The simplest of the six — a styled blockquote for pull emphasis.
 
 Usage:
 
-```
+```text
 {{</* pullquote */>}}
 Good writing tools don't replace good writing. They get out of the way.
 {{</* /pullquote */>}}
@@ -211,14 +211,14 @@ Good writing tools don't replace good writing. They get out of the way.
 
 ## The proving ground
 
-Before calling the system done, I retrofitted an existing post — [Minoo Elders]({{< relref "minoo-elders" >}}) — replacing a flat numbered list with a `steps` block and a closing paragraph with a `cta`. If the shortcodes worked in a real post with real content, they were ready.
+Before calling the system done, retrofit an existing post. I used [Minoo Elders]({{< relref "minoo-elders" >}}), replacing a flat numbered list with a `steps` block and a closing paragraph with a `cta`. If the shortcodes work in a real post with real content, they are ready.
 
 The retrofit caught a line-height edge case in the step badge CSS and confirmed the dark mode colours held in both themes. Worth the ten minutes.
 
-## How I built it
+## Vibe coding the component system
 
-This was a vibe coding session with [Claude Code](https://claude.com/claude-code). I described the component system I wanted, reviewed each shortcode draft, and pushed back when anything felt over-engineered. The whole thing — nine files, the CSS, and the retrofit — came together in one session.
+This system was built with [Claude Code](https://claude.com/claude-code) in one session. Describe the component you want, review the draft, push back on anything over-engineered. Nine files and the CSS came together without a lot of manual effort.
 
-The shortcodes are straightforward Hugo template code. Claude didn't do anything I couldn't have done manually. What changed was the iteration loop: see a render, say "the step numbers need more breathing room," get an updated CSS in thirty seconds. That speed is where the value is.
+The shortcodes are straightforward Hugo template code. The real gain is in the iteration loop: see a render, request a tweak, get updated CSS in thirty seconds. That speed is the whole point.
 
 Baamaapii
