@@ -11,7 +11,7 @@ devto: true
 
 Ahnii!
 
-[PaperMod](https://github.com/adityatelange/hugo-PaperMod) is a clean, fast Hugo theme. What it doesn't give you out of the box is a component library — no callouts, no numbered steps, no before/after comparisons. If you write tutorials or technical posts, you end up compensating with blockquotes and bold text where purpose-built components would serve the reader better.
+[PaperMod](https://github.com/adityatelange/hugo-PaperMod) is a clean, fast [Hugo](https://gohugo.io/) theme. What it doesn't give you out of the box is a component library: no callouts, no numbered steps, no before/after comparisons. If you write tutorials or technical posts, you end up compensating with blockquotes and bold text where purpose-built components would serve the reader better.
 
 This post covers all six shortcodes, the CSS behind them, and how to add the same components to your own PaperMod blog. All of it came together in a single [Claude Code](https://claude.com/claude-code) session.
 
@@ -26,11 +26,18 @@ Six shortcodes, one CSS file:
 - **compare / before / after**: side-by-side comparison panels
 - **cta**: call-to-action box with a button
 
-All styles hook into PaperMod's CSS variables (`--primary`, `--entry`, `--border`, etc.), so they adapt to dark and light mode automatically with no extra work.
+{{< stats >}}
+{{< stat "6" "shortcodes" >}}
+{{< stat "9" "template files" >}}
+{{< stat "1" "CSS file" >}}
+{{< stat "0" "JS required" >}}
+{{< /stats >}}
+
+All styles hook into PaperMod's CSS variables (`--primary`, `--entry`, `--border`, etc.), so they adapt to dark and light mode automatically.
 
 ## File locations
 
-[Hugo](https://gohugo.io/) resolves shortcodes from `layouts/shortcodes/`. Create one `.html` file per shortcode:
+Hugo resolves shortcodes from `layouts/shortcodes/`. Create one `.html` file per shortcode:
 
 ```text
 layouts/shortcodes/
@@ -51,7 +58,9 @@ The CSS goes in `assets/css/extended/`. PaperMod loads everything in that direct
 
 ### Callout
 
-`callout.html` accepts a `type` parameter. Valid types are `info`, `warning`, `tip`, `note`, and `success`. Defaults to `note` if you omit it.
+A callout is a highlighted aside that draws the reader's attention. It accepts a `type` parameter: `info`, `warning`, `tip`, `note`, or `success`. Defaults to `note`.
+
+**Template** (`layouts/shortcodes/callout.html`):
 
 ```html
 {{- $type := .Get "type" | default "note" -}}
@@ -62,7 +71,7 @@ The CSS goes in `assets/css/extended/`. PaperMod loads everything in that direct
 </div>
 ```
 
-Usage in a post:
+**Usage:**
 
 ```text
 {{</* callout type="warning" */>}}
@@ -70,11 +79,19 @@ Run `git stash` before switching branches or you will lose your changes.
 {{</* /callout */>}}
 ```
 
-The `markdownify` call means you can use inline markdown inside the callout body: backtick code, bold, links. All render correctly.
+**Rendered:**
+
+{{< callout type="warning" >}}
+Run `git stash` before switching branches or you will lose your changes.
+{{< /callout >}}
+
+The `markdownify` call means you can use inline markdown inside the body: backtick code, bold, links. All render correctly.
 
 ### Steps and step
 
-`steps.html` sets up the counter context. `step.html` takes a title as its first positional argument and renders the body as markdown.
+The `steps` shortcode wraps a sequence of `step` shortcodes. Each `step` takes a title as its first positional argument and auto-numbers itself via CSS counters. No JavaScript, no manual numbering.
+
+**Templates** (`layouts/shortcodes/steps.html` and `step.html`):
 
 ```html
 <!-- steps.html -->
@@ -90,24 +107,35 @@ The `markdownify` call means you can use inline markdown inside the callout body
 </div>
 ```
 
-The step badge is numbered via CSS counters. No JavaScript, no manual numbering.
-
-Usage:
+**Usage:**
 
 ```text
 {{</* steps */>}}
-{{</* step "Install dependencies" */>}}
-Run `npm install` in the project root.
+{{</* step "Create the shortcode file" */>}}
+Add `layouts/shortcodes/callout.html` to your project.
 {{</* /step */>}}
-{{</* step "Start the dev server" */>}}
-Run `npm run dev`. The site is available at `http://localhost:5173`.
+{{</* step "Add the CSS" */>}}
+Create `assets/css/extended/components.css` with the component styles.
 {{</* /step */>}}
 {{</* /steps */>}}
 ```
 
+**Rendered:**
+
+{{< steps >}}
+{{< step "Create the shortcode file" >}}
+Add `layouts/shortcodes/callout.html` to your project.
+{{< /step >}}
+{{< step "Add the CSS" >}}
+Create `assets/css/extended/components.css` with the component styles.
+{{< /step >}}
+{{< /steps >}}
+
 ### Stats and stat
 
-`stats.html` is a flex container. `stat.html` takes two positional arguments: the number and the label.
+The `stats` shortcode is a flex container for `stat` tiles. Each `stat` takes two positional arguments: the value and the label.
+
+**Templates** (`layouts/shortcodes/stats.html` and `stat.html`):
 
 ```html
 <!-- stats.html -->
@@ -120,7 +148,7 @@ Run `npm run dev`. The site is available at `http://localhost:5173`.
 </div>
 ```
 
-Usage:
+**Usage:**
 
 ```text
 {{</* stats */>}}
@@ -130,11 +158,21 @@ Usage:
 {{</* /stats */>}}
 ```
 
-The tiles flex-wrap on small screens, so they stack gracefully on mobile without any extra media query work.
+**Rendered:**
+
+{{< stats >}}
+{{< stat "6" "shortcodes" >}}
+{{< stat "1" "CSS file" >}}
+{{< stat "0" "JS required" >}}
+{{< /stats >}}
+
+The tiles flex-wrap on small screens, so they stack gracefully on mobile without extra media query work.
 
 ### Compare, before, and after
 
-Three files work together: `compare.html` wraps the pair, `before.html` and `after.html` render the two panels.
+Three files work together: `compare.html` wraps the pair, `before.html` and `after.html` render each panel. The before panel uses PaperMod's warning colour; after uses the success colour.
+
+**Templates** (`compare.html`, `before.html`, `after.html`):
 
 ```html
 <!-- compare.html -->
@@ -153,9 +191,7 @@ Three files work together: `compare.html` wraps the pair, `before.html` and `aft
 </div>
 ```
 
-The `before` panel uses the warning colour from PaperMod's palette; `after` uses the success colour. On screens narrower than 600px the panels stack vertically.
-
-Usage:
+**Usage:**
 
 ```text
 {{</* compare */>}}
@@ -168,9 +204,50 @@ Purpose-built `callout` shortcode with five types.
 {{</* /compare */>}}
 ```
 
+**Rendered:**
+
+{{< compare >}}
+{{< before >}}
+Blockquote hacks repurposed as callouts.
+{{< /before >}}
+{{< after >}}
+Purpose-built `callout` shortcode with five types.
+{{< /after >}}
+{{< /compare >}}
+
+On screens narrower than 600px the panels stack vertically.
+
+### Pullquote
+
+A pullquote is a styled blockquote for emphasis. Use it to surface a key insight or memorable line from the surrounding text.
+
+**Template** (`layouts/shortcodes/pullquote.html`):
+
+```html
+<blockquote class="pullquote">
+  {{ .Inner | markdownify }}
+</blockquote>
+```
+
+**Usage:**
+
+```text
+{{</* pullquote */>}}
+Good writing tools get out of the way. Good components make the writing better.
+{{</* /pullquote */>}}
+```
+
+**Rendered:**
+
+{{< pullquote >}}
+Good writing tools get out of the way. Good components make the writing better.
+{{< /pullquote >}}
+
 ### CTA
 
-`cta.html` takes three named parameters: `title`, `button`, and `href`. The inner body is optional supporting copy.
+A call-to-action box with a centred button. Takes three named parameters: `title`, `button`, and `href`. The inner body is optional copy.
+
+**Template** (`layouts/shortcodes/cta.html`):
 
 ```html
 {{- $title := .Get "title" -}}
@@ -183,7 +260,7 @@ Purpose-built `callout` shortcode with five types.
 </div>
 ```
 
-Usage:
+**Usage:**
 
 ```text
 {{</* cta title="Try it yourself" button="View the source" href="https://github.com/jonesrussell/blog" */>}}
@@ -191,23 +268,11 @@ All six shortcodes and the CSS are in the repo.
 {{</* /cta */>}}
 ```
 
-### Pullquote
+**Rendered:**
 
-The simplest of the six: a styled blockquote for pull emphasis.
-
-```html
-<blockquote class="pullquote">
-  {{ .Inner | markdownify }}
-</blockquote>
-```
-
-Usage:
-
-```text
-{{</* pullquote */>}}
-Good writing tools don't replace good writing. They get out of the way.
-{{</* /pullquote */>}}
-```
+{{< cta title="Try it yourself" button="View the source" href="https://github.com/jonesrussell/blog" >}}
+All six shortcodes and the CSS are in the repo.
+{{< /cta >}}
 
 ## The proving ground
 
@@ -219,6 +284,6 @@ The retrofit caught a line-height edge case in the step badge CSS and confirmed 
 
 This system was built with [Claude Code](https://claude.com/claude-code) in one session. Describe the component you want, review the draft, push back on anything over-engineered. Nine files and the CSS came together without a lot of manual effort.
 
-The shortcodes are straightforward Hugo template code. The real gain is in the iteration loop: see a render, request a tweak, get updated CSS in thirty seconds. That speed is the whole point.
+The real gain is in the iteration loop: see a render, request a tweak, get updated CSS in thirty seconds. That speed is the whole point.
 
 Baamaapii
