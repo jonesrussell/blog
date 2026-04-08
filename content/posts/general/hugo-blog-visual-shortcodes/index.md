@@ -5,7 +5,7 @@ categories: [general]
 tags: [hugo, claude-code, papermod, shortcodes]
 summary: "Six Hugo shortcodes that give your PaperMod blog callouts, steps, pull quotes, stats, before/after comparisons, and CTAs — built in one vibe coding session."
 slug: "hugo-blog-visual-shortcodes"
-draft: true
+draft: false
 devto: true
 ---
 
@@ -276,7 +276,7 @@ All six shortcodes and the CSS are in the repo.
 
 ## The proving ground
 
-Before calling the system done, retrofit an existing post. I used [Minoo Elders]({{< relref "minoo-elders" >}}), replacing a flat numbered list with a `steps` block and a closing paragraph with a `cta`. If the shortcodes work in a real post with real content, they are ready.
+Before calling the system done, retrofit an existing post. I used Minoo Elders, replacing a flat numbered list with a `steps` block and a closing paragraph with a `cta`. If the shortcodes work in a real post with real content, they are ready.
 
 The retrofit caught a line-height edge case in the step badge CSS and confirmed the dark mode colours held in both themes. Worth the ten minutes.
 
