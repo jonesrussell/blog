@@ -1,12 +1,18 @@
 ---
-title: "Hugo blog shortcodes: adding a visual component system to PaperMod"
-date: 2026-04-08
-categories: [general]
-tags: [hugo, claude-code, papermod, shortcodes]
-summary: "Six Hugo shortcodes that give your PaperMod blog callouts, steps, pull quotes, stats, before/after comparisons, and CTAs — built in one vibe coding session."
-slug: "hugo-blog-visual-shortcodes"
-draft: false
+categories:
+    - general
+date: 2026-04-08T00:00:00Z
 devto: true
+devto_id: 3473078
+draft: false
+slug: hugo-blog-visual-shortcodes
+summary: Six Hugo shortcodes that give your PaperMod blog callouts, steps, pull quotes, stats, before/after comparisons, and CTAs — built in one vibe coding session.
+tags:
+    - hugo
+    - claude-code
+    - papermod
+    - shortcodes
+title: 'Hugo blog shortcodes: adding a visual component system to PaperMod'
 ---
 
 Ahnii!
