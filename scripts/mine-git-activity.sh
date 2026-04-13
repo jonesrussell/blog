@@ -35,7 +35,7 @@ for repo in "${REPOS[@]}"; do
     continue
   fi
 
-  echo "$COMMITS" | jq -c '.' | while read -r commit_json; do
+  while read -r commit_json; do
     SHA=$(echo "$commit_json" | jq -r '.sha')
     MESSAGE=$(echo "$commit_json" | jq -r '.message' | head -1)
     COMMIT_DATE=$(echo "$commit_json" | jq -r '.date')
@@ -84,7 +84,7 @@ SEED
     fi
 
     rm -f "$SEED_FILE"
-  done
+  done < <(echo "$COMMITS" | jq -c '.')
 done
 
 echo ""
