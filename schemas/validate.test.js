@@ -41,6 +41,21 @@ console.log('validate bad enum value');
 const badEnumResult = validate('mined-seed', path.join(__dirname, 'fixtures/invalid-mined-seed-bad-enum.json'));
 assert(badEnumResult.valid === false, 'bad enum value fails validation');
 
+// Test: curated-item schema loads
+console.log('loadSchema curated-item');
+const curatedValidator = loadSchema('curated-item');
+assert(typeof curatedValidator === 'function', 'returns a function for curated-item schema');
+
+// Test: validate valid curated item
+console.log('validate valid curated item');
+const validCurated = validate('curated-item', path.join(__dirname, 'fixtures/valid-curated-item.json'));
+assert(validCurated.valid === true, 'valid curated item passes');
+
+// Test: validate missing curation_action
+console.log('validate missing curation_action');
+const missingAction = validate('curated-item', path.join(__dirname, 'fixtures/invalid-curated-item-missing-action.json'));
+assert(missingAction.valid === false, 'missing curation_action fails validation');
+
 // Summary
 console.log(`\n${passed} passed, ${failed} failed`);
 process.exit(failed > 0 ? 1 : 0);

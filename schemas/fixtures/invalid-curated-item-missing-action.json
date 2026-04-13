@@ -1,0 +1,11 @@
+{
+  "source": "git-commit",
+  "source_ref": "abc1234",
+  "content_seed": "Some idea",
+  "suggested_type": "text-post",
+  "suggested_channels": ["x"],
+  "mined_at": "2026-04-13T10:00:00Z",
+  "curated_type": "text-post",
+  "curated_channels": ["x"],
+  "curated_at": "2026-04-13T11:30:00Z"
+}
