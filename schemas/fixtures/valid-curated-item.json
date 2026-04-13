@@ -1,0 +1,13 @@
+{
+  "source": "git-commit",
+  "source_ref": "abc1234",
+  "content_seed": "Added SovereigntyProfile to Layer 0. Communities declare local/hybrid/cloud sovereignty mode.",
+  "suggested_type": "text-post",
+  "suggested_channels": ["x", "linkedin", "facebook"],
+  "mined_at": "2026-04-13T10:00:00Z",
+  "confidence": 0.85,
+  "curated_type": "text-post",
+  "curated_channels": ["x", "linkedin"],
+  "curation_action": "approved",
+  "curated_at": "2026-04-13T11:30:00Z"
+}
