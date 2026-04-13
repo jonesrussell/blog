@@ -34,8 +34,8 @@ Posts are organized by category: `ai`, `architecture`, `devops`, `docker`, `gene
 
 | Resource | Location |
 |---|---|
-| Content queue (GitHub Issues) | [`jonesrussell/jonesrussell`](https://github.com/jonesrussell/jonesrussell/issues?q=label%3Acontent-queue) |
-| Mining workflow (control plane) | [`jonesrussell/jonesrussell`](https://github.com/jonesrussell/jonesrussell) |
+| Content queue (all stages) | [**jonesrussell/jonesrussell/issues**](https://github.com/jonesrussell/jonesrussell/issues?q=label%3Acontent-queue) -- the browser UI for the entire pipeline |
+| Mining workflow | [`content-mine.yml`](https://github.com/jonesrussell/jonesrussell/blob/main/.github/workflows/content-mine.yml) |
 | Pipeline stage schemas | [`schemas/`](schemas/) ([docs](schemas/README.md)) |
 
 ## Local Development
