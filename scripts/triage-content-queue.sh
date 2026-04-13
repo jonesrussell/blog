@@ -176,6 +176,31 @@ done
 echo ""
 
 # ---------------------------------------------------------------------------
+# Phase 5: Close all remaining stage:mined items
+# These will be superseded by the new grouped miner.
+# ---------------------------------------------------------------------------
+echo "=== Phase 5: Close all remaining stage:mined items (superseded by grouped miner) ==="
+
+echo "$issues_json" | jq -c '.[]' | while read -r issue; do
+  number=$(echo "$issue" | jq -r '.number')
+  title=$(echo "$issue" | jq -r '.title')
+  labels=$(echo "$issue" | jq -r '[.labels[].name] | join(",")')
+
+  # Skip if already processed (relabeled out of content-queue)
+  if [[ "$labels" != *"content-queue"* ]]; then
+    continue
+  fi
+
+  # Only close stage:mined items
+  if [[ "$labels" == *"stage:mined"* ]]; then
+    close_issue "$number" "Closed during triage: superseded by grouped mining. The new miner will create themed, scored seeds from this activity."
+    bump closed_mined
+  fi
+done
+
+echo ""
+
+# ---------------------------------------------------------------------------
 # Summary
 # ---------------------------------------------------------------------------
 echo "==========================================="
@@ -185,6 +210,7 @@ echo "  Closed (social schedule):  $(get_count closed_social)"
 echo "  Closed (stale/vague):      $(get_count closed_stale)"
 echo "  Relabeled -> backlog:      $(get_count relabeled_infra)"
 echo "  Relabeled -> blog-audit:   $(get_count relabeled_audit)"
+echo "  Closed (mined, superseded):$(get_count closed_mined)"
 echo "==========================================="
 echo ""
 
