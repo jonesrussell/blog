@@ -1,0 +1,9 @@
+{
+  "source": "git-commit",
+  "source_ref": ["abc1234", "def5678", "ghi9012"],
+  "content_seed": "Wired drift-detector observability across three commits: added metrics endpoint, integrated Prometheus scrape config, and documented alerting rules.",
+  "suggested_type": "text-post",
+  "suggested_channels": ["x", "linkedin"],
+  "mined_at": "2026-04-13T10:00:00Z",
+  "confidence": 0.9
+}

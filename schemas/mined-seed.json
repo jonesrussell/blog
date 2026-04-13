@@ -4,7 +4,7 @@
   "title": "Mined Seed",
   "description": "A content seed produced by the mining stage of the content pipeline.",
   "type": "object",
-  "required": ["source", "source_ref", "content_seed", "suggested_type", "suggested_channels", "mined_at"],
+  "required": ["source", "source_ref", "content_seed", "suggested_type", "suggested_channels", "mined_at", "confidence"],
   "additionalProperties": false,
   "properties": {
     "source": {
@@ -13,9 +13,18 @@
       "description": "Where the seed came from."
     },
     "source_ref": {
-      "type": "string",
-      "minLength": 1,
-      "description": "Commit SHA, issue URL, file path, or North Cloud article ID."
+      "oneOf": [
+        {
+          "type": "string",
+          "minLength": 1
+        },
+        {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 },
+          "minItems": 1
+        }
+      ],
+      "description": "Commit SHA, issue URL, file path, or North Cloud article ID. May be a single value or an array for grouped commits."
     },
     "content_seed": {
       "type": "string",
