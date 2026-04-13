@@ -1,0 +1,60 @@
+name: Content Queue Hygiene
+
+on:
+  schedule:
+    # Weekly on Mondays at 09:00 UTC
+    - cron: '0 9 * * 1'
+  workflow_dispatch: {}
+
+permissions:
+  issues: write
+
+jobs:
+  hygiene:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Calculate cutoff date
+        id: cutoff
+        run: |
+          CUTOFF_DATE=$(date -u -d "14 days ago" +%Y-%m-%dT%H:%M:%SZ)
+          echo "cutoff_date=$CUTOFF_DATE" >> $GITHUB_OUTPUT
+          echo "Cutoff date for stale issues: $CUTOFF_DATE"
+
+      - name: Find and close stale mined content
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          CUTOFF_DATE="${{ steps.cutoff.outputs.cutoff_date }}"
+          CLOSED_COUNT=0
+
+          # Query issues with content-queue and stage:mined labels in jonesrussell/jonesrussell
+          while IFS= read -r ISSUE_NUMBER UPDATED_AT; do
+            # Compare dates: if updatedAt is before cutoff, it's stale
+            if [[ "$UPDATED_AT" < "$CUTOFF_DATE" ]]; then
+              echo "Closing stale issue #$ISSUE_NUMBER (last updated: $UPDATED_AT)"
+
+              # Close the issue
+              gh issue close "$ISSUE_NUMBER" \
+                --repo "jonesrussell/jonesrussell" \
+                --comment "Auto-closed: not curated within 14 days. Reopen if still relevant."
+
+              # Add auto-expired label
+              gh issue edit "$ISSUE_NUMBER" \
+                --repo "jonesrussell/jonesrussell" \
+                --add-label "auto-expired"
+
+              ((CLOSED_COUNT++))
+            fi
+          done < <(gh issue list \
+            --repo "jonesrussell/jonesrussell" \
+            --label "content-queue,stage:mined" \
+            --state open \
+            --json number,updatedAt \
+            --jq '.[] | "\(.number) \(.updatedAt)"')
+
+          # Print summary
+          if [[ $CLOSED_COUNT -eq 0 ]]; then
+            echo "No stale issues found. Queue is healthy."
+          else
+            echo "Auto-closed $CLOSED_COUNT stale content queue issue(s)."
+          fi
