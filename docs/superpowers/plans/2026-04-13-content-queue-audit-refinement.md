@@ -42,7 +42,7 @@ set -euo pipefail
 #
 # Usage: ./scripts/triage-content-queue.sh [--dry-run]
 
-QUEUE_REPO="jonesrussell/blog"
+QUEUE_REPO="jonesrussell/jonesrussell"
 DRY_RUN=false
 if [[ "${1:-}" == "--dry-run" ]]; then
   DRY_RUN=true
@@ -139,7 +139,7 @@ After the script runs, review the remaining `stage:mined` items. For any cluster
 
 ```bash
 # Example: group related Waaseyaa provider commits
-gh issue create --repo jonesrussell/blog \
+gh issue create --repo jonesrussell/jonesrussell \
   --label "content-queue,stage:mined,type:text-post" \
   --title "[content] Waaseyaa: Service provider system build-out" \
   --body "## Source
@@ -159,7 +159,7 @@ Built out the service provider architecture in the Waaseyaa framework, including
 - **Channels:** x, linkedin, facebook"
 
 # Then close the originals referencing the new issue
-gh issue close 240 241 242 --repo jonesrussell/blog --comment "Grouped into #NEW_ISSUE_NUMBER"
+gh issue close 240 241 242 --repo jonesrussell/jonesrussell --comment "Grouped into #NEW_ISSUE_NUMBER"
 ```
 
 - [ ] **Step 5: Commit the triage script**
@@ -281,7 +281,7 @@ set -euo pipefail
 DAYS="${1:-7}"
 THRESHOLD="${2:-0.3}"
 SINCE_DATE=$(date -u -d "${DAYS} days ago" +%Y-%m-%dT%H:%M:%SZ 2>/dev/null || date -u -v-${DAYS}d +%Y-%m-%dT%H:%M:%SZ)
-QUEUE_REPO="jonesrussell/blog"
+QUEUE_REPO="jonesrussell/jonesrussell"
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 VALIDATOR="node ${SCRIPT_DIR}/../schemas/validate.js"
 REPOS=("waaseyaa/framework" "waaseyaa/giiken" "jonesrussell/blog" "jonesrussell/jonesrussell")
@@ -601,7 +601,7 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          REPO="jonesrussell/blog"
+          REPO="jonesrussell/jonesrussell"
           CUTOFF=$(date -u -d "14 days ago" +%Y-%m-%dT%H:%M:%SZ)
           CLOSED_COUNT=0
 
@@ -702,7 +702,7 @@ git commit -m "feat: update curate skill for grouped seeds, confidence sort, ski
 
 - [ ] **Step 1: Verify triage results**
 
-Run: `gh issue list --repo jonesrussell/blog --label "content-queue" --limit 50 --json number,title,labels --jq '.[] | "#\(.number): \(.title) [\(.labels | map(.name) | join(", "))]"'`
+Run: `gh issue list --repo jonesrussell/jonesrussell --label "content-queue" --limit 50 --json number,title,labels --jq '.[] | "#\(.number): \(.title) [\(.labels | map(.name) | join(", "))]"'`
 
 Expected: 8-12 focused content items, all labeled `content-queue` + `stage:mined`. No social schedule posts, no infrastructure tasks, no blog audits.
 

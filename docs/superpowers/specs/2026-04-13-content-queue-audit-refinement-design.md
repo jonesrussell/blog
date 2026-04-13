@@ -8,7 +8,7 @@
 
 ## Overview
 
-The content queue (GitHub Issues in `jonesrussell/blog` with `content-queue` label) has grown to ~66 issues with mixed concerns: content ideas, scheduled social posts, infrastructure tasks, and blog audits. Mining produces one issue per qualifying commit, resulting in high volume and low signal. Nothing has moved past `stage:mined`. This spec addresses both the immediate cleanup and the structural changes to prevent recurrence.
+The content queue (GitHub Issues in `jonesrussell/jonesrussell` with `content-queue` label) has grown to ~66 issues with mixed concerns: content ideas, scheduled social posts, infrastructure tasks, and blog audits. Mining produces one issue per qualifying commit, resulting in high volume and low signal. Nothing has moved past `stage:mined`. This spec addresses both the immediate cleanup and the structural changes to prevent recurrence.
 
 ### Goals
 
