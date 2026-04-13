@@ -61,9 +61,9 @@ for repo in "${REPOS[@]}"; do
     # Fetch files changed for this commit
     FILES_JSON=$(gh api "repos/${repo}/commits/${SHA}" --jq '[.files[].filename]' 2>/dev/null || echo "[]")
 
-    # Determine the most-changed file's first two path segments for grouping
-    # Pick the first file as representative (gh API returns them by change count)
-    MOST_CHANGED=$(echo "$FILES_JSON" | jq -r '.[0] // ""')
+    # Determine the most common directory among changed files for grouping
+    # Use frequency count rather than picking a single file
+    MOST_CHANGED=$(echo "$FILES_JSON" | jq -r '.[]' | awk -F'/' '{if(NF>=2) print $1"/"$2; else print $1}' | sort | uniq -c | sort -rn | head -1 | awk '{print $2}')
 
     if [[ -z "$MOST_CHANGED" || "$MOST_CHANGED" == "null" ]]; then
       GROUP_KEY="${repo}"
@@ -195,12 +195,11 @@ for group_file in "${TMPDIR_WORK}"/*.jsonl; do
   SOURCE_REFS=$(jq -r --arg repo "$REPO" '"https://github.com/" + $repo + "/commit/" + .sha' "$group_file" | jq -R -s 'split("\n") | map(select(length > 0))')
 
   # Build content seed: unique commit messages (max 5, then "... and N more")
-  UNIQUE_MESSAGES=$(jq -r '.message' "$group_file" | head -1 | sort -u)
   UNIQUE_MESSAGES=$(jq -r '.message' "$group_file" | while IFS= read -r msg; do echo "$msg" | head -1; done | sort -u)
   MSG_COUNT=$(echo "$UNIQUE_MESSAGES" | wc -l)
 
   if [[ "$MSG_COUNT" -le 5 ]]; then
-    CONTENT_SEED=$(echo "$UNIQUE_MESSAGES" | sed 's/^/- /' | tr '\n' '\n')
+    CONTENT_SEED=$(echo "$UNIQUE_MESSAGES" | sed 's/^/- /')
   else
     FIRST_FIVE=$(echo "$UNIQUE_MESSAGES" | head -5 | sed 's/^/- /')
     REMAINING=$((MSG_COUNT - 5))
