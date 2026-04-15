@@ -1,11 +1,17 @@
 ---
-title: "Bimaaji: agent-safe mutations for Waaseyaa"
-date: 2026-04-14
-categories: [ai]
-tags: [waaseyaa, ai-agents, php, sovereignty]
-summary: "Why AI agents modifying a Waaseyaa app need a DSL, an AST-safe patch generator, and sovereignty guardrails, instead of raw file edits."
-slug: "bimaaji-agent-safe-mutations"
+categories:
+    - ai
+date: 2026-04-14T00:00:00Z
+devto_id: 3506802
 draft: true
+slug: bimaaji-agent-safe-mutations
+summary: Why AI agents modifying a Waaseyaa app need a DSL, an AST-safe patch generator, and sovereignty guardrails, instead of raw file edits.
+tags:
+    - waaseyaa
+    - ai-agents
+    - php
+    - sovereignty
+title: 'Bimaaji: agent-safe mutations for Waaseyaa'
 ---
 
 Ahnii!
