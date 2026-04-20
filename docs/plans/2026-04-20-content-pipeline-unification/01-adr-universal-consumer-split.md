@@ -79,8 +79,8 @@ because W3 suggested putting synthesis in NC, stop and re-read.
   disagree on value, it goes in the consumer.
 - The blog holds a local envelope index — small operational footprint but
   real (storage, backfill after a blog outage, schema evolution with NC).
-  Mitigated by W2 using a simple store (SQLite default) keyed on NC
-  `content_id` with a TTL.
+  Mitigated by W2 owning the index technology choice, keyed on NC
+  `content_id`.
 - Consumer-side synthesis runs per-consumer. Second consumer means duplicate
   work until promotion happens. Acceptable for v1 with one consumer.
 

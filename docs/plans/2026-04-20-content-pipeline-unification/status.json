@@ -3,7 +3,7 @@
     "name": "Content Pipeline Unification",
     "slug": "content-pipeline-unification",
     "started": "2026-04-20",
-    "last_updated": "2026-04-20T00:00:00Z",
+    "last_updated": "2026-04-20T15:00:00Z",
     "docs": {
       "overview": "00-overview.md",
       "adrs": ["01-adr-universal-consumer-split.md"],
@@ -26,7 +26,7 @@
       "summary": "Extend NC envelope with entities[], canonical_excerpt, language. Lock schema against 02-contracts.md.",
       "status": "not-started",
       "depends_on": [],
-      "kickoff_prompt": "Execute workstream W1a from the content-pipeline-unification initiative.\n\nBefore doing anything:\n- cd ~/dev/blog && git pull origin main\n- cd ~/dev/north-cloud && git pull origin main\n- Read these planning docs in ~/dev/blog/docs/plans/2026-04-20-content-pipeline-unification/: README.md, 00-overview.md, 01-adr-universal-consumer-split.md, 02-contracts.md, workstreams/W1a.md.\n- Read ~/dev/north-cloud/classifier/CLAUDE.md and the existing 4-step classification pipeline.\n\nWhat to build:\n1. Add entities[], canonical_excerpt, language fields to the NC envelope.\n2. Choose and implement an NER approach. Write a short ADR under ~/dev/north-cloud/docs/specs/ capturing the choice between: rules-based, a new ML sidecar matching the mining-ml/indigenous-ml pattern, or an LLM call. Pick on constraints (latency, cost, deploy footprint), not preferences. Implement the chosen approach.\n3. Emit canonical_excerpt from the crawled/normalized content.\n4. Emit language via a cheap language-detection pass.\n5. Add a test that asserts the envelope shape against 02-contracts.md for at least two sources.\n6. Update ~/dev/north-cloud/docs/specs/classification.md with the new fields.\n\nAcceptance criteria:\n- Every item published on routing-layer channels includes the three new fields with types matching 02-contracts.md.\n- task lint and task test pass in ~/dev/north-cloud.\n- Contract doc and code agree; if they disagree, edit the contract first, then update code.\n\nOut of scope (do not touch):\n- Workstreams W1b, W2, W3, W4, W5. If you think you need something from another workstream, stop and escalate -- do not expand scope.\n- NC window-query HTTP API (deferred; see 03-sequencing.md).\n- Blog repo code beyond the planning directory.\n\nWhen done:\n- Edit ~/dev/blog/docs/plans/2026-04-20-content-pipeline-unification/status.json to mark this workstream's tasks done and update last_updated.\n- Regenerate status.js per README instructions.\n- Commit planning updates separately from NC code.",
+      "kickoff_prompt": "Execute workstream W1a from the content-pipeline-unification initiative.\n\nBefore doing anything:\n- cd ~/dev/blog && git pull origin main\n- cd ~/dev/north-cloud && git pull origin main\n- Read these planning docs in ~/dev/blog/docs/plans/2026-04-20-content-pipeline-unification/: README.md, 00-overview.md, 01-adr-universal-consumer-split.md, 02-contracts.md (the \"Field shapes\" and \"Schema evolution\" sections are load-bearing), workstreams/W1a.md (including the \"Rollout & backfill\" and \"Scope: NER choice may force a split\" sections).\n- Read ~/dev/north-cloud/classifier/CLAUDE.md and the existing 4-step classification pipeline.\n\nWhat to build:\n1. Add entities[], canonical_excerpt, language fields to the NC envelope. Field shapes are locked in 02-contracts.md -- match them exactly.\n2. Choose and implement an NER approach. Write a short ADR under ~/dev/north-cloud/docs/specs/ capturing the choice between: rules-based, a new ML sidecar matching the mining-ml/indigenous-ml pattern, or an LLM call. Pick on constraints (latency, cost, deploy footprint), not preferences. IMPORTANT: if the chosen approach is a new ML sidecar, STOP this workstream. Update status.json to split W1a into W1a-ner (sidecar) and W1a-envelope (fields + schema lock + ES mappings) per workstreams/W1a.md \"Scope: NER choice may force a split\", and re-kickoff the split workstreams. Rules-based and LLM-call keep W1a as-is.\n3. Emit canonical_excerpt per the derivation rule in 02-contracts.md (meta description if >= 80 chars, otherwise first paragraph trimmed to 400 chars on a word boundary, plain text only).\n4. Emit language via a cheap language-detection pass.\n5. Update Elasticsearch index mappings for the new fields across *_classified_content indexes. Document and verify the reindex or mapping-update path on a test index.\n6. Add a test that asserts the envelope shape against 02-contracts.md for at least two sources.\n7. Update ~/dev/north-cloud/docs/specs/classification.md with the new fields.\n\nRollout policy: forward-only by default. New fields populate on items classified after deploy. Existing ES docs are not re-classified unless the NER ADR explicitly calls for a one-time backfill sweep. W3 and downstream consumers see partial envelope data for ~7 days after deploy -- expected and documented.\n\nAcceptance criteria:\n- Every item published on routing-layer channels includes the three new fields with shapes matching 02-contracts.md.\n- ES index mappings updated; reindex/mapping-update path documented and verified on a test index.\n- task lint and task test pass in ~/dev/north-cloud.\n- Contract doc and code agree; if they disagree, edit the contract first, then update code.\n\nOut of scope (do not touch):\n- Workstreams W1b, W2, W3, W4, W5. If you think you need something from another workstream, stop and escalate -- do not expand scope.\n- NC window-query HTTP API (deferred; see 03-sequencing.md).\n- Blog repo code beyond the planning directory.\n\nWhen done:\n- Edit ~/dev/blog/docs/plans/2026-04-20-content-pipeline-unification/status.json to mark this workstream's tasks done and update last_updated.\n- Regenerate status.js per README instructions.\n- Commit planning updates separately from NC code.",
       "tasks": [
         {
           "id": "W1a.T1",
@@ -70,16 +70,18 @@
         },
         {
           "id": "W1a.T3",
-          "title": "Envelope schema test + contract-code parity",
+          "title": "Envelope schema test + ES mappings + contract-code parity",
           "repos": ["north-cloud"],
           "status": "not-started",
           "assigned_session": "",
           "blockers": [],
           "acceptance": [
             "Test asserts envelope shape for at least two sources",
-            "02-contracts.md and code agree"
+            "02-contracts.md and code agree",
+            "ES index mappings updated across *_classified_content",
+            "Reindex or mapping-update path documented and verified on a test index"
           ],
-          "complexity": "S",
+          "complexity": "M",
           "links": [
             { "label": "Contracts", "href": "02-contracts.md" }
           ],

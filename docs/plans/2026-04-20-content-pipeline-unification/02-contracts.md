@@ -20,12 +20,12 @@ treat fields as read-only.
 | `quality_score` | classifier Step 2 | 0–100 integer |
 | `quality_components` | classifier Step 2 | `{ word_count, metadata, richness, readability }` |
 | `spam_flag` | classifier Step 2 | boolean |
-| `topics[]` | classifier Step 3 | Priority-ordered topic tags from `classification_rules` |
-| `topic_scores[]` | classifier Step 3 | Per-topic confidence |
+| `topics[]` | classifier Step 3 | Priority-ordered topic tag strings from `classification_rules` |
+| `topic_scores[]` | classifier Step 3 | Keyed objects. See "Field shapes" below. |
 | `source_reputation` | classifier Step 4 | 0–100 integer |
 | `domain_tags[]` | publisher routing layers | crime, mining, indigenous, coforge, rfp, etc. |
-| `entities[]` | **new (W1a)** | NER output: people, orgs, products, places |
-| `canonical_excerpt` | **new (W1a)** | Normalized summary from crawl |
+| `entities[]` | **new (W1a)** | Structured NER output. See "Field shapes" below. |
+| `canonical_excerpt` | **new (W1a)** | Normalized plain-text summary. See "Field shapes" below for derivation rule. |
 | `language` | **new (W1a)** | ISO-639-1 |
 | `dedup_cluster_id` | **new (W1b)** | Shared ID across items telling the same story |
 | `related_content_ids[]` | **new (W1b)** | Cross-item "see also" via entity/topic overlap |
@@ -36,6 +36,75 @@ channels or channel reuse is decided during W1a schema lock.
 
 Consumers must ignore unknown fields and tolerate missing new fields during
 rollout. The envelope schema is additive.
+
+## Field shapes (locked)
+
+Shapes below are locked in the contract. W1a and W1b match exactly. If
+implementation finds a reason to diverge, edit this doc first.
+
+### `entities[]`
+
+Structured array of NER output. Each entry:
+
+```text
+{
+  "name": "string",
+  "type": "person" | "organization" | "product" | "place" | "event",
+  "confidence": number in [0, 1],
+  "char_offsets": [start, end] | null
+}
+```
+
+- `type` enum covers people, organizations, products (software, services,
+  models), places (geographic or venue), and events (conferences, product
+  launches, fundraising rounds — relevant for digest synthesis).
+  If W1a's NER research finds a stable library taxonomy that differs, update
+  this enum in one pass across this doc and the implementation.
+- `confidence` is a number in `[0, 1]` inclusive.
+- `char_offsets` is nullable. If the chosen NER approach cannot produce
+  reliable offsets (e.g., an LLM-call returning only surface forms), emit
+  `null`. Consumers must tolerate `null`.
+
+### `topic_scores[]`
+
+Keyed objects, not parallel arrays:
+
+```text
+[
+  { "topic": "string", "score": number in [0, 1] }
+]
+```
+
+Keyed form chosen because it survives topic-list reordering and additions
+without downstream correctness bugs. `topics[]` remains a priority-ordered
+string list for consumers that only need tag names; `topic_scores[]` is the
+source of truth for confidences.
+
+### `canonical_excerpt`
+
+Plain text, no HTML. Derivation rule:
+
+1. If the crawled item has a `meta` description with ≥ 80 characters after
+   trimming, use it verbatim.
+2. Otherwise, take the first paragraph of the normalized body, strip HTML,
+   trim to 400 characters on a word boundary (append a single ellipsis if
+   truncated).
+
+Rule is locked in the contract. W1a owns the implementation and may adjust
+the specific selectors it uses to find "meta" or "first paragraph" based on
+the existing crawler's output shape, but the selection priority
+(meta-then-body) and length thresholds (80 / 400) stay.
+
+## Schema evolution
+
+Contract changes during this initiative are **additive-only**. Adding a new
+field is safe at any time; renames and type changes are not.
+
+Renames or type changes require a deprecation window: ship the new field
+alongside the old, give consumers time to migrate, remove the old field
+after migration is complete. This doc records the deprecation window's
+start date and planned removal date when one is opened. No deprecations
+are in flight as of 2026-04-20.
 
 ## Blog content-queue issue shape (consumer)
 
