@@ -68,9 +68,11 @@ One envelope in, one issue shape out, deterministic mapping between them.
 ## Definition of done
 
 - All v1 workstreams in `status.json` marked `done`.
-- One end-to-end run from signal to published artifact for each of: a git
-  commit, an NC-classified article, a weekly roundup. All three produce
-  identically-shaped `stage:mined` issues.
+- End-to-end run for each of: git activity, NC-classified article, weekly
+  roundup. All three produce identically-shaped `stage:mined` issues with
+  all envelope and consumer fields populated. W4 additionally produces a
+  Substack draft for issues that list substack as a channel; posting is
+  out of scope.
 - Plan artifacts merged into `main` (or retained on
   `plan/content-pipeline-unification` as the durable operator surface — the
   merge decision is a retrospective, not a blocker).

@@ -3,7 +3,7 @@ window.STATUS = {
     "name": "Content Pipeline Unification",
     "slug": "content-pipeline-unification",
     "started": "2026-04-20",
-    "last_updated": "2026-04-20T16:00:00Z",
+    "last_updated": "2026-04-20T17:00:00Z",
     "docs": {
       "overview": "00-overview.md",
       "adrs": ["01-adr-universal-consumer-split.md"],
@@ -26,40 +26,7 @@ window.STATUS = {
       "summary": "Extend NC envelope with entities[], canonical_excerpt, language. Lock schema against 02-contracts.md.",
       "status": "not-started",
       "depends_on": [],
-      "kickoff_prompt": "Execute workstream W1a from the content-pipeline-unification initiative.
-
-Before doing anything:
-- cd ~/dev/blog && git pull origin main
-- cd ~/dev/north-cloud && git pull origin main
-- Read these planning docs in ~/dev/blog/docs/plans/2026-04-20-content-pipeline-unification/: README.md, 00-overview.md, 01-adr-universal-consumer-split.md, 02-contracts.md (the \"Field shapes\" and \"Schema evolution\" sections are load-bearing), workstreams/W1a.md (including the \"Rollout & backfill\" and \"Scope: NER choice may force a split\" sections).
-- Read ~/dev/north-cloud/classifier/CLAUDE.md and the existing 4-step classification pipeline.
-
-What to build:
-1. Add entities[], canonical_excerpt, language fields to the NC envelope. Field shapes are locked in 02-contracts.md -- match them exactly.
-2. Choose and implement an NER approach. Write a short ADR under ~/dev/north-cloud/docs/specs/ capturing the choice between: rules-based, a new ML sidecar matching the mining-ml/indigenous-ml pattern, or an LLM call. Pick on constraints (latency, cost, deploy footprint), not preferences. IMPORTANT: if the chosen approach is a new ML sidecar, STOP this workstream. Update status.json to split W1a into W1a-ner (sidecar) and W1a-envelope (fields + schema lock + ES mappings) per workstreams/W1a.md \"Scope: NER choice may force a split\", and re-kickoff the split workstreams. Rules-based and LLM-call keep W1a as-is.
-3. Emit canonical_excerpt per the derivation rule in 02-contracts.md (meta description if >= 80 chars, otherwise first paragraph trimmed to 400 chars on a word boundary, plain text only).
-4. Emit language via a cheap language-detection pass.
-5. Update Elasticsearch index mappings for the new fields across *_classified_content indexes. Document and verify the reindex or mapping-update path on a test index.
-6. Add a test that asserts the envelope shape against 02-contracts.md for at least two sources.
-7. Update ~/dev/north-cloud/docs/specs/classification.md with the new fields.
-
-Rollout policy: forward-only by default. New fields populate on items classified after deploy. Existing ES docs are not re-classified unless the NER ADR explicitly calls for a one-time backfill sweep. W3 and downstream consumers see partial envelope data for ~7 days after deploy -- expected and documented.
-
-Acceptance criteria:
-- Every item published on routing-layer channels includes the three new fields with shapes matching 02-contracts.md.
-- ES index mappings updated; reindex/mapping-update path documented and verified on a test index.
-- task lint and task test pass in ~/dev/north-cloud.
-- Contract doc and code agree; if they disagree, edit the contract first, then update code.
-
-Out of scope (do not touch):
-- Workstreams W1b, W2, W3, W4, W5. If you think you need something from another workstream, stop and escalate -- do not expand scope.
-- NC window-query HTTP API (deferred; see 03-sequencing.md).
-- Blog repo code beyond the planning directory.
-
-When done:
-- Edit ~/dev/blog/docs/plans/2026-04-20-content-pipeline-unification/status.json to mark this workstream's tasks done and update last_updated.
-- Regenerate status.js per README instructions.
-- Commit planning updates separately from NC code.",
+      "kickoff_prompt": "Execute workstream W1a from the content-pipeline-unification initiative.\n\nBefore doing anything:\n- cd ~/dev/blog && git pull origin main\n- cd ~/dev/north-cloud && git pull origin main\n- Read these planning docs in ~/dev/blog/docs/plans/2026-04-20-content-pipeline-unification/: README.md, 00-overview.md, 01-adr-universal-consumer-split.md, 02-contracts.md (the \"Field shapes\" and \"Schema evolution\" sections are load-bearing), workstreams/W1a.md (including the \"Rollout & backfill\" and \"Scope: NER choice may force a split\" sections).\n- Read ~/dev/north-cloud/classifier/CLAUDE.md and the existing 4-step classification pipeline.\n\nWhat to build:\n1. Add entities[], canonical_excerpt, language fields to the NC envelope. Field shapes are locked in 02-contracts.md -- match them exactly.\n2. Choose and implement an NER approach. Write a short ADR under ~/dev/north-cloud/docs/specs/ capturing the choice between: rules-based, a new ML sidecar matching the mining-ml/indigenous-ml pattern, or an LLM call. Pick on constraints (latency, cost, deploy footprint), not preferences. IMPORTANT: if the chosen approach is a new ML sidecar, STOP this workstream. Update status.json to split W1a into W1a-ner (sidecar) and W1a-envelope (fields + schema lock + ES mappings) per workstreams/W1a.md \"Scope: NER choice may force a split\", and re-kickoff the split workstreams. Rules-based and LLM-call keep W1a as-is.\n3. Emit canonical_excerpt per the derivation rule in 02-contracts.md (meta description if >= 80 chars, otherwise first paragraph trimmed to 400 chars on a word boundary, plain text only).\n4. Emit language via a cheap language-detection pass.\n5. Update Elasticsearch index mappings for the new fields across *_classified_content indexes. Document and verify the reindex or mapping-update path on a test index.\n6. Add a test that asserts the envelope shape against 02-contracts.md for at least two sources.\n7. Update ~/dev/north-cloud/docs/specs/classification.md with the new fields.\n\nRollout policy: forward-only by default. New fields populate on items classified after deploy. Existing ES docs are not re-classified unless the NER ADR explicitly calls for a one-time backfill sweep. W3 and downstream consumers see partial envelope data for ~7 days after deploy -- expected and documented.\n\nAcceptance criteria:\n- Every item published on routing-layer channels includes the three new fields with shapes matching 02-contracts.md.\n- ES index mappings updated; reindex/mapping-update path documented and verified on a test index.\n- task lint and task test pass in ~/dev/north-cloud.\n- Contract doc and code agree; if they disagree, edit the contract first, then update code.\n\nOut of scope (do not touch):\n- Workstreams W1b, W2, W3, W4, W5. If you think you need something from another workstream, stop and escalate -- do not expand scope.\n- NC window-query HTTP API (deferred; see 03-sequencing.md).\n- Blog repo code beyond the planning directory.\n\nWhen done:\n- Edit ~/dev/blog/docs/plans/2026-04-20-content-pipeline-unification/status.json to mark this workstream's tasks done and update last_updated.\n- Regenerate status.js per README instructions.\n- Commit planning updates separately from NC code.",
       "tasks": [
         {
           "id": "W1a.T1",
@@ -130,48 +97,23 @@ When done:
       "slug": "nc-cross-item-clustering",
       "plan_doc": "workstreams/W1b.md",
       "repos": ["north-cloud"],
-      "summary": "dedup_cluster_id and related_content_ids[] on the envelope, via URL canon + title hash + entity Jaccard.",
+      "summary": "dedup_cluster_id and related_content_ids[] on the envelope. URL canon + title hash + entity Jaccard over {name, type} with confidence >= 0.6.",
       "status": "not-started",
       "depends_on": ["W1a"],
-      "kickoff_prompt": "Execute workstream W1b from the content-pipeline-unification initiative.
-
-Before doing anything:
-- cd ~/dev/blog && git pull origin main
-- cd ~/dev/north-cloud && git pull origin main
-- Read planning docs: ~/dev/blog/docs/plans/2026-04-20-content-pipeline-unification/README.md, 00-overview.md, 01-adr-universal-consumer-split.md, 02-contracts.md, 03-sequencing.md, workstreams/W1b.md.
-- Read ~/dev/north-cloud/classifier/CLAUDE.md and the dedup code in ~/dev/north-cloud/publisher/internal/dedup/.
-- Confirm W1a is marked done in status.json before starting. If not, stop and escalate.
-
-What to build:
-1. A clustering pass that assigns dedup_cluster_id and populates related_content_ids[] on every classified item. Start with the simplest correct heuristic: URL canonicalization + title hash + entity Jaccard. No embeddings in v1.
-2. Decide placement: inside the classifier (tighter coupling, simpler) or as a new pass (looser, more moving parts). Document the choice in ~/dev/north-cloud/docs/specs/classification.md.
-3. Preserve existing per-item dedup semantics in publisher/internal/dedup/. If they are superseded, say so explicitly in the spec.
-4. Update the envelope schema test from W1a to cover the two new fields.
-
-Acceptance criteria:
-- Two items from different sources telling the same story share dedup_cluster_id.
-- related_content_ids[] populated for items with entity+topic overlap in the configurable window (default 14 days).
-- task lint and task test pass in ~/dev/north-cloud.
-
-Out of scope (do not touch):
-- Workstreams W1a, W2, W3, W4, W5.
-- NC window-query HTTP API.
-- Blog repo code beyond the planning directory.
-
-When done:
-- Update status.json and regenerate status.js per README.
-- Commit NC code and contracts-doc update separately if touched.",
+      "kickoff_prompt": "Execute workstream W1b from the content-pipeline-unification initiative.\n\nBefore doing anything:\n- cd ~/dev/blog && git pull origin main\n- cd ~/dev/north-cloud && git pull origin main\n- Read planning docs: ~/dev/blog/docs/plans/2026-04-20-content-pipeline-unification/README.md, 00-overview.md, 01-adr-universal-consumer-split.md, 02-contracts.md, 03-sequencing.md, workstreams/W1b.md (clustering heuristics, merge rules, and window semantics are specified explicitly; follow them).\n- Read ~/dev/north-cloud/classifier/CLAUDE.md and the dedup code in ~/dev/north-cloud/publisher/internal/dedup/.\n- Confirm W1a is marked done in status.json before starting. If not, stop and escalate.\n\nWhat to build:\n1. A clustering pass that assigns dedup_cluster_id and populates related_content_ids[] on every classified item. v1 heuristic: (a) URL canonicalization, (b) title hash, (c) entity Jaccard over {name, type} tuples, considering only entities with confidence >= 0.6 (configurable). No embeddings in v1.\n2. Cluster merge rule: if a candidate item overlaps with two existing clusters A and B, it joins the older cluster by first_seen_at and logs a line recording the candidate content_id, chosen cluster id, and rejected cluster id.\n3. related_content_ids[]: entity/topic overlap window measured against published_at (not ingested_at), default 14 days, configurable. Cap at top 10 by overlap score (configurable), ties broken by published_at desc.\n4. Decide placement: inside the classifier (tighter coupling, simpler) or as a new pass (looser, more moving parts). Document the choice in ~/dev/north-cloud/docs/specs/classification.md.\n5. Preserve existing per-item dedup semantics in publisher/internal/dedup/. If they are superseded, say so explicitly in the spec.\n6. Update the envelope schema test from W1a to cover the two new fields.\n\nAcceptance criteria:\n- Two items from different sources telling the same story share dedup_cluster_id.\n- Low-confidence NER output (below 0.6) does not drive clustering.\n- Two-cluster merge conflict resolves to the older cluster and logs.\n- related_content_ids[] populated and capped at the configured limit; window measured against published_at.\n- task lint and task test pass in ~/dev/north-cloud.\n\nOut of scope (do not touch):\n- Workstreams W1a, W2, W3, W4, W5.\n- NC window-query HTTP API.\n- Blog repo code beyond the planning directory.\n\nWhen done:\n- Update status.json and regenerate status.js per README.\n- Commit NC code and contracts-doc update separately if touched.",
       "tasks": [
         {
           "id": "W1b.T1",
-          "title": "Clustering pass (URL canon + title hash + entity Jaccard)",
+          "title": "Clustering pass + merge rule + related_content_ids window",
           "repos": ["north-cloud"],
           "status": "not-started",
           "assigned_session": "",
           "blockers": [],
           "acceptance": [
             "Two items telling same story share dedup_cluster_id",
-            "related_content_ids[] populated on entity+topic overlap",
+            "Entity Jaccard respects confidence threshold (default 0.6)",
+            "Merge conflict resolves to older cluster by first_seen_at and logs",
+            "related_content_ids[] window measured against published_at, capped at 10",
             "Placement decision documented in classification.md"
           ],
           "complexity": "M",
@@ -190,42 +132,10 @@ When done:
       "slug": "blog-consumer-subscriber",
       "plan_doc": "workstreams/W2.md",
       "repos": ["blog"],
-      "summary": "Redis subscriber, local envelope index, entity fan-in indexes, envelope to issue translator.",
+      "summary": "Redis subscriber, local envelope index, entity fan-in indexes, envelope to issue translator, coforge cutover on deploy.",
       "status": "not-started",
       "depends_on": ["W1a"],
-      "kickoff_prompt": "Execute workstream W2 from the content-pipeline-unification initiative.
-
-Before doing anything:
-- cd ~/dev/blog && git pull origin main
-- cd ~/dev/north-cloud && git pull origin main
-- Read planning docs: ~/dev/blog/docs/plans/2026-04-20-content-pipeline-unification/README.md, 00-overview.md, 01-adr-universal-consumer-split.md, 02-contracts.md, 03-sequencing.md, workstreams/W2.md (the Suggested inference rules and Fan-in indexing strategy sections are load-bearing; the angle_hypothesis decision inside the inference rules section is already made -- do not relitigate).
-- Read blog's existing pipeline skills under ~/.claude/skills/content-*/ to understand the current content-queue issue shape and how production and distribution consume it. Do not modify them.
-- Confirm W1a is marked done in status.json. If not, stop and escalate.
-
-What to build:
-1. A blog-side subscriber service that reads NC envelopes from Redis. Language: Go preferred to match NC. Decide at kickoff and document.
-2. A local envelope index keyed on content_id with a 90-day TTL. Implementation: SQLite unless a concrete reason says otherwise. Location: ~/.blog-pipeline/ (or similar), documented in blog CLAUDE.md.
-3. Entity -> queue-issue index built by scanning open content-queue issues on jonesrussell/jonesrussell.
-4. Entity -> published-post index built by scanning ~/dev/blog/content/posts/**/*.md frontmatter and body.
-5. NC envelope -> content-queue issue translator producing all consumer fields in 02-contracts.md. Inference rules must be deterministic functions of envelope fields (not coin-flips). Document them in the service's README.
-6. GitHub issue writer with labels content-queue, stage:mined, source:<origin>, and appropriate type:* from 02-contracts.md.
-
-Acceptance criteria:
-- Envelope on a subscribed channel -> exactly one stage:mined issue with all consumer fields populated and all labels correct.
-- Idempotent on content_id (re-delivery does not double-create).
-- related_queue_issues[] and related_published_posts[] verified against two hand-picked examples.
-- Crash/restart test: kill mid-stream, restart, no loss and no dupes.
-- CLAUDE.md updated with the subscriber's Gotcha entry and backfill recipe.
-
-Out of scope (do not touch):
-- Workstreams W1a, W1b, W3, W4, W5.
-- NC code (this is blog-side only).
-- Production or distribution skills -- issue creation ends at stage:mined.
-- Existing content-mine workflow (that is W5's job).
-
-When done:
-- Update status.json and regenerate status.js per README.
-- Commit blog code and CLAUDE.md updates.",
+      "kickoff_prompt": "Execute workstream W2 from the content-pipeline-unification initiative.\n\nBefore doing anything:\n- cd ~/dev/blog && git pull origin main\n- cd ~/dev/north-cloud && git pull origin main\n- Read planning docs: ~/dev/blog/docs/plans/2026-04-20-content-pipeline-unification/README.md, 00-overview.md, 01-adr-universal-consumer-split.md, 02-contracts.md, 03-sequencing.md, workstreams/W2.md (the Suggested inference rules, Fan-in indexing strategy, and Rollout sections are load-bearing; the angle_hypothesis decision inside the inference rules section is already made -- do not relitigate).\n- Read blog's existing pipeline skills under ~/.claude/skills/content-*/ to understand the current content-queue issue shape and how production and distribution consume it. Do not modify them.\n- Confirm W1a is marked done in status.json. If not, stop and escalate.\n\nWhat to build:\n1. A blog-side subscriber service that reads NC envelopes from Redis. Language: Go preferred to match NC. Decide at kickoff and document.\n2. A local envelope index keyed on content_id with a 90-day TTL. Implementation: SQLite unless a concrete reason says otherwise. Location: ~/.blog-pipeline/ (or similar), documented in blog CLAUDE.md.\n3. Entity -> queue-issue index built by scanning open content-queue issues on jonesrussell/jonesrussell.\n4. Entity -> published-post index built by scanning ~/dev/blog/content/posts/**/*.md frontmatter and body.\n5. NC envelope -> content-queue issue translator producing all consumer fields in 02-contracts.md. Inference rules must be deterministic functions of envelope fields (angle_hypothesis uses a cached LLM call per content_id -- see W2.md). Document rules in the service's README.\n6. GitHub issue writer with labels content-queue, stage:mined, source:<origin>, and appropriate type:* from 02-contracts.md.\n\nDeploy requirement:\n- W2's deploy disables the legacy coforge Redis subscriber in the same change. Running both simultaneously produces duplicate issues on coforge:core. Follow the Rollout deploy checklist: verify W2 live before disabling legacy; verify no duplicates after. Broader intake-unification (content-mine, source:git) stays W5's job.\n\nAcceptance criteria:\n- Envelope on a subscribed channel -> exactly one stage:mined issue with all consumer fields populated and all labels correct.\n- Idempotent on content_id (re-delivery does not double-create).\n- related_queue_issues[] and related_published_posts[] verified against two hand-picked examples.\n- Crash/restart test: kill mid-stream, restart, no loss and no dupes.\n- Legacy coforge subscriber disabled in same deploy; no duplicate coforge:core issues after cutover.\n- CLAUDE.md updated with the subscriber's Gotcha entry and backfill recipe.\n\nOut of scope (do not touch):\n- Workstreams W1a, W1b, W3, W4, W5.\n- NC code (this is blog-side only).\n- Production or distribution skills -- issue creation ends at stage:mined.\n- Content-mine workflow code deletion (W5's job; W2 only disables coforge).\n\nWhen done:\n- Update status.json and regenerate status.js per README.\n- Commit blog code and CLAUDE.md updates.",
       "tasks": [
         {
           "id": "W2.T1",
@@ -285,6 +195,26 @@ When done:
           "kickoff_prompt": "",
           "notes": "",
           "updated_at": "2026-04-20T00:00:00Z"
+        },
+        {
+          "id": "W2.T4",
+          "title": "Legacy coforge subscriber cutover on deploy",
+          "repos": ["blog"],
+          "status": "not-started",
+          "assigned_session": "",
+          "blockers": [],
+          "acceptance": [
+            "W2 running and producing stage:mined issues for a known coforge:core item",
+            "Legacy coforge subscriber disabled in same deploy change",
+            "No duplicate issues on coforge:core after cutover"
+          ],
+          "complexity": "S",
+          "links": [
+            { "label": "Rollout section", "href": "workstreams/W2.md" }
+          ],
+          "kickoff_prompt": "",
+          "notes": "",
+          "updated_at": "2026-04-20T00:00:00Z"
         }
       ]
     },
@@ -294,43 +224,31 @@ When done:
       "slug": "weekly-roundup",
       "plan_doc": "workstreams/W3.md",
       "repos": ["blog"],
-      "summary": "Monday scheduled synthesis from the local envelope index. Retire the Cowork task after two-week parity.",
+      "summary": "Monday synthesis from local envelope index. Step 0: topic-coverage verification against NC source registry. Retire Cowork task after two-week parity.",
       "status": "not-started",
       "depends_on": ["W2"],
-      "kickoff_prompt": "Execute workstream W3 from the content-pipeline-unification initiative.
-
-Before doing anything:
-- cd ~/dev/blog && git pull origin main
-- cd ~/dev/north-cloud && git pull origin main
-- Read planning docs: ~/dev/blog/docs/plans/2026-04-20-content-pipeline-unification/README.md, 01-adr-universal-consumer-split.md (especially the \"Where synthesis signals live\" section), 02-contracts.md, workstreams/W3.md.
-- Confirm W2 is marked done in status.json. If not, stop and escalate.
-
-What to build:
-1. A Monday ~8am UTC scheduled job (GitHub Action preferred) that reads the last 7 days of NC envelopes from the blog's local index and synthesizes a four-section industry roundup (AI/ML, software development, tech business, cybersecurity).
-2. Preserve the Cowork task's instruction text verbatim for the first two weeks, then allow edits. The instruction text should live in this workstream's directory or next to the GitHub Action; copy it in faithfully.
-3. Output:
-   - Default: Hugo draft under ~/dev/blog/content/posts/general/industry-roundup-YYYY-MM-DD/index.md following the blog's page-bundle convention.
-   - Optional: Substack draft under ~/brand/substack-issue-N.md. Decide with Russell at kickoff.
-4. Open a content-queue issue with:
-   - labels: content-queue, stage:ready, type:blog-post (or type:substack-issue), source:weekly-roundup
-   - body: link to the draft + short summary + source_signal_ids[] from the envelope index (preserve provenance).
-5. Run for two consecutive Mondays alongside the Cowork task. Compare outputs. After sign-off, disable the Cowork schedule.
-
-Acceptance criteria:
-- Issue opens within 10 minutes of schedule.
-- Output is a pure function of local index + instruction template.
-- Empty-topic sections say \"no significant news this week\" rather than fabricating.
-- Two weeks of side-by-side parity with Cowork before retiring the old task.
-
-Out of scope (do not touch):
-- Workstreams W1a, W1b, W2, W4, W5.
-- NC code (consumer-side synthesis per ADR).
-- Promoting synthesis to NC (explicitly deferred; see 03-sequencing.md).
-
-When done:
-- Update status.json and regenerate status.js per README.
-- Commit the GitHub Action, any CLAUDE.md updates, and the preserved Cowork instruction text.",
+      "kickoff_prompt": "Execute workstream W3 from the content-pipeline-unification initiative.\n\nBefore doing anything:\n- cd ~/dev/blog && git pull origin main\n- cd ~/dev/north-cloud && git pull origin main\n- Read planning docs: ~/dev/blog/docs/plans/2026-04-20-content-pipeline-unification/README.md, 01-adr-universal-consumer-split.md (especially the \"Where synthesis signals live\" section), 02-contracts.md, workstreams/W3.md.\n- Confirm W2 is marked done in status.json. If not, stop and escalate.\n\nStep 0 -- Topic coverage verification (blocking):\nInventory NC's source-manager registry against the four roundup topics: AI/ML, software development, tech business, cybersecurity.\n- Full coverage (>= 2 feeds per topic): proceed.\n- Sparse coverage: pick (a) extend NC source registry with new feeds, which pushes ~/dev/north-cloud into scope, or (b) add a web-search fallback for uncovered topics (matching how the Cowork task works). Document the inventory and the chosen fallback in a markdown file under this workstream's directory before writing any synthesis code.\n- Escalate to Russell if both (a) and (b) would be needed.\n\nWhat to build (after Step 0):\n1. A Monday ~8am UTC scheduled job (GitHub Action preferred) that reads the last 7 days of NC envelopes from the blog's local index and synthesizes a four-section industry roundup.\n2. Preserve the Cowork task's instruction text verbatim for the first two weeks, then allow edits. The instruction text should live in this workstream's directory or next to the GitHub Action; copy it in faithfully.\n3. Output:\n   - Default: Hugo draft under ~/dev/blog/content/posts/general/industry-roundup-YYYY-MM-DD/index.md following the blog's page-bundle convention.\n   - Optional: Substack draft under ~/brand/substack-issue-N.md. Decide with Russell at kickoff.\n4. Open a content-queue issue with:\n   - labels: content-queue, stage:mined, type:blog-post (or type:substack-issue), source:weekly-roundup\n   - body: link to the draft + short summary + source_signal_ids[] from the envelope index (preserve provenance).\n   The roundup does NOT bypass curation -- stage:mined, human promotes.\n5. Run for two consecutive Mondays alongside the Cowork task. Compare outputs. After sign-off, disable the Cowork schedule.\n\nAcceptance criteria:\n- Topic-coverage inventory committed and explicit.\n- Issue opens within 10 minutes of schedule, labeled stage:mined.\n- Output is a pure function of local index + instruction template (+ fallback search where configured).\n- Empty-topic sections say \"no significant news this week\" rather than fabricating.\n- Two weeks of side-by-side parity with Cowork before retiring the old task.\n\nOut of scope (do not touch):\n- Workstreams W1a, W1b, W2, W4, W5.\n- NC classifier/publisher code (consumer-side synthesis per ADR). The only NC-side exception is source-registry entries under option (a) above.\n- Promoting synthesis to NC (explicitly deferred; see 03-sequencing.md).\n\nWhen done:\n- Update status.json and regenerate status.js per README.\n- Commit the GitHub Action, any CLAUDE.md updates, the topic-coverage inventory, and the preserved Cowork instruction text.",
       "tasks": [
+        {
+          "id": "W3.T0",
+          "title": "Topic-coverage verification against NC source registry",
+          "repos": ["blog", "north-cloud"],
+          "status": "not-started",
+          "assigned_session": "",
+          "blockers": [],
+          "acceptance": [
+            "Inventory doc committed to workstream directory",
+            "Coverage per topic area explicit (envelope-sourced vs. fallback)",
+            "Option chosen (a or b) or escalated if both needed"
+          ],
+          "complexity": "S",
+          "links": [
+            { "label": "Workstream doc", "href": "workstreams/W3.md" }
+          ],
+          "kickoff_prompt": "",
+          "notes": "",
+          "updated_at": "2026-04-20T00:00:00Z"
+        },
         {
           "id": "W3.T1",
           "title": "Monday scheduled synthesis job + draft output",
@@ -339,8 +257,8 @@ When done:
           "assigned_session": "",
           "blockers": [],
           "acceptance": [
-            "Issue opens within 10 min of Monday 8am UTC",
-            "Output pure function of local index + instruction template",
+            "Issue opens within 10 min of Monday 8am UTC, labeled stage:mined",
+            "Output pure function of local index + instruction template (+ fallback)",
             "Empty-topic sections say no significant news"
           ],
           "complexity": "M",
@@ -379,46 +297,14 @@ When done:
       "slug": "substack-output",
       "plan_doc": "workstreams/W4.md",
       "repos": ["blog"],
-      "summary": "Decide Buffer vs. direct vs. manual-paste. Wire into distribution.",
+      "summary": "Likely outcome: manual-paste with auto-draft via substack-writing skill. 30-min decision time-box then commit.",
       "status": "not-started",
       "depends_on": [],
-      "kickoff_prompt": "Execute workstream W4 from the content-pipeline-unification initiative.
-
-Before doing anything:
-- cd ~/dev/blog && git pull origin main
-- Read planning docs: ~/dev/blog/docs/plans/2026-04-20-content-pipeline-unification/README.md, 00-overview.md, 02-contracts.md, workstreams/W4.md.
-- Read ~/.claude/skills/content-pipeline/SKILL.md and channels.env.
-- Read ~/.claude/skills/substack-writing/SKILL.md -- the current drafting skill Russell uses for the Ahnii! Substack at jonesrussell42.substack.com.
-
-What to build:
-1. A short decision doc under this workstream's directory:
-   a) Does Buffer support Substack as a channel? Verify via Buffer's GraphQL API (the channels query lists configured channels).
-   b) Does Substack have a usable API or an email-to-post path for this publication?
-   c) Chosen path: Buffer / direct / manual-paste-with-draft.
-2. Implement the chosen path:
-   - Buffer: add a Substack channel id to channels.env and extend the content-pipeline skill to post to it.
-   - Direct: write a small adapter that posts the draft.
-   - Manual: make the distribution path pause for operator confirmation when substack is in the issue's channels, present the draft, and transition the issue to stage:distributed on confirmation.
-3. Update content-pipeline SKILL.md with the new branch.
-4. Test end-to-end with one real or dry-run issue that lists substack in suggested_channels[].
-
-Acceptance criteria:
-- Issue with substack in suggested_channels[] produces a draft during distribution -- not silently skipped.
-- Buffer targets (X, LinkedIn, Facebook) behavior unchanged.
-- The decision doc is committed even if the answer is manual paste.
-
-Out of scope (do not touch):
-- Workstreams W1a, W1b, W2, W3, W5.
-- Changes to the substack-writing skill beyond wiring for distribution.
-- NC code (output-side concern only).
-
-When done:
-- Update status.json and regenerate status.js per README.
-- Commit blog code, skill updates, and the decision doc.",
+      "kickoff_prompt": "Execute workstream W4 from the content-pipeline-unification initiative.\n\nBefore doing anything:\n- cd ~/dev/blog && git pull origin main\n- Read planning docs: ~/dev/blog/docs/plans/2026-04-20-content-pipeline-unification/README.md, 00-overview.md, 02-contracts.md, 04-risks.md (R3), workstreams/W4.md.\n- Read ~/.claude/skills/content-pipeline/SKILL.md and channels.env.\n- Read ~/.claude/skills/substack-writing/SKILL.md -- the existing drafting skill Russell uses for the Ahnii! Substack at jonesrussell42.substack.com. This skill generates the draft; W4 wires it into distribution.\n\nWhat to build:\n1. Decision doc (30-minute time-box):\n   a) Does Buffer support Substack as a channel? Verify via Buffer's GraphQL API (the channels query lists configured channels).\n   b) Does Substack have a usable API or email-to-post path for this publication?\n   c) Chosen path: Buffer / direct / manual-paste-with-draft.\n   Likely outcome given R3: manual-paste-with-draft. If 30 minutes pass without a usable API surfacing, commit to manual and move on. Commit the decision doc even if the answer is \"manual paste.\"\n2. Draft generation: when an issue lists substack in suggested_channels, the distribution path invokes the substack-writing skill with the envelope + consumer fields and saves the draft to the skill's documented output location (~/brand/substack-issue-N.md).\n3. Implement the chosen posting path:\n   - Buffer: add Substack channel id to channels.env; extend the content-pipeline skill to post to it.\n   - Direct: write a small adapter.\n   - Manual: after the draft is produced, pause for operator confirmation, show the draft path, transition to stage:distributed on confirmation.\n4. Update content-pipeline SKILL.md with the new branch.\n5. Test end-to-end with one real or dry-run issue that lists substack in suggested_channels[].\n\nAcceptance criteria:\n- Issue with substack in suggested_channels[] triggers the substack-writing skill to produce a draft.\n- Distribution does not silently skip Substack.\n- Buffer targets (X, LinkedIn, Facebook) behavior unchanged.\n- Decision doc committed.\n\nOut of scope (do not touch):\n- Workstreams W1a, W1b, W2, W3, W5.\n- Changes to the substack-writing skill beyond wiring for distribution.\n- NC code (output-side concern only).\n\nWhen done:\n- Update status.json and regenerate status.js per README.\n- Commit blog code, skill updates, and the decision doc.",
       "tasks": [
         {
           "id": "W4.T1",
-          "title": "Decision doc: Buffer / direct / manual-paste",
+          "title": "Decision doc (30-min time-box): Buffer / direct / manual-paste",
           "repos": ["blog"],
           "status": "not-started",
           "assigned_session": "",
@@ -426,7 +312,8 @@ When done:
           "acceptance": [
             "Decision doc committed to workstream directory",
             "Verification of Buffer channel support recorded",
-            "Substack API/email-to-post feasibility recorded"
+            "Substack API/email-to-post feasibility recorded",
+            "Investigation bounded to 30 minutes; manual-paste default if none surfaces"
           ],
           "complexity": "S",
           "links": [
@@ -438,15 +325,16 @@ When done:
         },
         {
           "id": "W4.T2",
-          "title": "Implement chosen path + update content-pipeline skill",
+          "title": "Wire substack-writing skill + implement chosen posting path",
           "repos": ["blog"],
           "status": "not-started",
           "assigned_session": "",
           "blockers": [],
           "acceptance": [
-            "Issue with substack in suggested_channels[] produces a draft",
+            "Issue with substack in suggested_channels[] triggers substack-writing skill",
+            "Draft lands at ~/brand/substack-issue-N.md",
             "Buffer targets unchanged",
-            "SKILL.md updated"
+            "content-pipeline SKILL.md updated"
           ],
           "complexity": "M",
           "links": [
@@ -464,47 +352,20 @@ When done:
       "slug": "intake-unification",
       "plan_doc": "workstreams/W5.md",
       "repos": ["blog", "north-cloud"],
-      "summary": "Fold existing intakes (content-mine, coforge subscriber) onto the envelope pattern. One issue shape, one lifecycle.",
+      "summary": "Fold content-mine miner onto the envelope pattern via source:git Redis channel. Delete legacy coforge code (W2 already disabled it at deploy).",
       "status": "not-started",
       "depends_on": ["W1a", "W2"],
-      "kickoff_prompt": "Execute workstream W5 from the content-pipeline-unification initiative.
-
-Before doing anything:
-- cd ~/dev/blog && git pull origin main
-- cd ~/dev/north-cloud && git pull origin main
-- Read planning docs: ~/dev/blog/docs/plans/2026-04-20-content-pipeline-unification/README.md, 00-overview.md, 02-contracts.md, 03-sequencing.md, workstreams/W5.md.
-- Read the existing content-mine workflow at ~/dev/blog/.github/workflows/content-mine.yml and the content-mine skill.
-- Confirm W1a and W2 are marked done in status.json. If not, stop and escalate.
-
-What to build:
-1. Rewrite the git-activity miner to produce envelopes that match the NC envelope contract. Emit on a synthetic \"source:git\" channel (Redis or in-process if Redis is overkill) consumed by W2's subscriber. The subscriber then produces the stage:mined issue -- the miner does not write issues directly anymore.
-2. Remove the standalone coforge Redis subscriber in favor of W2's subscriber reading the same channel.
-3. Dual-write for one week: old and new paths produce issues in parallel. Verify parity by comparing shapes on a sample of issues.
-4. Cut over: disable old paths, remove legacy code. Document the removal in blog CLAUDE.md and note \"one intake shape, one lifecycle\" as a rule future sessions must uphold.
-
-Acceptance criteria:
-- All three v1 intakes produce identically-shaped stage:mined issues.
-- No references to the legacy content-mine issue shape remain.
-- CLAUDE.md documents \"one intake shape, one lifecycle\" as a maintained rule.
-- Running any single intake with the others disabled still produces valid issues.
-
-Out of scope (do not touch):
-- Workstreams W1a, W1b, W2, W3, W4.
-- Production/distribution skills -- you are only touching the intake side.
-
-When done:
-- Update status.json and regenerate status.js per README.
-- Commit blog (and any NC) changes. If this closes the initiative, update 00-overview.md's Definition of Done accordingly.",
+      "kickoff_prompt": "Execute workstream W5 from the content-pipeline-unification initiative.\n\nBefore doing anything:\n- cd ~/dev/blog && git pull origin main\n- cd ~/dev/north-cloud && git pull origin main\n- Read planning docs: ~/dev/blog/docs/plans/2026-04-20-content-pipeline-unification/README.md, 00-overview.md, 02-contracts.md, 03-sequencing.md, workstreams/W5.md.\n- Read the existing content-mine workflow at ~/dev/blog/.github/workflows/content-mine.yml and the content-mine skill.\n- Confirm W1a and W2 are marked done in status.json. If not, stop and escalate.\n\nWhat to build:\n1. Rewrite the git-activity miner to produce envelopes that match the NC envelope contract. Emit on a synthetic source:git Redis channel consumed by W2's subscriber. The subscriber then produces the stage:mined issue -- the miner does not write issues directly anymore. (Redis, not in-process: consistency with NC's pattern.)\n2. Remove the now-disabled legacy coforge Redis subscriber code. W2's deploy already disabled it at runtime; W5 deletes the dead code after verifying no duplicate issues on coforge:core.\n3. Dual-write for one week: old and new paths produce issues in parallel. Verify parity by comparing shapes on a sample of issues.\n4. Cut over: disable old paths, remove legacy code. Document the removal in blog CLAUDE.md and note \"one intake shape, one lifecycle\" as a rule future sessions must uphold.\n\nAcceptance criteria:\n- All three v1 intakes produce identically-shaped stage:mined issues.\n- No references to the legacy content-mine issue shape remain.\n- CLAUDE.md documents \"one intake shape, one lifecycle\" as a maintained rule.\n- Running any single intake with the others disabled still produces valid issues.\n\nOut of scope (do not touch):\n- Workstreams W1a, W1b, W2, W3, W4.\n- Production/distribution skills -- you are only touching the intake side.\n- The coforge-subscriber disable step itself (W2 already did that).\n\nWhen done:\n- Update status.json and regenerate status.js per README.\n- Commit blog (and any NC) changes. If this closes the initiative, update 00-overview.md's Definition of Done accordingly.",
       "tasks": [
         {
           "id": "W5.T1",
-          "title": "Rewrite git-activity miner to envelope pattern",
+          "title": "Rewrite git-activity miner to source:git Redis envelope pattern",
           "repos": ["blog"],
           "status": "not-started",
           "assigned_session": "",
           "blockers": [],
           "acceptance": [
-            "Miner emits envelopes consumed by W2's subscriber",
+            "Miner emits envelopes on source:git Redis channel consumed by W2",
             "Miner no longer writes issues directly"
           ],
           "complexity": "M",
@@ -517,16 +378,16 @@ When done:
         },
         {
           "id": "W5.T2",
-          "title": "Retire legacy coforge subscriber",
+          "title": "Delete legacy coforge subscriber code",
           "repos": ["blog", "north-cloud"],
           "status": "not-started",
           "assigned_session": "",
           "blockers": [],
           "acceptance": [
             "No legacy subscriber code remains",
-            "Dual-write parity verified for one week before cutover"
+            "No duplicate issues on coforge:core confirmed before deletion"
           ],
-          "complexity": "M",
+          "complexity": "S",
           "links": [
             { "label": "Workstream doc", "href": "workstreams/W5.md" }
           ],
@@ -570,4 +431,5 @@ When done:
     }
   ],
   "schema_version": 1
-}; window.STATUS_GENERATED_AT = "2026-04-20T19:42:41Z";
+}
+; window.STATUS_GENERATED_AT = "2026-04-20T20:08:05Z";

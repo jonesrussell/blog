@@ -40,6 +40,12 @@ serves both entity fan-in and window queries for the weekly roundup.
 - **Critical path:** W1a → W2 → {W3 or W5}. Four workstreams deep on the
   critical path. W1a is the single biggest time risk and highest-value lock.
 
+**W1a is a single point of failure.** The critical path has no fallback —
+if W1a slips, every downstream workstream slips with it. W1a gets the most
+senior session attention available. Do not run it in parallel with
+implementation-heavy W4 work when session bandwidth is constrained; W1a
+wins the priority call.
+
 ## Deferred (not in v1)
 
 - **NC window-query HTTP API** (previously sized as W1c).
