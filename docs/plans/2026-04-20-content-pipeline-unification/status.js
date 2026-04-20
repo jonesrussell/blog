@@ -3,7 +3,7 @@ window.STATUS = {
     "name": "Content Pipeline Unification",
     "slug": "content-pipeline-unification",
     "started": "2026-04-20",
-    "last_updated": "2026-04-20T15:00:00Z",
+    "last_updated": "2026-04-20T16:00:00Z",
     "docs": {
       "overview": "00-overview.md",
       "adrs": ["01-adr-universal-consumer-split.md"],
@@ -198,7 +198,7 @@ When done:
 Before doing anything:
 - cd ~/dev/blog && git pull origin main
 - cd ~/dev/north-cloud && git pull origin main
-- Read planning docs: ~/dev/blog/docs/plans/2026-04-20-content-pipeline-unification/README.md, 00-overview.md, 01-adr-universal-consumer-split.md, 02-contracts.md, 03-sequencing.md, workstreams/W2.md.
+- Read planning docs: ~/dev/blog/docs/plans/2026-04-20-content-pipeline-unification/README.md, 00-overview.md, 01-adr-universal-consumer-split.md, 02-contracts.md, 03-sequencing.md, workstreams/W2.md (the Suggested inference rules and Fan-in indexing strategy sections are load-bearing; the angle_hypothesis decision inside the inference rules section is already made -- do not relitigate).
 - Read blog's existing pipeline skills under ~/.claude/skills/content-*/ to understand the current content-queue issue shape and how production and distribution consume it. Do not modify them.
 - Confirm W1a is marked done in status.json. If not, stop and escalate.
 
@@ -570,4 +570,4 @@ When done:
     }
   ],
   "schema_version": 1
-}; window.STATUS_GENERATED_AT = "2026-04-20T19:24:08Z";
+}; window.STATUS_GENERATED_AT = "2026-04-20T19:42:41Z";
