@@ -1,0 +1,615 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Content Pipeline Unification — Operator Dashboard</title>
+  <style>
+    :root {
+      --bg: #0f1115;
+      --panel: #171a21;
+      --panel-2: #1e232c;
+      --fg: #e6e9ef;
+      --fg-dim: #9aa3b2;
+      --accent: #6ea8ff;
+      --ok: #4ade80;
+      --progress: #6ea8ff;
+      --blocked: #f87171;
+      --warning: #facc15;
+      --border: #262c36;
+    }
+    @media (prefers-color-scheme: light) {
+      :root {
+        --bg: #f6f7f9;
+        --panel: #ffffff;
+        --panel-2: #f0f2f5;
+        --fg: #111318;
+        --fg-dim: #5b6270;
+        --accent: #2b59c3;
+        --ok: #15803d;
+        --progress: #2b59c3;
+        --blocked: #b91c1c;
+        --warning: #a16207;
+        --border: #d7dce3;
+      }
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--fg);
+      font: 14px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+    header {
+      padding: 24px 32px;
+      border-bottom: 1px solid var(--border);
+      background: var(--panel);
+    }
+    header h1 { margin: 0 0 4px; font-size: 20px; }
+    header .meta { color: var(--fg-dim); font-size: 13px; }
+    .warning-banner {
+      margin: 12px 32px;
+      padding: 12px 16px;
+      background: var(--warning);
+      color: #1a1300;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 13px;
+    }
+    .warning-banner code {
+      background: rgba(0,0,0,0.15);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 12px;
+    }
+    .controls {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      padding: 16px 32px;
+      border-bottom: 1px solid var(--border);
+      background: var(--panel);
+    }
+    .controls label {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      font-size: 12px;
+      color: var(--fg-dim);
+    }
+    .controls select {
+      background: var(--panel-2);
+      color: var(--fg);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 6px 10px;
+      font: inherit;
+    }
+    .overall {
+      padding: 16px 32px;
+      border-bottom: 1px solid var(--border);
+      background: var(--panel);
+    }
+    .progress-bar {
+      position: relative;
+      height: 8px;
+      background: var(--panel-2);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .progress-bar > span {
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      background: var(--progress);
+      transition: width 0.2s ease;
+    }
+    main { padding: 24px 32px; display: grid; gap: 20px; }
+    .workstream {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .workstream-head {
+      padding: 16px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+    }
+    .workstream-title { font-size: 16px; font-weight: 600; margin: 0; }
+    .workstream-summary { color: var(--fg-dim); font-size: 13px; margin: 4px 0 0; }
+    .workstream-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+      font-size: 12px;
+      color: var(--fg-dim);
+    }
+    .badge {
+      padding: 2px 8px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      font-size: 11px;
+      background: var(--panel-2);
+    }
+    .badge.blocks { border-color: var(--accent); color: var(--accent); }
+    .badge.blocked-by { border-color: var(--blocked); color: var(--blocked); }
+    .badge.plan-doc { color: var(--accent); text-decoration: none; }
+    .badge.plan-doc:hover { text-decoration: underline; }
+    .status-pill {
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: capitalize;
+      white-space: nowrap;
+    }
+    .status-not-started { background: var(--panel-2); color: var(--fg-dim); }
+    .status-in-progress { background: #2a4a80; color: #cfe1ff; }
+    .status-blocked { background: #4a1a1a; color: #ffd0d0; }
+    .status-done { background: #184d2b; color: #cdf0d8; }
+    @media (prefers-color-scheme: light) {
+      .status-in-progress { background: #dbeafe; color: #1e3a8a; }
+      .status-blocked { background: #fee2e2; color: #991b1b; }
+      .status-done { background: #dcfce7; color: #14532d; }
+    }
+    .workstream-progress { padding: 0 20px 14px; }
+    .tasks {
+      border-top: 1px solid var(--border);
+      background: var(--panel-2);
+    }
+    .task {
+      padding: 14px 20px;
+      border-bottom: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 12px;
+      align-items: start;
+    }
+    .task:last-child { border-bottom: none; }
+    .task-title { font-weight: 600; }
+    .task-meta {
+      margin-top: 4px;
+      color: var(--fg-dim);
+      font-size: 12px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .task-blockers {
+      margin-top: 6px;
+      color: var(--blocked);
+      font-size: 12px;
+    }
+    .task-acceptance {
+      margin-top: 6px;
+      color: var(--fg-dim);
+      font-size: 12px;
+    }
+    .task-links { margin-top: 6px; display: flex; gap: 8px; flex-wrap: wrap; }
+    .task-links a {
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 12px;
+    }
+    .task-links a:hover { text-decoration: underline; }
+    .task-actions { display: flex; flex-direction: column; gap: 6px; align-items: flex-end; }
+    button.copy-btn {
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 6px 12px;
+      font: inherit;
+      font-size: 12px;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    button.copy-btn.copied { background: var(--ok); }
+    .deferred {
+      margin: 0 32px 32px;
+      padding: 16px 20px;
+      background: var(--panel);
+      border: 1px dashed var(--border);
+      border-radius: 10px;
+    }
+    .deferred h2 { margin: 0 0 10px; font-size: 14px; color: var(--fg-dim); font-weight: 600; }
+    .deferred-item { padding: 10px 0; border-bottom: 1px dotted var(--border); }
+    .deferred-item:last-child { border-bottom: none; }
+    .deferred-item strong { display: block; margin-bottom: 4px; }
+    .hidden { display: none !important; }
+    .footer { padding: 16px 32px; color: var(--fg-dim); font-size: 12px; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1 id="init-name">Initiative</h1>
+    <div class="meta">
+      started <span id="init-started"></span> &middot;
+      last updated <span id="init-last-updated"></span> &middot;
+      status.js generated <span id="status-js-generated"></span>
+    </div>
+  </header>
+
+  <div id="stale-warning" class="warning-banner hidden">
+    <strong>status.js is stale.</strong>
+    status.json has been edited more recently than status.js was regenerated.
+    Run:
+    <code>echo "window.STATUS = $(cat status.json); window.STATUS_GENERATED_AT = \"$(date -Iseconds)\";" &gt; status.js</code>
+    in this directory, then reload.
+  </div>
+
+  <section class="overall">
+    <div style="display:flex;justify-content:space-between;margin-bottom:8px;">
+      <strong>Overall progress</strong>
+      <span id="overall-label"></span>
+    </div>
+    <div class="progress-bar"><span id="overall-bar" style="width:0%"></span></div>
+  </section>
+
+  <section class="controls">
+    <label>Repo
+      <select id="filter-repo"><option value="">All</option></select>
+    </label>
+    <label>Workstream
+      <select id="filter-workstream"><option value="">All</option></select>
+    </label>
+    <label>Status
+      <select id="filter-status">
+        <option value="">All</option>
+        <option value="not-started">Not started</option>
+        <option value="in-progress">In progress</option>
+        <option value="blocked">Blocked</option>
+        <option value="done">Done</option>
+      </select>
+    </label>
+  </section>
+
+  <main id="workstreams"></main>
+
+  <section class="deferred" id="deferred-section">
+    <h2>Deferred (not in v1)</h2>
+    <div id="deferred-items"></div>
+  </section>
+
+  <div class="footer">
+    Source of truth: <code>status.json</code>. Edit there, regenerate <code>status.js</code>, reload.
+  </div>
+
+  <script src="./status.js"></script>
+  <script>
+    (function () {
+      if (!window.STATUS) {
+        document.body.innerHTML = '<div style="padding:40px;color:#f87171;">status.js not loaded. Regenerate it per README.</div>';
+        return;
+      }
+      var S = window.STATUS;
+      var generatedAt = window.STATUS_GENERATED_AT || null;
+
+      function fmtIso(iso) {
+        if (!iso) return "—";
+        try {
+          var d = new Date(iso);
+          if (isNaN(d.getTime())) return iso;
+          return d.toISOString().replace("T", " ").slice(0, 16) + " UTC";
+        } catch (e) { return iso; }
+      }
+
+      // Header
+      document.getElementById("init-name").textContent = S.initiative.name;
+      document.getElementById("init-started").textContent = S.initiative.started;
+      document.getElementById("init-last-updated").textContent = fmtIso(S.initiative.last_updated);
+      document.getElementById("status-js-generated").textContent = fmtIso(generatedAt);
+
+      // Stale warning
+      if (generatedAt && S.initiative.last_updated) {
+        var g = new Date(generatedAt).getTime();
+        var u = new Date(S.initiative.last_updated).getTime();
+        if (!isNaN(g) && !isNaN(u) && g < u) {
+          document.getElementById("stale-warning").classList.remove("hidden");
+        }
+      }
+
+      // Compute inverse edges (who blocks whom)
+      var blocksMap = {};
+      S.workstreams.forEach(function (w) { blocksMap[w.id] = []; });
+      S.workstreams.forEach(function (w) {
+        (w.depends_on || []).forEach(function (dep) {
+          if (blocksMap[dep]) blocksMap[dep].push(w.id);
+        });
+      });
+
+      // Filter dropdowns
+      var repos = {};
+      S.workstreams.forEach(function (w) {
+        (w.repos || []).forEach(function (r) { repos[r] = true; });
+      });
+      var repoSel = document.getElementById("filter-repo");
+      Object.keys(repos).sort().forEach(function (r) {
+        var o = document.createElement("option");
+        o.value = r; o.textContent = r;
+        repoSel.appendChild(o);
+      });
+      var wsSel = document.getElementById("filter-workstream");
+      S.workstreams.forEach(function (w) {
+        var o = document.createElement("option");
+        o.value = w.id; o.textContent = w.id + " — " + w.title;
+        wsSel.appendChild(o);
+      });
+
+      function progressOf(tasks) {
+        if (!tasks || !tasks.length) return { done: 0, total: 0, pct: 0 };
+        var done = tasks.filter(function (t) { return t.status === "done"; }).length;
+        return { done: done, total: tasks.length, pct: Math.round((done / tasks.length) * 100) };
+      }
+
+      function statusClass(s) { return "status-" + (s || "not-started"); }
+
+      function makeCopyButton(text) {
+        var btn = document.createElement("button");
+        btn.className = "copy-btn";
+        btn.textContent = "Copy kickoff prompt";
+        btn.addEventListener("click", function () {
+          var reset = function () {
+            btn.textContent = "Copy kickoff prompt";
+            btn.classList.remove("copied");
+          };
+          var succeed = function () {
+            btn.textContent = "Copied";
+            btn.classList.add("copied");
+            setTimeout(reset, 1600);
+          };
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(text).then(succeed).catch(function () {
+              fallbackCopy(text, succeed);
+            });
+          } else {
+            fallbackCopy(text, succeed);
+          }
+        });
+        return btn;
+      }
+
+      function fallbackCopy(text, onSuccess) {
+        var ta = document.createElement("textarea");
+        ta.value = text;
+        ta.style.position = "fixed";
+        ta.style.left = "-9999px";
+        document.body.appendChild(ta);
+        ta.select();
+        try {
+          document.execCommand("copy");
+          onSuccess();
+        } catch (e) {
+          alert("Copy failed. Prompt:\n\n" + text);
+        }
+        document.body.removeChild(ta);
+      }
+
+      function renderTask(t, wsPrompt) {
+        var el = document.createElement("div");
+        el.className = "task";
+        el.dataset.status = t.status || "not-started";
+        el.dataset.repos = (t.repos || []).join(",");
+
+        var left = document.createElement("div");
+        var title = document.createElement("div");
+        title.className = "task-title";
+        title.textContent = t.id + " — " + t.title;
+        left.appendChild(title);
+
+        var meta = document.createElement("div");
+        meta.className = "task-meta";
+        [
+          "repos: " + ((t.repos || []).join(", ") || "—"),
+          "complexity: " + (t.complexity || "—"),
+          "session: " + (t.assigned_session || "unassigned"),
+          t.updated_at ? "updated " + fmtIso(t.updated_at) : ""
+        ].filter(Boolean).forEach(function (b) {
+          var span = document.createElement("span");
+          span.textContent = b;
+          meta.appendChild(span);
+        });
+        left.appendChild(meta);
+
+        if (t.blockers && t.blockers.length) {
+          var b = document.createElement("div");
+          b.className = "task-blockers";
+          b.textContent = "Blockers: " + t.blockers.join("; ");
+          left.appendChild(b);
+        }
+
+        if (t.acceptance && t.acceptance.length) {
+          var ac = document.createElement("div");
+          ac.className = "task-acceptance";
+          ac.textContent = "Acceptance: " + t.acceptance.join(" · ");
+          left.appendChild(ac);
+        }
+
+        if (t.links && t.links.length) {
+          var ls = document.createElement("div");
+          ls.className = "task-links";
+          t.links.forEach(function (l) {
+            var a = document.createElement("a");
+            a.href = l.href; a.textContent = l.label;
+            ls.appendChild(a);
+          });
+          left.appendChild(ls);
+        }
+
+        var right = document.createElement("div");
+        right.className = "task-actions";
+
+        var pill = document.createElement("span");
+        pill.className = "status-pill " + statusClass(t.status);
+        pill.textContent = (t.status || "not-started").replace("-", " ");
+        right.appendChild(pill);
+
+        var promptText = t.kickoff_prompt || wsPrompt;
+        if (promptText) {
+          right.appendChild(makeCopyButton(promptText));
+        }
+
+        el.appendChild(left);
+        el.appendChild(right);
+        return el;
+      }
+
+      function renderWorkstream(w) {
+        var el = document.createElement("article");
+        el.className = "workstream";
+        el.dataset.id = w.id;
+        el.dataset.status = w.status || "not-started";
+        el.dataset.repos = (w.repos || []).join(",");
+
+        var head = document.createElement("div");
+        head.className = "workstream-head";
+
+        var left = document.createElement("div");
+        var title = document.createElement("h3");
+        title.className = "workstream-title";
+        title.textContent = w.id + " — " + w.title;
+        left.appendChild(title);
+
+        var sum = document.createElement("p");
+        sum.className = "workstream-summary";
+        sum.textContent = w.summary || "";
+        left.appendChild(sum);
+
+        var meta = document.createElement("div");
+        meta.className = "workstream-meta";
+
+        var reposBadge = document.createElement("span");
+        reposBadge.className = "badge";
+        reposBadge.textContent = "repos: " + ((w.repos || []).join(", ") || "—");
+        meta.appendChild(reposBadge);
+
+        var deps = w.depends_on || [];
+        var blockedByBadge = document.createElement("span");
+        blockedByBadge.className = "badge blocked-by";
+        blockedByBadge.textContent = "Blocked by: " + (deps.length ? deps.join(", ") : "none");
+        meta.appendChild(blockedByBadge);
+
+        var blocks = blocksMap[w.id] || [];
+        var blocksBadge = document.createElement("span");
+        blocksBadge.className = "badge blocks";
+        blocksBadge.textContent = "Blocks: " + (blocks.length ? blocks.join(", ") : "none");
+        meta.appendChild(blocksBadge);
+
+        if (w.plan_doc) {
+          var link = document.createElement("a");
+          link.href = w.plan_doc;
+          link.textContent = "plan doc";
+          link.className = "badge plan-doc";
+          meta.appendChild(link);
+        }
+
+        left.appendChild(meta);
+
+        var right = document.createElement("div");
+        var pill = document.createElement("span");
+        pill.className = "status-pill " + statusClass(w.status);
+        pill.textContent = (w.status || "not-started").replace("-", " ");
+        right.appendChild(pill);
+
+        head.appendChild(left);
+        head.appendChild(right);
+        el.appendChild(head);
+
+        var p = progressOf(w.tasks);
+        var progWrap = document.createElement("div");
+        progWrap.className = "workstream-progress";
+        progWrap.innerHTML =
+          '<div style="display:flex;justify-content:space-between;margin-bottom:6px;font-size:12px;color:var(--fg-dim);">' +
+            '<span>tasks</span><span>' + p.done + " / " + p.total + " (" + p.pct + '%)</span>' +
+          '</div>' +
+          '<div class="progress-bar"><span style="width:' + p.pct + '%"></span></div>';
+        el.appendChild(progWrap);
+
+        if (w.tasks && w.tasks.length) {
+          var tasks = document.createElement("div");
+          tasks.className = "tasks";
+          w.tasks.forEach(function (t) { tasks.appendChild(renderTask(t, w.kickoff_prompt || "")); });
+          el.appendChild(tasks);
+        }
+
+        return el;
+      }
+
+      var mainEl = document.getElementById("workstreams");
+      S.workstreams.forEach(function (w) { mainEl.appendChild(renderWorkstream(w)); });
+
+      // Overall progress
+      var allTasks = [];
+      S.workstreams.forEach(function (w) { (w.tasks || []).forEach(function (t) { allTasks.push(t); }); });
+      var overall = progressOf(allTasks);
+      document.getElementById("overall-label").textContent =
+        overall.done + " / " + overall.total + " tasks (" + overall.pct + "%)";
+      document.getElementById("overall-bar").style.width = overall.pct + "%";
+
+      function applyFilters() {
+        var repo = document.getElementById("filter-repo").value;
+        var ws = document.getElementById("filter-workstream").value;
+        var status = document.getElementById("filter-status").value;
+
+        var wsEls = document.querySelectorAll(".workstream");
+        wsEls.forEach(function (wEl) {
+          var wsRepos = (wEl.dataset.repos || "").split(",");
+          var wsId = wEl.dataset.id;
+          var wsStatus = wEl.dataset.status;
+
+          var wsMatchesRepo = !repo || wsRepos.indexOf(repo) >= 0;
+          var wsMatchesId = !ws || wsId === ws;
+
+          var anyTaskVisible = false;
+          wEl.querySelectorAll(".task").forEach(function (tEl) {
+            var tRepos = (tEl.dataset.repos || "").split(",");
+            var tStatus = tEl.dataset.status;
+            var matchesRepo = !repo || tRepos.indexOf(repo) >= 0 || wsMatchesRepo;
+            var matchesStatus = !status || tStatus === status;
+            var show = matchesRepo && matchesStatus && wsMatchesId;
+            tEl.classList.toggle("hidden", !show);
+            if (show) anyTaskVisible = true;
+          });
+
+          var wsStatusMatches = !status || wsStatus === status;
+          var show = wsMatchesRepo && wsMatchesId && (wsStatusMatches || anyTaskVisible);
+          wEl.classList.toggle("hidden", !show);
+        });
+      }
+      ["filter-repo", "filter-workstream", "filter-status"].forEach(function (id) {
+        document.getElementById(id).addEventListener("change", applyFilters);
+      });
+
+      // Deferred
+      var defWrap = document.getElementById("deferred-items");
+      (S.deferred || []).forEach(function (d) {
+        var row = document.createElement("div");
+        row.className = "deferred-item";
+        var strong = document.createElement("strong");
+        strong.textContent = d.id + " — " + d.title;
+        row.appendChild(strong);
+        var rat = document.createElement("div");
+        rat.style.color = "var(--fg-dim)";
+        rat.textContent = d.rationale;
+        row.appendChild(rat);
+        if (d.promote_when) {
+          var pw = document.createElement("div");
+          pw.style.color = "var(--fg-dim)";
+          pw.style.fontSize = "12px";
+          pw.style.fontStyle = "italic";
+          pw.style.marginTop = "4px";
+          pw.textContent = "Promote when: " + d.promote_when;
+          row.appendChild(pw);
+        }
+        defWrap.appendChild(row);
+      });
+      if (!(S.deferred && S.deferred.length)) {
+        document.getElementById("deferred-section").classList.add("hidden");
+      }
+    })();
+  </script>
+</body>
+</html>
