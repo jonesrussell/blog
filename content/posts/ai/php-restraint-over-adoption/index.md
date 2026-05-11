@@ -1,12 +1,19 @@
 ---
-title: "PHP 8.5 restraint: features we did not adopt"
-date: 2026-05-11
-categories: [ai]
-tags: [php, waaseyaa, monorepo, design]
-series: ["waaseyaa-php-8-5-upgrade"]
-summary: "An upgrade is also a decision about what not to use. Property hooks, the pipe operator, and an array_find pass we mostly rejected."
-slug: "php-restraint-over-adoption"
+categories:
+    - ai
+date: 2026-05-11T00:00:00Z
+devto_id: 3651808
 draft: false
+series:
+    - waaseyaa-php-8-5-upgrade
+slug: php-restraint-over-adoption
+summary: An upgrade is also a decision about what not to use. Property hooks, the pipe operator, and an array_find pass we mostly rejected.
+tags:
+    - php
+    - waaseyaa
+    - monorepo
+    - design
+title: 'PHP 8.5 restraint: features we did not adopt'
 ---
 
 Ahnii!

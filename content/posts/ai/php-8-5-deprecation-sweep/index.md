@@ -1,12 +1,19 @@
 ---
-title: "The PHP 8.5 deprecation sweep: from 34 warnings to zero"
-date: 2026-05-11
-categories: [ai]
-tags: [php, waaseyaa, monorepo, testing]
-series: ["waaseyaa-php-8-5-upgrade"]
-summary: "Three deprecation categories. Twenty-nine call sites. A test corpus that surfaces them all."
-slug: "php-8-5-deprecation-sweep"
+categories:
+    - ai
+date: 2026-05-11T00:00:00Z
+devto_id: 3651807
 draft: false
+series:
+    - waaseyaa-php-8-5-upgrade
+slug: php-8-5-deprecation-sweep
+summary: Three deprecation categories. Twenty-nine call sites. A test corpus that surfaces them all.
+tags:
+    - php
+    - waaseyaa
+    - monorepo
+    - testing
+title: 'The PHP 8.5 deprecation sweep: from 34 warnings to zero'
 ---
 
 Ahnii!

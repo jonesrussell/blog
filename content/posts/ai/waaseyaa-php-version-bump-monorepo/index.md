@@ -1,12 +1,19 @@
 ---
-title: "Bumping a PHP monorepo to 8.5: the mechanics"
-date: 2026-05-11
-categories: [ai]
-tags: [php, waaseyaa, monorepo, spec-kitty]
-series: ["waaseyaa-php-8-5-upgrade"]
-summary: "Sixty-seven packages, one CI matrix, one PHPStan target. What it takes to actually move the floor."
-slug: "waaseyaa-php-version-bump-monorepo"
+categories:
+    - ai
+date: 2026-05-11T00:00:00Z
+devto_id: 3651810
 draft: false
+series:
+    - waaseyaa-php-8-5-upgrade
+slug: waaseyaa-php-version-bump-monorepo
+summary: Sixty-seven packages, one CI matrix, one PHPStan target. What it takes to actually move the floor.
+tags:
+    - php
+    - waaseyaa
+    - monorepo
+    - spec-kitty
+title: 'Bumping a PHP monorepo to 8.5: the mechanics'
 ---
 
 Ahnii!
