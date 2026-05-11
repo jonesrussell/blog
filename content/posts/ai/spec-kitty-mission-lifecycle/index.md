@@ -1,11 +1,17 @@
 ---
-title: "Spec Kitty mission lifecycle: a domain modeling pass through Giiken"
-date: 2026-05-11
-categories: [ai]
-tags: [spec-kitty, giiken, waaseyaa, ai]
-summary: "What a full Spec Kitty mission actually looks like end to end: spec, plan, tasks, implement, review, merge."
-slug: "spec-kitty-mission-lifecycle"
+categories:
+    - ai
+date: 2026-05-11T00:00:00Z
+devto_id: 3651352
 draft: false
+slug: spec-kitty-mission-lifecycle
+summary: 'What a full Spec Kitty mission actually looks like end to end: spec, plan, tasks, implement, review, merge.'
+tags:
+    - spec-kitty
+    - giiken
+    - waaseyaa
+    - ai
+title: 'Spec Kitty mission lifecycle: a domain modeling pass through Giiken'
 ---
 
 Ahnii!
