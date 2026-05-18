@@ -6,7 +6,6 @@ Reference URL: https://github.com/waaseyaa/framework/pull/1506
 
 Shipped 2FA end-to-end in Waaseyaa today. Spec written at 00:57Z, PR #1506 merged at 01:37Z. 40 minutes from spec to main via Spec Kitty. #buildinpublic
 
-**First reply:**
 https://github.com/waaseyaa/framework/pull/1506
 
 ## LinkedIn
@@ -33,7 +32,6 @@ The harder part, and the part nobody puts in the announcement, is that you only 
 
 But it's worth saying out loud when it works. Shipping a real subsystem end to end before 02:00Z is the kind of small thing that keeps a build alive.
 
-**First comment:**
 https://github.com/waaseyaa/framework/pull/1506
 
 ## Facebook
@@ -44,7 +42,6 @@ Spec written at 00:57Z. PR merged at 01:37Z. 40 minutes from idea to a complete 
 
 The speed comes from running a strict spec-first workflow with an implementer and a reviewer working in alternating beats. Not every mission moves this fast, but when the design is already clear, the workflow stays out of the way.
 
-#buildinpublic #waaseyaa
-
-**First comment:**
 https://github.com/waaseyaa/framework/pull/1506
+
+#buildinpublic #waaseyaa
