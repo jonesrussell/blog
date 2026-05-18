@@ -4,7 +4,7 @@ Reference URL: https://github.com/waaseyaa/framework/issues/1493
 
 ## Bluesky
 
-Three interfaces marked @internal in Waaseyaa turned out to have callers outside the package boundary. RateLimiter, AuthTokenRepository, ComputedField. The audit forces a decision: promote to @api or refactor the callers. PHPDoc tags don't enforce themselves. #buildinpublic
+Three @internal interfaces in Waaseyaa turned out to have callers across package boundaries. Promote to @api or refactor the callers? PHPDoc tags don't enforce themselves. #buildinpublic
 
 https://github.com/waaseyaa/framework/issues/1493
 
