@@ -2,9 +2,9 @@
 
 Reference URL: https://github.com/waaseyaa/framework/pull/1506
 
-## X
+## Bluesky
 
-Shipped 2FA in Waaseyaa today. Spec at 00:57Z, merged 01:37Z. 40 minutes from spec to main via Spec Kitty. #buildinpublic
+Shipped 2FA end-to-end in Waaseyaa today. Spec written at 00:57Z, PR #1506 merged at 01:37Z. 40 minutes from spec to main via Spec Kitty. #buildinpublic
 
 **First reply:**
 https://github.com/waaseyaa/framework/pull/1506
