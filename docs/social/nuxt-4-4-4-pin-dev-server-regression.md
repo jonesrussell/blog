@@ -4,7 +4,7 @@ Reference URL: https://github.com/waaseyaa/framework/pull/1420
 
 ## Bluesky
 
-Pinned Nuxt to 4.4.4 in Waaseyaa. 4.4.5 broke the dev server on first save. Caret ranges are great until a minor bump bricks your inner loop. Lock it, document why, move on. #buildinpublic
+Pinned Nuxt to 4.4.4. 4.4.5 broke hot-reload after the first save and npm won't roll back. Cap the blast radius on packages in your inner loop. #buildinpublic
 
 https://github.com/waaseyaa/framework/pull/1420
 

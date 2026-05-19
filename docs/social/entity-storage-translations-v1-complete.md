@@ -4,7 +4,7 @@ Reference URL: https://github.com/waaseyaa/framework/commit/0f7e180
 
 ## Bluesky
 
-entity-storage-translations-v1 shipped in Waaseyaa. Per-language data on every entity, schema-aware, indexed. The foundation under M-004 translatable revisions that landed days later. Translations before revisions of translations. #buildinpublic
+Translations now land at the entity-storage layer in Waaseyaa. The prequel to translatable revisions. Translations first, then revisions of them. #buildinpublic
 
 https://github.com/waaseyaa/framework/commit/0f7e180
 

@@ -4,7 +4,7 @@ Reference URL: https://github.com/waaseyaa/framework/issues/1292
 
 ## Bluesky
 
-Waaseyaa now ships an OIDC server: /.well-known config, JWKS, /authorize with PKCE S256, /token with RS256 ID tokens. waaseyaa/oidc package, ADR-006 accepted. A framework with first-party identity, not a bolt-on. #buildinpublic
+Waaseyaa ships a working OIDC server now. Discovery, JWKS, /authorize with PKCE, /token with RS256 ID tokens. First-party identity, not a bolt-on. #buildinpublic
 
 https://github.com/waaseyaa/framework/issues/1292
 
