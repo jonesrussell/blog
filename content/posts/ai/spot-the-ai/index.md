@@ -1,12 +1,16 @@
 ---
-title: "Spot the AI: can you tell which passage Claude wrote?"
-date: 2026-05-23
-categories: [ai]
-tags: [claude, games]
-summary: A small web game that shows you two short passages — one human, one Claude — and asks you to pick which one is the AI.
-slug: spot-the-ai
-draft: false
+categories:
+    - ai
+date: 2026-05-23T00:00:00Z
 devto: true
+devto_id: 3735708
+draft: false
+slug: spot-the-ai
+summary: A small web game that shows you two short passages — one human, one Claude — and asks you to pick which one is the AI.
+tags:
+    - claude
+    - games
+title: 'Spot the AI: can you tell which passage Claude wrote?'
 ---
 
 Ahnii!
