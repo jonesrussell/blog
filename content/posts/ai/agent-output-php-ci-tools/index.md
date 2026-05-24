@@ -5,7 +5,7 @@ categories: [ai]
 tags: [claude-code, php, ci-tools, waaseyaa]
 summary: How the waaseyaa/agent-output package shrinks PHPUnit, PHPStan, and bin/check-* output to compact NDJSON envelopes so AI agents do not drown their context window in CI noise.
 slug: agent-output-php-ci-tools
-draft: true
+draft: false
 devto: true
 ---
 
