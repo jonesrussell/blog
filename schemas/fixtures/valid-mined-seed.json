@@ -3,7 +3,7 @@
   "source_ref": "abc1234",
   "content_seed": "Added SovereigntyProfile to Layer 0. Communities declare local/hybrid/cloud sovereignty mode.",
   "suggested_type": "text-post",
-  "suggested_channels": ["x", "linkedin", "facebook"],
+  "suggested_channels": ["bluesky", "linkedin", "facebook"],
   "mined_at": "2026-04-13T10:00:00Z",
   "confidence": 0.85
 }

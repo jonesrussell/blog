@@ -213,7 +213,7 @@ for group_file in "${TMPDIR_WORK}"/*.jsonl; do
   "source_ref": ${SOURCE_REFS},
   "content_seed": $(echo "$CONTENT_SEED" | jq -Rs .),
   "suggested_type": "text-post",
-  "suggested_channels": ["x", "linkedin", "facebook"],
+  "suggested_channels": ["bluesky", "linkedin", "facebook"],
   "mined_at": "$(date -u +%Y-%m-%dT%H:%M:%SZ)",
   "confidence": ${CONFIDENCE}
 }
@@ -249,7 +249,7 @@ ${CONTENT_SEED}
 ## Suggested
 
 - **Type:** text-post
-- **Channels:** x, linkedin, facebook"
+- **Channels:** bluesky, linkedin, facebook"
 
     gh issue create --repo "$QUEUE_REPO" \
       --title "$TITLE" \
