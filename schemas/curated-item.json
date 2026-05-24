@@ -30,7 +30,7 @@
       "type": "array",
       "items": {
         "type": "string",
-        "enum": ["facebook", "x", "linkedin", "devto", "substack", "youtube"]
+        "enum": ["facebook", "x", "linkedin", "bluesky", "devto", "substack", "youtube"]
       },
       "minItems": 1
     },
@@ -52,7 +52,7 @@
       "type": "array",
       "items": {
         "type": "string",
-        "enum": ["facebook", "x", "linkedin", "devto", "substack", "youtube"]
+        "enum": ["facebook", "x", "linkedin", "bluesky", "devto", "substack", "youtube"]
       },
       "minItems": 1,
       "description": "Human-confirmed distribution channels."
