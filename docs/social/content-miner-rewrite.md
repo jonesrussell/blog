@@ -2,11 +2,10 @@
 
 Reference URL: https://github.com/jonesrussell/blog/commit/3199224
 
-## X
+## Bluesky
 
-Rewrote the content miner. Commit grouping, per-candidate confidence scoring, SHA dedup against the queue. Vibe-coding fix on a vibe-coded pipeline. #buildinpublic
+Rewrote the content miner. Commit grouping, per-candidate confidence scoring, SHA dedup against the queue. A vibe-coding fix on a vibe-coded pipeline. #buildinpublic
 
-**First reply:**
 https://github.com/jonesrussell/blog/commit/3199224
 
 ## LinkedIn
@@ -29,10 +28,9 @@ The part I cannot stop laughing at: this was a vibe-coding fix on a vibe-coded p
 
 Building in public means your own tools mine your own work. When they are noisy, you notice fast.
 
-#softwaredevelopment #buildinpublic #devtools #automation
-
-**First comment:**
 https://github.com/jonesrussell/blog/commit/3199224
+
+#softwaredevelopment #buildinpublic #devtools #automation
 
 ## Facebook
 
@@ -42,7 +40,6 @@ Added commit grouping so related commits become one seed, per-candidate confiden
 
 The part I cannot stop laughing at is that this was a vibe-coding fix on a vibe-coded pipeline. Building in public means running your own tools on your own work, and the rough edges surface fast.
 
-#buildinpublic
-
-**First comment:**
 https://github.com/jonesrussell/blog/commit/3199224
+
+#buildinpublic
