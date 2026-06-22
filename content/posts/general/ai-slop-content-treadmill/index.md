@@ -1,12 +1,18 @@
 ---
-title: "AI slop and the content treadmill every developer is on"
-date: 2026-06-20
-categories: [general]
-tags: [ai, writing, social-media, content]
-summary: "Why I automated my own content pipeline, what it costs, and how developers can share their work without adding to the AI slop."
-slug: "ai-slop-content-treadmill"
-draft: false
+categories:
+    - general
+date: 2026-06-20T00:00:00Z
 devto: true
+devto_id: 3965241
+draft: false
+slug: ai-slop-content-treadmill
+summary: Why I automated my own content pipeline, what it costs, and how developers can share their work without adding to the AI slop.
+tags:
+    - ai
+    - writing
+    - social-media
+    - content
+title: AI slop and the content treadmill every developer is on
 ---
 
 Ahnii!

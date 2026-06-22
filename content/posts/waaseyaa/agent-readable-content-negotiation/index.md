@@ -1,12 +1,19 @@
 ---
-title: "One URL, two readers: serving HTML to people and Markdown to agents"
-date: 2026-06-19
-categories: [php, waaseyaa]
-tags: [waaseyaa, content-negotiation, ai-agents, php]
-summary: "How Waaseyaa serves the same content as a web page for people and clean Markdown for AI agents from a single URL, using HTTP content negotiation."
-slug: "agent-readable-content-negotiation"
-draft: false
+categories:
+    - php
+    - waaseyaa
+date: 2026-06-19T00:00:00Z
 devto: true
+devto_id: 3965242
+draft: false
+slug: agent-readable-content-negotiation
+summary: How Waaseyaa serves the same content as a web page for people and clean Markdown for AI agents from a single URL, using HTTP content negotiation.
+tags:
+    - waaseyaa
+    - content-negotiation
+    - ai-agents
+    - php
+title: 'One URL, two readers: serving HTML to people and Markdown to agents'
 ---
 
 Ahnii!
