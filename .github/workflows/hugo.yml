@@ -58,10 +58,11 @@ jobs:
         run: npm ci
 
       - name: Install Playwright Chromium
-        env:
-          DEBIAN_FRONTEND: noninteractive
-          NEEDRESTART_MODE: a
-        run: npx playwright install chromium --with-deps
+        # No --with-deps: the apt step hangs on a dpkg lock on GitHub runners
+        # (caused multi-hour cancellations). ubuntu-latest already ships the
+        # shared libs Chromium needs, and OG generation only launches Chromium
+        # when images are missing (they are committed and generated incrementally).
+        run: npx playwright install chromium
 
       - name: Generate OG images
         run: node scripts/generate-og-images.js
