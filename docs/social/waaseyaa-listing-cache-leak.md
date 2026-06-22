@@ -4,7 +4,7 @@ Reference URL: https://github.com/waaseyaa/framework/pull/1725
 
 ## Bluesky
 
-A cache bug that leaks data: we ran a per-row access filter on a listing, then cached the result under a key with no user context. The next user got a cache hit on the first user's filtered rows, including restricted ones. Fix: key the cache per acting account. https://github.com/waaseyaa/framework/pull/1725 #buildinpublic
+A cache bug that leaks data: we access-filtered a listing per row, then cached it under a key with no user context. The next user got a cache hit on the first user's filtered rows. Key the cache per account. https://github.com/waaseyaa/framework/pull/1725 #buildinpublic
 
 ## LinkedIn
 
