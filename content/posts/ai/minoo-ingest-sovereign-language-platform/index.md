@@ -1,12 +1,18 @@
 ---
-title: "The ingest side of a sovereign language platform"
-date: 2026-06-25
-categories: [ai]
-tags: ["waaseyaa", "language-tech", "ai-agents", "build-in-public"]
-summary: "How an Elder's whiteboard video becomes a searchable Anishinaabemowin lesson, on infrastructure the community owns end to end."
-slug: "minoo-ingest-sovereign-language-platform"
-draft: false
+categories:
+    - ai
+date: 2026-06-25T00:00:00Z
 devto: true
+devto_id: 3991568
+draft: false
+slug: minoo-ingest-sovereign-language-platform
+summary: How an Elder's whiteboard video becomes a searchable Anishinaabemowin lesson, on infrastructure the community owns end to end.
+tags:
+    - waaseyaa
+    - language-tech
+    - ai-agents
+    - build-in-public
+title: The ingest side of a sovereign language platform
 ---
 
 Ahnii!
