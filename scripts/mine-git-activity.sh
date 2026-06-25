@@ -15,7 +15,7 @@ CONFIDENCE_THRESHOLD="${2:-0.3}"
 SINCE_DATE=$(date -u -d "${DAYS} days ago" +%Y-%m-%dT%H:%M:%SZ 2>/dev/null || date -u -v-"${DAYS}"d +%Y-%m-%dT%H:%M:%SZ)
 QUEUE_REPO="jonesrussell/jonesrussell"
 VALIDATOR="node ${SCRIPT_DIR}/../schemas/validate.js"
-REPOS=("waaseyaa/framework" "waaseyaa/giiken" "jonesrussell/rhtcircle" "jonesrussell/blog" "jonesrussell/jonesrussell")
+REPOS=("waaseyaa/framework" "waaseyaa/giiken" "waaseyaa/minoo" "jonesrussell/rhtcircle" "jonesrussell/blog" "jonesrussell/jonesrussell")
 
 MINED_COUNT=0
 SKIPPED_COUNT=0
