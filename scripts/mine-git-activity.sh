@@ -8,10 +8,14 @@ set -euo pipefail
 #
 # Usage: ./scripts/mine-git-activity.sh [days] [confidence_threshold]
 # Default: 7 days lookback, 0.3 confidence threshold
+# Env: MAX_ISSUES_PER_RUN (default 12) caps issues created per run.
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 DAYS="${1:-7}"
 CONFIDENCE_THRESHOLD="${2:-0.3}"
+# Cap issues created per run so a busy window can't dump dozens of low-value items.
+# The cap keeps the highest-confidence groups; the rest are reported, not silently dropped.
+MAX_ISSUES_PER_RUN="${MAX_ISSUES_PER_RUN:-12}"
 SINCE_DATE=$(date -u -d "${DAYS} days ago" +%Y-%m-%dT%H:%M:%SZ 2>/dev/null || date -u -v-"${DAYS}"d +%Y-%m-%dT%H:%M:%SZ)
 QUEUE_REPO="jonesrussell/jonesrussell"
 VALIDATOR="node ${SCRIPT_DIR}/../schemas/validate.js"
@@ -20,15 +24,21 @@ REPOS=("waaseyaa/framework" "waaseyaa/giiken" "waaseyaa/minoo" "jonesrussell/rht
 MINED_COUNT=0
 SKIPPED_COUNT=0
 BELOW_THRESHOLD=0
+DROPPED_CAP=0
 
 # Create temp directory for intermediate files, clean up on exit
 TMPDIR_WORK=$(mktemp -d /tmp/mine-git-XXXXXX)
 trap 'rm -rf "${TMPDIR_WORK}"' EXIT
 
-echo "Mining git activity since ${SINCE_DATE} (${DAYS} days, threshold=${CONFIDENCE_THRESHOLD})"
+echo "Mining git activity since ${SINCE_DATE} (${DAYS} days, threshold=${CONFIDENCE_THRESHOLD}, cap=${MAX_ISSUES_PER_RUN})"
 
 # Fetch existing issue bodies for SHA-based dedup
 EXISTING_BODIES=$(gh issue list --repo "$QUEUE_REPO" --label "content-queue" --json body --jq '.[].body' --limit 200 2>/dev/null || echo "")
+
+# Fetch titles of OPEN content-queue issues for title-similarity dedup (normalized: lowercased, whitespace-collapsed).
+# SHA dedup misses the case where the same directory is mined again from different commits while a prior issue is still open.
+EXISTING_TITLES_NORM=$(gh issue list --repo "$QUEUE_REPO" --label "content-queue" --state open --json title --jq '.[].title' --limit 200 2>/dev/null \
+  | tr '[:upper:]' '[:lower:]' | tr -s ' ' | sed 's/[[:space:]]*$//' || echo "")
 
 # ── Phase 1: Collect commits and group by theme ──
 
@@ -91,10 +101,14 @@ for repo in "${REPOS[@]}"; do
   done < <(echo "$COMMITS" | jq -c '.')
 done
 
-# ── Phase 2: Score each group and create issues ──
+# ── Phase 2: Score each group, collect those above threshold ──
 
 echo ""
 echo "--- Scoring groups ---"
+
+# Eligible groups recorded as "confidence<TAB>group_file" so Phase 3 can sort by confidence.
+ELIGIBLE_LIST="${TMPDIR_WORK}/eligible.tsv"
+: > "$ELIGIBLE_LIST"
 
 for group_file in "${TMPDIR_WORK}"/*.jsonl; do
   [[ ! -f "$group_file" ]] && continue
@@ -183,13 +197,48 @@ for group_file in "${TMPDIR_WORK}"/*.jsonl; do
     continue
   fi
 
-  # ── Phase 4: Build seed JSON and create issue ──
+  printf '%s\t%s\n' "$CONFIDENCE" "$group_file" >> "$ELIGIBLE_LIST"
+done
+
+# ── Phase 3: Sort eligible groups by confidence, apply title dedup + cap, create issues ──
+
+echo ""
+echo "--- Creating issues (cap: ${MAX_ISSUES_PER_RUN}, highest confidence first) ---"
+
+# Highest confidence first so the cap keeps the best groups.
+SORTED_ELIGIBLE=$(sort -t"$(printf '\t')" -k1,1nr "$ELIGIBLE_LIST" 2>/dev/null || true)
+
+while IFS="$(printf '\t')" read -r CONFIDENCE group_file; do
+  [[ -z "${group_file:-}" ]] && continue
+  [[ ! -f "$group_file" ]] && continue
+
+  GROUP_NAME=$(basename "$group_file" .jsonl | tr '_' '/')
+  COMMIT_COUNT=$(wc -l < "$group_file")
+  REPO=$(head -1 "$group_file" | jq -r '.repo')
 
   # Extract directory portion from group name (after repo)
   DIR_PART=$(echo "$GROUP_NAME" | sed "s|^${REPO}||; s|^/||")
   if [[ -z "$DIR_PART" ]]; then
     DIR_PART="root"
   fi
+
+  TITLE="[content] ${REPO}: ${DIR_PART} work"
+
+  # Title-similarity dedup vs existing OPEN content-queue issues (normalized exact match)
+  TITLE_NORM=$(echo "$TITLE" | tr '[:upper:]' '[:lower:]' | tr -s ' ' | sed 's/[[:space:]]*$//')
+  if [[ -n "$EXISTING_TITLES_NORM" ]] && echo "$EXISTING_TITLES_NORM" | grep -qxF "$TITLE_NORM"; then
+    echo "  Skipping (title already open): ${TITLE}"
+    SKIPPED_COUNT=$((SKIPPED_COUNT + 1))
+    continue
+  fi
+
+  # Enforce per-run cap, keeping the highest-confidence groups (we iterate in sorted order).
+  if [[ "$MINED_COUNT" -ge "$MAX_ISSUES_PER_RUN" ]]; then
+    DROPPED_CAP=$((DROPPED_CAP + 1))
+    continue
+  fi
+
+  # ── Build seed JSON and create issue ──
 
   # Build source_ref array (full commit URLs)
   SOURCE_REFS=$(jq -r --arg repo "$REPO" '"https://github.com/" + $repo + "/commit/" + .sha' "$group_file" | jq -R -s 'split("\n") | map(select(length > 0))')
@@ -221,8 +270,6 @@ SEED
 
   # Validate against schema
   if $VALIDATOR mined-seed "$SEED_FILE" > /dev/null 2>&1; then
-    TITLE="[content] ${REPO}: ${DIR_PART} work"
-
     # Build issue body
     ISSUE_BODY="## Source
 
@@ -257,13 +304,16 @@ ${CONTENT_SEED}
       --body "$ISSUE_BODY" \
       > /dev/null
 
-    echo "    Created issue: ${TITLE}"
+    echo "    Created issue: ${TITLE} (confidence=${CONFIDENCE})"
     MINED_COUNT=$((MINED_COUNT + 1))
   else
     echo "    Validation failed for group ${GROUP_NAME}, skipping"
     $VALIDATOR mined-seed "$SEED_FILE" 2>&1 || true
   fi
-done
+done <<< "$SORTED_ELIGIBLE"
 
 echo ""
-echo "Mining complete: ${MINED_COUNT} issues created, ${SKIPPED_COUNT} skipped, ${BELOW_THRESHOLD} below threshold"
+echo "Mining complete: ${MINED_COUNT} issues created, ${SKIPPED_COUNT} skipped, ${BELOW_THRESHOLD} below threshold, ${DROPPED_CAP} dropped by cap (MAX_ISSUES_PER_RUN=${MAX_ISSUES_PER_RUN})"
+if [[ "$DROPPED_CAP" -gt 0 ]]; then
+  echo "Note: ${DROPPED_CAP} eligible group(s) above threshold were not filed this run because of the per-run cap. Re-run after curating, or raise MAX_ISSUES_PER_RUN."
+fi

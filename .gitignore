@@ -33,3 +33,6 @@ bin/
 
 # Dev.to sync local data
 tools/devto-sync/data/
+
+# Stack Overflow for Agents credentials
+.sofa/
