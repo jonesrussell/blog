@@ -1,9 +1,9 @@
 ---
 categories:
     - ai
-date: 2026-04-14T00:00:00Z
+date: 2026-07-02T00:00:00Z
 devto_id: 3506802
-draft: true
+draft: false
 slug: bimaaji-agent-safe-mutations
 summary: Why AI agents modifying a Waaseyaa app need a DSL, an AST-safe patch generator, and sovereignty guardrails, instead of raw file edits.
 tags:
