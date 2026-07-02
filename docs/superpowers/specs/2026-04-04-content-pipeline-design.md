@@ -44,7 +44,7 @@ The queue is the heart of the system. Everything upstream feeds it, everything d
 <!-- text-post | blog-post | video | newsletter -->
 
 ## Channels
-<!-- x, linkedin, facebook, youtube, substack, devto, blog -->
+<!-- linkedin, facebook, bluesky, youtube, substack, devto, blog -->
 
 ## Generated Artifacts
 <!-- Added during production: draft copy, script, video file, etc. -->
@@ -161,7 +161,7 @@ Distribution takes a `stage:ready` item and delivers it to the appropriate chann
 
 | Channel | Method |
 |---------|--------|
-| X, LinkedIn, Facebook | Buffer GraphQL API (`createPost` mutation, one call per channel) |
+| LinkedIn, Facebook, Bluesky | Buffer GraphQL API (`createPost` mutation, one call per channel) |
 | Dev.to | Automatic via existing Hugo → devto-sync |
 | Substack | Newsletter skill drafts; human approves send |
 | YouTube | Manual upload with generated metadata until API integration; then draft-then-approve |
@@ -231,8 +231,14 @@ mutation {
 
 **Buffer channels (current):**
 - Facebook: Fullstackdev42
-- X/Twitter: @jonesrussell42
 - LinkedIn: Russell Jones
+- Bluesky: @jonesrussell.bsky.social
+
+X/Twitter was disconnected 2026-05-18 and is no longer a distribution target.
+
+## Changelog
+
+- **2026-07-01:** Removed X/Twitter from Buffer channels (disconnected 2026-05-18); added Bluesky as active distribution channel. Updated channels table in Section 5 and Buffer API Reference accordingly.
 
 ## Open Questions
 

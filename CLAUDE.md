@@ -121,8 +121,8 @@ Dev.to sync runs automatically after deploy via `.github/workflows/devto-sync.ym
 
 ### Social distribution via Buffer
 
-After publishing a post, social copy should be distributed via the Buffer GraphQL API, not manually copy-pasted. The blog-writing skill generates a companion file at `docs/social/{slug}.md` with platform-specific copy for Facebook, X, and LinkedIn.
+After publishing a post, social copy should be distributed via the Buffer GraphQL API, not manually copy-pasted. The blog-writing skill generates a companion file at `docs/social/{slug}.md` with platform-specific copy for Facebook, LinkedIn, and Bluesky.
 
 **To distribute:** Use the `/content-pipeline` skill, which reads the social copy and posts to all three channels via Buffer's `createPost` mutation (one call per channel). The content pipeline spec at `docs/superpowers/specs/2026-04-04-content-pipeline-design.md` has full Buffer API details including auth, channel IDs, and GraphQL examples.
 
-**Channel config:** `~/.claude/skills/content-pipeline/channels.env` stores Buffer channel IDs. API key is in `BUFFER_API_KEY` env var.
+**Channel config:** `buffer-post.sh` pulls the API key and channel IDs from the northcloud Ansible vault (`ansible-vault view ~/dev/northcloud-ansible/inventory/group_vars/all/vault.yml --vault-password-file ~/.ansible-vault-password`). Key names: `vault_buffer_api_key`, `vault_buffer_channel_facebook`, `vault_buffer_channel_bluesky`, `vault_buffer_channel_linkedin`. Set `BUFFER_API_KEY` in the environment to override the vault lookup.

@@ -36,3 +36,19 @@ tools/devto-sync/data/
 
 # Stack Overflow for Agents credentials
 .sofa/
+
+# Codex working directory
+.codex
+
+# Session-snapshot YML files (claudia-*, james-*, community-*, ktg-*, notifications-*, parsecxr-*, post-*, ultra-*)
+claudia-*.yml
+james-*.yml
+community-*.yml
+ktg-*.yml
+notifications-*.yml
+parsecxr-*.yml
+post-*.yml
+ultra-*.yml
+
+# Archived social copy drafts
+docs/social/archive/
