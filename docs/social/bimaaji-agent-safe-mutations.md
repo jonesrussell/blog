@@ -2,12 +2,9 @@
 
 Reference URL: https://jonesrussell.github.io/blog/bimaaji-agent-safe-mutations/
 
-## X
+## Bluesky
 
-Let an AI agent edit your app and it will cheerfully break things. Bimaaji gives agents a DSL, AST-safe patches, and sovereignty guardrails instead. #buildinpublic
-
-**First reply:**
-https://jonesrussell.github.io/blog/bimaaji-agent-safe-mutations/
+AI agents shouldn't edit Waaseyaa apps via raw file writes. Bimaaji gives them a structured DSL, AST-safe patches, and sovereignty guardrails. https://jonesrussell.github.io/blog/bimaaji-agent-safe-mutations/ #buildinpublic
 
 ## LinkedIn
 
@@ -25,12 +22,9 @@ The agent never touches the filesystem. The patch goes to a human (or a higher-l
 
 This is where Waaseyaa's sovereignty story gets teeth. Community control over AI-driven changes is not a policy document sitting on a wiki. It is a validator in the mutation path. If a mutation violates the profile, it stops at the proposal stage. No files get rewritten first and reverted after.
 
-Full writeup with the subsystem breakdown in the first comment.
+https://jonesrussell.github.io/blog/bimaaji-agent-safe-mutations/
 
 #softwaredevelopment #php #aiagents #opensource #buildinpublic
-
-**First comment:**
-https://jonesrussell.github.io/blog/bimaaji-agent-safe-mutations/
 
 ## Facebook
 
@@ -40,7 +34,6 @@ The short version: agents do not edit files. They submit a structured task, it r
 
 The sovereignty piece is what I care about most. Community control over AI changes is not a policy document. It is a validator in the mutation path.
 
-#buildinpublic
-
-**First comment:**
 https://jonesrussell.github.io/blog/bimaaji-agent-safe-mutations/
+
+#buildinpublic
