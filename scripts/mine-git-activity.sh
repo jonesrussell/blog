@@ -11,11 +11,14 @@ set -euo pipefail
 # Env: MAX_ISSUES_PER_RUN (default 12) caps issues created per run.
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
-DAYS="${1:-7}"
+# Accept lookback days via env var (CI) or positional arg (local); default 7.
+DAYS="${LOOKBACK_DAYS:-${1:-7}}"
 CONFIDENCE_THRESHOLD="${2:-0.3}"
 # Cap issues created per run so a busy window can't dump dozens of low-value items.
 # The cap keeps the highest-confidence groups; the rest are reported, not silently dropped.
 MAX_ISSUES_PER_RUN="${MAX_ISSUES_PER_RUN:-12}"
+# DRY_RUN=1 prints would-be issue titles instead of creating them (safe for local testing).
+DRY_RUN="${DRY_RUN:-0}"
 SINCE_DATE=$(date -u -d "${DAYS} days ago" +%Y-%m-%dT%H:%M:%SZ 2>/dev/null || date -u -v-"${DAYS}"d +%Y-%m-%dT%H:%M:%SZ)
 QUEUE_REPO="jonesrussell/jonesrussell"
 VALIDATOR="node ${SCRIPT_DIR}/../schemas/validate.js"
@@ -33,12 +36,23 @@ trap 'rm -rf "${TMPDIR_WORK}"' EXIT
 echo "Mining git activity since ${SINCE_DATE} (${DAYS} days, threshold=${CONFIDENCE_THRESHOLD}, cap=${MAX_ISSUES_PER_RUN})"
 
 # Fetch existing issue bodies for SHA-based dedup
-EXISTING_BODIES=$(gh issue list --repo "$QUEUE_REPO" --label "content-queue" --json body --jq '.[].body' --limit 200 2>/dev/null || echo "")
+EXISTING_BODIES=$(gh issue list --repo "$QUEUE_REPO" --label "content-queue" --json body --jq '.[].body' --limit 200 \
+  2>/dev/null || { echo "WARN: failed to fetch existing issue bodies (rate-limited or permission denied)" >&2; echo ""; })
 
 # Fetch titles of OPEN content-queue issues for title-similarity dedup (normalized: lowercased, whitespace-collapsed).
 # SHA dedup misses the case where the same directory is mined again from different commits while a prior issue is still open.
-EXISTING_TITLES_NORM=$(gh issue list --repo "$QUEUE_REPO" --label "content-queue" --state open --json title --jq '.[].title' --limit 200 2>/dev/null \
-  | tr '[:upper:]' '[:lower:]' | tr -s ' ' | sed 's/[[:space:]]*$//' || echo "")
+_open_titles_raw=$(gh issue list --repo "$QUEUE_REPO" --label "content-queue" --state open --json title --jq '.[].title' --limit 200 \
+  2>/dev/null || { echo "WARN: failed to fetch open issue titles (rate-limited or permission denied)" >&2; echo ""; })
+EXISTING_TITLES_NORM=$(echo "$_open_titles_raw" | tr '[:upper:]' '[:lower:]' | tr -s ' ' | sed 's/[[:space:]]*$//')
+
+# Fetch titles of CLOSED content-queue issues (last 30 days) for extended dedup.
+# ~150 issues bulk-closed with curate:skipped must not be re-created.
+THIRTY_DAYS_AGO=$(date -u -d "30 days ago" +%Y-%m-%dT%H:%M:%SZ 2>/dev/null || date -u -v-30d +%Y-%m-%dT%H:%M:%SZ)
+CLOSED_TITLES_RAW=$(gh issue list --repo "$QUEUE_REPO" --state closed --label "content-queue" --limit 200 --json title,closedAt \
+  2>/dev/null || { echo "WARN: failed to fetch closed issue titles (rate-limited or permission denied)" >&2; echo "[]"; })
+CLOSED_TITLES_NORM=$(echo "$CLOSED_TITLES_RAW" | jq -r --arg since "$THIRTY_DAYS_AGO" \
+  '.[] | select(.closedAt >= $since) | .title' 2>/dev/null \
+  | tr '[:upper:]' '[:lower:]' | tr -s ' ' | sed 's/[[:space:]]*$//')
 
 # ── Phase 1: Collect commits and group by theme ──
 
@@ -48,7 +62,7 @@ for repo in "${REPOS[@]}"; do
   # Fetch recent commits (compact JSON, one per line)
   COMMITS=$(gh api "repos/${repo}/commits?since=${SINCE_DATE}&per_page=50" \
     --jq '.[] | select(.commit.message | test("^(Merge |bump |chore\\(deps\\)|ci:|fix typo|formatting)"; "i") | not) | {sha: .sha, message: .commit.message, date: .commit.author.date}' \
-    2>/dev/null || echo "")
+    2>/dev/null || { echo "WARN: failed to fetch commits for ${repo} (rate-limited or permission denied)" >&2; echo ""; })
 
   if [[ -z "$COMMITS" ]]; then
     echo "  No qualifying commits found."
@@ -69,7 +83,8 @@ for repo in "${REPOS[@]}"; do
     fi
 
     # Fetch files changed for this commit
-    FILES_JSON=$(gh api "repos/${repo}/commits/${SHA}" --jq '[.files[].filename]' 2>/dev/null || echo "[]")
+    FILES_JSON=$(gh api "repos/${repo}/commits/${SHA}" --jq '[.files[].filename]' \
+      2>/dev/null || { echo "WARN: failed to fetch files for ${SHA} in ${repo} (rate-limited or permission denied)" >&2; echo "[]"; })
 
     # Determine the most common directory among changed files for grouping
     # Use frequency count rather than picking a single file
@@ -224,10 +239,12 @@ while IFS="$(printf '\t')" read -r CONFIDENCE group_file; do
 
   TITLE="[content] ${REPO}: ${DIR_PART} work"
 
-  # Title-similarity dedup vs existing OPEN content-queue issues (normalized exact match)
+  # Title-similarity dedup vs existing OPEN and recently-CLOSED content-queue issues (normalized exact match).
+  # Closed check covers ~150 issues bulk-closed with curate:skipped that must not be re-created.
   TITLE_NORM=$(echo "$TITLE" | tr '[:upper:]' '[:lower:]' | tr -s ' ' | sed 's/[[:space:]]*$//')
-  if [[ -n "$EXISTING_TITLES_NORM" ]] && echo "$EXISTING_TITLES_NORM" | grep -qxF "$TITLE_NORM"; then
-    echo "  Skipping (title already open): ${TITLE}"
+  if { [[ -n "$EXISTING_TITLES_NORM" ]] && echo "$EXISTING_TITLES_NORM" | grep -qxF "$TITLE_NORM"; } || \
+     { [[ -n "$CLOSED_TITLES_NORM" ]] && echo "$CLOSED_TITLES_NORM" | grep -qxF "$TITLE_NORM"; }; then
+    echo "  Skipping (title already open or recently closed): ${TITLE}"
     SKIPPED_COUNT=$((SKIPPED_COUNT + 1))
     continue
   fi
@@ -298,13 +315,16 @@ ${CONTENT_SEED}
 - **Type:** text-post
 - **Channels:** bluesky, linkedin, facebook"
 
-    gh issue create --repo "$QUEUE_REPO" \
-      --title "$TITLE" \
-      --label "content-queue,stage:mined,type:text-post" \
-      --body "$ISSUE_BODY" \
-      > /dev/null
-
-    echo "    Created issue: ${TITLE} (confidence=${CONFIDENCE})"
+    if [[ "$DRY_RUN" == "1" ]]; then
+      echo "  [DRY_RUN] Would create: ${TITLE} (confidence=${CONFIDENCE}, repo=${REPO})"
+    else
+      gh issue create --repo "$QUEUE_REPO" \
+        --title "$TITLE" \
+        --label "content-queue,stage:mined,type:text-post" \
+        --body "$ISSUE_BODY" \
+        > /dev/null
+      echo "    Created issue: ${TITLE} (confidence=${CONFIDENCE})"
+    fi
     MINED_COUNT=$((MINED_COUNT + 1))
   else
     echo "    Validation failed for group ${GROUP_NAME}, skipping"
@@ -316,4 +336,11 @@ echo ""
 echo "Mining complete: ${MINED_COUNT} issues created, ${SKIPPED_COUNT} skipped, ${BELOW_THRESHOLD} below threshold, ${DROPPED_CAP} dropped by cap (MAX_ISSUES_PER_RUN=${MAX_ISSUES_PER_RUN})"
 if [[ "$DROPPED_CAP" -gt 0 ]]; then
   echo "Note: ${DROPPED_CAP} eligible group(s) above threshold were not filed this run because of the per-run cap. Re-run after curating, or raise MAX_ISSUES_PER_RUN."
+fi
+
+# Write state marker so local runs know when last executed.
+# Skip in CI (CI=true), DRY_RUN=1, or if the state directory is not writable.
+STATE_DIR="${HOME}/.local/state/content-mine"
+if [[ "${CI:-false}" != "true" && "$DRY_RUN" != "1" ]] && mkdir -p "$STATE_DIR" 2>/dev/null && [[ -w "$STATE_DIR" ]]; then
+  date -u +%Y-%m-%dT%H:%M:%SZ > "${STATE_DIR}/last-run"
 fi
