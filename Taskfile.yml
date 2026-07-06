@@ -108,6 +108,11 @@ tasks:
     cmds:
       - node scripts/bluesky-metrics.mjs
 
+  metrics:buffer:
+    desc: Snapshot Buffer per-channel post metrics (FB/LinkedIn/Bluesky) to docs/social/metrics/
+    cmds:
+      - node scripts/buffer-metrics.mjs
+
   devto:build:
     desc: Build the devto-sync tool
     dir: tools/devto-sync
