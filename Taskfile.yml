@@ -103,6 +103,11 @@ tasks:
     env:
       HUGO_ENV: production
 
+  metrics:bluesky:
+    desc: Snapshot Bluesky follower/engagement metrics to docs/social/metrics/
+    cmds:
+      - node scripts/bluesky-metrics.mjs
+
   devto:build:
     desc: Build the devto-sync tool
     dir: tools/devto-sync

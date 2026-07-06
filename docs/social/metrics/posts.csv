@@ -1,0 +1,51 @@
+posted,likes,reposts,replies,quotes,text,uri
+2026-07-04,6,0,0,0,"Giiken is a community knowledge management platform on Waaseyaa: ingestion pipeline, wiki schema, se",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mptxhwu3fp2x
+2026-07-04,3,0,0,0,"In an AI-assisted codebase, drift is the default. Four Waaseyaa governance protocols to keep archite",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mptk4fozhx22
+2026-07-04,7,0,0,0,"Giiken's frontend is Vue 3, Vite, Tailwind, and Inertia: the same stack across the Waaseyaa ecosyste",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mpt4lfsd532t
+2026-07-03,6,0,0,0,"4 Waaseyaa framework fixes that close the gap between cloning a repo and having it running in a brow",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mprgwfpvat2i
+2026-07-03,5,0,2,0,"AI agents shouldn't edit Waaseyaa apps via raw file writes. Bimaaji gives them a structured DSL, AST",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mpqzllwctj2t
+2026-07-03,3,0,0,0,"6 Symfony ^7.3 floor constraints across the Waaseyaa monorepo, none justified by actual API usage. A",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mpqm6inogq2t
+2026-07-02,6,0,0,0,"Replaced instanceof dispatch with a strategy pattern in the Waaseyaa API layer. Adding a new request",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mpowh3m2pi2f
+2026-07-02,4,0,0,0,"Waaseyaa's serve command now auto-creates the SQLite database in dev mode. Clone, serve, done. githu",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mpoj354u4b2n
+2026-07-02,4,0,1,0,"Waaseyaa's AI agent package now has a NullLlmProvider. Satisfies the interface, costs nothing, and k",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mpo3nfjz6j2k
+2026-06-30,3,0,0,0,"The Waaseyaa framework now enforces package layering. A layer gate flags any undeclared cross-packag",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mpj2qvj2e52i
+2026-06-29,4,0,1,0,"rhtcircle.ca now looks up Anishinaabemowin words by calling Minoo's /api/lang. One platform serves t",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mphf34gaga2v
+2026-06-29,6,0,1,0,"Added a tamper-evident audit log to the Waaseyaa framework. Every event hash-chains to the one befor",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mpgxma4wgd2n
+2026-06-28,4,0,0,0,"A translation memory where the misses are the point: minoo's language module logs every lookup it ca",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mpdzt6pcug2l
+2026-06-27,6,0,0,0,"Retired a shared htpasswd: rhtcircle.ca admin now uses real framework auth, with proper sessions and",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mpce5fhzog2i
+2026-06-27,6,0,0,0,"rhtcircle.ca now has an AI assistant: Anokii, seeded with the Robinson Huron Treaty corpus, so a mem",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mpbwrzqrdn2u
+2026-06-27,4,0,0,0,"rhtcircle.ca now hosts a records-request sign-on petition: treaty members can add their name to dema",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mpbjf7566q2q
+2026-06-26,4,0,1,0,"rhtcircle.ca now runs first-party, self-hosted analytics: a collector, a dashboard, and page-stats w",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mp7toal2ki2c
+2026-06-26,4,0,0,0,"rhtcircle.ca/resources is now a graph-driven, filterable directory: treaty members can find help by ",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mp7ge7qqrs2q
+2026-06-26,3,0,1,0,"A portability bug worth knowing: our scheduler recorded each run with SQLite's INSERT OR REPLACE. Th",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mp6z2xz7p62x
+2026-06-25,3,0,0,0,"A queue bug worth knowing: our handler rebuilt the queued notification as a stripped copy with only ",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mp5d7n3hki2p
+2026-06-25,5,0,0,0,"An Elder holds up a whiteboard with one Anishinaabemowin word. Minoo turns that video into a searcha",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mp53bogl2s2u
+2026-06-25,6,0,1,0,"Access-control bug: our engagement policy allowed view unconditionally, so reactions and comments on",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mp4vur4rmh2b
+2026-06-25,0,0,0,0,"I would appreciate it if a security professional could help me with a written confirmation that it's",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mp4kcxfs222o
+2026-06-25,4,0,1,0,"I built a machine that turns my git commits into social posts. Then I wrote about why that quietly m",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mp4imuvste2p
+2026-06-25,4,0,0,0,"Cool minoo work: drop a stack of video reels into Anokii Workspace and each becomes a draft corpus e",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mp36x3ndr52m
+2026-06-24,3,0,1,0,"A cache bug that leaks data: we access-filtered a listing per row, then cached it under a key with n",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mp2sqkdgoq2i
+2026-06-24,6,0,0,0,"A real Indigenous-governance site now reads two ways. rhtcircle.ca serves human pages and a machine-",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mp2rxvtfqt2v
+2026-06-24,4,0,1,1,"Sharp one: our append-only audit log blocked raw deletes by stripping quoted spans as string literal",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mp2fflmkfv2i
+2026-06-24,5,0,0,0,"Easy to miss: our full-text search returned every matching row with zero access checks. Entities get",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mozydlora42v
+2026-06-23,4,0,0,0,"If your /graphql accepts GET and runs the query param, GET /graphql?query=mutation{...} runs a state",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3moycbfi7ff2s
+2026-06-23,6,0,0,0,"JSON-LD XSS worth knowing: we encoded structured data without JSON_HEX_TAG, then wrapped it in a scr",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3moxv42zabz2n
+2026-06-23,5,0,1,0,"An OAuth login bug worth knowing: our GitHub provider read JSON from /user without checking the requ",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3moxhmv4nev2n
+2026-06-21,3,0,0,0,"Got FrankenPHP running a PHP framework cross-platform, including the part nobody enjoys: Windows. An",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mostvad6he2y
+2026-06-21,3,0,0,0,"An AI agent gave a live guided tour of my admin UI: tips anchored to the real elements, not a chat o",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mosgi4k6pz2g
+2026-06-20,5,0,1,0,"Waaseyaa gave AI agents /llms.txt to read the site. Humans now get the mirror: Wayfinding. A public ",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mopvymc2ke2o
+2026-06-19,4,0,0,0,"Upgraded a running Waaseyaa app in place to alpha.226. The win: FrankenPHP now serves /admin at 200 ",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3montv665db23
+2026-06-19,4,0,2,0,"The web has two readers now: people and agents. Waaseyaa serves a human a web page and an agent clea",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3monfjudfbq2l
+2026-06-18,2,0,0,0,"Follow-up to the admin demo that 403'd last time: the backend bug is fixed in alpha.223. The 403 is ",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mokykoq2af2p
+2026-06-18,3,0,0,0,"Shipped: bimaaji:install CLI. One command installs Waaseyaa agent skills into 7 launch clients (Clau",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mokv7mklvl2l
+2026-06-18,3,0,0,0,"A dry run before a Waaseyaa demo surfaced two bugs: the admin UI 403s on a content type's entries ev",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mojnpcagch2p
+2026-06-17,5,0,0,0,"Fixed the framework and re-ran the demo: one command defines a new content type, then one URL serves",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mojin6y5f22i
+2026-06-17,4,0,0,0,"Same URL, three audiences on Waaseyaa: a web page for people, clean Markdown for agents via content ",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3moj7nr5vxa2v
+2026-06-17,6,0,1,0,"Shipped a per-request Laravel-to-MCP bridge with auth-resolved account context. AI agents calling MC",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3moj7n5nuab2p
+2026-06-17,6,0,1,0,"Rewrote the content miner. Commit grouping, per-candidate confidence scoring, SHA dedup against the ",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3moisdzbpjs2j
+2026-06-17,3,0,0,0,"Take 2 of standing up a fresh Waaseyaa app, fully agent-driven. About half the time of take 1, and t",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3moiioc7c7e2y
+2026-06-17,5,0,0,0,"Closed a Waaseyaa DX bug. vendor/bin/waaseyaa now works in consuming apps out of the box. No wrapper",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3moiequrg722i
+2026-06-16,6,0,2,0,"ci/unit-tests was red with zero test failures. The cause: phpunit deprecations and PHP 8.5's new #[\",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mogoywv36e2i
+2026-06-16,3,0,0,0,"New opt-in package: a chat-first workspace shell. SSE client with pending and failed send states, st",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mogbtm44zh2v
+2026-06-16,4,0,0,0,"A release tag should never sit on a commit CI hasn't proven green. So cuts now run CI on a throwaway",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mofubkzxs62e
+2026-06-15,0,0,0,0,"News from the Ontario Indigenous AI & Technology Council: Steven Bennett joins as Elder and Knowledg",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3moeckftmwi2k
