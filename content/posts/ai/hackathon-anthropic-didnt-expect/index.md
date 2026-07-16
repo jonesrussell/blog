@@ -1,11 +1,17 @@
 ---
-title: "The hackathon Anthropic didn't expect"
-date: 2026-06-02
-categories: ["ai"]
-tags: ["ai-assisted-dev", "equity", "community", "policy"]
-summary: "A small detail from a Boris Cherny interview points at a bigger story than the one the headlines told."
-slug: "hackathon-anthropic-didnt-expect"
+categories:
+    - ai
+date: 2026-06-02T00:00:00Z
+devto_id: 4160843
 draft: false
+slug: hackathon-anthropic-didnt-expect
+summary: A small detail from a Boris Cherny interview points at a bigger story than the one the headlines told.
+tags:
+    - ai-assisted-dev
+    - equity
+    - community
+    - policy
+title: The hackathon Anthropic didn't expect
 ---
 
 Ahnii!

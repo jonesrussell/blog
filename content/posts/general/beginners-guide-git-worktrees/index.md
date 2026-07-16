@@ -1,11 +1,17 @@
 ---
-title: "A beginner's guide to Git worktrees: What they are, why they matter, and how to use them without breaking anything"
-date: 2026-04-15
-categories: ["general"]
-tags: ["git", "git-worktree", "version-control", "beginner-guide"]
-summary: "Learn what Git worktrees are, why they exist, and how to use them safely with a beginner-friendly workflow."
-slug: "beginners-guide-git-worktrees"
+categories:
+    - general
+date: 2026-04-15T00:00:00Z
+devto_id: 4160844
 draft: false
+slug: beginners-guide-git-worktrees
+summary: Learn what Git worktrees are, why they exist, and how to use them safely with a beginner-friendly workflow.
+tags:
+    - git
+    - git-worktree
+    - version-control
+    - beginner-guide
+title: 'A beginner''s guide to Git worktrees: What they are, why they matter, and how to use them without breaking anything'
 ---
 
 Ahnii!

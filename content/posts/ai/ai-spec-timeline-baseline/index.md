@@ -1,12 +1,17 @@
 ---
-title: "AI keeps speccing my projects on pre-AI timelines"
-date: 2026-05-24
-categories: [ai]
-tags: [claude-code, vibe-coding, productivity]
-summary: AI assistants estimate effort using training data from before they existed, then push back when you try to spec faster. Working around it eats hours every week.
-slug: ai-spec-timeline-baseline
-draft: false
+categories:
+    - ai
+date: 2026-05-24T00:00:00Z
 devto: true
+devto_id: 4160838
+draft: false
+slug: ai-spec-timeline-baseline
+summary: AI assistants estimate effort using training data from before they existed, then push back when you try to spec faster. Working around it eats hours every week.
+tags:
+    - claude-code
+    - vibe-coding
+    - productivity
+title: AI keeps speccing my projects on pre-AI timelines
 ---
 
 Ahnii!

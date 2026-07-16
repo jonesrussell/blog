@@ -1,11 +1,17 @@
 ---
-title: "From vibe-coded to shippable: a playbook"
-date: 2026-06-02
-categories: ["ai"]
-tags: ["vibe-coding", "ai-assisted-dev", "prototyping", "spec-driven"]
-summary: "Six moves that take a vibe-coded prototype to a state where it can be run, debugged, and handed off."
-slug: "from-vibe-coded-to-shippable"
+categories:
+    - ai
+date: 2026-06-02T00:00:00Z
+devto_id: 4160839
 draft: false
+slug: from-vibe-coded-to-shippable
+summary: Six moves that take a vibe-coded prototype to a state where it can be run, debugged, and handed off.
+tags:
+    - vibe-coding
+    - ai-assisted-dev
+    - prototyping
+    - spec-driven
+title: 'From vibe-coded to shippable: a playbook'
 ---
 
 Ahnii!
