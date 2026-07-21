@@ -1,4 +1,10 @@
 posted,likes,reposts,replies,quotes,text,uri
+2026-07-21,0,0,0,0,"Laura Owl joins me to review the public records on Angus Toulouse's roles at Sagamok: Senior Adminis",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mr4omjy2rf2t
+2026-07-20,0,0,0,0,"GR Truss and Sagamok's $7 million Sault land deal. The names appear in land records, Council minutes",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mr45qn2bqs2m
+2026-07-20,0,0,0,0,"Working on two branches at once without stashing, committing half-done work, or cloning twice: that ",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mr3l37fvqg2c
+2026-07-19,0,0,0,0,"An electrician, a doctor, and a carpenter won Anthropic's Opus 4.7 hackathon. Not the engineers. Whe",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mqz2m6uovz2b
+2026-07-18,5,0,0,0,"The interesting craft isn't vibe coding the first prototype. It's the six moves you make next. Wrote",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mqwk5bcka32e
+2026-07-17,4,0,2,0,"AI keeps speccing your projects on pre-AI timelines. You shipped 5 WPs yesterday and it just told yo",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mqtzpqf4ey27
 2026-07-04,6,0,0,0,"Giiken is a community knowledge management platform on Waaseyaa: ingestion pipeline, wiki schema, se",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mptxhwu3fp2x
 2026-07-04,3,0,0,0,"In an AI-assisted codebase, drift is the default. Four Waaseyaa governance protocols to keep archite",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mptk4fozhx22
 2026-07-04,7,0,0,0,"Giiken's frontend is Vue 3, Vite, Tailwind, and Inertia: the same stack across the Waaseyaa ecosyste",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mpt4lfsd532t
@@ -43,9 +49,3 @@ posted,likes,reposts,replies,quotes,text,uri
 2026-06-17,4,0,0,0,"Same URL, three audiences on Waaseyaa: a web page for people, clean Markdown for agents via content ",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3moj7nr5vxa2v
 2026-06-17,6,0,1,0,"Shipped a per-request Laravel-to-MCP bridge with auth-resolved account context. AI agents calling MC",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3moj7n5nuab2p
 2026-06-17,6,0,1,0,"Rewrote the content miner. Commit grouping, per-candidate confidence scoring, SHA dedup against the ",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3moisdzbpjs2j
-2026-06-17,3,0,0,0,"Take 2 of standing up a fresh Waaseyaa app, fully agent-driven. About half the time of take 1, and t",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3moiioc7c7e2y
-2026-06-17,5,0,0,0,"Closed a Waaseyaa DX bug. vendor/bin/waaseyaa now works in consuming apps out of the box. No wrapper",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3moiequrg722i
-2026-06-16,6,0,2,0,"ci/unit-tests was red with zero test failures. The cause: phpunit deprecations and PHP 8.5's new #[\",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mogoywv36e2i
-2026-06-16,3,0,0,0,"New opt-in package: a chat-first workspace shell. SSE client with pending and failed send states, st",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mogbtm44zh2v
-2026-06-16,4,0,0,0,"A release tag should never sit on a commit CI hasn't proven green. So cuts now run CI on a throwaway",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mofubkzxs62e
-2026-06-15,0,0,0,0,"News from the Ontario Indigenous AI & Technology Council: Steven Bennett joins as Elder and Knowledg",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3moeckftmwi2k
