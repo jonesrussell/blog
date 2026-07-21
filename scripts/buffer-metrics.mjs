@@ -49,13 +49,21 @@ if (!key) {
   process.exit(1);
 }
 
+// GraphQL lives at the API root; the /1/graphql path intermittently returns
+// empty 404s (observed 2026-07-16 and from cloud sandboxes on 2026-07-21).
 async function gql(query) {
-  const res = await fetch("https://api.buffer.com/1/graphql", {
+  const res = await fetch("https://api.buffer.com", {
     method: "POST",
-    headers: { "Content-Type": "application/json", Authorization: `Bearer ${key}` },
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${key}`,
+      "User-Agent": "blog-metrics-script/1.0",
+    },
     body: JSON.stringify({ query }),
   });
-  const json = await res.json();
+  const text = await res.text();
+  if (!text) throw new Error(`Buffer API returned HTTP ${res.status} with empty body`);
+  const json = JSON.parse(text);
   if (json.errors) throw new Error(json.errors[0].message);
   return json.data;
 }
