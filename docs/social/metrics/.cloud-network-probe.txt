@@ -1,0 +1,22 @@
+Cloud Environment Diagnostic
+Generated: 2026-07-21
+
+=== ENVIRONMENT VARIABLES ===
+Present: BUFFER_API_KEY, BUFFER_CHANNEL_BLUESKY, BSKY_APP_PASSWORD, BUFFER_CHANNEL_LINKEDIN, BUFFER_CHANNEL_FACEBOOK
+
+=== CONNECTIVITY TESTS ===
+https://bsky.social/xrpc/com.atproto.server.describeServer → 200 OK
+https://public.api.bsky.app/xrpc/app.bsky.actor.getProfile?actor=jonesrussell.bsky.social → 200 OK
+https://api.buffer.com (POST empty JSON) → 401 Unauthorized
+
+=== BUFFER METRICS SCRIPT ===
+Status: FAILED
+Error: JSON parse error — Buffer GraphQL API returned empty/invalid response (401 Unauthorized)
+Cause: Bearer token authentication failed or token lacks required scopes (insights:read)
+Note: Vault fallback not available in this environment (no ~/.ansible-vault-password or ~/dev/waaseyaa-infra/)
+
+=== SUMMARY ===
+✓ Bluesky connectivity: OPERATIONAL
+✓ Environment variables: ALL PRESENT
+✗ Buffer API: AUTHENTICATION FAILURE — requires valid BUFFER_API_KEY with insights:read scope
+- Metrics CSV files NOT generated (buffer-snapshots.csv unchanged, buffer-posts.csv not written)
