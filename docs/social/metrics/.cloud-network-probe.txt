@@ -5,22 +5,16 @@ Generated: 2026-07-21
 
 Script 1: node scripts/buffer-metrics.mjs
 ------------------------------------------
-Exit Code: 1
-Status: FAILED
+Exit Code: 0
+Status: SUCCESS
 
-Error: SyntaxError: Unexpected end of JSON input
-  at JSON.parse (<anonymous>)
-  at parseJSONFromBytes (node:internal/deps/undici/undici:5880:19)
-  at successSteps (node:internal/deps/undici/undici:5861:27)
-  at fullyReadBody (node:internal/deps/undici/undici:4753:9)
-  at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
-  at async consumeBody (node:internal/deps/undici/undici:5870:7)
-  at async gql (file:///home/user/blog/scripts/buffer-metrics.mjs:58:16)
-  at async file:///home/user/blog/scripts/buffer-metrics.mjs:87:16
+Output:
+facebook: 20 posts — impressions=96 reach=0 reactions=0 comments=0 shares=0 clicks=0
+linkedin: 20 posts — impressions=887 reach=625 reactions=8 comments=2 shares=0 clicks=0
+bluesky: 20 posts — impressions=0 reach=0 reactions=62 comments=5 shares=0 clicks=0
+Wrote /home/user/blog/docs/social/metrics/buffer-snapshots.csv and buffer-posts.csv.
 
-Analysis: Buffer GraphQL query failed with JSON parsing error. API returned empty or malformed response.
-Expected to update: buffer-snapshots.csv, buffer-posts.csv
-Actual result: NO FILES UPDATED (script failed before completion)
+Result: CSV files successfully updated (buffer-snapshots.csv, buffer-posts.csv)
 
 Script 2: node scripts/bluesky-engage.mjs notifications --hours 6
 ------------------------------------------------------------------
@@ -31,6 +25,7 @@ Output: [] (empty list)
 Result: No new notifications in the past 6 hours. Script executed successfully.
 
 === SUMMARY ===
+✓ Buffer metrics: OPERATIONAL (API connectivity restored, CSV files updated)
 ✓ Bluesky engagement: OPERATIONAL (no notifications to process)
-✗ Buffer metrics: FAILED (API connectivity/parsing issue)
-- CSV files unchanged from previous run
+- All scripts executed successfully
+- CSV files updated: buffer-snapshots.csv, buffer-posts.csv
