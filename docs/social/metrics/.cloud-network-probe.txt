@@ -1,22 +1,36 @@
-Cloud Environment Diagnostic
+Cloud Network Probe Round 2
 Generated: 2026-07-21
 
-=== ENVIRONMENT VARIABLES ===
-Present: BUFFER_API_KEY, BUFFER_CHANNEL_BLUESKY, BSKY_APP_PASSWORD, BUFFER_CHANNEL_LINKEDIN, BUFFER_CHANNEL_FACEBOOK
+=== SCRIPT EXECUTION RESULTS ===
 
-=== CONNECTIVITY TESTS ===
-https://bsky.social/xrpc/com.atproto.server.describeServer → 200 OK
-https://public.api.bsky.app/xrpc/app.bsky.actor.getProfile?actor=jonesrussell.bsky.social → 200 OK
-https://api.buffer.com (POST empty JSON) → 401 Unauthorized
-
-=== BUFFER METRICS SCRIPT ===
+Script 1: node scripts/buffer-metrics.mjs
+------------------------------------------
+Exit Code: 1
 Status: FAILED
-Error: JSON parse error — Buffer GraphQL API returned empty/invalid response (401 Unauthorized)
-Cause: Bearer token authentication failed or token lacks required scopes (insights:read)
-Note: Vault fallback not available in this environment (no ~/.ansible-vault-password or ~/dev/waaseyaa-infra/)
+
+Error: SyntaxError: Unexpected end of JSON input
+  at JSON.parse (<anonymous>)
+  at parseJSONFromBytes (node:internal/deps/undici/undici:5880:19)
+  at successSteps (node:internal/deps/undici/undici:5861:27)
+  at fullyReadBody (node:internal/deps/undici/undici:4753:9)
+  at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+  at async consumeBody (node:internal/deps/undici/undici:5870:7)
+  at async gql (file:///home/user/blog/scripts/buffer-metrics.mjs:58:16)
+  at async file:///home/user/blog/scripts/buffer-metrics.mjs:87:16
+
+Analysis: Buffer GraphQL query failed with JSON parsing error. API returned empty or malformed response.
+Expected to update: buffer-snapshots.csv, buffer-posts.csv
+Actual result: NO FILES UPDATED (script failed before completion)
+
+Script 2: node scripts/bluesky-engage.mjs notifications --hours 6
+------------------------------------------------------------------
+Exit Code: 0
+Status: SUCCESS
+Output: [] (empty list)
+
+Result: No new notifications in the past 6 hours. Script executed successfully.
 
 === SUMMARY ===
-✓ Bluesky connectivity: OPERATIONAL
-✓ Environment variables: ALL PRESENT
-✗ Buffer API: AUTHENTICATION FAILURE — requires valid BUFFER_API_KEY with insights:read scope
-- Metrics CSV files NOT generated (buffer-snapshots.csv unchanged, buffer-posts.csv not written)
+✓ Bluesky engagement: OPERATIONAL (no notifications to process)
+✗ Buffer metrics: FAILED (API connectivity/parsing issue)
+- CSV files unchanged from previous run
