@@ -1,10 +1,18 @@
 posted,likes,reposts,replies,quotes,text,uri
+2026-07-26,0,0,0,0,"A $100 share purchase, $900,000 in Council approvals, and a filing linking GR Truss equipment to the",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mrkhd4tlps2b
+2026-07-25,0,0,0,0,"Sagamok has announced another five-hour Elders Forum. The notice gives date, time and location. The ",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mrimmspifk2u
+2026-07-24,0,0,0,0,"About 70 people attended the July 23 Sagamok member information session, many of them Elders. The fu",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mrg72vcmsn2b
+2026-07-23,4,0,0,0,"Don't delete failed attempts. Label them and keep them. The OIATC repo has a literal docs/archive/20",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mrd4hv6vbe2b
+2026-07-22,4,0,1,0,"Vibe-coded today, irreproducible tomorrow. Pin the world. The OIATC deploy contract is bin/waaseyaa ",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mralyxdvf327
+2026-07-22,0,0,0,0,"Sagamok's audited company-loan balance reached $96,972,955 by March 31, 2025. The audit is clean, bu",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mr7bpaz6my2s
+2026-07-21,0,0,0,0,"The public record behind GR Truss and Sagamok's $7 million Sault Ste. Marie land deal: land records,",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mr6tohuk5y27
+2026-07-21,5,0,1,0,"If your AI-built repo doesn't have a runbook, future-you can't run it. The OIATC repo's CLAUDE.md op",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mr63k3n73j2s
 2026-07-21,0,0,0,0,"Laura Owl joins me to review the public records on Angus Toulouse's roles at Sagamok: Senior Adminis",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mr4omjy2rf2t
 2026-07-20,0,0,0,0,"GR Truss and Sagamok's $7 million Sault land deal. The names appear in land records, Council minutes",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mr45qn2bqs2m
 2026-07-20,0,0,0,0,"Working on two branches at once without stashing, committing half-done work, or cloning twice: that ",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mr3l37fvqg2c
 2026-07-19,0,0,0,0,"An electrician, a doctor, and a carpenter won Anthropic's Opus 4.7 hackathon. Not the engineers. Whe",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mqz2m6uovz2b
 2026-07-18,5,0,0,0,"The interesting craft isn't vibe coding the first prototype. It's the six moves you make next. Wrote",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mqwk5bcka32e
-2026-07-17,4,0,2,0,"AI keeps speccing your projects on pre-AI timelines. You shipped 5 WPs yesterday and it just told yo",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mqtzpqf4ey27
+2026-07-17,5,0,2,0,"AI keeps speccing your projects on pre-AI timelines. You shipped 5 WPs yesterday and it just told yo",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mqtzpqf4ey27
 2026-07-04,6,0,0,0,"Giiken is a community knowledge management platform on Waaseyaa: ingestion pipeline, wiki schema, se",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mptxhwu3fp2x
 2026-07-04,3,0,0,0,"In an AI-assisted codebase, drift is the default. Four Waaseyaa governance protocols to keep archite",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mptk4fozhx22
 2026-07-04,7,0,0,0,"Giiken's frontend is Vue 3, Vite, Tailwind, and Inertia: the same stack across the Waaseyaa ecosyste",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mpt4lfsd532t
@@ -41,11 +49,3 @@ posted,likes,reposts,replies,quotes,text,uri
 2026-06-21,3,0,0,0,"An AI agent gave a live guided tour of my admin UI: tips anchored to the real elements, not a chat o",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mosgi4k6pz2g
 2026-06-20,5,0,1,0,"Waaseyaa gave AI agents /llms.txt to read the site. Humans now get the mirror: Wayfinding. A public ",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mopvymc2ke2o
 2026-06-19,4,0,0,0,"Upgraded a running Waaseyaa app in place to alpha.226. The win: FrankenPHP now serves /admin at 200 ",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3montv665db23
-2026-06-19,4,0,2,0,"The web has two readers now: people and agents. Waaseyaa serves a human a web page and an agent clea",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3monfjudfbq2l
-2026-06-18,2,0,0,0,"Follow-up to the admin demo that 403'd last time: the backend bug is fixed in alpha.223. The 403 is ",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mokykoq2af2p
-2026-06-18,3,0,0,0,"Shipped: bimaaji:install CLI. One command installs Waaseyaa agent skills into 7 launch clients (Clau",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mokv7mklvl2l
-2026-06-18,3,0,0,0,"A dry run before a Waaseyaa demo surfaced two bugs: the admin UI 403s on a content type's entries ev",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mojnpcagch2p
-2026-06-17,5,0,0,0,"Fixed the framework and re-ran the demo: one command defines a new content type, then one URL serves",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mojin6y5f22i
-2026-06-17,4,0,0,0,"Same URL, three audiences on Waaseyaa: a web page for people, clean Markdown for agents via content ",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3moj7nr5vxa2v
-2026-06-17,6,0,1,0,"Shipped a per-request Laravel-to-MCP bridge with auth-resolved account context. AI agents calling MC",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3moj7n5nuab2p
-2026-06-17,6,0,1,0,"Rewrote the content miner. Commit grouping, per-candidate confidence scoring, SHA dedup against the ",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3moisdzbpjs2j
