@@ -56,7 +56,9 @@ if (platform === "bluesky" && [...text].length > 300) {
 }
 
 const dueField = mode === "customScheduled" ? `dueAt: ${JSON.stringify(dueAt)}` : "";
-const query = `mutation { createPost(input: { channelId: ${JSON.stringify(channelId)} text: ${JSON.stringify(text)} mode: ${mode} schedulingType: automatic ${dueField} }) { ... on PostActionSuccess { post { id status dueAt } } ... on MutationError { message } } }`;
+// Facebook requires an explicit post type in metadata (post | story | reel).
+const metaField = platform === "facebook" ? "metadata: { facebook: { type: post } }" : "";
+const query = `mutation { createPost(input: { channelId: ${JSON.stringify(channelId)} text: ${JSON.stringify(text)} mode: ${mode} schedulingType: automatic ${dueField} ${metaField} }) { ... on PostActionSuccess { post { id status dueAt } } ... on MutationError { message } } }`;
 
 const res = await fetch("https://api.buffer.com", {
   method: "POST",
