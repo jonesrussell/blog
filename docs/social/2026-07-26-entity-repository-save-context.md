@@ -39,3 +39,5 @@ Migration imports in Waaseyaa had a double-dispatch problem: both the destinatio
 The fix widens EntityRepository::save() to accept an optional SaveContext parameter. The repository owns dispatch. EntityDestination::write() threads SaveContext::asImport() through and stops dispatching on its own.
 
 Full change at https://github.com/waaseyaa/framework/commit/f55d1ea #buildinpublic
+
+Distributed: 2026-07-28 (autopilot, customScheduled)
