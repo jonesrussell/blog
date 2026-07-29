@@ -37,3 +37,5 @@ Behind Caddy, Waaseyaa was sending XSRF-TOKEN cookies without the Secure flag on
 HttpKernel now wires trusted proxy configuration from config/waaseyaa.php and the TRUSTED_PROXIES environment variable before anything else runs. Empty config means no proxies trusted, same behavior as before.
 
 If your PHP app runs behind a TLS-terminating reverse proxy and you have not verified your XSRF or session cookies carry the Secure flag on HTTPS, worth checking: https://github.com/waaseyaa/framework/commit/f63696a #buildinpublic
+
+Distributed: 2026-07-29 (autopilot, customScheduled)
