@@ -88,36 +88,42 @@ jobs:
           echo "count=$n" >> "$GITHUB_OUTPUT"
           echo "Found $n fresh mined candidates (after ledger dedup)."
 
-      # 3) CURATE + PRODUCE — Claude picks the most useful item and writes it
+      # 3) CURATE + PRODUCE — Claude (headless CLI) picks the most useful item and writes it
+      - name: Install Claude Code CLI
+        if: steps.gate.outputs.proceed == 'true' && steps.candidates.outputs.count != '0'
+        run: npm install -g @anthropic-ai/claude-code
+
       - name: Produce post with Claude
         id: produce
         if: steps.gate.outputs.proceed == 'true' && steps.candidates.outputs.count != '0'
-        uses: anthropics/claude-code-action@v1
+        timeout-minutes: 12
         env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           GH_TOKEN: ${{ secrets.CROSS_REPO_TOKEN }}
-        with:
-          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
-          claude_args: |
-            --max-turns 50
-            --allowedTools Edit,Read,Write,Bash,Glob,Grep
-          prompt: |
-            You are the content autopilot for this Hugo blog. Work fully autonomously; no human will review before publish.
+        run: |
+          cat > produce-prompt.txt <<'PROMPT'
+          You are the content autopilot for this Hugo blog. Work fully autonomously; no human will review before publish.
 
-            INPUTS
-            - `candidates.json` (repo root): open mined content-queue issues {number,title,body,url} from ${{ env.QUEUE_REPO }}.
-            - Voice/structure: read `docs/blog-style.md` and the reference post `content/posts/laravel/laravel-boost-ddev/index.md`.
-            - Conventions and gotchas: read `CLAUDE.md` (frontmatter, Ahnii/Baamaapii, relref rules, page-bundle layout under content/posts/<category>/<slug>/index.md).
+          INPUTS
+          - candidates.json (repo root): open mined content-queue issues {number,title,body,url}. Derive the source repo from each issue url.
+          - Voice/structure: read docs/blog-style.md and the reference post content/posts/laravel/laravel-boost-ddev/index.md.
+          - Conventions and gotchas: read CLAUDE.md (frontmatter, Ahnii/Baamaapii, relref rules, page-bundle layout under content/posts/<category>/<slug>/index.md).
 
-            STEP 1 — CURATE (be ruthless). Pick AT MOST ONE candidate that would make a genuinely useful, self-contained post a reader would value. Reject thin per-directory dev-scaffolding items (e.g. "packages/field work"). If NOTHING clears that bar, write `{"status":"NONE","reason":"..."}` to `autopilot-result.json` and STOP.
+          STEP 1 - CURATE (be ruthless). Pick AT MOST ONE candidate that would make a genuinely useful, self-contained post a reader would value. Reject thin per-directory dev-scaffolding items (e.g. "packages/field work"). If NOTHING clears that bar, write {"status":"NONE","reason":"..."} to autopilot-result.json and STOP.
 
-            STEP 2 — VERIFY. If the post would contain code, config, or interface signatures, verify each against the real source repo using `gh api repos/<owner>/<repo>/contents/<path>` (GH_TOKEN is set). If you cannot verify a snippet, DO NOT invent it — either write the post without it or, if the post depends on it, write `{"status":"HOLD","issue":N,"reason":"unverifiable code"}` to `autopilot-result.json` and STOP.
+          STEP 2 - VERIFY. If the post would contain code, config, or interface signatures, verify each against the real source repo using: gh api repos/<owner>/<repo>/contents/<path> (GH_TOKEN is set). If you cannot verify a snippet, DO NOT invent it. Either write the post without it, or if the post depends on it write {"status":"HOLD","issue":N,"reason":"unverifiable code"} to autopilot-result.json and STOP.
 
-            STEP 3 — PRODUCE. Write the Hugo post to `content/posts/<category>/<slug>/index.md` as a page bundle, frontmatter with `draft: false`, sentence-case title, summary, max 4 tags, correct date (today). Follow the blog voice exactly (open "Ahnii!", close "Baamaapii"). Then write companion social copy to `docs/social/<slug>.md` with exactly three sections: `## Bluesky`, `## LinkedIn`, `## Facebook`, following these rules: plain text only (no markdown/emoji/em-dashes); Bluesky body+URL under 300 chars; put the canonical blog URL (https://jonesrussell.github.io/blog/<slug>/) in each body; Facebook 1-2 hashtags, LinkedIn 3-5, Bluesky 1-2.
+          STEP 3 - PRODUCE. Write the Hugo post to content/posts/<category>/<slug>/index.md as a page bundle, frontmatter with draft: false, sentence-case title, summary, max 4 tags, correct date (today). Follow the blog voice exactly (open "Ahnii!", close "Baamaapii"). Then write companion social copy to docs/social/<slug>.md with exactly three sections: "## Bluesky", "## LinkedIn", "## Facebook". Rules: plain text only, no markdown/emoji/em-dashes; Bluesky body+URL under 300 chars; put the canonical blog URL (https://jonesrussell.github.io/blog/<slug>/) in each body; Facebook 1-2 hashtags, LinkedIn 3-5, Bluesky 1-2.
 
-            STEP 4 — RESULT. Write `autopilot-result.json` with:
-            `{"status":"PUBLISH","issue":<number>,"slug":"<slug>","post_path":"content/posts/<category>/<slug>/index.md","social_path":"docs/social/<slug>.md"}`
+          STEP 4 - RESULT. Write autopilot-result.json:
+          {"status":"PUBLISH","issue":<number>,"slug":"<slug>","post_path":"content/posts/<category>/<slug>/index.md","social_path":"docs/social/<slug>.md"}
 
-            Do not commit anything. Do not run git. Just leave files on disk and write autopilot-result.json.
+          Do not commit anything. Do not run git. Leave files on disk and write autopilot-result.json.
+          PROMPT
+          claude -p "$(cat produce-prompt.txt)" \
+            --dangerously-skip-permissions \
+            --max-turns 50 \
+            --output-format text
 
       # 4) Parse Claude's result
       - name: Read produce result
