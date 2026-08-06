@@ -37,3 +37,5 @@ waaseyaa create-project had a hidden dependency on the monorepo. skeleton/compos
 Commit d20bff2 removes the path repository. The skeleton now installs waaseyaa/framework from Packagist directly. A regression test and a CI smoke job were added to keep it working on every push.
 
 If you hit this before and gave up, the blocker is gone. https://github.com/waaseyaa/framework/commit/d20bff2 #Waaseyaa #PHP
+
+Distributed: 2026-08-06 (autopilot, customScheduled)
