@@ -78,10 +78,14 @@ jobs:
         run: |
           gh issue list --repo "$QUEUE_REPO" \
             --label "content-queue" --label "stage:mined" --state open \
-            --json number,title,body,url --limit 40 > candidates.json
+            --json number,title,body,url --limit 40 > candidates.raw.json
+          # Drop anything already produced (ledger dedup — avoids needing cross-repo write)
+          jq --slurpfile led data/autopilot-ledger.json \
+            '[ .[] | select( ([.number] - ($led[0].processed // [])) | length > 0 ) ]' \
+            candidates.raw.json > candidates.json
           n=$(jq length candidates.json)
           echo "count=$n" >> "$GITHUB_OUTPUT"
-          echo "Found $n mined candidates."
+          echo "Found $n fresh mined candidates (after ledger dedup)."
 
       # 3) CURATE + PRODUCE — Claude picks the most useful item and writes it
       - name: Produce post with Claude
@@ -138,7 +142,12 @@ jobs:
         run: |
           git config user.name "content-autopilot[bot]"
           git config user.email "noreply@anthropic.com"
-          git add "${{ steps.result.outputs.post_path }}" "${{ steps.result.outputs.social_path }}"
+          # Record the issue in the ledger so it is never reprocessed
+          jq --argjson n "${{ steps.result.outputs.issue }}" \
+            '.processed += [$n] | .processed |= unique' \
+            data/autopilot-ledger.json > data/autopilot-ledger.json.tmp
+          mv data/autopilot-ledger.json.tmp data/autopilot-ledger.json
+          git add "${{ steps.result.outputs.post_path }}" "${{ steps.result.outputs.social_path }}" data/autopilot-ledger.json
           git commit -m "content: autopilot publish ${{ steps.result.outputs.slug }} (queue #${{ steps.result.outputs.issue }})"
           git pull --rebase origin main
           git push origin main
