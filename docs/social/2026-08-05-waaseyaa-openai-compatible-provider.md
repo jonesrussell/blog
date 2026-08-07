@@ -36,3 +36,5 @@ Building an AI agent in PHP that works with multiple providers means writing sep
 Commit 6491f7e adds LlmConversationRequest to Waaseyaa's ai-agent package: a neutral conversation DTO with serialization to both Anthropic and OpenAI chat completions format. Pick a provider in your container config. The conversation code stays the same.
 
 The commit also ships OpenAiCompatibleProvider as a concrete backend. Tool calls are not yet bridged for OpenAI, but for standard chat it works. https://github.com/waaseyaa/framework/commit/6491f7e #Waaseyaa #PHP #AI
+
+Distributed: 2026-08-07 (autopilot, customScheduled)
