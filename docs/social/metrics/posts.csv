@@ -1,4 +1,6 @@
 posted,likes,reposts,replies,quotes,text,uri
+2026-08-08,3,0,0,0,"Waaseyaa's LlmConversationRequest is a provider-agnostic DTO that serializes to both Anthropic and O",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3msldwlpqwk2c
+2026-08-07,2,0,1,0,"waaseyaa create-project was hardwired to the monorepo. Commit d20bff2 removes the path-repo assumpti",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3msithpwoek2i
 2026-08-02,0,0,0,0,"Sagamok, the Nairn Road, and radioactive tailings. Three things that should not be a footnote. I loo",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3ms4f73mx7l2b
 2026-08-02,0,0,0,0,"A director is not just a name on paper. It is a legal role with real duties: oversight, fiduciary re",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3ms2pvrq4bp25
 2026-07-31,0,0,0,0,"Who is Sagamok preparing to lead? A community's future depends on whether it is developing new leade",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mrx3cukhxa2c
@@ -47,5 +49,3 @@ posted,likes,reposts,replies,quotes,text,uri
 2026-06-27,6,0,0,0,"Retired a shared htpasswd: rhtcircle.ca admin now uses real framework auth, with proper sessions and",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mpce5fhzog2i
 2026-06-27,6,0,0,0,"rhtcircle.ca now has an AI assistant: Anokii, seeded with the Robinson Huron Treaty corpus, so a mem",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mpbwrzqrdn2u
 2026-06-27,4,0,0,0,"rhtcircle.ca now hosts a records-request sign-on petition: treaty members can add their name to dema",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mpbjf7566q2q
-2026-06-26,4,0,1,0,"rhtcircle.ca now runs first-party, self-hosted analytics: a collector, a dashboard, and page-stats w",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mp7toal2ki2c
-2026-06-26,4,0,0,0,"rhtcircle.ca/resources is now a graph-driven, filterable directory: treaty members can find help by ",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mp7ge7qqrs2q
