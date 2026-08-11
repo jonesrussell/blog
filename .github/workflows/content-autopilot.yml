@@ -98,7 +98,8 @@ jobs:
         if: steps.gate.outputs.proceed == 'true' && steps.candidates.outputs.count != '0'
         timeout-minutes: 12
         env:
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          # Subscription auth (no per-token API billing). See CLAUDE_CODE_OAUTH_TOKEN secret.
+          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           GH_TOKEN: ${{ secrets.CROSS_REPO_TOKEN }}
         run: |
           cat > produce-prompt.txt <<'PROMPT'
