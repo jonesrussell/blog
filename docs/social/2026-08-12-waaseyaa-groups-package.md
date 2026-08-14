@@ -34,3 +34,5 @@ The package ships Group (a content entity with id, uuid, bundle, and label) and 
 The test suite covers the architecture: fresh install has no subtables, two bundles materializes both, bundle-scoped queries use INNER JOIN, and querying the same field name across two bundles without specifying which raises a BundleAmbiguousFieldException. https://github.com/waaseyaa/framework/commit/a310cc3f111907115801dfc1ac376e43916db092
 
 #buildinpublic #phpdevelopment
+
+Distributed: 2026-08-14 (autopilot, customScheduled)
