@@ -1,12 +1,18 @@
 ---
-title: "The pipeline that writes this blog"
-date: 2026-08-16
-categories: [ai]
-tags: [github-actions, claude, automation, hugo]
-series: []
-summary: "How this blog's GitHub Actions workflow mines activity, drafts posts with Claude, and publishes with zero human review."
-slug: "content-autopilot"
+categories:
+    - ai
+date: 2026-08-16T00:00:00Z
+devto_id: 4412289
 draft: false
+series: []
+slug: content-autopilot
+summary: How this blog's GitHub Actions workflow mines activity, drafts posts with Claude, and publishes with zero human review.
+tags:
+    - github-actions
+    - claude
+    - automation
+    - hugo
+title: The pipeline that writes this blog
 ---
 
 Ahnii!
