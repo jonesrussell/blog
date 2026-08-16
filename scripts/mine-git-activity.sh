@@ -22,7 +22,11 @@ DRY_RUN="${DRY_RUN:-0}"
 SINCE_DATE=$(date -u -d "${DAYS} days ago" +%Y-%m-%dT%H:%M:%SZ 2>/dev/null || date -u -v-"${DAYS}"d +%Y-%m-%dT%H:%M:%SZ)
 QUEUE_REPO="jonesrussell/jonesrussell"
 VALIDATOR="node ${SCRIPT_DIR}/../schemas/validate.js"
-REPOS=("waaseyaa/framework" "waaseyaa/giiken" "waaseyaa/minoo" "jonesrussell/rhtcircle" "jonesrussell/blog" "jonesrussell/jonesrussell")
+# Note: jonesrussell/sheguiandah-waaseyaa and jonesrussell/waaseyaa-enterprise-assurance
+# are PRIVATE and the CROSS_REPO_TOKEN (read:org for waaseyaa/*) cannot read them (404).
+# Add them here only once CROSS_REPO_TOKEN is replaced with a token that has repo scope
+# covering those private repos, or they will silently return no commits.
+REPOS=("waaseyaa/framework" "waaseyaa/giiken" "waaseyaa/minoo" "waaseyaa/anokii" "waaseyaa/anokii-core" "waaseyaa/anokii-identity" "jonesrussell/rhtcircle" "jonesrussell/blog" "jonesrussell/jonesrussell")
 
 MINED_COUNT=0
 SKIPPED_COUNT=0
