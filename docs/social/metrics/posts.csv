@@ -1,4 +1,6 @@
 posted,likes,reposts,replies,quotes,text,uri
+2026-08-17,0,0,0,0,"This blog now writes some of its own posts. A GitHub Actions pipeline mines project activity, curate",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mtbr3v3lla2j
+2026-08-15,3,0,1,0,"The waaseyaa/groups package ships Group and GroupType, but zero pre-registered bundles. Your app dec",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mt4x73bjop2p
 2026-08-08,3,0,0,0,"Waaseyaa's LlmConversationRequest is a provider-agnostic DTO that serializes to both Anthropic and O",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3msldwlpqwk2c
 2026-08-07,2,0,1,0,"waaseyaa create-project was hardwired to the monorepo. Commit d20bff2 removes the path-repo assumpti",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3msithpwoek2i
 2026-08-02,0,0,0,0,"Sagamok, the Nairn Road, and radioactive tailings. Three things that should not be a footnote. I loo",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3ms4f73mx7l2b
@@ -47,5 +49,3 @@ posted,likes,reposts,replies,quotes,text,uri
 2026-06-29,6,0,1,0,"Added a tamper-evident audit log to the Waaseyaa framework. Every event hash-chains to the one befor",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mpgxma4wgd2n
 2026-06-28,4,0,0,0,"A translation memory where the misses are the point: minoo's language module logs every lookup it ca",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mpdzt6pcug2l
 2026-06-27,6,0,0,0,"Retired a shared htpasswd: rhtcircle.ca admin now uses real framework auth, with proper sessions and",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mpce5fhzog2i
-2026-06-27,6,0,0,0,"rhtcircle.ca now has an AI assistant: Anokii, seeded with the Robinson Huron Treaty corpus, so a mem",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mpbwrzqrdn2u
-2026-06-27,4,0,0,0,"rhtcircle.ca now hosts a records-request sign-on petition: treaty members can add their name to dema",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mpbjf7566q2q
