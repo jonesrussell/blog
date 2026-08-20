@@ -30,3 +30,5 @@ If you track family relationships in software, you know how fast a generic conte
 The new waaseyaa/genealogy package models these as first-class framework concerns. It ships entities for person, family, tree, and event; a pedigree service for ancestor traversal; living-person semantics as a typed access class; and SSR routes with Twig templates ready to use. Field definitions share the same inheritance system as every other entity type in Waaseyaa, so you are not maintaining a separate integration layer.
 
 This is part of the work going into Minoo, an Indigenous language and community platform built on Waaseyaa. https://github.com/waaseyaa/framework/commit/d9b7cf9 #buildinpublic
+
+Distributed: 2026-08-20 (autopilot, customScheduled)
