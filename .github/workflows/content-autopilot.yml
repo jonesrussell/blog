@@ -22,6 +22,7 @@ on:
 permissions:
   contents: write
   id-token: write # required by anthropics/claude-code-action@v1 (OIDC)
+  issues: write # failure-alert step opens an issue to notify the maintainer
 
 concurrency:
   group: content-autopilot
@@ -182,3 +183,22 @@ jobs:
           echo "candidates=${{ steps.candidates.outputs.count }}"
           echo "result.status=${{ steps.result.outputs.status }}"
           echo "dry_run=${{ github.event.inputs.dry_run }}"
+
+      # 9) ALERT — on any failure, open/update an issue so a dead cron never rots silently
+      - name: Alert on failure
+        if: failure()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          gh label create autopilot-failure --repo "$REPO" --color d73a4a \
+            --description "Content Autopilot run failed" 2>/dev/null || true
+          body=$(printf 'Content Autopilot run failed: %s\n\nMost common cause: CLAUDE_CODE_OAUTH_TOKEN expired or was revoked (subscription tokens rotate). Re-sync the secret from a fresh token, or run `claude setup-token` for a long-lived one.\n\n@jonesrussell' "$RUN_URL")
+          existing=$(gh issue list --repo "$REPO" --label autopilot-failure --state open --json number --jq '.[0].number // empty')
+          if [ -n "$existing" ]; then
+            gh issue comment "$existing" --repo "$REPO" --body "$body"
+          else
+            gh issue create --repo "$REPO" --title "Content Autopilot is failing" \
+              --label autopilot-failure --body "$body"
+          fi
