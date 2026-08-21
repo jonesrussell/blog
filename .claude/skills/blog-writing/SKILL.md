@@ -7,7 +7,11 @@ description: Use when creating new blog posts, drafting content, or writing arti
 
 ## Overview
 
-Write blog posts that match this blog's voice: second person, direct, instructional, culturally grounded with Anishinaabemowin greetings. Reference post: `content/posts/laravel-boost-ddev.md`. Full style guide: `docs/blog-style.md`.
+Write blog posts that match this blog's voice: direct, opinionated, culturally grounded with Anishinaabemowin greetings. The voice has two registers — pick by post type:
+- **Tutorial reference:** `content/posts/laravel/laravel-boost-ddev/index.md` (second person, instructional).
+- **Essay / build-log reference:** `content/posts/ai/content-autopilot/index.md` (first person allowed, analytical, aphoristic verdicts).
+
+Full style guide: `docs/blog-style.md`.
 
 ## Style Rules (Canonical Authority)
 
@@ -15,13 +19,13 @@ Write blog posts that match this blog's voice: second person, direct, instructio
 |---------|------|
 | Greeting | Always open with "Ahnii!" (exclamation mark, own paragraph) |
 | Farewell | Always close with "Baamaapii" (no emoji, own paragraph) |
-| Voice | Second person, direct, instructional. Address reader as "you"/"your". Not corporate. |
+| Voice | Tutorials: second person ("your project", "you can"). Build-logs and essays: first person is allowed and preferred for decisions, mistakes, and trade-offs ("I held the release because..."). Never corporate "we". |
 | Concise | Short sentences. One idea per paragraph. No filler or throat-clearing. |
-| Scoped intro | In the intro, state what the post covers in one sentence |
-| Code blocks | Always specify language tag. After each block, add 1-2 sentences explaining what it does or why. For error output, reformat for readability — don't carbon-copy terminal noise. |
+| Scoped intro | End the intro with the post's scope — what the reader gets, what's out of bounds. Vary the phrasing; never default to "This post covers...". A scope can be a promise, a question, or a boundary. |
+| Code blocks | Always specify language tag. Never leave code unexplained, but explain why it matters, not what it literally says. Self-evident code needs a clause, not a paragraph; related blocks can share one explanation. Reformat error output for readability — don't carbon-copy terminal noise. |
 | Links | Link first mention of products, tools, or projects. Internal: Hugo relref shortcode `[text]({{< relref "slug" >}})`. External: full HTTPS URLs. Never use raw `/slug/` paths for internal links (they break on the `/blog/` subpath). |
-| Headings | H2 for main sections, H3 for variants/subsections. No time estimates. No "Wrapping Up" or "Conclusion". Use SEO-friendly headings with keywords (e.g., "Fix WSL Browser Hangs With BROWSER=echo" not "The Fix"). |
-| Em dashes | Use sparingly. Heavy "—" usage reads as AI-written. Prefer periods (two short sentences), colons, or commas. One or two per post is enough; zero is fine. |
+| Headings | H2 for main sections, H3 for variants/subsections. No time estimates. No "Wrapping Up" or "Conclusion". Every heading makes a specific claim or names an action ("Why CLI tools hang in WSL", "Verify before you invent") — never a generic label ("The Problem"). Specificity is the SEO. |
+| Em dashes | Prefer periods and colons. If a dash is doing a transition's job, rewrite the sentence. Heavy "—" usage reads as AI-written. |
 
 ## Frontmatter (Required Fields)
 
@@ -175,7 +179,7 @@ Add a brief caption or follow with 1-2 sentences explaining what the reader shou
 | Mistake | Fix |
 |---------|-----|
 | Adding emoji to farewell | Farewell is "Baamaapii" — no emoji |
-| First-person voice | Use second person: "your project", "you can" — not "I found", "my setup" |
+| First-person voice in tutorials | Tutorials use second person ("your project"). But build-logs and essays about your own work SHOULD use "I" for decisions and trade-offs — don't strip the author out of a post about the author. |
 | No explanation after code blocks | After every code block, add 1-2 sentences on what it does or why |
 | Not linking first mentions | Link products/tools/projects on first mention |
 | Generic closing ("Wrapping Up", "Conclusion") | No closing header — transition naturally to farewell |
