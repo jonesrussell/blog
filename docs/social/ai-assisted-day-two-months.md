@@ -1,26 +1,25 @@
-# One AI-assisted day, two months of senior engineering
+# Two months of senior engineering in 36 AI-assisted hours
 
 Reference URL: https://jonesrussell.github.io/blog/ai-assisted-day-two-months/
 
 ## Bluesky
 
-One AI-assisted day: 14 PRs merged, a 358-site SQLite audit, and a pile of latent defects caught on the adversarial second pass. Roughly two months of senior engineering in one window. The receipts: https://jonesrussell.github.io/blog/ai-assisted-day-two-months/ #buildinpublic
+36 hours, two phases: a 10-hour autonomous session opened a stack of Framework and Sheg PRs, then the rest went to merging and repairing them into main. 14 PRs, a 358-site audit, roughly two months of senior work. https://jonesrussell.github.io/blog/ai-assisted-day-two-months/ #buildinpublic
 
 ## LinkedIn
 
-In about 24 hours, a stacked backlog of conflicting and half-validated pull requests across the Waaseyaa Framework and Sheg became a clean landing sequence.
+Over roughly 36 hours, a large set of Waaseyaa Framework and Sheg work went from nothing to a clean landing sequence. The interesting part is how the time split.
 
-The receipts:
+Two phases:
 
-Fourteen PRs merged, twelve in the Framework, two in Sheg. SQLite schema authority, safe embed lifecycle, entity revision authorization, upgrade deadlock protection, and more, each rebased against a main that never stopped moving.
+- About 10 hours of generation. An autonomous ChatGPT session pursued a goal and opened a stack of pull requests across the Framework and Sheg. That stack was the backlog. It did not exist beforehand.
+- About 26 hours of integration. Merging, rebasing, and repairing that stack into a moving main, plus the defects that only surface when you land code instead of just writing it.
 
-But the merge count hides the real work: the defects that survived their own original implementations and only surfaced on the second pass. Two authorization holes. Advisory exceptions leaking across layers. Acceptance-test failures being swallowed, a green check on a red result. A Composer subprocess deadlocking on a pipe. None of that is in the write-the-feature budget. It is the tax you only pay when someone reviews the work adversarially instead of rubber-stamping it.
+What landed: 14 PRs merged, twelve in the Framework, two in Sheg. Two authorization holes closed. Swallowed acceptance-test failures fixed, a green check on a red result. A subprocess deadlock resolved. And a 358-site SQLite coupling inventory across 108 files, the real map of what Postgres and MySQL support will cost.
 
-Underneath it all, a 358-site SQLite coupling inventory across 108 files, the real map of what Postgres and MySQL support will cost.
+What did not happen: no tag, no release, no deploy, no production change. The release line held on purpose.
 
-And what I chose not to do: no tag, no release, no deploy, no production mutation. Velocity is worthless if it quietly ships a bad alpha.
-
-Hand this to one senior developer at the same starting point: roughly 8 full-time weeks, 240 to 400 hours. So the comparison is not 24 hours versus scratch. It is one AI-assisted day against two months of conventional senior engineering.
+Hand the same work to one senior developer, generation and integration both, and it is roughly 8 weeks, 240 to 400 hours. So the comparison is not 36 hours versus scratch. It is one coordinated AI-assisted window against about two months of conventional senior engineering.
 
 https://jonesrussell.github.io/blog/ai-assisted-day-two-months/
 
@@ -28,11 +27,11 @@ https://jonesrussell.github.io/blog/ai-assisted-day-two-months/
 
 ## Facebook
 
-In about 24 hours, a stacked backlog of conflicting pull requests across the Waaseyaa Framework and Sheg turned into a clean landing sequence. Fourteen PRs merged, plus a 358-site database audit and a pile of latent defects caught on the adversarial second pass.
+Over roughly 36 hours, a large set of Waaseyaa Framework and Sheg work went from nothing to a clean landing sequence.
 
-The interesting part is not the merge count. It is the bugs that survived their own original implementations: authorization holes, swallowed test failures, a subprocess deadlock. The tax you only pay when work gets reviewed hard instead of rubber-stamped. And nothing shipped: no tag, no release, no production change.
+It split into two phases. First, about 10 hours where an autonomous ChatGPT session opened a stack of pull requests across both projects. That stack was the backlog, it did not exist beforehand. Then about 26 hours of merging, rebasing, and repairing that stack into main, including the defects that only surface when you actually land code: two authorization holes, swallowed test failures, a subprocess deadlock.
 
-Hand the same work to one senior developer and it is roughly two months of effort. Full write-up:
+Nothing shipped: no tag, no release, no production change. Hand the same work to one senior developer and it is roughly two months of effort. Full write-up:
 
 https://jonesrussell.github.io/blog/ai-assisted-day-two-months/
 
