@@ -2,6 +2,7 @@
   "_comment": "Queue issue numbers the content autopilot has already produced+published. Used for dedup so a read-only cross-repo token is sufficient (no need to close issues in jonesrussell/jonesrussell).",
   "processed": [
     1078,
-    1079
+    1079,
+    1080
   ]
 }
