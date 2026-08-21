@@ -1,11 +1,17 @@
 ---
-title: "Running the blog's content autopilot on a Claude subscription, not API credit"
-date: 2026-08-21
-categories: [ai]
-tags: [claude, github-actions, automation, hugo]
-summary: "How this blog's unsupervised publishing pipeline moved off pay-per-token API credit, survived a silent auth revocation, and added a deterministic gate so an unreviewed draft can't ship as slop."
-slug: "content-autopilot-subscription-auth"
+categories:
+    - ai
+date: 2026-08-21T00:00:00Z
+devto_id: 4457207
 draft: false
+slug: content-autopilot-subscription-auth
+summary: How this blog's unsupervised publishing pipeline moved off pay-per-token API credit, survived a silent auth revocation, and added a deterministic gate so an unreviewed draft can't ship as slop.
+tags:
+    - claude
+    - github-actions
+    - automation
+    - hugo
+title: Running the blog's content autopilot on a Claude subscription, not API credit
 ---
 
 Ahnii!
