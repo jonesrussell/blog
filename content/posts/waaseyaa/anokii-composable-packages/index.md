@@ -1,12 +1,19 @@
 ---
-title: "Splitting Anokii into composable core, identity, and operator packages"
-date: 2026-08-20
-categories: [php, waaseyaa]
-tags: [php, waaseyaa, architecture, composer]
-summary: "How Anokii went from one monolithic repo with duplicate identity code to three composable Composer packages, published by a governed CI split instead of a manual release process."
-slug: "anokii-composable-packages"
-draft: false
+categories:
+    - php
+    - waaseyaa
+date: 2026-08-20T00:00:00Z
 devto: true
+devto_id: 4449475
+draft: false
+slug: anokii-composable-packages
+summary: How Anokii went from one monolithic repo with duplicate identity code to three composable Composer packages, published by a governed CI split instead of a manual release process.
+tags:
+    - php
+    - waaseyaa
+    - architecture
+    - composer
+title: Splitting Anokii into composable core, identity, and operator packages
 ---
 
 Ahnii!

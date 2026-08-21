@@ -1,12 +1,18 @@
 ---
-title: "One AI-assisted day, two months of senior engineering"
-date: 2026-08-21
-categories: [ai]
-tags: ["ai-assisted-development", "build-in-public", "waaseyaa", "engineering-velocity"]
-summary: "A single coordinated day moved 14 pull requests, a 358-site audit, and a pile of latent defects — roughly two months of conventional senior work."
-slug: "ai-assisted-day-two-months"
-draft: false
+categories:
+    - ai
+date: 2026-08-21T00:00:00Z
 devto: true
+devto_id: 4449474
+draft: false
+slug: ai-assisted-day-two-months
+summary: A single coordinated day moved 14 pull requests, a 358-site audit, and a pile of latent defects — roughly two months of conventional senior work.
+tags:
+    - ai-assisted-development
+    - build-in-public
+    - waaseyaa
+    - engineering-velocity
+title: One AI-assisted day, two months of senior engineering
 ---
 
 Ahnii!
