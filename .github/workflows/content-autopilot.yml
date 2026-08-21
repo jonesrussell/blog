@@ -140,14 +140,38 @@ jobs:
             echo "$k=$(jq -r --arg k "$k" '.[$k] // ""' autopilot-result.json)" >> "$GITHUB_OUTPUT"
           done
 
+      # 4b) SELF-CRITIQUE — one revise pass (Self-Refine; ~20% quality gain).
+      # Non-fatal: a failed critique degrades to publishing the un-refined draft.
+      - name: Self-critique and revise
+        if: steps.result.outputs.status == 'PUBLISH'
+        continue-on-error: true
+        timeout-minutes: 8
+        env:
+          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+        run: |
+          claude -p "Critique and then revise the blog post at ${{ steps.result.outputs.post_path }} and its social copy at ${{ steps.result.outputs.social_path }}. Rubric: (1) voice matches docs/blog-style.md and the essay reference content/posts/ai/content-autopilot/index.md; (2) every claim is backed by a concrete fact, number, or reference; (3) sentence lengths vary (no runs of same-length sentences); (4) zero AI-cliche phrases (delve, tapestry, seamless, it's important to note, navigate the complexities, a testament to); (5) intro scope line is not the phrase 'This post covers'. Fix the top issues by editing the files in place. Do NOT touch frontmatter status/draft fields, do NOT run git, do NOT change autopilot-result.json." \
+            --dangerously-skip-permissions --max-turns 30 --output-format text
+
+      # 4c) SLOP GATE — deterministic linter (no API). Holds a sloppy draft.
+      - name: Slop gate
+        id: slop
+        if: steps.result.outputs.status == 'PUBLISH'
+        run: |
+          if node scripts/slop-check.mjs "${{ steps.result.outputs.post_path }}"; then
+            echo "clean=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "clean=false" >> "$GITHUB_OUTPUT"
+            echo "Draft flagged as slop; holding (not publishing) this run. Candidate stays open for a retry."
+          fi
+
       # 5) BUILD GATE — Hugo must build the produced post
       - name: Build gate
-        if: steps.result.outputs.status == 'PUBLISH'
+        if: steps.result.outputs.status == 'PUBLISH' && steps.slop.outputs.clean == 'true'
         run: hugo --gc --minify
 
       # 6) PUBLISH — commit the post + social copy, push (triggers deploy)
       - name: Publish
-        if: steps.result.outputs.status == 'PUBLISH' && github.event.inputs.dry_run != 'true'
+        if: steps.result.outputs.status == 'PUBLISH' && steps.slop.outputs.clean == 'true' && github.event.inputs.dry_run != 'true'
         run: |
           git config user.name "content-autopilot[bot]"
           git config user.email "noreply@anthropic.com"
@@ -163,12 +187,12 @@ jobs:
 
       # 7) DISTRIBUTE — queue social copy to Buffer
       - name: Distribute to Buffer
-        if: steps.result.outputs.status == 'PUBLISH' && github.event.inputs.dry_run != 'true'
+        if: steps.result.outputs.status == 'PUBLISH' && steps.slop.outputs.clean == 'true' && github.event.inputs.dry_run != 'true'
         run: node scripts/buffer-distribute.mjs "${{ steps.result.outputs.social_path }}" addToQueue
 
       # 8) Close the queue issue as distributed
       - name: Close queue issue
-        if: steps.result.outputs.status == 'PUBLISH' && github.event.inputs.dry_run != 'true'
+        if: steps.result.outputs.status == 'PUBLISH' && steps.slop.outputs.clean == 'true' && github.event.inputs.dry_run != 'true'
         env:
           GH_TOKEN: ${{ secrets.CROSS_REPO_TOKEN }}
         run: |

@@ -27,6 +27,16 @@ Full style guide: `docs/blog-style.md`.
 | Headings | H2 for main sections, H3 for variants/subsections. No time estimates. No "Wrapping Up" or "Conclusion". Every heading makes a specific claim or names an action ("Why CLI tools hang in WSL", "Verify before you invent") — never a generic label ("The Problem"). Specificity is the SEO. |
 | Em dashes | Prefer periods and colons. If a dash is doing a transition's job, rewrite the sentence. Heavy "—" usage reads as AI-written. |
 
+## Anti-Slop (What Makes Writing Read as AI)
+
+A deterministic linter, `scripts/slop-check.mjs`, gates the automated pipeline and you can run it on any draft (`node scripts/slop-check.mjs <post.md>`). It scores three signals; keep drafts clear of all three:
+
+- **Sentence-length variety (burstiness).** AI writing clusters sentences at the same length. Vary them: mix short punches with longer lines. The linter fails below 0.32 and flags below 0.40; humans run 0.6-1.2.
+- **Em-dash density.** Over 20 per 1,000 words reads as machine-written. Prefer periods and colons.
+- **Banned cliché/vocab (living list — review quarterly).** delve, tapestry, seamless(ly), "it's important to note", "navigate the complexities", "a testament to", "in the realm of", "ever-evolving", "game-changer", "robust and scalable", "dive into", "when it comes to", "plays a crucial/vital role", "unlock the potential". Three or more hits is a hard fail.
+
+The vocab list drifts as models change ("delve" already peaked and faded). Add new offenders to the `BANNED` array in `scripts/slop-check.mjs` when you spot them.
+
 ## Frontmatter (Required Fields)
 
 ```yaml
