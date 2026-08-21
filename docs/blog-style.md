@@ -29,6 +29,25 @@
 - **Links:** Link the first mention of a product, tool, or project (e.g. [DDEV](url), [Laravel Boost](url)).
 - **Code blocks:** After each block, add one or two sentences explaining what the commands/config do or why they’re used.
 
+## Formatting
+
+Use the affordances of markdown. Prose walls are hard to scan and are not the house style — the raw notes most posts start from are already structured, so keep that structure.
+
+- **Bulleted lists** for any enumerable content: steps, options, findings, what-shipped, trade-offs. If you're separating items with "and" or commas across a long sentence, it should probably be a list.
+- **Numbered lists** for ordered sequences.
+- **Bold** for key terms, names, and figures the reader should catch while scanning (e.g. **14 pull requests**, **authorization bypass**).
+- *Italic* for light emphasis or a first-use term. Don't overuse it.
+- **Tables** for comparisons or before/after (the visual components `compare` and `stats` shortcodes also exist).
+- A post that is nothing but paragraphs is a red flag — most posts want a mix of prose and lists.
+
+## Voice authenticity
+
+Write in the author's actual voice, not a performed one.
+
+- **No invented catchphrases or metaphor tics.** Don't manufacture a signature phrase the author doesn't use (e.g. "here are the receipts"). If you didn't hear it in their real writing, don't put it in their mouth.
+- **Match how they actually talk.** When the source material is bulleted and blunt, the post is bulleted and blunt. Don't dress plain notes up into flowery narrative.
+- First person is fine for build-logs and essays about the author's own work; keep it sparing, at the decisions.
+
 ## Cultural convention
 
 - Open with **Ahnii!**

@@ -19,7 +19,8 @@ Full style guide: `docs/blog-style.md`.
 |---------|------|
 | Greeting | Always open with "Ahnii!" (exclamation mark, own paragraph) |
 | Farewell | Always close with "Baamaapii" (no emoji, own paragraph) |
-| Voice | Tutorials: second person ("your project", "you can"). Build-logs and essays: first person is allowed and preferred for decisions, mistakes, and trade-offs ("I held the release because..."). Never corporate "we". |
+| Voice | Tutorials: second person ("your project", "you can"). Build-logs and essays: first person is allowed and preferred for decisions, mistakes, and trade-offs ("I held the release because..."). Never corporate "we". **Never invent catchphrases or metaphor tics the author doesn't use** (no manufactured "here are the receipts"). If you didn't hear it in their real writing, don't write it. |
+| Formatting | Use markdown affordances; prose walls are not the house style. Bulleted lists for enumerable content (steps, options, findings, what-shipped), numbered lists for sequences, **bold** for key terms and figures, *italic* for light emphasis, tables for comparisons. Source notes are usually already structured — keep that structure. A post that is all paragraphs is a red flag. |
 | Concise | Short sentences. One idea per paragraph. No filler or throat-clearing. |
 | Scoped intro | End the intro with the post's scope — what the reader gets, what's out of bounds. Vary the phrasing; never default to "This post covers...". A scope can be a promise, a question, or a boundary. |
 | Code blocks | Always specify language tag. Never leave code unexplained, but explain why it matters, not what it literally says. Self-evident code needs a clause, not a paragraph; related blocks can share one explanation. Reformat error output for readability — don't carbon-copy terminal noise. |
