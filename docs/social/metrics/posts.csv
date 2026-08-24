@@ -1,5 +1,11 @@
 posted,likes,reposts,replies,quotes,text,uri
-2026-08-17,0,0,0,0,"This blog now writes some of its own posts. A GitHub Actions pipeline mines project activity, curate",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mtbr3v3lla2j
+2026-08-22,1,0,0,0,"Knowing what your app does is table stakes. Knowing what context your agents are seeing is harder. W",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mtokhigiht2h
+2026-08-21,6,0,0,0,"This blog publishes with nobody reviewing drafts. Three failure modes so far: API credit ran dry, a ",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mtmnpwx3vt2b
+2026-08-21,2,0,0,0,"One AI-assisted day: 14 PRs merged, a 358-site SQLite audit, and a pile of latent defects caught on ",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mtmaerwjhn2p
+2026-08-21,3,0,0,0,"Generic CMSes model genealogy as just another content type. The waaseyaa/genealogy package goes furt",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mtlzykvqlu2f
+2026-08-21,0,0,0,0,"Anokii split duplicate identity code out of its monorepo into composable core, identity, and operato",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mtlsxiydqv2r
+2026-08-17,4,0,0,0,"The first commit that ships a package is not the commit that finishes it. waaseyaa/northcloud launch",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mtby4xdopq2j
+2026-08-17,0,0,1,0,"This blog now writes some of its own posts. A GitHub Actions pipeline mines project activity, curate",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mtbr3v3lla2j
 2026-08-15,3,0,1,0,"The waaseyaa/groups package ships Group and GroupType, but zero pre-registered bundles. Your app dec",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mt4x73bjop2p
 2026-08-08,3,0,0,0,"Waaseyaa's LlmConversationRequest is a provider-agnostic DTO that serializes to both Anthropic and O",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3msldwlpqwk2c
 2026-08-07,2,0,1,0,"waaseyaa create-project was hardwired to the monorepo. Commit d20bff2 removes the path-repo assumpti",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3msithpwoek2i
@@ -43,9 +49,3 @@ posted,likes,reposts,replies,quotes,text,uri
 2026-07-03,3,0,0,0,"6 Symfony ^7.3 floor constraints across the Waaseyaa monorepo, none justified by actual API usage. A",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mpqm6inogq2t
 2026-07-02,6,0,0,0,"Replaced instanceof dispatch with a strategy pattern in the Waaseyaa API layer. Adding a new request",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mpowh3m2pi2f
 2026-07-02,4,0,0,0,"Waaseyaa's serve command now auto-creates the SQLite database in dev mode. Clone, serve, done. githu",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mpoj354u4b2n
-2026-07-02,4,0,1,0,"Waaseyaa's AI agent package now has a NullLlmProvider. Satisfies the interface, costs nothing, and k",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mpo3nfjz6j2k
-2026-06-30,3,0,0,0,"The Waaseyaa framework now enforces package layering. A layer gate flags any undeclared cross-packag",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mpj2qvj2e52i
-2026-06-29,4,0,1,0,"rhtcircle.ca now looks up Anishinaabemowin words by calling Minoo's /api/lang. One platform serves t",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mphf34gaga2v
-2026-06-29,6,0,1,0,"Added a tamper-evident audit log to the Waaseyaa framework. Every event hash-chains to the one befor",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mpgxma4wgd2n
-2026-06-28,4,0,0,0,"A translation memory where the misses are the point: minoo's language module logs every lookup it ca",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mpdzt6pcug2l
-2026-06-27,6,0,0,0,"Retired a shared htpasswd: rhtcircle.ca admin now uses real framework auth, with proper sessions and",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mpce5fhzog2i
