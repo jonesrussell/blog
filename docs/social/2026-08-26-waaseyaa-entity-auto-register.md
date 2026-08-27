@@ -34,3 +34,5 @@ The same commit added DefinesEntityType, a PHP attribute that lets entity classe
 Route priority ordering, package-level migration path declarations, and moving MCP route registration into the mcp package are also in this commit.
 
 https://github.com/waaseyaa/framework/commit/80937fe #buildinpublic #php
+
+Distributed: 2026-08-27 (autopilot, customScheduled)
