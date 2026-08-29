@@ -22,6 +22,13 @@ DRY_RUN="${DRY_RUN:-0}"
 SINCE_DATE=$(date -u -d "${DAYS} days ago" +%Y-%m-%dT%H:%M:%SZ 2>/dev/null || date -u -v-"${DAYS}"d +%Y-%m-%dT%H:%M:%SZ)
 QUEUE_REPO="jonesrussell/jonesrussell"
 VALIDATOR="node ${SCRIPT_DIR}/../schemas/validate.js"
+# Fail open if the validator's deps are missing (e.g. npm ci didn't run in CI) so a
+# tooling gap can't silently starve the entire content queue. Warn loudly instead.
+VALIDATOR_OK=1
+if ! node -e "require('ajv'); require('ajv-formats')" >/dev/null 2>&1; then
+  echo "WARN: schema-validator deps (ajv) not installed — creating issues WITHOUT seed validation. Add 'npm ci' to the mining workflow to restore validation." >&2
+  VALIDATOR_OK=0
+fi
 # Note: jonesrussell/sheguiandah-waaseyaa and jonesrussell/waaseyaa-enterprise-assurance
 # are PRIVATE and the CROSS_REPO_TOKEN (read:org for waaseyaa/*) cannot read them (404).
 # Add them here only once CROSS_REPO_TOKEN is replaced with a token that has repo scope
@@ -289,8 +296,8 @@ while IFS="$(printf '\t')" read -r CONFIDENCE group_file; do
 }
 SEED
 
-  # Validate against schema
-  if $VALIDATOR mined-seed "$SEED_FILE" > /dev/null 2>&1; then
+  # Validate against schema (fail open if validator deps are unavailable)
+  if [[ "$VALIDATOR_OK" == "0" ]] || $VALIDATOR mined-seed "$SEED_FILE" > /dev/null 2>&1; then
     # Build issue body
     ISSUE_BODY="## Source
 
