@@ -1,12 +1,18 @@
 ---
-title: "Publishing a versioned API contract you can actually trust"
-date: 2026-08-30
-categories: [go]
-tags: [go, api, openapi, api-design]
-summary: "How goformx freezes, packages, and checksums its OpenAPI contract so external clients can pin to a specific, verifiable release instead of a moving branch."
-slug: "publishing-a-versioned-api-contract"
-draft: false
+categories:
+    - go
+date: 2026-08-30T00:00:00Z
 devto: true
+devto_id: 4532129
+draft: false
+slug: publishing-a-versioned-api-contract
+summary: How goformx freezes, packages, and checksums its OpenAPI contract so external clients can pin to a specific, verifiable release instead of a moving branch.
+tags:
+    - go
+    - api
+    - openapi
+    - api-design
+title: Publishing a versioned API contract you can actually trust
 ---
 
 Ahnii!
