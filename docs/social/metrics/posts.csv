@@ -1,4 +1,7 @@
 posted,likes,reposts,replies,quotes,text,uri
+2026-08-30,3,0,1,0,"How goformx freezes its OpenAPI contract: a CI gate that fails on stale generated types, then a pack",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mudbwdqiih2r
+2026-08-29,2,0,1,0,"waaseyaa/foundation was instantiating Waaseyaa\SSR\RenderCache in HttpKernel without declaring the d",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mua5pwonfj2p
+2026-08-28,3,0,0,0,"WaaseyaaRouter was silently overwriting duplicate route names. It now rejects them at boot. The same",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mu5nb26ikv2p
 2026-08-22,1,0,0,0,"Knowing what your app does is table stakes. Knowing what context your agents are seeing is harder. W",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mtokhigiht2h
 2026-08-21,6,0,0,0,"This blog publishes with nobody reviewing drafts. Three failure modes so far: API credit ran dry, a ",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mtmnpwx3vt2b
 2026-08-21,2,0,0,0,"One AI-assisted day: 14 PRs merged, a 358-site SQLite audit, and a pile of latent defects caught on ",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mtmaerwjhn2p
@@ -46,6 +49,3 @@ posted,likes,reposts,replies,quotes,text,uri
 2026-07-04,7,0,0,0,"Giiken's frontend is Vue 3, Vite, Tailwind, and Inertia: the same stack across the Waaseyaa ecosyste",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mpt4lfsd532t
 2026-07-03,6,0,0,0,"4 Waaseyaa framework fixes that close the gap between cloning a repo and having it running in a brow",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mprgwfpvat2i
 2026-07-03,5,0,2,0,"AI agents shouldn't edit Waaseyaa apps via raw file writes. Bimaaji gives them a structured DSL, AST",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mpqzllwctj2t
-2026-07-03,3,0,0,0,"6 Symfony ^7.3 floor constraints across the Waaseyaa monorepo, none justified by actual API usage. A",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mpqm6inogq2t
-2026-07-02,6,0,0,0,"Replaced instanceof dispatch with a strategy pattern in the Waaseyaa API layer. Adding a new request",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mpowh3m2pi2f
-2026-07-02,4,0,0,0,"Waaseyaa's serve command now auto-creates the SQLite database in dev mode. Clone, serve, done. githu",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mpoj354u4b2n
