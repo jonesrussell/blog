@@ -33,7 +33,7 @@ fi
 # are PRIVATE and the CROSS_REPO_TOKEN (read:org for waaseyaa/*) cannot read them (404).
 # Add them here only once CROSS_REPO_TOKEN is replaced with a token that has repo scope
 # covering those private repos, or they will silently return no commits.
-REPOS=("waaseyaa/framework" "waaseyaa/giiken" "waaseyaa/minoo" "waaseyaa/anokii" "waaseyaa/anokii-core" "waaseyaa/anokii-identity" "goformx/goformx" "jonesrussell/rhtcircle" "jonesrussell/blog" "jonesrussell/jonesrussell")
+REPOS=("waaseyaa/framework" "waaseyaa/giiken" "waaseyaa/minoo" "waaseyaa/anokii" "waaseyaa/anokii-core" "waaseyaa/anokii-identity" "goformx/goformx" "jonesrussell/northway" "jonesrussell/rhtcircle" "jonesrussell/blog" "jonesrussell/jonesrussell")
 
 MINED_COUNT=0
 SKIPPED_COUNT=0
