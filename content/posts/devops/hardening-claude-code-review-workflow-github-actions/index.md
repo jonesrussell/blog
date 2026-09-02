@@ -1,11 +1,17 @@
 ---
-title: "Hardening a manual Claude Code review workflow in GitHub Actions"
-date: 2026-09-01
-categories: [devops]
-tags: [github-actions, claude-code, ci, security]
-summary: "How a human-triggered '@claude review' workflow got locked down to read-only, bounded-diff, revision-verified reviews after the official tag-mode example turned out to be implementation-capable by default."
-slug: "hardening-claude-code-review-workflow-github-actions"
+categories:
+    - devops
+date: 2026-09-01T00:00:00Z
+devto_id: 4556993
 draft: false
+slug: hardening-claude-code-review-workflow-github-actions
+summary: How a human-triggered '@claude review' workflow got locked down to read-only, bounded-diff, revision-verified reviews after the official tag-mode example turned out to be implementation-capable by default.
+tags:
+    - github-actions
+    - claude-code
+    - ci
+    - security
+title: Hardening a manual Claude Code review workflow in GitHub Actions
 ---
 
 Ahnii!

@@ -3,6 +3,7 @@ categories:
     - go
 date: 2026-08-31T00:00:00Z
 devto: true
+devto_id: 4556997
 draft: false
 slug: idempotent-budget-bounded-queries-sqlite
 summary: How northway's SQLite store keeps paid AI-provider queries idempotent and budget-bounded, using a single writer, lease-based claims, and a reserve-then-settle spend model.
