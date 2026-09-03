@@ -2,6 +2,7 @@
 categories:
     - devops
 date: 2026-09-02T00:00:00Z
+devto_id: 4565370
 draft: false
 slug: content-mining-pipeline-silent-failure
 summary: A missing npm ci let schema validation crash on every mined candidate, filing zero content-queue issues for a week — the fix layers a loud fail-open guard over the actual root-cause patch.
