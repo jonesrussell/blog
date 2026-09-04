@@ -34,3 +34,5 @@ The same release adds schema-first abuse controls: per-form token bucket rate li
 https://github.com/goformx/goformx/pull/114
 
 #buildinpublic #golang
+
+Distributed: 2026-09-04 (autopilot, customScheduled)
