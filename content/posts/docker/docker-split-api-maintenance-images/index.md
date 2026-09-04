@@ -1,11 +1,17 @@
 ---
-title: "Splitting one Dockerfile into API and maintenance images"
-date: 2026-09-03
-categories: [docker]
-tags: [docker, security, containers, ci]
-summary: "A shared runtime stage plus two build targets keeps CLI maintenance tools out of the deployed API image, and a script proves it on every build."
-slug: "docker-split-api-maintenance-images"
+categories:
+    - docker
+date: 2026-09-03T00:00:00Z
+devto_id: 4574027
 draft: false
+slug: docker-split-api-maintenance-images
+summary: A shared runtime stage plus two build targets keeps CLI maintenance tools out of the deployed API image, and a script proves it on every build.
+tags:
+    - docker
+    - security
+    - containers
+    - ci
+title: Splitting one Dockerfile into API and maintenance images
 ---
 
 Ahnii!
