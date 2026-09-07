@@ -1,4 +1,13 @@
 posted,likes,reposts,replies,quotes,text,uri
+2026-09-06,1,0,0,0,"Found a nasty bug in our PHP HTTP client. Hitting the byte ceiling on a response returned a truncate",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3muuhrsbdfz2r
+2026-09-05,0,0,0,0,"A stray PHPStan cache in a nested git worktree got scanned as production code, breaking a pre-push g",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3murxcxji4n2y
+2026-09-05,2,0,0,0,"A contact form is only as useful as its delivery guarantee. GoFormX now ships a signed webhook outbo",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3murqyesx4b2s
+2026-09-04,0,0,0,0,"Mounting a volume right on the directory you chmod'd in the image throws that permission away. north",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mupgtqbk6t2t
+2026-09-04,4,0,1,0,"Anokii now refuses to boot in production if AUTH_TOKEN_SECRET looks like a placeholder. The check ru",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mupajire5g2z
+2026-09-03,1,0,0,0,"One Dockerfile was building the API image with two maintenance CLIs bundled in. Split it into a shar",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3munds6qp7n2u
+2026-09-02,0,0,1,0,"A missing npm ci let schema validation crash on every mined candidate, so our content pipeline filed",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3muktd7zdz72m
+2026-09-01,1,0,0,0,"Wired a manual @claude review into GitHub Actions. Default tag mode is implementation capable, so I ",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3muicuikc6p2g
+2026-08-31,0,0,0,0,"A retried AI query should never bill you twice. northway's SQLite store reserves a budget hold befor",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mufsfnmavr2r
 2026-08-30,3,0,1,0,"How goformx freezes its OpenAPI contract: a CI gate that fails on stale generated types, then a pack",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mudbwdqiih2r
 2026-08-29,2,0,1,0,"waaseyaa/foundation was instantiating Waaseyaa\SSR\RenderCache in HttpKernel without declaring the d",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mua5pwonfj2p
 2026-08-28,3,0,0,0,"WaaseyaaRouter was silently overwriting duplicate route names. It now rejects them at boot. The same",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mu5nb26ikv2p
@@ -40,12 +49,3 @@ posted,likes,reposts,replies,quotes,text,uri
 2026-07-21,5,0,1,0,"If your AI-built repo doesn't have a runbook, future-you can't run it. The OIATC repo's CLAUDE.md op",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mr63k3n73j2s
 2026-07-21,0,0,0,0,"Laura Owl joins me to review the public records on Angus Toulouse's roles at Sagamok: Senior Adminis",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mr4omjy2rf2t
 2026-07-20,0,0,0,0,"GR Truss and Sagamok's $7 million Sault land deal. The names appear in land records, Council minutes",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mr45qn2bqs2m
-2026-07-20,0,0,0,0,"Working on two branches at once without stashing, committing half-done work, or cloning twice: that ",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mr3l37fvqg2c
-2026-07-19,0,0,0,0,"An electrician, a doctor, and a carpenter won Anthropic's Opus 4.7 hackathon. Not the engineers. Whe",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mqz2m6uovz2b
-2026-07-18,5,0,0,0,"The interesting craft isn't vibe coding the first prototype. It's the six moves you make next. Wrote",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mqwk5bcka32e
-2026-07-17,5,0,2,0,"AI keeps speccing your projects on pre-AI timelines. You shipped 5 WPs yesterday and it just told yo",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mqtzpqf4ey27
-2026-07-04,6,0,0,0,"Giiken is a community knowledge management platform on Waaseyaa: ingestion pipeline, wiki schema, se",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mptxhwu3fp2x
-2026-07-04,3,0,0,0,"In an AI-assisted codebase, drift is the default. Four Waaseyaa governance protocols to keep archite",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mptk4fozhx22
-2026-07-04,7,0,0,0,"Giiken's frontend is Vue 3, Vite, Tailwind, and Inertia: the same stack across the Waaseyaa ecosyste",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mpt4lfsd532t
-2026-07-03,6,0,0,0,"4 Waaseyaa framework fixes that close the gap between cloning a repo and having it running in a brow",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mprgwfpvat2i
-2026-07-03,5,0,2,0,"AI agents shouldn't edit Waaseyaa apps via raw file writes. Bimaaji gives them a structured DSL, AST",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mpqzllwctj2t
