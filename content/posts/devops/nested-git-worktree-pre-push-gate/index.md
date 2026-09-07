@@ -1,12 +1,18 @@
 ---
-title: "A nested git worktree broke our pre-push gate"
-date: 2026-09-05
-categories: [devops]
-tags: [php, git, ci, testing]
-series: []
-summary: "A stray PHPStan cache in a nested git worktree got scanned as production code, showing why filesystem-exclusion rules for local gates need to match at any depth."
-slug: "nested-git-worktree-pre-push-gate"
+categories:
+    - devops
+date: 2026-09-05T00:00:00Z
+devto_id: 4595995
 draft: false
+series: []
+slug: nested-git-worktree-pre-push-gate
+summary: A stray PHPStan cache in a nested git worktree got scanned as production code, showing why filesystem-exclusion rules for local gates need to match at any depth.
+tags:
+    - php
+    - git
+    - ci
+    - testing
+title: A nested git worktree broke our pre-push gate
 ---
 
 Ahnii!

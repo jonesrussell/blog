@@ -2,8 +2,9 @@
 categories:
     - php
     - waaseyaa
-date: 2026-09-06
+date: 2026-09-06T00:00:00Z
 devto: true
+devto_id: 4595999
 draft: false
 slug: streamhttpclient-truncated-body-fail-closed
 summary: How Waaseyaa's StreamHttpClient silently turned a truncated, over-limit response body into an HTTP 200, and the fail-closed fix that rejects incomplete bodies instead of guessing.
@@ -12,7 +13,7 @@ tags:
     - waaseyaa
     - http
     - reliability
-title: "Fixing a silent truncation bug in Waaseyaa's StreamHttpClient"
+title: Fixing a silent truncation bug in Waaseyaa's StreamHttpClient
 ---
 
 Ahnii!

@@ -1,11 +1,17 @@
 ---
-title: "Keep SQLite data in a private child directory, not at the Docker volume root"
-date: 2026-09-04
-categories: [docker]
-tags: [docker, sqlite, containers, security]
-summary: "Mounting a durable volume straight onto the directory you chmod'd in the image throws away that permission — bake a private child path instead."
-slug: "docker-sqlite-private-child-directory"
+categories:
+    - docker
+date: 2026-09-04T00:00:00Z
+devto_id: 4595997
 draft: false
+slug: docker-sqlite-private-child-directory
+summary: Mounting a durable volume straight onto the directory you chmod'd in the image throws away that permission — bake a private child path instead.
+tags:
+    - docker
+    - sqlite
+    - containers
+    - security
+title: Keep SQLite data in a private child directory, not at the Docker volume root
 ---
 
 Ahnii!
