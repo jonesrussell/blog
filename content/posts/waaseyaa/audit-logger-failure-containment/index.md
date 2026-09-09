@@ -4,6 +4,7 @@ categories:
     - waaseyaa
 date: 2026-09-08T00:00:00Z
 devto: true
+devto_id: 4615837
 draft: false
 slug: audit-logger-failure-containment
 summary: Why a throwing audit logger in Waaseyaa's MCP endpoint could crash a request after its outcome was already decided, and the containment pattern that fixed it.

@@ -4,6 +4,7 @@ categories:
     - waaseyaa
 date: 2026-09-07T00:00:00Z
 devto: true
+devto_id: 4615839
 draft: false
 slug: git-native-repository-file-enumeration
 summary: Why Waaseyaa's CI gate scanners stopped walking the filesystem with a hand-maintained exclusion list and started asking git what's actually in the repository.
