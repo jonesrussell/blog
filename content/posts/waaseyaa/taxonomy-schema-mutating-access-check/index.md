@@ -4,6 +4,7 @@ categories:
     - waaseyaa
 date: 2026-09-09T00:00:00Z
 devto: true
+devto_id: 4623648
 draft: false
 slug: taxonomy-schema-mutating-access-check
 summary: How Waaseyaa's taxonomy package let ordinary request traffic ALTER a table to add a foreign key, and the fix that moved that DDL exclusively into coordinated schema sync.
