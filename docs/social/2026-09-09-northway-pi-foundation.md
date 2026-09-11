@@ -32,3 +32,5 @@ The project is a Go service for AI-assisted content retrieval. The architectural
 The API contract is defined up front as JSON Schema files before any implementation lands. That is a discipline worth noting when the codebase is still young, because it is much easier to hold a schema boundary at the start than to retrofit one later.
 
 https://github.com/jonesrussell/northway/commit/ddf1773f8eac7c8497a93d4a03f53710bb9220fd #buildinpublic #golang
+
+Distributed: 2026-09-11 (autopilot, customScheduled)
