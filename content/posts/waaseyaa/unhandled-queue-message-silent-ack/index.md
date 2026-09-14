@@ -4,6 +4,7 @@ categories:
     - waaseyaa
 date: 2026-09-11T00:00:00Z
 devto: true
+devto_id: 4650488
 draft: false
 slug: unhandled-queue-message-silent-ack
 summary: How Waaseyaa's queue worker silently acknowledged persistent messages with no matching handler, and the fail-closed fix that routes them through retry and the failed-job repository instead.

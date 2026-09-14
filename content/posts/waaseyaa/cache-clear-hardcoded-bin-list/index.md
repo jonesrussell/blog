@@ -4,6 +4,7 @@ categories:
     - waaseyaa
 date: 2026-09-12T00:00:00Z
 devto: true
+devto_id: 4650484
 draft: false
 slug: cache-clear-hardcoded-bin-list
 summary: How Waaseyaa's cache:clear command couldn't even run in production, and how a hardcoded bin list quietly reported success while clearing the wrong cache entirely.

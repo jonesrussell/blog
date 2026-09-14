@@ -2,6 +2,7 @@
 categories:
     - general
 date: 2026-09-13T00:00:00Z
+devto_id: 4650483
 draft: false
 slug: feed-reader-prototype-loopback-proxy
 summary: How northway's browser prototype keeps its API key off client JavaScript with a loopback-only Node proxy, before any of it reaches the production Pi build.
