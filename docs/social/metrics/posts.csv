@@ -1,4 +1,11 @@
 posted,likes,reposts,replies,quotes,text,uri
+2026-09-13,1,0,0,0,"Prototyped northway's feed reader in the browser first. A loopback-only Node proxy keeps the API key",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mvg3263leo2b
+2026-09-12,1,0,0,0,"Our cache:clear command could not run in production at all, and once fixed it cleared a hardcoded bi",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mvdklgghds2s
+2026-09-12,5,1,0,0,"Most self-hosted AI tools assume a server rack. northway starts from the other direction: SQLite as ",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mvdeatpgcc2y
+2026-09-11,1,0,1,0,"Found a bug in our PHP queue worker: messages with no matching handler were silently acknowledged an",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mvbhjgl6jh2b
+2026-09-09,1,0,0,0,"Found a bug where an access-check method in our PHP framework ran schema DDL on every delete check, ",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mv4glnskcr2r
+2026-09-08,1,0,1,0,"Found a bug where a throwing audit logger could crash a request after the real outcome was already d",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3muzw5rrtrb2s
+2026-09-07,1,0,0,0,"Our CI gate scanners walked the filesystem and subtracted a denylist to find repo files. A nested gi",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3muxfnmzmwu2b
 2026-09-06,1,0,0,0,"Found a nasty bug in our PHP HTTP client. Hitting the byte ceiling on a response returned a truncate",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3muuhrsbdfz2r
 2026-09-05,0,0,0,0,"A stray PHPStan cache in a nested git worktree got scanned as production code, breaking a pre-push g",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3murxcxji4n2y
 2026-09-05,2,0,0,0,"A contact form is only as useful as its delivery guarantee. GoFormX now ships a signed webhook outbo",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3murqyesx4b2s
@@ -42,10 +49,3 @@ posted,likes,reposts,replies,quotes,text,uri
 2026-07-26,0,0,0,0,"A $100 share purchase, $900,000 in Council approvals, and a filing linking GR Truss equipment to the",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mrkhd4tlps2b
 2026-07-25,0,0,0,0,"Sagamok has announced another five-hour Elders Forum. The notice gives date, time and location. The ",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mrimmspifk2u
 2026-07-24,0,0,0,0,"About 70 people attended the July 23 Sagamok member information session, many of them Elders. The fu",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mrg72vcmsn2b
-2026-07-23,4,0,0,0,"Don't delete failed attempts. Label them and keep them. The OIATC repo has a literal docs/archive/20",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mrd4hv6vbe2b
-2026-07-22,4,0,1,0,"Vibe-coded today, irreproducible tomorrow. Pin the world. The OIATC deploy contract is bin/waaseyaa ",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mralyxdvf327
-2026-07-22,0,0,0,0,"Sagamok's audited company-loan balance reached $96,972,955 by March 31, 2025. The audit is clean, bu",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mr7bpaz6my2s
-2026-07-21,0,0,0,0,"The public record behind GR Truss and Sagamok's $7 million Sault Ste. Marie land deal: land records,",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mr6tohuk5y27
-2026-07-21,5,0,1,0,"If your AI-built repo doesn't have a runbook, future-you can't run it. The OIATC repo's CLAUDE.md op",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mr63k3n73j2s
-2026-07-21,0,0,0,0,"Laura Owl joins me to review the public records on Angus Toulouse's roles at Sagamok: Senior Adminis",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mr4omjy2rf2t
-2026-07-20,0,0,0,0,"GR Truss and Sagamok's $7 million Sault land deal. The names appear in land records, Council minutes",at://did:plc:vfxl7apgvvar4k3rzom264n3/app.bsky.feed.post/3mr45qn2bqs2m
