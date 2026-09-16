@@ -4,6 +4,7 @@ categories:
     - waaseyaa
 date: 2026-09-15T00:00:00Z
 devto: true
+devto_id: 4669033
 draft: false
 slug: stdio-mcp-server-php
 summary: The wire-level rules that make a stdio MCP server correct in PHP - one writer to stdout, a bounded read with no natural limit, and a handshake that tells old clients from new ones.
