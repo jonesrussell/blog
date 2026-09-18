@@ -32,3 +32,5 @@ The __Host- cookie prefix is a strong browser security guarantee: no cross-subdo
 Waaseyaa now validates the full session cookie contract at boot. Wrong config fails before your first request. The same commit also cleans up CSRF cookie naming in the Admin SPA: names are now derived from the runtime policy and injected into HTML responses, so you change one config value and everything stays in sync.
 
 https://github.com/waaseyaa/framework/commit/e8015390d04c971d83292c4c9d833b98c4c9a4af #buildinpublic
+
+Distributed: 2026-09-18 (autopilot, customScheduled)
