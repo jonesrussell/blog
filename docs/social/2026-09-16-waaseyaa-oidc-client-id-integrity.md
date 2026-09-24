@@ -30,3 +30,5 @@ If two OIDC clients can share the same client_id, your authorization server cann
 Waaseyaa adds a partial unique index on oidc_client.client_id. Duplicate registration now fails at the database level. The test suite covers client identity recovery contracts, including what state is left behind when a duplicate is attempted.
 
 https://github.com/waaseyaa/framework/commit/b7d83958c184d30180b0df55010a49c9dce9cc34 #buildinpublic
+
+Distributed: 2026-09-24 (autopilot, customScheduled)
