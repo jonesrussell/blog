@@ -2,8 +2,9 @@
 categories:
     - php
     - waaseyaa
-date: 2026-09-19
+date: 2026-09-19T00:00:00Z
 devto: true
+devto_id: 4733547
 draft: false
 slug: host-bound-session-csrf-cookies
 summary: How Waaseyaa's SessionCookiePolicy enforces the __Host- cookie prefix's four constraints for both the session cookie and the CSRF double-submit cookie, and rejects misconfiguration at boot instead of failing silently in the browser.
@@ -12,7 +13,7 @@ tags:
     - waaseyaa
     - security
     - cookies
-title: "Host-bound session and CSRF cookies in Waaseyaa"
+title: Host-bound session and CSRF cookies in Waaseyaa
 ---
 
 Ahnii!

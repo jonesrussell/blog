@@ -2,8 +2,9 @@
 categories:
     - php
     - waaseyaa
-date: 2026-09-23
+date: 2026-09-23T00:00:00Z
 devto: true
+devto_id: 4733557
 draft: false
 slug: identity-only-oauth-requests
 summary: How Waaseyaa's oauth-provider package added optional, additive configuration so a consumer that only needs a stable Google or GitHub identity can skip the email lookup, the forced consent prompt, and the offline refresh-token grant.

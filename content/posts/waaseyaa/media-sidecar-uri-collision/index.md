@@ -4,6 +4,7 @@ categories:
     - waaseyaa
 date: 2026-09-18T00:00:00Z
 devto: true
+devto_id: 4733558
 draft: false
 slug: media-sidecar-uri-collision
 summary: How Waaseyaa's LocalFileRepository silently collided metadata for different stream-wrapper URIs that shared a trailing path segment, and the fix that preserves full URI identity plus atomic writes and a reconciliation tool.

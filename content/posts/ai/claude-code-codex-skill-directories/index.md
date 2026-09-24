@@ -1,11 +1,17 @@
 ---
-title: "Claude Code and Codex skills are directories, not files"
-date: 2026-09-20
-categories: [ai]
-tags: [claude-code, codex, ai-agents, waaseyaa]
-summary: "Why Claude Code and Codex discover agent skills as a directory containing SKILL.md, not a flat markdown file, and what silently breaks when an installer gets that wrong."
-slug: "claude-code-codex-skill-directories"
+categories:
+    - ai
+date: 2026-09-20T00:00:00Z
+devto_id: 4733546
 draft: false
+slug: claude-code-codex-skill-directories
+summary: Why Claude Code and Codex discover agent skills as a directory containing SKILL.md, not a flat markdown file, and what silently breaks when an installer gets that wrong.
+tags:
+    - claude-code
+    - codex
+    - ai-agents
+    - waaseyaa
+title: Claude Code and Codex skills are directories, not files
 ---
 
 Ahnii!
