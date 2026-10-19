@@ -1,0 +1,18 @@
+{
+  "status": "PUBLISH",
+  "issue": 1188,
+  "slug": "psr-14-dispatcher-second-argument",
+  "post_path": "content/posts/php/psr-14-dispatcher-second-argument/index.md",
+  "social_path": "docs/social/psr-14-dispatcher-second-argument.md",
+  "sources": [
+    "https://www.php-fig.org/psr/psr-14/",
+    "https://github.com/waaseyaa/framework/commit/4ac878ed2999ca9c6860c90a277b0f75430f9f84",
+    "https://github.com/waaseyaa/framework/blob/4ac878ed2999ca9c6860c90a277b0f75430f9f84/packages/entity-storage/src/EntityRepository.php",
+    "https://github.com/waaseyaa/framework/blob/4ac878ed2999ca9c6860c90a277b0f75430f9f84/packages/messaging/src/EventSubscriber/ThreadParticipantBootstrapSubscriber.php",
+    "https://github.com/symfony/event-dispatcher/blob/v7.3.0/EventDispatcher.php",
+    "https://github.com/symfony/event-dispatcher-contracts/blob/v3.6.0/EventDispatcherInterface.php"
+  ],
+  "publishedOn": "2026-10-19",
+  "preflightRequestId": "codex-local-20261019-3a6ea5468d3d",
+  "baseSha": "43a90f7364d5767844963eae537c1031bac3af7c"
+}
