@@ -1,0 +1,67 @@
+name: Buffer Posting
+
+on:
+  workflow_dispatch:
+    inputs:
+      manifest:
+        description: 'Committed campaign manifest, or data/buffer-outbox.json'
+        default: data/buffer-outbox.json
+        required: true
+      action:
+        type: choice
+        options: [inspect, queue, verify]
+        default: inspect
+  workflow_run:
+    workflows: [Content Autopilot]
+    types: [completed]
+    branches: [main]
+  schedule:
+    - cron: '0 12 * * *'
+
+permissions:
+  contents: write
+
+# Serialize with generation so the committed outbox cannot be lost in a race.
+concurrency:
+  group: content-autopilot
+  cancel-in-progress: false
+
+jobs:
+  post:
+    if: github.event_name != 'workflow_run' || github.event.workflow_run.head_repository.full_name == github.repository
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate and deliver prepared posts
+        env:
+          MANIFEST: ${{ inputs.manifest || 'data/buffer-outbox.json' }}
+          ACTION: ${{ inputs.action || 'queue' }}
+          BUFFER_API_KEY: ${{ secrets.BUFFER_API_KEY }}
+          BUFFER_CHANNEL_FACEBOOK: ${{ secrets.BUFFER_CHANNEL_FACEBOOK }}
+          BUFFER_CHANNEL_LINKEDIN: ${{ secrets.BUFFER_CHANNEL_LINKEDIN }}
+          BUFFER_CHANNEL_BLUESKY: ${{ secrets.BUFFER_CHANNEL_BLUESKY }}
+        run: node scripts/buffer-delivery.mjs "$MANIFEST" "$ACTION"
+      - name: Save delivered outbox receipts
+        if: success() && (github.event_name != 'workflow_dispatch' || (inputs.manifest == 'data/buffer-outbox.json' && inputs.action == 'queue'))
+        run: |
+          if git diff --quiet -- data/buffer-outbox.json data/buffer-delivery-ledger.json; then exit 0; fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/buffer-outbox.json data/buffer-delivery-ledger.json
+          git commit -m 'chore: record Buffer outbox delivery'
+          git pull --rebase origin main
+          git push origin HEAD:main
+      - name: Preserve receipts, including partial submissions
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: buffer-receipt-${{ github.run_id }}-${{ github.run_attempt }}
+          path: buffer-receipt.json
+          if-no-files-found: ignore
+          retention-days: 90
