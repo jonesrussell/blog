@@ -199,12 +199,28 @@ export async function deliver(entries, api, { action = 'inspect', now = Date.now
   return receipt;
 }
 
+export async function ensureLivePages(posts, fetcher = fetch) {
+  for (const post of posts) {
+    if (!post.url) continue; // Prepared campaigns may link to an existing external site.
+    if (!/^https:\/\/jonesrussell\.github\.io\/blog\/[a-z0-9-]+\/$/.test(post.url)) {
+      throw new Error('Unexpected blog publication URL');
+    }
+    const response = await fetcher(post.url, { signal: AbortSignal.timeout(30000), redirect: 'error' });
+    if (!response.ok) throw new Error(`Blog article is not live: ${post.url} (HTTP ${response.status})`);
+    const html = await response.text();
+    if (!html.includes(post.url) || !/<link\b[^>]*rel=["']?canonical["'\s>]/i.test(html)) {
+      throw new Error(`Blog article has no canonical publication evidence: ${post.url}`);
+    }
+  }
+}
+
 async function main() {
   const [file, action = 'inspect'] = process.argv.slice(2);
   if (!file) throw new Error('Usage: buffer-delivery.mjs <manifest.json> [validate|inspect|queue|verify]');
   const { manifest, entries } = readManifest(file);
   if (action === 'validate') return console.log(`Validated ${entries.length} variants in ${manifest.id}`);
   if (!entries.length) return console.log('No pending Buffer posts.');
+  if (action === 'queue') await ensureLivePages(manifest.posts);
   const receipt = await deliver(entries, makeApi(), { action, save: r => writeFileSync('buffer-receipt.json', JSON.stringify({ campaign: manifest.id, ...r }, null, 2) + '\n') });
   console.log(JSON.stringify(receipt, null, 2));
   if (action === 'queue' && file === 'data/buffer-outbox.json') {
