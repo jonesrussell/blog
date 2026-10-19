@@ -1,9 +1,9 @@
 name: Content Autopilot
 
 # Zero-touch pipeline: backpressure -> curate (LLM) -> produce (LLM) -> build gate
-# -> publish -> distribute. Throttled by Buffer queue depth. See
+# -> publish -> durable outbox. Buffer Posting delivers separately. See
 # docs/superpowers/specs for design. Credentials come from repo secrets
-# (mirrored from the waaseyaa-infra Ansible vault).
+# (the local legacy Buffer vault copy is stale).
 
 on:
   schedule:
@@ -21,7 +21,6 @@ on:
 
 permissions:
   contents: write
-  id-token: write # required by anthropics/claude-code-action@v1 (OIDC)
   issues: write # failure-alert step opens an issue to notify the maintainer
 
 concurrency:
@@ -60,13 +59,25 @@ jobs:
       # 1) BACKPRESSURE — stop if the Buffer queue is full
       - name: Buffer backpressure gate
         id: gate
+        env:
+          FORCE: ${{ inputs.force }}
         run: |
-          if [[ "${{ github.event.inputs.force }}" == "true" ]]; then
+          if [[ "$FORCE" == "true" ]]; then
             echo "proceed=true" >> "$GITHUB_OUTPUT"; exit 0
+          fi
+          if [[ $(jq '.posts | length' data/buffer-outbox.json) -gt 0 ]]; then
+            echo "proceed=false" >> "$GITHUB_OUTPUT"
+            echo "Pending social delivery. Buffer Posting will drain the outbox before more generation."
+            exit 0
           fi
           if node scripts/buffer-queue-depth.mjs 9; then
             echo "proceed=true" >> "$GITHUB_OUTPUT"
           else
+            status=$?
+            if [[ "$status" != 1 ]]; then
+              echo "Buffer gate failed (credentials/API). This is not a full queue."
+              exit "$status"
+            fi
             echo "proceed=false" >> "$GITHUB_OUTPUT"
             echo "Buffer queue full — nothing to do this run."
           fi
@@ -180,24 +191,25 @@ jobs:
             '.processed += [$n] | .processed |= unique' \
             data/autopilot-ledger.json > data/autopilot-ledger.json.tmp
           mv data/autopilot-ledger.json.tmp data/autopilot-ledger.json
-          git add "${{ steps.result.outputs.post_path }}" "${{ steps.result.outputs.social_path }}" data/autopilot-ledger.json
+          jq --arg id "${{ steps.result.outputs.slug }}" --arg file "${{ steps.result.outputs.social_path }}" \
+            '.posts += [{id: $id, file: $file}]' \
+            data/buffer-outbox.json > data/buffer-outbox.json.tmp
+          mv data/buffer-outbox.json.tmp data/buffer-outbox.json
+          node scripts/buffer-delivery.mjs data/buffer-outbox.json validate
+          git add "${{ steps.result.outputs.post_path }}" "${{ steps.result.outputs.social_path }}" data/autopilot-ledger.json data/buffer-outbox.json
           git commit -m "content: autopilot publish ${{ steps.result.outputs.slug }} (queue #${{ steps.result.outputs.issue }})"
           git pull --rebase origin main
           git push origin main
 
-      # 7) DISTRIBUTE — queue social copy to Buffer
-      - name: Distribute to Buffer
-        if: steps.result.outputs.status == 'PUBLISH' && steps.slop.outputs.clean == 'true' && github.event.inputs.dry_run != 'true'
-        run: node scripts/buffer-distribute.mjs "${{ steps.result.outputs.social_path }}" addToQueue
-
-      # 8) Close the queue issue as distributed
+      # Buffer Posting delivers the committed outbox after this workflow, including on failure.
+      # Close the source as produced; delivery receipts live in the Buffer ledger.
       - name: Close queue issue
         if: steps.result.outputs.status == 'PUBLISH' && steps.slop.outputs.clean == 'true' && github.event.inputs.dry_run != 'true'
         env:
           GH_TOKEN: ${{ secrets.CROSS_REPO_TOKEN }}
         run: |
           gh issue edit "${{ steps.result.outputs.issue }}" --repo "$QUEUE_REPO" \
-            --remove-label "stage:mined" --add-label "stage:distributed" || true
+            --remove-label "stage:mined" --add-label "stage:produced" || true
           gh issue close "${{ steps.result.outputs.issue }}" --repo "$QUEUE_REPO" --reason completed || true
 
       - name: Summary
@@ -218,7 +230,7 @@ jobs:
         run: |
           gh label create autopilot-failure --repo "$REPO" --color d73a4a \
             --description "Content Autopilot run failed" 2>/dev/null || true
-          body=$(printf 'Content Autopilot run failed: %s\n\nMost common cause: CLAUDE_CODE_OAUTH_TOKEN expired or was revoked (subscription tokens rotate). Re-sync the secret from a fresh token, or run `claude setup-token` for a long-lived one.\n\n@jonesrussell' "$RUN_URL")
+          body=$(printf 'Content Autopilot run failed: %s\n\nInspect the first failed step. Buffer authentication, queue capacity and Claude authentication are separate checks. A Claude subscription-access restriction requires account access to be restored; rotating a Buffer token will not fix it. Prepared social posts are handled independently by Buffer Posting.\n\n@jonesrussell' "$RUN_URL")
           existing=$(gh issue list --repo "$REPO" --label autopilot-failure --state open --json number --jq '.[0].number // empty')
           if [ -n "$existing" ]; then
             gh issue comment "$existing" --repo "$REPO" --body "$body"

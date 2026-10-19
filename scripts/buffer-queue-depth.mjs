@@ -57,6 +57,7 @@ async function gql(query) {
     },
     body: JSON.stringify({ query }),
   });
+  if (!res.ok) throw new Error(`Buffer HTTP ${res.status}`);
   const data = JSON.parse((await res.text()) || "{}");
   if (data.errors) throw new Error(data.errors[0]?.message || "GQL error");
   return data;
@@ -78,9 +79,12 @@ for (const [platform, chId] of Object.entries(channels)) {
   const q = `{ posts(input: { organizationId: ${JSON.stringify(orgId)}, filter: { channelIds: [${JSON.stringify(chId)}], status: scheduled } } first: 10) { ... on PostsResults { edges { node { dueAt } } pageInfo { hasNextPage } } } }`;
   try {
     const d = await gql(q);
-    const p = d.data?.posts || {};
-    const count = (p.edges || []).length;
-    const hasNext = p.pageInfo?.hasNextPage || false;
+    const p = d.data?.posts;
+    if (!Array.isArray(p?.edges) || typeof p.pageInfo?.hasNextPage !== 'boolean') {
+      throw new Error('Unreadable Buffer queue response');
+    }
+    const count = p.edges.length;
+    const hasNext = p.pageInfo.hasNextPage;
     const near = hasNext || count >= CAP;
     if (near) atCap = true;
     console.log(`  ${platform.padEnd(9)} ${hasNext ? "10+" : String(count)}${near ? "  *** AT/NEAR CAP ***" : ""}`);
@@ -90,13 +94,13 @@ for (const [platform, chId] of Object.entries(channels)) {
   }
 }
 
+if (errored) {
+  console.log('Some channels unreadable; treat as unsafe.');
+  process.exit(2);
+}
 if (atCap) {
   console.log(`\nWARNING: a channel is at >= ${CAP}/10. Autopilot should stop producing until Buffer drains.`);
   process.exit(1);
-}
-if (errored) {
-  console.log("\nSome channels unreadable — treat as unsafe.");
-  process.exit(2);
 }
 console.log(`\nAll channels below ${CAP}/10. Safe to produce and queue.`);
 process.exit(0);
