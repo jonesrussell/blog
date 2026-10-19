@@ -1,4 +1,10 @@
 {
   "id": "blog-outbox",
-  "posts": []
+  "posts": [
+    {
+      "id": "psr-14-dispatcher-second-argument",
+      "file": "docs/social/psr-14-dispatcher-second-argument.md",
+      "url": "https://jonesrussell.github.io/blog/psr-14-dispatcher-second-argument/"
+    }
+  ]
 }
