@@ -12,7 +12,7 @@ on:
         options: [inspect, queue, verify]
         default: inspect
   workflow_run:
-    workflows: [Content Autopilot]
+    workflows: [Deploy Hugo blog to Pages]
     types: [completed]
     branches: [main]
   schedule:
@@ -21,14 +21,14 @@ on:
 permissions:
   contents: write
 
-# Serialize with generation so the committed outbox cannot be lost in a race.
+# Serialize Buffer writes and cloud preflight checks.
 concurrency:
   group: content-autopilot
   cancel-in-progress: false
 
 jobs:
   post:
-    if: github.event_name != 'workflow_run' || github.event.workflow_run.head_repository.full_name == github.repository
+    if: github.event_name != 'workflow_run' || (github.event.workflow_run.head_repository.full_name == github.repository && github.event.workflow_run.conclusion == 'success')
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
