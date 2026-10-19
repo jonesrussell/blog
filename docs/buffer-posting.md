@@ -15,6 +15,8 @@ All channels and copy are checked before the first write. Live exact-text matche
 
 Content Autopilot commits each new social bundle to `data/buffer-outbox.json` with the blog post. Buffer Posting drains this outbox after Autopilot finishes, even when its later steps fail, and retries daily at 12:00 UTC. Successful outbox deliveries are committed to `data/buffer-delivery-ledger.json`. Both workflows share a concurrency group. Autopilot pauses new generation while an outbox item is pending. No existing historical social bundles are replayed automatically.
 
-Claude generation still uses its subscription token. The October 19 failure says the organization disabled Claude subscription access. This is independent of Buffer and is not evidence of a bad Buffer key. Restore the account's subscription access or explicitly choose API billing before changing authentication. The workflow does not silently fall back to a separately billed API.
+Claude generation still uses its subscription token. The October 19 failure says the organization disabled Claude subscription access. The signed-in account now shows the Free plan, and its old local Max session cannot refresh. Generation requires an active paid subscription or a deliberately selected alternative provider. This is independent of Buffer and is not evidence of a bad Buffer key. The workflow does not silently fall back to a separately billed API.
+
+After publishing, Autopilot explicitly dispatches the Hugo deployment. GitHub does not start push-triggered workflows for commits made with GITHUB_TOKEN, so relying on the push alone left generated articles undeployed until a later human push.
 
 Queue Hygiene defaults to a dry run when started manually. Its weekly schedule retains the existing fourteen-day expiry policy for open mined items. It uses CROSS_REPO_TOKEN because the queue is in a different repository, fetches every page and rechecks state before closing an item.
