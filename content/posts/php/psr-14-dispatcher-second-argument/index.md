@@ -5,6 +5,7 @@ categories: [php]
 tags: [php, psr14, symfony, waaseyaa]
 summary: "Keep event dispatch calls within the interface you inject, using a small Waaseyaa fix as a practical example."
 slug: "psr-14-dispatcher-second-argument"
+devto_id: 4879890
 draft: false
 devto: true
 ---
