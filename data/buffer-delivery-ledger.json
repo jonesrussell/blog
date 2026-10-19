@@ -1,3 +1,37 @@
 {
-  "deliveries": []
+  "deliveries": [
+    {
+      "recordedAt": "2026-10-19T21:22:53.428Z",
+      "sources": [
+        {
+          "id": "psr-14-dispatcher-second-argument",
+          "file": "docs/social/psr-14-dispatcher-second-argument.md",
+          "url": "https://jonesrussell.github.io/blog/psr-14-dispatcher-second-argument/"
+        }
+      ],
+      "posts": [
+        {
+          "key": "psr-14-dispatcher-second-argument/bluesky",
+          "result": "created",
+          "id": "6ad68a2a4d4b43503150ed9b",
+          "status": "scheduled",
+          "dueAt": "2026-10-20T13:00:00.000Z"
+        },
+        {
+          "key": "psr-14-dispatcher-second-argument/linkedin",
+          "result": "created",
+          "id": "6ad68a2b4d4b43503150edc2",
+          "status": "scheduled",
+          "dueAt": "2026-10-20T13:00:00.000Z"
+        },
+        {
+          "key": "psr-14-dispatcher-second-argument/facebook",
+          "result": "created",
+          "id": "6ad68a2bfc0ba3e89a935f3c",
+          "status": "scheduled",
+          "dueAt": "2026-10-20T13:00:00.000Z"
+        }
+      ]
+    }
+  ]
 }
