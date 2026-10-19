@@ -4,6 +4,7 @@ categories:
     - waaseyaa
 date: 2026-09-24T00:00:00Z
 devto: true
+devto_id: 4879632
 draft: false
 slug: operator-shell-skip-link-accessibility
 summary: How Waaseyaa's shared operator shell added a real skip link and hid decorative icons from assistive technology, including the focus trick that makes the link's own jump work in every browser.

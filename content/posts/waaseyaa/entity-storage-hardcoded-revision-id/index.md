@@ -4,6 +4,7 @@ categories:
     - waaseyaa
 date: 2026-09-26T00:00:00Z
 devto: true
+devto_id: 4879631
 draft: false
 slug: entity-storage-hardcoded-revision-id
 summary: How Waaseyaa's EntityRepository let entity types configure their revision-pointer column, but ten call sites still read the literal revision_id string, and how a single private accessor plus a two-way test closed the gap.
