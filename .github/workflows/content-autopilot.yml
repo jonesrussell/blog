@@ -21,6 +21,7 @@ on:
 
 permissions:
   contents: write
+  actions: write # Explicitly dispatch Pages after a GITHUB_TOKEN-authored commit.
   issues: write # failure-alert step opens an issue to notify the maintainer
 
 concurrency:
@@ -183,6 +184,8 @@ jobs:
       # 6) PUBLISH — commit the post + social copy, push (triggers deploy)
       - name: Publish
         if: steps.result.outputs.status == 'PUBLISH' && steps.slop.outputs.clean == 'true' && github.event.inputs.dry_run != 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git config user.name "content-autopilot[bot]"
           git config user.email "noreply@anthropic.com"
@@ -200,6 +203,8 @@ jobs:
           git commit -m "content: autopilot publish ${{ steps.result.outputs.slug }} (queue #${{ steps.result.outputs.issue }})"
           git pull --rebase origin main
           git push origin main
+          # GITHUB_TOKEN pushes do not trigger push workflows, including Pages.
+          gh workflow run hugo.yml --repo "$GITHUB_REPOSITORY" --ref main
 
       # Buffer Posting delivers the committed outbox after this workflow, including on failure.
       # Close the source as produced; delivery receipts live in the Buffer ledger.
