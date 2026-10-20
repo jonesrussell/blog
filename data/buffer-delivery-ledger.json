@@ -32,6 +32,39 @@
           "dueAt": "2026-10-20T13:00:00.000Z"
         }
       ]
+    },
+    {
+      "recordedAt": "2026-10-20T13:01:41.633Z",
+      "sources": [
+        {
+          "id": "php-listing-layer-contracts",
+          "file": "docs/social/php-listing-layer-contracts.md",
+          "url": "https://jonesrussell.github.io/blog/php-listing-layer-contracts/"
+        }
+      ],
+      "posts": [
+        {
+          "key": "php-listing-layer-contracts/bluesky",
+          "result": "created",
+          "id": "6ad76632ff291a23994e0f3f",
+          "status": "scheduled",
+          "dueAt": "2026-10-20T17:00:00.000Z"
+        },
+        {
+          "key": "php-listing-layer-contracts/linkedin",
+          "result": "created",
+          "id": "6ad76633892e8621b52b3583",
+          "status": "scheduled",
+          "dueAt": "2026-10-20T17:00:00.000Z"
+        },
+        {
+          "key": "php-listing-layer-contracts/facebook",
+          "result": "created",
+          "id": "6ad76633fcb5599ad93a2f1f",
+          "status": "scheduled",
+          "dueAt": "2026-10-20T17:00:00.000Z"
+        }
+      ]
     }
   ]
 }
