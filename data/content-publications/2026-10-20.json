@@ -1,0 +1,21 @@
+{
+  "status": "PUBLISH",
+  "issue": 1189,
+  "slug": "php-listing-layer-contracts",
+  "post_path": "content/posts/php/php-listing-layer-contracts/index.md",
+  "social_path": "docs/social/php-listing-layer-contracts.md",
+  "sources": [
+    "https://github.com/waaseyaa/framework/commit/40df73a2425e96f019ad9af414bc68c5b1e974b1",
+    "https://github.com/waaseyaa/framework/commit/89e451c913cd065245016594455a68ac3abbc19c",
+    "https://github.com/waaseyaa/framework/commit/2a5206ed14854c0fd5384543f4679addec08a5c0",
+    "https://github.com/waaseyaa/framework/blob/2a5206ed14854c0fd5384543f4679addec08a5c0/docs/change-records/FW-LISTING-CONVERGENCE-01.md",
+    "https://github.com/waaseyaa/framework/blob/2a5206ed14854c0fd5384543f4679addec08a5c0/packages/listing/src/ListingResolver.php",
+    "https://github.com/waaseyaa/framework/blob/2a5206ed14854c0fd5384543f4679addec08a5c0/packages/listing/src/ExposedFilterCoercer.php",
+    "https://github.com/waaseyaa/framework/blob/2a5206ed14854c0fd5384543f4679addec08a5c0/packages/listing/src/ListingCacheInvalidator.php",
+    "https://github.com/waaseyaa/framework/blob/2a5206ed14854c0fd5384543f4679addec08a5c0/packages/listing/src/ServiceProvider.php",
+    "https://github.com/waaseyaa/framework/blob/2a5206ed14854c0fd5384543f4679addec08a5c0/tests/SplitArtifactAcceptance/listing.php"
+  ],
+  "publishedOn": "2026-10-20",
+  "preflightRequestId": "codex-local-20261020-77d21490fe7f",
+  "baseSha": "a97aec58fb595286892a942c5658279bc6981d32"
+}
