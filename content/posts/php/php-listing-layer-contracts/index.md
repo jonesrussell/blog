@@ -1,12 +1,18 @@
 ---
-title: "Five contracts a PHP listing layer should prove"
-date: 2026-10-20
-categories: [php]
-tags: [php, testing, architecture, waaseyaa]
-summary: "Test filter semantics, cache invalidation, and installed package behavior before trusting a PHP listing layer."
-slug: "php-listing-layer-contracts"
-draft: false
+categories:
+    - php
+date: 2026-10-20T00:00:00Z
 devto: true
+devto_id: 4883415
+draft: false
+slug: php-listing-layer-contracts
+summary: Test filter semantics, cache invalidation, and installed package behavior before trusting a PHP listing layer.
+tags:
+    - php
+    - testing
+    - architecture
+    - waaseyaa
+title: Five contracts a PHP listing layer should prove
 ---
 
 Ahnii!
