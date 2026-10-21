@@ -3,6 +3,7 @@ categories:
     - php
 date: 2026-10-21T00:00:00Z
 devto: true
+devto_id: 4889741
 draft: false
 slug: test-machine-publishers-real-tools
 summary: Prove a machine publisher has the permissions it needs, and no broader authority, by exercising the registered tools it will actually call.
