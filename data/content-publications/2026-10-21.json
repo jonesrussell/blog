@@ -1,0 +1,18 @@
+{
+  "status": "PUBLISH",
+  "issue": 1183,
+  "slug": "test-machine-publishers-real-tools",
+  "post_path": "content/posts/php/test-machine-publishers-real-tools/index.md",
+  "social_path": "docs/social/test-machine-publishers-real-tools.md",
+  "sources": [
+    "https://github.com/jonesrussell/rhtcircle/commit/fd3d3dfba378cc29682ec04ee1f4cb4682d6dca1",
+    "https://github.com/jonesrussell/rhtcircle/commit/399a45d4c10379020be2be564f38a781be9e5996",
+    "https://github.com/jonesrussell/rhtcircle/blob/399a45d4c10379020be2be564f38a781be9e5996/src/Access/ArticlePublisherAccessPolicy.php",
+    "https://github.com/jonesrussell/rhtcircle/blob/399a45d4c10379020be2be564f38a781be9e5996/src/Access/ArticlePublisherReadPolicy.php",
+    "https://github.com/jonesrussell/rhtcircle/blob/399a45d4c10379020be2be564f38a781be9e5996/src/Publishing/ArticlePublisherAccount.php",
+    "https://github.com/jonesrussell/rhtcircle/blob/399a45d4c10379020be2be564f38a781be9e5996/tests/Integration/Publishing/MediaAssetRouteTest.php"
+  ],
+  "publishedOn": "2026-10-21",
+  "preflightRequestId": "codex-local-20261021-081a8c5bb5da",
+  "baseSha": "0a17f1c9aa46d738666fdce0bcd3f6c7634782ee"
+}
