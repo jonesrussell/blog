@@ -124,6 +124,65 @@
           "dueAt": "2026-10-21T17:00:00.000Z"
         }
       ]
+    },
+    {
+      "recordedAt": "2026-10-22T13:01:48.110Z",
+      "sources": [
+        {
+          "id": "test-machine-publishers-real-tools",
+          "file": "docs/social/test-machine-publishers-real-tools.md",
+          "url": "https://jonesrussell.github.io/blog/test-machine-publishers-real-tools/"
+        },
+        {
+          "id": "configured-authentication-service",
+          "file": "docs/social/configured-authentication-service.md",
+          "url": "https://jonesrussell.github.io/blog/configured-authentication-service/"
+        }
+      ],
+      "posts": [
+        {
+          "key": "test-machine-publishers-real-tools/bluesky",
+          "result": "existing",
+          "id": "6ad8b899333aa279085319d9",
+          "status": "sent",
+          "dueAt": "2026-10-21T17:00:00.000Z"
+        },
+        {
+          "key": "test-machine-publishers-real-tools/linkedin",
+          "result": "existing",
+          "id": "6ad8b89a88865f7e6d30b80b",
+          "status": "sent",
+          "dueAt": "2026-10-21T17:00:00.000Z"
+        },
+        {
+          "key": "test-machine-publishers-real-tools/facebook",
+          "result": "existing",
+          "id": "6ad8b89a0c5e774bdfb15160",
+          "status": "sent",
+          "dueAt": "2026-10-21T17:00:00.000Z"
+        },
+        {
+          "key": "configured-authentication-service/bluesky",
+          "result": "created",
+          "id": "6ada0938f09f431dcadcec0b",
+          "status": "scheduled",
+          "dueAt": "2026-10-22T17:00:00.000Z"
+        },
+        {
+          "key": "configured-authentication-service/linkedin",
+          "result": "created",
+          "id": "6ada0939eb1348c17abe4120",
+          "status": "scheduled",
+          "dueAt": "2026-10-22T17:00:00.000Z"
+        },
+        {
+          "key": "configured-authentication-service/facebook",
+          "result": "created",
+          "id": "6ada0939a6a09108d268e847",
+          "status": "scheduled",
+          "dueAt": "2026-10-22T17:00:00.000Z"
+        }
+      ]
     }
   ]
 }
