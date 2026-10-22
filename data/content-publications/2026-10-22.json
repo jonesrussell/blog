@@ -1,0 +1,17 @@
+{
+  "status": "PUBLISH",
+  "issue": 1195,
+  "slug": "configured-authentication-service",
+  "post_path": "content/posts/php/configured-authentication-service/index.md",
+  "social_path": "docs/social/configured-authentication-service.md",
+  "sources": [
+    "https://github.com/waaseyaa/anokii/commit/ca02a2fac9ceb75f320dbbb651cfc804543d990c",
+    "https://github.com/waaseyaa/anokii/blob/ca02a2fac9ceb75f320dbbb651cfc804543d990c/src/Support/Auth.php",
+    "https://github.com/waaseyaa/anokii/blob/ca02a2fac9ceb75f320dbbb651cfc804543d990c/src/Dashboard/DashboardGate.php",
+    "https://github.com/waaseyaa/anokii/blob/ca02a2fac9ceb75f320dbbb651cfc804543d990c/src/Provider/WorkspaceServiceProvider.php",
+    "https://github.com/waaseyaa/anokii/blob/ca02a2fac9ceb75f320dbbb651cfc804543d990c/tests/Auth/AdminLoginIntegrationTest.php"
+  ],
+  "publishedOn": "2026-10-22",
+  "preflightRequestId": "codex-local-20261022-2fa9871d9565",
+  "baseSha": "5c7516cc31d9292a8ee0b38890d747e614472e6b"
+}

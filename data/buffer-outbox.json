@@ -1,4 +1,15 @@
 {
   "id": "blog-outbox",
-  "posts": []
+  "posts": [
+    {
+      "id": "test-machine-publishers-real-tools",
+      "file": "docs/social/test-machine-publishers-real-tools.md",
+      "url": "https://jonesrussell.github.io/blog/test-machine-publishers-real-tools/"
+    },
+    {
+      "id": "configured-authentication-service",
+      "file": "docs/social/configured-authentication-service.md",
+      "url": "https://jonesrussell.github.io/blog/configured-authentication-service/"
+    }
+  ]
 }
