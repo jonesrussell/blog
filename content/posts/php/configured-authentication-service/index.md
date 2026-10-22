@@ -3,6 +3,7 @@ categories:
     - php
 date: 2026-10-22T00:00:00Z
 devto: true
+devto_id: 4896907
 draft: false
 slug: configured-authentication-service
 summary: Keep login, logout, eligibility, credential upgrades, and HTTP permission checks behind the authentication services configured by your application.
