@@ -183,6 +183,65 @@
           "dueAt": "2026-10-22T17:00:00.000Z"
         }
       ]
+    },
+    {
+      "recordedAt": "2026-10-23T13:05:26.340Z",
+      "sources": [
+        {
+          "id": "configured-authentication-service",
+          "file": "docs/social/configured-authentication-service.md",
+          "url": "https://jonesrussell.github.io/blog/configured-authentication-service/"
+        },
+        {
+          "id": "generated-content-homepage-route",
+          "file": "docs/social/generated-content-homepage-route.md",
+          "url": "https://jonesrussell.github.io/blog/generated-content-homepage-route/"
+        }
+      ],
+      "posts": [
+        {
+          "key": "configured-authentication-service/bluesky",
+          "result": "existing",
+          "id": "6ada0938f09f431dcadcec0b",
+          "status": "sent",
+          "dueAt": "2026-10-22T17:00:00.000Z"
+        },
+        {
+          "key": "configured-authentication-service/linkedin",
+          "result": "existing",
+          "id": "6ada0939eb1348c17abe4120",
+          "status": "sent",
+          "dueAt": "2026-10-22T17:00:00.000Z"
+        },
+        {
+          "key": "configured-authentication-service/facebook",
+          "result": "existing",
+          "id": "6ada0939a6a09108d268e847",
+          "status": "sent",
+          "dueAt": "2026-10-22T17:00:00.000Z"
+        },
+        {
+          "key": "generated-content-homepage-route/bluesky",
+          "result": "created",
+          "id": "6adb5b926556f503c4326e4c",
+          "status": "scheduled",
+          "dueAt": "2026-10-23T17:00:00.000Z"
+        },
+        {
+          "key": "generated-content-homepage-route/linkedin",
+          "result": "created",
+          "id": "6adb5b934553446d6b812c9c",
+          "status": "scheduled",
+          "dueAt": "2026-10-23T17:00:00.000Z"
+        },
+        {
+          "key": "generated-content-homepage-route/facebook",
+          "result": "created",
+          "id": "6adb5b934553446d6b812cfd",
+          "status": "scheduled",
+          "dueAt": "2026-10-23T17:00:00.000Z"
+        }
+      ]
     }
   ]
 }
