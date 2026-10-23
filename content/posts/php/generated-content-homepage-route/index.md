@@ -3,6 +3,7 @@ categories:
     - php
 date: 2026-10-23T00:00:00Z
 devto: true
+devto_id: 4905455
 draft: false
 slug: generated-content-homepage-route
 summary: Keep generated collection routes from replacing your application homepage when detail pages live at the root.
