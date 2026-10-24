@@ -1,0 +1,17 @@
+{
+  "status": "PUBLISH",
+  "issue": 1199,
+  "slug": "cli-help-must-not-mutate",
+  "post_path": "content/posts/php/cli-help-must-not-mutate/index.md",
+  "social_path": "docs/social/cli-help-must-not-mutate.md",
+  "sources": [
+    "https://github.com/waaseyaa/framework/commit/08fbc6199b39a7772303d183dfffe8da6f4ae60b",
+    "https://github.com/waaseyaa/framework/blob/08fbc6199b39a7772303d183dfffe8da6f4ae60b/packages/foundation/src/Kernel/ConsoleKernel.php",
+    "https://github.com/waaseyaa/framework/blob/08fbc6199b39a7772303d183dfffe8da6f4ae60b/packages/cli/src/Provider/MigrateServiceProvider.php",
+    "https://github.com/waaseyaa/framework/blob/08fbc6199b39a7772303d183dfffe8da6f4ae60b/tests/Integration/FreshInstall/ProductionInstallInitTest.php",
+    "https://github.com/waaseyaa/framework/blob/08fbc6199b39a7772303d183dfffe8da6f4ae60b/docs/change-records/FW-J1-PRODUCTION-INSTALL-01.md"
+  ],
+  "publishedOn": "2026-10-24",
+  "preflightRequestId": "codex-local-20261024-f8b2c27299ae",
+  "baseSha": "5c3a36cfb1be7665a4bd4509ca43aad3256dee58"
+}
