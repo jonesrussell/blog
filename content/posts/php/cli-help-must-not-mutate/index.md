@@ -3,6 +3,7 @@ categories:
     - php
 date: 2026-10-24T00:00:00Z
 devto: true
+devto_id: 4910648
 draft: false
 slug: cli-help-must-not-mutate
 summary: Defer application boot and filesystem authority until your CLI framework has validated that a mutating command will actually execute.
