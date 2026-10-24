@@ -242,6 +242,65 @@
           "dueAt": "2026-10-23T17:00:00.000Z"
         }
       ]
+    },
+    {
+      "recordedAt": "2026-10-24T13:06:17.103Z",
+      "sources": [
+        {
+          "id": "generated-content-homepage-route",
+          "file": "docs/social/generated-content-homepage-route.md",
+          "url": "https://jonesrussell.github.io/blog/generated-content-homepage-route/"
+        },
+        {
+          "id": "cli-help-must-not-mutate",
+          "file": "docs/social/cli-help-must-not-mutate.md",
+          "url": "https://jonesrussell.github.io/blog/cli-help-must-not-mutate/"
+        }
+      ],
+      "posts": [
+        {
+          "key": "generated-content-homepage-route/bluesky",
+          "result": "existing",
+          "id": "6adb5b926556f503c4326e4c",
+          "status": "sent",
+          "dueAt": "2026-10-23T17:00:00.000Z"
+        },
+        {
+          "key": "generated-content-homepage-route/linkedin",
+          "result": "existing",
+          "id": "6adb5b934553446d6b812c9c",
+          "status": "sent",
+          "dueAt": "2026-10-23T17:00:00.000Z"
+        },
+        {
+          "key": "generated-content-homepage-route/facebook",
+          "result": "existing",
+          "id": "6adb5b934553446d6b812cfd",
+          "status": "sent",
+          "dueAt": "2026-10-23T17:00:00.000Z"
+        },
+        {
+          "key": "cli-help-must-not-mutate/bluesky",
+          "result": "created",
+          "id": "6adcad46e4be8a4d865ce47f",
+          "status": "scheduled",
+          "dueAt": "2026-10-24T17:00:00.000Z"
+        },
+        {
+          "key": "cli-help-must-not-mutate/linkedin",
+          "result": "created",
+          "id": "6adcad460b5343d070840be8",
+          "status": "scheduled",
+          "dueAt": "2026-10-24T17:00:00.000Z"
+        },
+        {
+          "key": "cli-help-must-not-mutate/facebook",
+          "result": "created",
+          "id": "6adcad466887a2efc1b987b2",
+          "status": "scheduled",
+          "dueAt": "2026-10-24T17:00:00.000Z"
+        }
+      ]
     }
   ]
 }
