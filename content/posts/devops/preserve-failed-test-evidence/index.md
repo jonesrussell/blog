@@ -1,11 +1,17 @@
 ---
-title: "Preserve failed test evidence before you retry"
-date: 2026-10-25
-categories: [devops]
-tags: [testing, ci, docker, security]
-summary: "Design a qualification harness that keeps the first failure, accounts for uncertain resources, and publishes useful evidence without exposing secrets."
-slug: "preserve-failed-test-evidence"
+categories:
+    - devops
+date: 2026-10-25T00:00:00Z
+devto_id: 4915420
 draft: false
+slug: preserve-failed-test-evidence
+summary: Design a qualification harness that keeps the first failure, accounts for uncertain resources, and publishes useful evidence without exposing secrets.
+tags:
+    - testing
+    - ci
+    - docker
+    - security
+title: Preserve failed test evidence before you retry
 ---
 
 Ahnii!
