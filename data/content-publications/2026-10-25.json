@@ -1,0 +1,18 @@
+{
+  "status": "PUBLISH",
+  "issue": 1202,
+  "slug": "preserve-failed-test-evidence",
+  "post_path": "content/posts/devops/preserve-failed-test-evidence/index.md",
+  "social_path": "docs/social/preserve-failed-test-evidence.md",
+  "sources": [
+    "https://github.com/waaseyaa/framework/commit/ee043f97e55ff2ce5208afeab27455958d926e35",
+    "https://github.com/waaseyaa/framework/commit/52cf446b671f86c154c41dc5cc7777e4bc51d0bb",
+    "https://github.com/waaseyaa/framework/commit/00836ce082a940f3c37624455caf59157b594273",
+    "https://github.com/waaseyaa/framework/commit/2cd1f91b239b56a780c2e819d49b78c8c3eb1796",
+    "https://github.com/waaseyaa/framework/commit/a1cfea3475a31ffd9a345f942a3159339608ae4f",
+    "https://github.com/waaseyaa/framework/commit/c0fe3e35acf487b781ce472227c45473f2eb8748"
+  ],
+  "publishedOn": "2026-10-25",
+  "preflightRequestId": "codex-local-20261025-324edb0472b5",
+  "baseSha": "7ded1f90dad56570d96c903d1f6b36e5cc240d33"
+}
