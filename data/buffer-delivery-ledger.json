@@ -301,6 +301,65 @@
           "dueAt": "2026-10-24T17:00:00.000Z"
         }
       ]
+    },
+    {
+      "recordedAt": "2026-10-25T13:09:08.623Z",
+      "sources": [
+        {
+          "id": "cli-help-must-not-mutate",
+          "file": "docs/social/cli-help-must-not-mutate.md",
+          "url": "https://jonesrussell.github.io/blog/cli-help-must-not-mutate/"
+        },
+        {
+          "id": "preserve-failed-test-evidence",
+          "file": "docs/social/preserve-failed-test-evidence.md",
+          "url": "https://jonesrussell.github.io/blog/preserve-failed-test-evidence/"
+        }
+      ],
+      "posts": [
+        {
+          "key": "cli-help-must-not-mutate/bluesky",
+          "result": "existing",
+          "id": "6adcad46e4be8a4d865ce47f",
+          "status": "sent",
+          "dueAt": "2026-10-24T17:00:00.000Z"
+        },
+        {
+          "key": "cli-help-must-not-mutate/linkedin",
+          "result": "existing",
+          "id": "6adcad460b5343d070840be8",
+          "status": "sent",
+          "dueAt": "2026-10-24T17:00:00.000Z"
+        },
+        {
+          "key": "cli-help-must-not-mutate/facebook",
+          "result": "existing",
+          "id": "6adcad466887a2efc1b987b2",
+          "status": "sent",
+          "dueAt": "2026-10-24T17:00:00.000Z"
+        },
+        {
+          "key": "preserve-failed-test-evidence/bluesky",
+          "result": "created",
+          "id": "6addff726887a2efc1072878",
+          "status": "scheduled",
+          "dueAt": "2026-10-25T17:00:00.000Z"
+        },
+        {
+          "key": "preserve-failed-test-evidence/linkedin",
+          "result": "created",
+          "id": "6addff720b5343d070d24ac9",
+          "status": "scheduled",
+          "dueAt": "2026-10-25T17:00:00.000Z"
+        },
+        {
+          "key": "preserve-failed-test-evidence/facebook",
+          "result": "created",
+          "id": "6addff723d5b27036bd31170",
+          "status": "scheduled",
+          "dueAt": "2026-10-25T17:00:00.000Z"
+        }
+      ]
     }
   ]
 }

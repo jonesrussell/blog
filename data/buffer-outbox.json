@@ -1,15 +1,4 @@
 {
   "id": "blog-outbox",
-  "posts": [
-    {
-      "id": "cli-help-must-not-mutate",
-      "file": "docs/social/cli-help-must-not-mutate.md",
-      "url": "https://jonesrussell.github.io/blog/cli-help-must-not-mutate/"
-    },
-    {
-      "id": "preserve-failed-test-evidence",
-      "file": "docs/social/preserve-failed-test-evidence.md",
-      "url": "https://jonesrussell.github.io/blog/preserve-failed-test-evidence/"
-    }
-  ]
+  "posts": []
 }
