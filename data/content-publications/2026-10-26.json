@@ -1,0 +1,13 @@
+{
+  "status": "PUBLISH",
+  "issue": 1182,
+  "slug": "integration-tests-independent-local-env",
+  "post_path": "content/posts/php/integration-tests-independent-local-env/index.md",
+  "social_path": "docs/social/integration-tests-independent-local-env.md",
+  "sources": [
+    "https://github.com/jonesrussell/rhtcircle/commit/47b9a926b303dc792b2ad86173d79e98f28d4ba9"
+  ],
+  "publishedOn": "2026-10-26",
+  "preflightRequestId": "codex-local-20261026-5a73e4f11af0",
+  "baseSha": "c6c6287780db45aaf260eb658c89da9dbe601885"
+}
