@@ -360,6 +360,65 @@
           "dueAt": "2026-10-25T17:00:00.000Z"
         }
       ]
+    },
+    {
+      "recordedAt": "2026-10-26T13:06:38.947Z",
+      "sources": [
+        {
+          "id": "preserve-failed-test-evidence",
+          "file": "docs/social/preserve-failed-test-evidence.md",
+          "url": "https://jonesrussell.github.io/blog/preserve-failed-test-evidence/"
+        },
+        {
+          "id": "integration-tests-independent-local-env",
+          "file": "docs/social/integration-tests-independent-local-env.md",
+          "url": "https://jonesrussell.github.io/blog/integration-tests-independent-local-env/"
+        }
+      ],
+      "posts": [
+        {
+          "key": "preserve-failed-test-evidence/bluesky",
+          "result": "existing",
+          "id": "6addff726887a2efc1072878",
+          "status": "sent",
+          "dueAt": "2026-10-25T17:00:00.000Z"
+        },
+        {
+          "key": "preserve-failed-test-evidence/linkedin",
+          "result": "existing",
+          "id": "6addff720b5343d070d24ac9",
+          "status": "sent",
+          "dueAt": "2026-10-25T17:00:00.000Z"
+        },
+        {
+          "key": "preserve-failed-test-evidence/facebook",
+          "result": "existing",
+          "id": "6addff723d5b27036bd31170",
+          "status": "sent",
+          "dueAt": "2026-10-25T17:00:00.000Z"
+        },
+        {
+          "key": "integration-tests-independent-local-env/bluesky",
+          "result": "created",
+          "id": "6adf505c9e56d704c2cb74c8",
+          "status": "scheduled",
+          "dueAt": "2026-10-26T17:00:00.000Z"
+        },
+        {
+          "key": "integration-tests-independent-local-env/linkedin",
+          "result": "created",
+          "id": "6adf505c2cad517d9effee18",
+          "status": "scheduled",
+          "dueAt": "2026-10-26T17:00:00.000Z"
+        },
+        {
+          "key": "integration-tests-independent-local-env/facebook",
+          "result": "created",
+          "id": "6adf505d9e56d704c2cb7550",
+          "status": "scheduled",
+          "dueAt": "2026-10-26T17:00:00.000Z"
+        }
+      ]
     }
   ]
 }

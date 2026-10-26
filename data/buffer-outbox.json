@@ -1,15 +1,4 @@
 {
   "id": "blog-outbox",
-  "posts": [
-    {
-      "id": "preserve-failed-test-evidence",
-      "file": "docs/social/preserve-failed-test-evidence.md",
-      "url": "https://jonesrussell.github.io/blog/preserve-failed-test-evidence/"
-    },
-    {
-      "id": "integration-tests-independent-local-env",
-      "file": "docs/social/integration-tests-independent-local-env.md",
-      "url": "https://jonesrussell.github.io/blog/integration-tests-independent-local-env/"
-    }
-  ]
+  "posts": []
 }
