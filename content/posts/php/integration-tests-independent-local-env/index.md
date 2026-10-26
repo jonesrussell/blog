@@ -1,11 +1,17 @@
 ---
-title: "Make integration tests independent of your local .env"
-date: 2026-10-26
-categories: [php]
-tags: [php, testing, environment, sqlite]
-summary: "Give integration tests complete, temporary configuration so they pass for the same reason on every machine."
-slug: "integration-tests-independent-local-env"
+categories:
+    - php
+date: 2026-10-26T00:00:00Z
+devto_id: 4921938
 draft: false
+slug: integration-tests-independent-local-env
+summary: Give integration tests complete, temporary configuration so they pass for the same reason on every machine.
+tags:
+    - php
+    - testing
+    - environment
+    - sqlite
+title: Make integration tests independent of your local .env
 ---
 
 Ahnii!
