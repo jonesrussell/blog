@@ -1,11 +1,17 @@
 ---
-title: "Repair stale digest pins without weakening verification"
-date: 2026-10-27
-categories: [php]
-tags: [php, testing, integrity, code-generation]
-summary: "Treat a stale generated-artifact digest as a fixture migration, then prove the real reference configuration still renders."
-slug: "repair-stale-digest-pins"
+categories:
+    - php
+date: 2026-10-27T00:00:00Z
+devto_id: 4928490
 draft: false
+slug: repair-stale-digest-pins
+summary: Treat a stale generated-artifact digest as a fixture migration, then prove the real reference configuration still renders.
+tags:
+    - php
+    - testing
+    - integrity
+    - code-generation
+title: Repair stale digest pins without weakening verification
 ---
 
 Ahnii!
