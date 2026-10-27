@@ -419,6 +419,65 @@
           "dueAt": "2026-10-26T17:00:00.000Z"
         }
       ]
+    },
+    {
+      "recordedAt": "2026-10-27T13:05:36.359Z",
+      "sources": [
+        {
+          "id": "integration-tests-independent-local-env",
+          "file": "docs/social/integration-tests-independent-local-env.md",
+          "url": "https://jonesrussell.github.io/blog/integration-tests-independent-local-env/"
+        },
+        {
+          "id": "repair-stale-digest-pins",
+          "file": "docs/social/repair-stale-digest-pins.md",
+          "url": "https://jonesrussell.github.io/blog/repair-stale-digest-pins/"
+        }
+      ],
+      "posts": [
+        {
+          "key": "integration-tests-independent-local-env/bluesky",
+          "result": "existing",
+          "id": "6adf505c9e56d704c2cb74c8",
+          "status": "sent",
+          "dueAt": "2026-10-26T17:00:00.000Z"
+        },
+        {
+          "key": "integration-tests-independent-local-env/linkedin",
+          "result": "existing",
+          "id": "6adf505c2cad517d9effee18",
+          "status": "sent",
+          "dueAt": "2026-10-26T17:00:00.000Z"
+        },
+        {
+          "key": "integration-tests-independent-local-env/facebook",
+          "result": "existing",
+          "id": "6adf505d9e56d704c2cb7550",
+          "status": "sent",
+          "dueAt": "2026-10-26T17:00:00.000Z"
+        },
+        {
+          "key": "repair-stale-digest-pins/bluesky",
+          "result": "created",
+          "id": "6ae0a19dc8df6b6a011fecb6",
+          "status": "scheduled",
+          "dueAt": "2026-10-27T17:00:00.000Z"
+        },
+        {
+          "key": "repair-stale-digest-pins/linkedin",
+          "result": "created",
+          "id": "6ae0a19dd477c7b7130feb16",
+          "status": "scheduled",
+          "dueAt": "2026-10-27T17:00:00.000Z"
+        },
+        {
+          "key": "repair-stale-digest-pins/facebook",
+          "result": "created",
+          "id": "6ae0a19d8fa8b2f716debead",
+          "status": "scheduled",
+          "dueAt": "2026-10-27T17:00:00.000Z"
+        }
+      ]
     }
   ]
 }

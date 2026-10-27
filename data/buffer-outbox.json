@@ -1,15 +1,4 @@
 {
   "id": "blog-outbox",
-  "posts": [
-    {
-      "id": "integration-tests-independent-local-env",
-      "file": "docs/social/integration-tests-independent-local-env.md",
-      "url": "https://jonesrussell.github.io/blog/integration-tests-independent-local-env/"
-    },
-    {
-      "id": "repair-stale-digest-pins",
-      "file": "docs/social/repair-stale-digest-pins.md",
-      "url": "https://jonesrussell.github.io/blog/repair-stale-digest-pins/"
-    }
-  ]
+  "posts": []
 }
