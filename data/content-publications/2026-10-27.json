@@ -1,0 +1,13 @@
+{
+  "status": "PUBLISH",
+  "issue": 1200,
+  "slug": "repair-stale-digest-pins",
+  "post_path": "content/posts/php/repair-stale-digest-pins/index.md",
+  "social_path": "docs/social/repair-stale-digest-pins.md",
+  "sources": [
+    "https://github.com/waaseyaa/framework/commit/ab06c87a628d1845a22d2c31c14ec30a6c9ef813"
+  ],
+  "publishedOn": "2026-10-27",
+  "preflightRequestId": "codex-local-20261027-dc3ff09beb63",
+  "baseSha": "5f6687e708707cc619a617e2e16a86dfe2b42891"
+}
