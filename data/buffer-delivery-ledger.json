@@ -478,6 +478,65 @@
           "dueAt": "2026-10-27T17:00:00.000Z"
         }
       ]
+    },
+    {
+      "recordedAt": "2026-10-28T13:10:06.078Z",
+      "sources": [
+        {
+          "id": "repair-stale-digest-pins",
+          "file": "docs/social/repair-stale-digest-pins.md",
+          "url": "https://jonesrussell.github.io/blog/repair-stale-digest-pins/"
+        },
+        {
+          "id": "track-campaign-conversions-without-contact-data",
+          "file": "docs/social/track-campaign-conversions-without-contact-data.md",
+          "url": "https://jonesrussell.github.io/blog/track-campaign-conversions-without-contact-data/"
+        }
+      ],
+      "posts": [
+        {
+          "key": "repair-stale-digest-pins/bluesky",
+          "result": "existing",
+          "id": "6ae0a19dc8df6b6a011fecb6",
+          "status": "sent",
+          "dueAt": "2026-10-27T17:00:00.000Z"
+        },
+        {
+          "key": "repair-stale-digest-pins/linkedin",
+          "result": "existing",
+          "id": "6ae0a19dd477c7b7130feb16",
+          "status": "sent",
+          "dueAt": "2026-10-27T17:00:00.000Z"
+        },
+        {
+          "key": "repair-stale-digest-pins/facebook",
+          "result": "existing",
+          "id": "6ae0a19d8fa8b2f716debead",
+          "status": "sent",
+          "dueAt": "2026-10-27T17:00:00.000Z"
+        },
+        {
+          "key": "track-campaign-conversions-without-contact-data/bluesky",
+          "result": "created",
+          "id": "6ae1f42af8ac381631f3cbc8",
+          "status": "scheduled",
+          "dueAt": "2026-10-28T17:00:00.000Z"
+        },
+        {
+          "key": "track-campaign-conversions-without-contact-data/linkedin",
+          "result": "created",
+          "id": "6ae1f42b208accb65caf184c",
+          "status": "scheduled",
+          "dueAt": "2026-10-28T17:00:00.000Z"
+        },
+        {
+          "key": "track-campaign-conversions-without-contact-data/facebook",
+          "result": "created",
+          "id": "6ae1f42be7fe9e2e3ebcd385",
+          "status": "scheduled",
+          "dueAt": "2026-10-28T17:00:00.000Z"
+        }
+      ]
     }
   ]
 }
