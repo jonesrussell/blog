@@ -1,0 +1,13 @@
+{
+  "status": "PUBLISH",
+  "issue": 1193,
+  "slug": "track-campaign-conversions-without-contact-data",
+  "post_path": "content/posts/php/track-campaign-conversions-without-contact-data/index.md",
+  "social_path": "docs/social/track-campaign-conversions-without-contact-data.md",
+  "sources": [
+    "https://github.com/jonesrussell/rhtcircle/commit/d1e4c2cb588db8a2625cc2b75d1159c364ef5ebf"
+  ],
+  "publishedOn": "2026-10-28",
+  "preflightRequestId": "codex-local-20261028-7c99a0b28da5",
+  "baseSha": "4a36d93c2b5deded177c71813a6891affc060c3c"
+}
