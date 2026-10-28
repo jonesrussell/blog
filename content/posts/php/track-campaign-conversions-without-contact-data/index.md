@@ -2,6 +2,7 @@
 categories:
     - php
 date: 2026-10-28T00:00:00Z
+devto_id: 4934808
 draft: false
 slug: track-campaign-conversions-without-contact-data
 summary: Measure which registered campaign links lead to saved contact messages without copying personal details into analytics.
