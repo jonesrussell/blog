@@ -1,4 +1,15 @@
 {
   "id": "blog-outbox",
-  "posts": []
+  "posts": [
+    {
+      "id": "repair-stale-digest-pins",
+      "file": "docs/social/repair-stale-digest-pins.md",
+      "url": "https://jonesrussell.github.io/blog/repair-stale-digest-pins/"
+    },
+    {
+      "id": "track-campaign-conversions-without-contact-data",
+      "file": "docs/social/track-campaign-conversions-without-contact-data.md",
+      "url": "https://jonesrussell.github.io/blog/track-campaign-conversions-without-contact-data/"
+    }
+  ]
 }
