@@ -1,4 +1,15 @@
 {
   "id": "blog-outbox",
-  "posts": []
+  "posts": [
+    {
+      "id": "track-campaign-conversions-without-contact-data",
+      "file": "docs/social/track-campaign-conversions-without-contact-data.md",
+      "url": "https://jonesrussell.github.io/blog/track-campaign-conversions-without-contact-data/"
+    },
+    {
+      "id": "separate-installation-from-production-activation",
+      "file": "docs/social/separate-installation-from-production-activation.md",
+      "url": "https://jonesrussell.github.io/blog/separate-installation-from-production-activation/"
+    }
+  ]
 }

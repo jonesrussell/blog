@@ -1,0 +1,15 @@
+{
+  "status": "PUBLISH",
+  "issue": 1201,
+  "slug": "separate-installation-from-production-activation",
+  "post_path": "content/posts/php/separate-installation-from-production-activation/index.md",
+  "social_path": "docs/social/separate-installation-from-production-activation.md",
+  "sources": [
+    "https://github.com/waaseyaa/framework/commit/1a5bdf11fbe01f013fa2052e2662cd870b82529c",
+    "https://github.com/waaseyaa/framework/commit/9166975201cf68cb749eca2552066af0048917ed",
+    "https://github.com/waaseyaa/framework/commit/002267d8155eebddfbcb588a77de087971c9bb74"
+  ],
+  "publishedOn": "2026-10-29",
+  "preflightRequestId": "codex-local-20261029-ba3908dad857",
+  "baseSha": "b4080ca496f1078e8a42ca11bb519b06adbe9872"
+}
