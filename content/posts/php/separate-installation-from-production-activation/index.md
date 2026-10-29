@@ -2,6 +2,7 @@
 categories:
     - php
 date: 2026-10-29T00:00:00Z
+devto_id: 4941269
 draft: false
 slug: separate-installation-from-production-activation
 summary: Qualify database installation and production activation as separate gates so a successful setup cannot hide a blocked runtime.
