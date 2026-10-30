@@ -2,6 +2,7 @@
 categories:
     - php
 date: 2026-10-30T00:00:00Z
+devto_id: 4947599
 draft: false
 slug: prove-smtp-authentication-on-every-connection
 summary: Treat SMTP authentication as connection state, require fresh proof after every handshake, and fail closed when a server tries to downgrade the protocol.
