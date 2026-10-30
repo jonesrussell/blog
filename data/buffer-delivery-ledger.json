@@ -596,6 +596,65 @@
           "dueAt": "2026-10-29T17:00:00.000Z"
         }
       ]
+    },
+    {
+      "recordedAt": "2026-10-30T13:05:59.297Z",
+      "sources": [
+        {
+          "id": "separate-installation-from-production-activation",
+          "file": "docs/social/separate-installation-from-production-activation.md",
+          "url": "https://jonesrussell.github.io/blog/separate-installation-from-production-activation/"
+        },
+        {
+          "id": "prove-smtp-authentication-on-every-connection",
+          "file": "docs/social/prove-smtp-authentication-on-every-connection.md",
+          "url": "https://jonesrussell.github.io/blog/prove-smtp-authentication-on-every-connection/"
+        }
+      ],
+      "posts": [
+        {
+          "key": "separate-installation-from-production-activation/bluesky",
+          "result": "existing",
+          "id": "6ae344996597d8ffc7d36a9d",
+          "status": "sent",
+          "dueAt": "2026-10-29T17:00:00.000Z"
+        },
+        {
+          "key": "separate-installation-from-production-activation/linkedin",
+          "result": "existing",
+          "id": "6ae3449a5360c2380980a292",
+          "status": "sent",
+          "dueAt": "2026-10-29T17:00:00.000Z"
+        },
+        {
+          "key": "separate-installation-from-production-activation/facebook",
+          "result": "existing",
+          "id": "6ae3449a6775ed7b835c9344",
+          "status": "sent",
+          "dueAt": "2026-10-29T17:00:00.000Z"
+        },
+        {
+          "key": "prove-smtp-authentication-on-every-connection/bluesky",
+          "result": "created",
+          "id": "6ae49635abdb62a0e37f5275",
+          "status": "scheduled",
+          "dueAt": "2026-10-30T17:00:00.000Z"
+        },
+        {
+          "key": "prove-smtp-authentication-on-every-connection/linkedin",
+          "result": "created",
+          "id": "6ae49635e560b6bf642cd83a",
+          "status": "scheduled",
+          "dueAt": "2026-10-30T17:00:00.000Z"
+        },
+        {
+          "key": "prove-smtp-authentication-on-every-connection/facebook",
+          "result": "created",
+          "id": "6ae49635abdb62a0e37f52d3",
+          "status": "scheduled",
+          "dueAt": "2026-10-30T17:00:00.000Z"
+        }
+      ]
     }
   ]
 }
