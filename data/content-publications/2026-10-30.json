@@ -1,0 +1,16 @@
+{
+  "status": "PUBLISH",
+  "issue": 1207,
+  "slug": "prove-smtp-authentication-on-every-connection",
+  "post_path": "content/posts/php/prove-smtp-authentication-on-every-connection/index.md",
+  "social_path": "docs/social/prove-smtp-authentication-on-every-connection.md",
+  "sources": [
+    "https://github.com/waaseyaa/framework/commit/f3ab3c1774466166b0740d765e88feebc0ba13ab",
+    "https://github.com/waaseyaa/framework/commit/9f393228b5f7e5f65beb869523c7363e8d774d9a",
+    "https://github.com/waaseyaa/framework/commit/09b7f3895dbf2af0bca7bd0333bc6bc65cbd7f25",
+    "https://github.com/waaseyaa/framework/commit/2d947512df9f21a1ddabc08b46ac3a553f07e828"
+  ],
+  "publishedOn": "2026-10-30",
+  "preflightRequestId": "codex-local-20261030-d343dd230721",
+  "baseSha": "449fa5589e1af73c55aba114cac0a3d5d832d808"
+}

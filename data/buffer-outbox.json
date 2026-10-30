@@ -1,4 +1,15 @@
 {
   "id": "blog-outbox",
-  "posts": []
+  "posts": [
+    {
+      "id": "separate-installation-from-production-activation",
+      "file": "docs/social/separate-installation-from-production-activation.md",
+      "url": "https://jonesrussell.github.io/blog/separate-installation-from-production-activation/"
+    },
+    {
+      "id": "prove-smtp-authentication-on-every-connection",
+      "file": "docs/social/prove-smtp-authentication-on-every-connection.md",
+      "url": "https://jonesrussell.github.io/blog/prove-smtp-authentication-on-every-connection/"
+    }
+  ]
 }
