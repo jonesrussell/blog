@@ -1,0 +1,17 @@
+{
+  "status": "PUBLISH",
+  "issue": 1204,
+  "slug": "delegate-account-management-without-granting-admin",
+  "post_path": "content/posts/php/delegate-account-management-without-granting-admin/index.md",
+  "social_path": "docs/social/delegate-account-management-without-granting-admin.md",
+  "sources": [
+    "https://github.com/waaseyaa/framework/commit/d57ebc225df635620d667d201bb4f8af844e347c",
+    "https://github.com/waaseyaa/framework/commit/a50f423051b8a2bb22ca172f45b3f1c1bb7e2654",
+    "https://github.com/waaseyaa/framework/commit/9f393228b5f7e5f65beb869523c7363e8d774d9a",
+    "https://github.com/waaseyaa/framework/commit/09b7f3895dbf2af0bca7bd0333bc6bc65cbd7f25",
+    "https://github.com/waaseyaa/framework/commit/1a2c999de331c3c7281b283e546251de992ab7f7"
+  ],
+  "publishedOn": "2026-10-31",
+  "preflightRequestId": "codex-local-20261031-2a9857b948c4",
+  "baseSha": "41bede6489f0a451ca61f39a3b709a41969d043a"
+}

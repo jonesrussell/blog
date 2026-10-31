@@ -1,4 +1,15 @@
 {
   "id": "blog-outbox",
-  "posts": []
+  "posts": [
+    {
+      "id": "prove-smtp-authentication-on-every-connection",
+      "file": "docs/social/prove-smtp-authentication-on-every-connection.md",
+      "url": "https://jonesrussell.github.io/blog/prove-smtp-authentication-on-every-connection/"
+    },
+    {
+      "id": "delegate-account-management-without-granting-admin",
+      "file": "docs/social/delegate-account-management-without-granting-admin.md",
+      "url": "https://jonesrussell.github.io/blog/delegate-account-management-without-granting-admin/"
+    }
+  ]
 }
