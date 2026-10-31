@@ -655,6 +655,65 @@
           "dueAt": "2026-10-30T17:00:00.000Z"
         }
       ]
+    },
+    {
+      "recordedAt": "2026-10-31T13:01:44.592Z",
+      "sources": [
+        {
+          "id": "prove-smtp-authentication-on-every-connection",
+          "file": "docs/social/prove-smtp-authentication-on-every-connection.md",
+          "url": "https://jonesrussell.github.io/blog/prove-smtp-authentication-on-every-connection/"
+        },
+        {
+          "id": "delegate-account-management-without-granting-admin",
+          "file": "docs/social/delegate-account-management-without-granting-admin.md",
+          "url": "https://jonesrussell.github.io/blog/delegate-account-management-without-granting-admin/"
+        }
+      ],
+      "posts": [
+        {
+          "key": "prove-smtp-authentication-on-every-connection/bluesky",
+          "result": "existing",
+          "id": "6ae49635abdb62a0e37f5275",
+          "status": "sent",
+          "dueAt": "2026-10-30T17:00:00.000Z"
+        },
+        {
+          "key": "prove-smtp-authentication-on-every-connection/linkedin",
+          "result": "existing",
+          "id": "6ae49635e560b6bf642cd83a",
+          "status": "sent",
+          "dueAt": "2026-10-30T17:00:00.000Z"
+        },
+        {
+          "key": "prove-smtp-authentication-on-every-connection/facebook",
+          "result": "existing",
+          "id": "6ae49635abdb62a0e37f52d3",
+          "status": "sent",
+          "dueAt": "2026-10-30T17:00:00.000Z"
+        },
+        {
+          "key": "delegate-account-management-without-granting-admin/bluesky",
+          "result": "created",
+          "id": "6ae5e6b5eaa24d6f9a76cc4d",
+          "status": "scheduled",
+          "dueAt": "2026-10-31T17:00:00.000Z"
+        },
+        {
+          "key": "delegate-account-management-without-granting-admin/linkedin",
+          "result": "created",
+          "id": "6ae5e6b5406ab8a018bc3c07",
+          "status": "scheduled",
+          "dueAt": "2026-10-31T17:00:00.000Z"
+        },
+        {
+          "key": "delegate-account-management-without-granting-admin/facebook",
+          "result": "created",
+          "id": "6ae5e6b6b84259308bd99ca9",
+          "status": "scheduled",
+          "dueAt": "2026-10-31T17:00:00.000Z"
+        }
+      ]
     }
   ]
 }
