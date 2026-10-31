@@ -2,6 +2,7 @@
 categories:
     - php
 date: 2026-10-31T00:00:00Z
+devto_id: 4952730
 draft: false
 slug: delegate-account-management-without-granting-admin
 summary: Add narrowly scoped account-management authority without handing a service role every power carried by an administrator permission.
