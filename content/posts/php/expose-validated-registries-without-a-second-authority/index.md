@@ -2,6 +2,7 @@
 categories:
     - php
 date: 2026-11-01T00:00:00Z
+devto_id: 4957713
 draft: false
 slug: expose-validated-registries-without-a-second-authority
 summary: Let provider factories consume a validated registry without rebuilding it, overriding it, or reading it before composition finishes.
