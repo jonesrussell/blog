@@ -1,0 +1,13 @@
+{
+  "status": "PUBLISH",
+  "issue": 1206,
+  "slug": "expose-validated-registries-without-a-second-authority",
+  "post_path": "content/posts/php/expose-validated-registries-without-a-second-authority/index.md",
+  "social_path": "docs/social/expose-validated-registries-without-a-second-authority.md",
+  "sources": [
+    "https://github.com/waaseyaa/framework/commit/e5d77f88d1da1bc91a19180aa0fe717d23f6ab29"
+  ],
+  "publishedOn": "2026-11-01",
+  "preflightRequestId": "codex-local-20261101-65e32adc7ddb",
+  "baseSha": "416525d80f404eae1bdae8a096371a96eb488770"
+}

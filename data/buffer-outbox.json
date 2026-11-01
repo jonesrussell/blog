@@ -1,4 +1,15 @@
 {
   "id": "blog-outbox",
-  "posts": []
+  "posts": [
+    {
+      "id": "delegate-account-management-without-granting-admin",
+      "file": "docs/social/delegate-account-management-without-granting-admin.md",
+      "url": "https://jonesrussell.github.io/blog/delegate-account-management-without-granting-admin/"
+    },
+    {
+      "id": "expose-validated-registries-without-a-second-authority",
+      "file": "docs/social/expose-validated-registries-without-a-second-authority.md",
+      "url": "https://jonesrussell.github.io/blog/expose-validated-registries-without-a-second-authority/"
+    }
+  ]
 }
