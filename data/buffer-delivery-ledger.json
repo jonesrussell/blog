@@ -714,6 +714,65 @@
           "dueAt": "2026-10-31T17:00:00.000Z"
         }
       ]
+    },
+    {
+      "recordedAt": "2026-11-01T14:09:30.678Z",
+      "sources": [
+        {
+          "id": "delegate-account-management-without-granting-admin",
+          "file": "docs/social/delegate-account-management-without-granting-admin.md",
+          "url": "https://jonesrussell.github.io/blog/delegate-account-management-without-granting-admin/"
+        },
+        {
+          "id": "expose-validated-registries-without-a-second-authority",
+          "file": "docs/social/expose-validated-registries-without-a-second-authority.md",
+          "url": "https://jonesrussell.github.io/blog/expose-validated-registries-without-a-second-authority/"
+        }
+      ],
+      "posts": [
+        {
+          "key": "delegate-account-management-without-granting-admin/bluesky",
+          "result": "existing",
+          "id": "6ae5e6b5eaa24d6f9a76cc4d",
+          "status": "sent",
+          "dueAt": "2026-10-31T17:00:00.000Z"
+        },
+        {
+          "key": "delegate-account-management-without-granting-admin/linkedin",
+          "result": "existing",
+          "id": "6ae5e6b5406ab8a018bc3c07",
+          "status": "sent",
+          "dueAt": "2026-10-31T17:00:00.000Z"
+        },
+        {
+          "key": "delegate-account-management-without-granting-admin/facebook",
+          "result": "existing",
+          "id": "6ae5e6b6b84259308bd99ca9",
+          "status": "sent",
+          "dueAt": "2026-10-31T17:00:00.000Z"
+        },
+        {
+          "key": "expose-validated-registries-without-a-second-authority/bluesky",
+          "result": "created",
+          "id": "6ae748181ee172cd6dfea17b",
+          "status": "scheduled",
+          "dueAt": "2026-11-01T18:00:00.000Z"
+        },
+        {
+          "key": "expose-validated-registries-without-a-second-authority/linkedin",
+          "result": "created",
+          "id": "6ae74818ab019b908761df9e",
+          "status": "scheduled",
+          "dueAt": "2026-11-01T18:00:00.000Z"
+        },
+        {
+          "key": "expose-validated-registries-without-a-second-authority/facebook",
+          "result": "created",
+          "id": "6ae7481837c1acd2a00a75f5",
+          "status": "scheduled",
+          "dueAt": "2026-11-01T18:00:00.000Z"
+        }
+      ]
     }
   ]
 }
