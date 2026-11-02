@@ -1,11 +1,17 @@
 ---
-title: "Separate AI drafting from publication authority"
-date: 2026-11-02
-categories: [devops]
-tags: [automation, github-actions, ai, hugo]
-summary: "How this blog moved AI drafting onto a local desktop while keeping capacity checks, validation, deployment, and social delivery behind reproducible cloud gates."
-slug: "separate-ai-drafting-from-publication-authority"
+categories:
+    - devops
+date: 2026-11-02T00:00:00Z
+devto_id: 4963434
 draft: false
+slug: separate-ai-drafting-from-publication-authority
+summary: How this blog moved AI drafting onto a local desktop while keeping capacity checks, validation, deployment, and social delivery behind reproducible cloud gates.
+tags:
+    - automation
+    - github-actions
+    - ai
+    - hugo
+title: Separate AI drafting from publication authority
 ---
 
 Ahnii!
