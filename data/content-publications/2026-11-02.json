@@ -1,0 +1,14 @@
+{
+  "status": "PUBLISH",
+  "issue": 1192,
+  "slug": "separate-ai-drafting-from-publication-authority",
+  "post_path": "content/posts/devops/separate-ai-drafting-from-publication-authority/index.md",
+  "social_path": "docs/social/separate-ai-drafting-from-publication-authority.md",
+  "sources": [
+    "https://github.com/jonesrussell/blog/commit/43a90f7364d5767844963eae537c1031bac3af7c",
+    "https://github.com/jonesrussell/blog/pull/122"
+  ],
+  "publishedOn": "2026-11-02",
+  "preflightRequestId": "codex-local-20261102-dffa49716b02",
+  "baseSha": "0af222549948f1ff7d07f69663f20ce2ec532de3"
+}
