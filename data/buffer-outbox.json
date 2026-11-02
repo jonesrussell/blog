@@ -1,15 +1,4 @@
 {
   "id": "blog-outbox",
-  "posts": [
-    {
-      "id": "expose-validated-registries-without-a-second-authority",
-      "file": "docs/social/expose-validated-registries-without-a-second-authority.md",
-      "url": "https://jonesrussell.github.io/blog/expose-validated-registries-without-a-second-authority/"
-    },
-    {
-      "id": "separate-ai-drafting-from-publication-authority",
-      "file": "docs/social/separate-ai-drafting-from-publication-authority.md",
-      "url": "https://jonesrussell.github.io/blog/separate-ai-drafting-from-publication-authority/"
-    }
-  ]
+  "posts": []
 }

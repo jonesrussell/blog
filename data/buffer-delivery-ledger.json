@@ -773,6 +773,65 @@
           "dueAt": "2026-11-01T18:00:00.000Z"
         }
       ]
+    },
+    {
+      "recordedAt": "2026-11-02T14:05:12.766Z",
+      "sources": [
+        {
+          "id": "expose-validated-registries-without-a-second-authority",
+          "file": "docs/social/expose-validated-registries-without-a-second-authority.md",
+          "url": "https://jonesrussell.github.io/blog/expose-validated-registries-without-a-second-authority/"
+        },
+        {
+          "id": "separate-ai-drafting-from-publication-authority",
+          "file": "docs/social/separate-ai-drafting-from-publication-authority.md",
+          "url": "https://jonesrussell.github.io/blog/separate-ai-drafting-from-publication-authority/"
+        }
+      ],
+      "posts": [
+        {
+          "key": "expose-validated-registries-without-a-second-authority/bluesky",
+          "result": "existing",
+          "id": "6ae748181ee172cd6dfea17b",
+          "status": "sent",
+          "dueAt": "2026-11-01T18:00:00.000Z"
+        },
+        {
+          "key": "expose-validated-registries-without-a-second-authority/linkedin",
+          "result": "existing",
+          "id": "6ae74818ab019b908761df9e",
+          "status": "sent",
+          "dueAt": "2026-11-01T18:00:00.000Z"
+        },
+        {
+          "key": "expose-validated-registries-without-a-second-authority/facebook",
+          "result": "existing",
+          "id": "6ae7481837c1acd2a00a75f5",
+          "status": "sent",
+          "dueAt": "2026-11-01T18:00:00.000Z"
+        },
+        {
+          "key": "separate-ai-drafting-from-publication-authority/bluesky",
+          "result": "created",
+          "id": "6ae89895416e2003426735a9",
+          "status": "scheduled",
+          "dueAt": "2026-11-02T18:00:00.000Z"
+        },
+        {
+          "key": "separate-ai-drafting-from-publication-authority/linkedin",
+          "result": "created",
+          "id": "6ae898963911b6a45d559b6f",
+          "status": "scheduled",
+          "dueAt": "2026-11-02T18:00:00.000Z"
+        },
+        {
+          "key": "separate-ai-drafting-from-publication-authority/facebook",
+          "result": "created",
+          "id": "6ae89896c5c4672c3e7b5c6c",
+          "status": "scheduled",
+          "dueAt": "2026-11-02T18:00:00.000Z"
+        }
+      ]
     }
   ]
 }
