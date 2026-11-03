@@ -1,4 +1,15 @@
 {
   "id": "blog-outbox",
-  "posts": []
+  "posts": [
+    {
+      "id": "separate-ai-drafting-from-publication-authority",
+      "file": "docs/social/separate-ai-drafting-from-publication-authority.md",
+      "url": "https://jonesrussell.github.io/blog/separate-ai-drafting-from-publication-authority/"
+    },
+    {
+      "id": "reversible-content-withdrawal",
+      "file": "docs/social/reversible-content-withdrawal.md",
+      "url": "https://jonesrussell.github.io/blog/reversible-content-withdrawal/"
+    }
+  ]
 }

@@ -1,0 +1,14 @@
+{
+  "status": "PUBLISH",
+  "issue": 1205,
+  "slug": "reversible-content-withdrawal",
+  "post_path": "content/posts/devops/reversible-content-withdrawal/index.md",
+  "social_path": "docs/social/reversible-content-withdrawal.md",
+  "sources": [
+    "https://github.com/jonesrussell/rhtcircle/commit/bba42a11b9f3eac2a49321dbc305278403c700b0",
+    "https://github.com/jonesrussell/rhtcircle/blob/bba42a11b9f3eac2a49321dbc305278403c700b0/docs/releases/russell-content-withdrawal-2026-10-28.md"
+  ],
+  "publishedOn": "2026-11-03",
+  "preflightRequestId": "codex-local-20261103-140350-a7c4e2",
+  "baseSha": "6f98aaeba3ab625075bc3d6d068573adb3adac77"
+}
