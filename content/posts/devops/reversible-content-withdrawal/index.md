@@ -1,11 +1,17 @@
 ---
-title: "Treat content withdrawal as a reversible migration"
-date: 2026-11-03
-categories: [devops]
-tags: [content-management, migrations, testing, publishing]
-summary: "Withdraw published content without destroying its source, revision history, or the evidence needed to move it safely."
-slug: "reversible-content-withdrawal"
+categories:
+    - devops
+date: 2026-11-03T00:00:00Z
+devto_id: 4969541
 draft: false
+slug: reversible-content-withdrawal
+summary: Withdraw published content without destroying its source, revision history, or the evidence needed to move it safely.
+tags:
+    - content-management
+    - migrations
+    - testing
+    - publishing
+title: Treat content withdrawal as a reversible migration
 ---
 
 Ahnii!
