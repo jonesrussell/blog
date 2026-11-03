@@ -832,6 +832,65 @@
           "dueAt": "2026-11-02T18:00:00.000Z"
         }
       ]
+    },
+    {
+      "recordedAt": "2026-11-03T14:08:54.866Z",
+      "sources": [
+        {
+          "id": "separate-ai-drafting-from-publication-authority",
+          "file": "docs/social/separate-ai-drafting-from-publication-authority.md",
+          "url": "https://jonesrussell.github.io/blog/separate-ai-drafting-from-publication-authority/"
+        },
+        {
+          "id": "reversible-content-withdrawal",
+          "file": "docs/social/reversible-content-withdrawal.md",
+          "url": "https://jonesrussell.github.io/blog/reversible-content-withdrawal/"
+        }
+      ],
+      "posts": [
+        {
+          "key": "separate-ai-drafting-from-publication-authority/bluesky",
+          "result": "existing",
+          "id": "6ae89895416e2003426735a9",
+          "status": "sent",
+          "dueAt": "2026-11-02T18:00:00.000Z"
+        },
+        {
+          "key": "separate-ai-drafting-from-publication-authority/linkedin",
+          "result": "existing",
+          "id": "6ae898963911b6a45d559b6f",
+          "status": "sent",
+          "dueAt": "2026-11-02T18:00:00.000Z"
+        },
+        {
+          "key": "separate-ai-drafting-from-publication-authority/facebook",
+          "result": "existing",
+          "id": "6ae89896c5c4672c3e7b5c6c",
+          "status": "sent",
+          "dueAt": "2026-11-02T18:00:00.000Z"
+        },
+        {
+          "key": "reversible-content-withdrawal/bluesky",
+          "result": "created",
+          "id": "6ae9eaf41d20820af1e388ba",
+          "status": "scheduled",
+          "dueAt": "2026-11-03T18:00:00.000Z"
+        },
+        {
+          "key": "reversible-content-withdrawal/linkedin",
+          "result": "created",
+          "id": "6ae9eaf487e4378742da5818",
+          "status": "scheduled",
+          "dueAt": "2026-11-03T18:00:00.000Z"
+        },
+        {
+          "key": "reversible-content-withdrawal/facebook",
+          "result": "created",
+          "id": "6ae9eaf465793c1b5a4c48de",
+          "status": "scheduled",
+          "dueAt": "2026-11-03T18:00:00.000Z"
+        }
+      ]
     }
   ]
 }
